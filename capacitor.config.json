@@ -1,0 +1,8 @@
+{
+  "appId": "com.cinevocab.app",
+  "appName": "CineVocab",
+  "webDir": "www",
+  "plugins": {
+    "CapacitorHttp": { "enabled": true }
+  }
+}

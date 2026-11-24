@@ -2,5 +2,18 @@ node_modules/
 .DS_Store
 *.log
 
+# sir ve imza: asla repoya girmez
+*.jks
+*.keystore
+keystore.properties
+local.properties
+.env*
+
+# yerel
 _yedek/
 .idea/
+android/.idea/
+dev/out/
+.claude/settings.local.json
+.claude/ofis/durum.json*
+.claude/ofis/.durum.lock

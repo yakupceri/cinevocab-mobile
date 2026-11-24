@@ -20,3 +20,6 @@ dev/out/
 
 # ucuncu taraf skill'ler: yalnizca diskte (kurulum: .claude/THIRD_PARTY.md)
 .claude/skills/
+
+# emulatorden alinan goruntuler hesap adi ve kelime listesi icerebilir: depoya girmez
+dev/tasarim/ekran/emulator/

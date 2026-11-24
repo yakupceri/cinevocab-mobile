@@ -211,7 +211,7 @@
   function t(key) {
     let s = (T[S.ui] && T[S.ui][key]) || T.en[key] || key;
     for (let i = 1; i < arguments.length; i++) s = s.split("{" + (i - 1) + "}").join(arguments[i]);
-    return s;
+    return S.ui === "en" ? s.replace(/\b1 (days|words|points)\b/g, (m, w) => "1 " + w.slice(0, -1)) : s;      // Ingilizcede tekil: "1 day", "1 word"
   }
   function langName(code) {
     try { const n = new Intl.DisplayNames([S.ui], { type: "language" }).of(code); return n.charAt(0).toLocaleUpperCase(S.ui) + n.slice(1); }

@@ -527,3 +527,11 @@ test("ilerleme karti: puan hedefi, kalan ve seviye dogru yazilir; hedef dolunca 
   c.renderMeter({ xp_today: 90, level: 2, xp_level: 200, xp_into: 80 });
   assert.equal(n.goalSub.textContent, "goalDone:"); assert.equal(n.goalFill.style.width, "100%"); assert.equal(sinif.done, true);
 });
+
+test("Ingilizce tekil: '1 days' yazilmaz; Turkcede dokunulmaz", () => {
+  const T = { en: { a: "{0} days in a row", b: "{0} points", c: "{0} words" }, tr: { a: "{0} gün üst üste" } }, S = { ui: "en" };
+  const c = yukle(["t"], { T, S });
+  assert.equal(c.t("a", 1), "1 day in a row"); assert.equal(c.t("a", 2), "2 days in a row"); assert.equal(c.t("a", 11), "11 days in a row");
+  assert.equal(c.t("b", 1), "1 point"); assert.equal(c.t("c", 21), "21 words");
+  S.ui = "tr"; assert.equal(c.t("a", 1), "1 gün üst üste");
+});

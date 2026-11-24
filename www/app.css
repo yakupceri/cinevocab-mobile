@@ -243,15 +243,15 @@ h2.sec.grp:first-of-type { margin-top: 14px; }
 
 /* kelime karti (kartlar ve akis ortak): krem bilet kagidi, sola yasli. Kelime, dinle, kesik cizgi, anlam; altta ornek altyazi. */
 .wcard { display: flex; flex-direction: column; align-items: flex-start; padding: 26px 24px 20px; background: var(--paper); color: var(--on-paper); border: 2px solid transparent; border-radius: 10px; text-align: left; user-select: none; -webkit-user-select: none; overflow: hidden; }
-.wc-word { margin-top: 5vh; max-width: 100%; font: 800 64px/.92 var(--disp); letter-spacing: .005em; overflow-wrap: anywhere; }
+.wc-word { margin-top: 2vh; max-width: 100%; font: 800 clamp(42px, 9vh, 64px)/.92 var(--disp); letter-spacing: .005em; overflow-wrap: anywhere; }
 .wc-say { display: grid; place-items: center; flex: none; width: 48px; height: 48px; margin-top: 14px; background: var(--on-paper); color: var(--sun); border: 0; border-radius: 50%; }
 .wc-say:active { transform: scale(.92); } .wc-say.talk { animation: beat .5s infinite; }
 .wc-tip { margin-top: 16px; font-size: 14px; color: var(--paper-dim); }
-.wc-tr { align-self: stretch; margin-top: 20px; padding-top: 18px; border-top: 2px dashed var(--paper-line); font-size: 28px; line-height: 1.12; font-weight: 700; overflow-wrap: anywhere; }
-.wc-ex { align-self: stretch; margin-top: auto; padding: 12px 14px; background: var(--film); border-radius: 4px; color: var(--sub); font-size: 15px; font-weight: 600; line-height: 1.35; text-align: center; overflow-wrap: anywhere; }
+.wc-tr { align-self: stretch; margin-top: 14px; padding-top: 14px; border-top: 2px dashed var(--paper-line); font-size: 28px; line-height: 1.12; font-weight: 700; overflow-wrap: anywhere; }
+.wc-ex { flex: none; align-self: stretch; margin-top: auto; padding: 12px 14px; background: var(--film); border-radius: 4px; color: var(--sub); font-size: 15px; font-weight: 600; line-height: 1.35; text-align: center; overflow-wrap: anywhere; }
 .wc-ex mark { background: none; color: var(--sun); }
 .wc-src { align-self: stretch; margin-top: 8px; font-size: 13px; color: var(--paper-dim); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.deck { position: relative; height: 52vh; min-height: 300px; margin-top: 6px; }
+.deck { position: relative; height: 52vh; min-height: 350px; margin-top: 6px; }
 .fcard { position: absolute; inset: 0; width: 100%; touch-action: pan-y; }
 .fcard.under { background: var(--surf2); border-radius: 10px; transform: rotate(2.5deg) translate(6px, 6px); }
 .fcard.anim { transition: transform .22s ease, opacity .22s ease; }
@@ -326,7 +326,7 @@ h2.sec.grp:first-of-type { margin-top: 14px; }
 .fl-x[aria-pressed=false] { opacity: .45; }
 .fl-count { flex: 1; text-align: center; }
 #v-flow .qbar { margin-right: -10px; }
-.fl-stage { --run: 0; position: relative; height: 52vh; min-height: 300px; margin-top: 6px; touch-action: pan-y; }
+.fl-stage { --run: 0; position: relative; height: 52vh; min-height: 350px; margin-top: 6px; touch-action: pan-y; }
 .fl-card { position: absolute; inset: 0; outline: calc(var(--run) * .6px) solid var(--hi); outline-offset: 3px; transition: outline-width .25s ease; }
 .fl-card.in { animation: flIn .28s ease-out; }
 .fl-card.up { transition: transform .24s ease-in, opacity .24s; transform: translateX(130%) rotate(16deg); opacity: 0; }      /* bildim: saga */

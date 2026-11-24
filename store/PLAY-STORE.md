@@ -5,82 +5,85 @@ Bu klasördeki her şey Play Console'a girilecek hazır malzeme. Metinleri kopya
 ## Görseller
 - Uygulama simgesi (512x512): `icon-512.png`
 - Öne çıkan görsel (1024x500): `feature-tr.png`, `feature-en.png`
-- Telefon ekran görüntüleri (1080x1920, 7 adet): `ekran-tr/`, `ekran-en/`
-- Ekran görüntülerindeki kullanıcı ve kelimeler örnek veridir (gerçek kullanıcı değil).
+- Telefon ekran görüntüleri (1080x1920, 7 adet): `ekran-tr/`, `ekran-en/` (karşılama, ana, kelime kartı, soru, ekle, sonuç, oyna)
+- Hepsi `sh dev/ekran/magaza.sh` ile misafir modundan üretilir: örnek kelimeler, kişisel veri yok. Tasarım değişince yeniden çalıştır.
+- Görseller çocuksu değil; hedef kitle 13+ (aşağıda).
 
 ## Mağaza metni: Türkçe (tr-TR)
-**Uygulama adı (30 karakter sınırı):** CineVocab: Kendi Kelimelerin
+**Uygulama adı (30 karakter sınırı):** CineVocab: Dizinden Kelime
 
-**Kısa açıklama (80 karakter sınırı):** İzlediğin ve okuduğun şeylerden kelime topla, bulmaca ve düelloyla aklında tut.
+**Kısa açıklama (80 karakter sınırı):** İzlediğin dizinin ve okuduğun metnin kelimelerini öğren. Reklam yok, can yok.
 
 **Tam açıklama:**
-CineVocab, izlediğin ve okuduğun şeylerdeki kelimeleri senin kelime listene çevirir ve onları kısa oyunlarla aklında tutar. Can yok, reklam yok, bekleme yok.
+CineVocab herkese aynı kursu vermez. Senin izlediğin dizinin, okuduğun yazının kelimelerini alır, geçtiği cümleyle birlikte sana öğretir.
 
-Nasıl çalışır?
-• Anlamak istediğin bir metni yapıştır ya da elindeki altyazı dosyasını seç. Bilmediğin kelimeleri seç, çevirileriyle listene eklensin. Metnin telefonundan çıkmaz.
+Kelimeler nereden gelir?
+• Altyazıyı ya da bir metni yapıştır; bilmediğin kelimeleri biz çıkarırız.
+• Başka bir uygulamada metin seç, Paylaş → CineVocab de.
+• Televizyondaki ya da telefondaki altyazının fotoğrafını çek; yazı telefonunda okunur.
 • Bilgisayarda CineVocab Chrome eklentisini kullanıyorsan izlerken topladığın kelimeler burada kendiliğinden görünür.
-• Elinde metin yoksa hazır paketlerle başla.
+• Elinde bir şey yoksa hazır setlerle başla.
 
-Her gün 5 dakika
-• Günün bulmacası: karışık harfleri diz. Bugün herkes aynı 5 kelimeyi çözer, süren ve sıran görünür.
-• Kartlar: kelimeyi gör, anlamını hatırla, bildiysen sağa kaydır.
-• Test: dört şıktan doğru anlamı seç, üst üste bilince kombo yap.
-• Günlük meydan okuma: herkese aynı sorular, günlük sıralama.
+Günde birkaç dakika
+• Kartlar ve kelime akışı: kelimeyi gör, bildiysen sağa kaydır.
+• Altyazıyı tamamla: sahneden bir cümle, bir kelime eksik.
+• Test: dört şıktan doğru anlamı seç.
+• Günün bulmacası ve günlük meydan okuma: bugün herkes aynı kelimeleri çözer.
+Hangi kelimenin ne zaman tekrar edileceğini uygulama takip eder; sen yalnızca oynarsın.
+
+Sakin bir uygulama
+• Reklam yok, can ya da enerji yok, bekleme yok.
+• "Serini kaybedeceksin" baskısı yok. İstersen akşam tek bir hatırlatma gelir, oynadığın gün gelmez.
+• Koyu ve açık görünüm. Telefonunun büyük yazı ayarına uyar.
 
 Arkadaşlarınla
 • Düello: oda kur, kodu paylaş, aynı soruları aynı anda cevaplayın.
 • Ligler: arkadaş grubunla haftalık sıralama.
-• Sonucunu tek dokunuşla paylaş.
 
-Seni geri getiren şeyler
-• Haftalık kart: oynadığın her gün bir delik açılır, seri bozulmasın.
-• Günlük XP hedefi, seviyeler ve roller (Seyirci'den Efsane'ye).
-• Ödül rafı: kelime, seri ve düello ödülleri.
-• İstersen akşam hatırlatması.
+Gizlilik
+• Yapıştırdığın metin ve çektiğin fotoğraf sunucumuza gönderilmez; yalnızca seçtiğin kelimeler gider.
+• Hesabını ve bütün verilerini uygulamanın içinden istediğin an silebilirsin.
 
-Tekrar zamanı gelen kelimeleri uygulama kendisi takip eder (aralıklı tekrar), sen sadece oynarsın.
-
-16 dil desteklenir: İngilizce, Türkçe, Almanca, Fransızca, İspanyolca, İtalyanca, Portekizce, Rusça, Arapça, Rumence, Japonca, Hintçe, Endonezce, Lehçe, Felemenkçe, Korece.
-
-Reklam yok. Hesabını ve bütün verilerini uygulamanın içinden istediğin an silebilirsin.
+16 dilde kelime öğrenebilirsin: İngilizce, Türkçe, Almanca, Fransızca, İspanyolca, İtalyanca, Portekizce, Rusça, Arapça, Rumence, Japonca, Hintçe, Endonezce, Lehçe, Felemenkçe, Korece. Fotoğraftan okuma şimdilik Latin harfli dillerde çalışır.
 
 CineVocab bağımsız bir uygulamadır; YouTube ya da Google ile bağlantılı değildir.
 
 ## Store listing: English (en-US)
-**App name:** CineVocab: Your Own Words
+**App name (30 character limit):** CineVocab: Words You Watch
 
-**Short description:** Collect words from what you watch and read. Keep them with puzzles and duels.
+**Short description (80 character limit):** Learn the words from the shows you watch and the texts you read. No ads.
 
 **Full description:**
-CineVocab turns the words in what you watch and read into your own word list, then helps you remember them with short games. No hearts, no ads, no waiting.
+CineVocab does not hand everyone the same course. It takes the words from your own shows and reading, and teaches them to you with the line they came from.
 
-How it works
-• Paste a text you want to understand, or pick a subtitle file you have. Pick the words you don't know and they are added with translations. Your text never leaves your phone.
-• If you use the CineVocab Chrome extension on a computer, the words you collect while watching show up here by themselves.
-• No text at hand? Start with a ready-made pack.
+Where do the words come from?
+• Paste subtitles or any text; we pull out the words you do not know.
+• Select text in another app and tap Share → CineVocab.
+• Take a photo of the subtitles on your TV or phone; the text is read on your phone.
+• If you use the CineVocab Chrome extension on your computer, the words you collect while watching show up here by themselves.
+• Nothing at hand? Start with a ready-made set.
 
-Five minutes a day
-• Daily puzzle: unscramble the letters. Everyone gets the same 5 words today, with your time and rank.
-• Flashcards: see the word, recall the meaning, swipe right if you knew it.
-• Quiz: pick the meaning out of four and build a combo.
-• Daily challenge: the same questions for everyone, with a daily leaderboard.
+A few minutes a day
+• Flashcards and word flow: see the word, swipe right if you knew it.
+• Finish the line: a line from a scene with one word missing.
+• Quiz: pick the meaning from four choices.
+• Daily puzzle and daily challenge: everyone solves the same words today.
+The app keeps track of which word is due for review; you just play.
+
+A calm app
+• No ads, no hearts or energy, no waiting.
+• No "you will lose your streak" pressure. If you want, one quiet evening reminder, skipped on days you already played.
+• Dark and light look. Follows your phone's large text setting.
 
 With friends
-• Duel: create a room, share the code, answer the same questions at the same time.
-• Leagues: a weekly leaderboard for your group.
-• Share your result in one tap.
+• Duel: open a room, share the code, answer the same questions at the same time.
+• Leagues: a weekly ranking with your group.
 
-Reasons to come back
-• Weekly punch card: every day you play punches a hole. Keep the streak alive.
-• Daily XP goal, levels and roles (from Viewer to Legend).
-• Awards shelf for words, streaks and duels.
-• Optional evening reminder.
+Privacy
+• The text you paste and the photos you take are not sent to our server; only the words you pick are.
+• Delete your account and all your data from inside the app at any time.
 
-The app tracks which words are due for review (spaced repetition). You just play.
-
-16 languages: English, Turkish, German, French, Spanish, Italian, Portuguese, Russian, Arabic, Romanian, Japanese, Hindi, Indonesian, Polish, Dutch, Korean.
-
-No ads. You can delete your account and all of your data from inside the app at any time.
+Learn words in 16 languages: English, Turkish, German, French, Spanish, Italian, Portuguese, Russian, Arabic, Romanian, Japanese, Hindi, Indonesian, Polish, Dutch, Korean. Reading from photos works for Latin-script languages for now.
 
 CineVocab is an independent app and is not affiliated with YouTube or Google.
 

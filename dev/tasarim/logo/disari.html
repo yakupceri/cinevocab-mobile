@@ -1,0 +1,14 @@
+<!doctype html>
+<!-- PNG disa aktarim sayfasi. ?v=simge|kare|on|acilis  (kare: koseleri yuvarlatilmamis, magaza icin; on: Android uyarlanir simge on katmani, saydam) -->
+<meta charset="utf-8"><style>html,body{margin:0;background:transparent}svg{display:block;width:100vw;height:100vh}</style>
+<svg viewBox="0 0 512 512" id="s"></svg>
+<script>
+var v = new URLSearchParams(location.search).get("v") || "simge";
+var m = '<g transform="rotate(-7 256 256)"><path fill="#FFD21E" fill-rule="evenodd" d="M112 104H392a48 48 0 0 1 48 48v208a48 48 0 0 1-48 48H112a48 48 0 0 1-48-48V298a42 42 0 0 0 0-84V152a48 48 0 0 1 48-48zM300 176a80 80 0 0 0 0 160H440V176z"/><rect x="296" y="198" width="204" height="46" rx="12" fill="#F3E9D2"/><rect x="296" y="268" width="132" height="46" rx="12" fill="#F3E9D2"/></g>';
+var g = function (k, dx, dy) { return '<g transform="translate(' + (256 - 256 * k + dx) + ' ' + (256 - 256 * k + dy) + ') scale(' + k + ')">' + m + '</g>'; };
+var out = { simge: '<rect width="512" height="512" rx="112" fill="#170E12"/>' + g(.9766, -10, 0),
+            kare: '<rect width="512" height="512" fill="#170E12"/>' + g(.9, -8, 0),
+            on: g(.56, -6, 0),                                       // uyarlanir simge: isaret ortadaki guvenli alanda
+            acilis: '<rect width="512" height="512" fill="#170E12"/>' + g(.3, -3, 0) }[v];
+document.getElementById("s").innerHTML = out;
+</script>

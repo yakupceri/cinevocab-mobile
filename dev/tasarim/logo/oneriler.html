@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- CineVocab logo onerileri. Uc oneri; her biri 200, 128, 48, 32 ve 16 px'te; koyu, sari ve gri (Chrome arac cubugu) zeminde. -->
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Big Shoulders"; src: url("../../../www/fonts/bigshoulders-latin.woff2") format("woff2"); font-weight: 600 800; }
+html, body { margin: 0; background: #2b2b2f; color: #f3e9d2; font: 15px/1.4 system-ui, sans-serif; }
+.wrap { width: 1500px; padding: 28px; }
+h1 { font: 800 34px/1 "Big Shoulders"; margin: 0 0 6px; } p { margin: 0 0 18px; color: #b9b2a6; }
+.row { display: grid; grid-template-columns: 250px repeat(3, 1fr); gap: 14px; margin-bottom: 14px; align-items: stretch; }
+.info { padding: 6px 8px 0 0; } .info b { display: block; font: 800 30px/1 "Big Shoulders"; margin-bottom: 6px; } .info span { color: #b9b2a6; font-size: 14px; }
+.bg { display: flex; align-items: center; gap: 18px; padding: 18px; border-radius: 10px; }
+.dark { background: #170E12; } .sun { background: #FFD21E; } .gray { background: #dfe1e5; }
+.bg svg { display: block; flex: none; }
+.cap { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; font-size: 13px; color: #b9b2a6; margin: -6px 0 6px; }
+text { font-family: "Big Shoulders", "Arial Narrow", sans-serif; font-weight: 800; }
+</style>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <path id="bilet" d="M104 136H408a28 28 0 0 1 28 28V222a34 34 0 0 0 0 68V348a28 28 0 0 1-28 28H104a28 28 0 0 1-28-28V290a34 34 0 0 0 0-68V164a28 28 0 0 1 28-28z"/>
+    <clipPath id="sol"><rect x="0" y="0" width="212" height="512"/></clipPath>
+    <clipPath id="sag"><rect x="212" y="0" width="300" height="512"/></clipPath>
+
+    <!-- A: Sari bilet. Simdiki fikrin tersi: koyu karede buyuk sari bilet, icinde koyu "Cv". -->
+    <symbol id="A" viewBox="0 0 512 512">
+      <rect width="512" height="512" rx="112" fill="#170E12"/>
+      <g transform="rotate(-8 256 256) translate(256 256) scale(1.2) translate(-256 -256)">
+        <use href="#bilet" fill="#FFD21E"/>
+        <text x="256" y="318" text-anchor="middle" font-size="190" fill="#170E12" letter-spacing="-4">Cv</text>
+      </g>
+    </symbol>
+
+    <!-- B: Altyazi C. Kalin sari C; agzindan iki altyazi satiri cikiyor (ustteki sari: ogrenilen kelime). -->
+    <symbol id="B" viewBox="0 0 512 512">
+      <rect width="512" height="512" rx="112" fill="#170E12"/>
+      <path d="M352 152A150 150 0 1 0 352 360" fill="none" stroke="#FFD21E" stroke-width="84"/>
+      <rect x="236" y="204" width="200" height="44" rx="8" fill="#FFD21E"/>
+      <rect x="236" y="266" width="136" height="44" rx="8" fill="#F3E9D2"/>
+    </symbol>
+
+    <!-- C: Iki renkli bilet. Kocan krem, govde koyu; arada delikli cizgi. Sari zeminde. -->
+    <symbol id="C" viewBox="0 0 512 512">
+      <rect width="512" height="512" rx="112" fill="#FFD21E"/>
+      <g transform="rotate(-8 256 256) translate(256 256) scale(1.2) translate(-256 -256)">
+        <use href="#bilet" fill="#F3E9D2" clip-path="url(#sol)"/>
+        <use href="#bilet" fill="#170E12" clip-path="url(#sag)"/>
+        <line x1="212" y1="150" x2="212" y2="362" stroke="#170E12" stroke-width="7" stroke-dasharray="12 12"/>
+        <text x="146" y="312" text-anchor="middle" font-size="170" fill="#170E12">C</text>
+        <text x="322" y="312" text-anchor="middle" font-size="170" fill="#FFD21E">V</text>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+<div class="wrap">
+  <h1>CineVocab logo önerileri</h1>
+  <p>Her satırda aynı logo: 200, 128, 48, 32 ve 16 piksel. Soldan sağa: uygulamanın koyu zemini, sarı zemin, Chrome araç çubuğu grisi.</p>
+  <script>
+    var ops = [["A", "A · Sarı bilet", "Şimdiki logonun tersi: koyu karede büyük sarı bilet, içinde koyu Cv. En tanıdık olan; mevcut markadan kopmaz."],
+               ["B", "B · Altyazı C", "Kalın sarı bir C; ağzından iki altyazı satırı çıkıyor, üstteki sarı satır öğrendiğin kelime. Bilet yok, ürünün yaptığı işi gösterir."],
+               ["C", "C · İki renkli bilet", "Sarı zeminde koçanı krem, gövdesi koyu bilet; arada delikli çizgi. En renkli ve en uzaktan seçilen."]];
+    var sizes = [200, 128, 48, 32, 16], bgs = ["dark", "sun", "gray"], h = "";
+    ops.forEach(function (o) {
+      h += '<div class="row"><div class="info"><b>' + o[1] + '</b><span>' + o[2] + '</span></div>';
+      bgs.forEach(function (b) { h += '<div class="bg ' + b + '">' + sizes.map(function (s) { return '<svg width="' + s + '" height="' + s + '"><use href="#' + o[0] + '"/></svg>'; }).join("") + '</div>'; });
+      h += '</div>';
+    });
+    document.querySelector(".wrap").insertAdjacentHTML("beforeend", h);
+  </script>
+</div>

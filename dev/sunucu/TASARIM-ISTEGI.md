@@ -3,7 +3,7 @@
 Bu dosya **`cinevocab-app` reposundaki oturum** içindir. Mobil repodan o repoya yazılmaz. Mobil repo (`~/cinevocab-mobile`) yalnızca **okunur**; oradaki hiçbir dosya değiştirilmez.
 
 ## Amaç
-Chrome eklentisi (popup, video üstü çeviri kutusu, welcome sayfası) ve web sitesi, mobil uygulamayla **aynı ürün** gibi görünsün ve konuşsun. Ayrıca logo daha dikkat çekici olsun. Birisi mağazadaki eklentiye, siteye ve telefondaki uygulamaya baktığında üçünün aynı marka olduğunu ilk bakışta anlamalı.
+Chrome eklentisi (popup, video üstü çeviri kutusu, welcome sayfası) ve web sitesi, mobil uygulamayla **aynı ürün** gibi görünsün ve konuşsun. Logo da yenilendi (aşağıda). Birisi mağazadaki eklentiye, siteye ve telefondaki uygulamaya baktığında üçünün aynı marka olduğunu ilk bakışta anlamalı.
 
 Söz her yerde aynı: **"İzlediğin dizinin kelimelerini öğren."** (EN: "Learn the words from what you watch.")
 
@@ -24,13 +24,17 @@ Söz her yerde aynı: **"İzlediğin dizinin kelimelerini öğren."** (EN: "Lear
 
 ## İş, sırayla (her aşamanın sonunda göster ve DUR)
 
-### Aşama 1: Logo (3 öneri, sonra dur)
-Şu anki logo: hafif eğik bir bilet, içinde "Cv". Fikir korunacak (bilet + sinema), ama daha dikkat çekici ve küçük boyutta daha okunur olacak.
-- 3 farklı öneri çiz. Her birini 16, 32, 48, 128 ve 512 px'te; koyu zeminde, sarı zeminde ve Chrome araç çubuğunun gri zemininde göster. 16 px'te okunmayan öneri elenir.
-- Her öneri için: fikir (tek cümle), neden daha dikkat çekici, riski.
-- Şablon izlerinden kaçın: gradyan, parlama, genel "oynat üçgeni", konuşma balonu.
-- Tek sayfalık bir karşılaştırma görseli üret, göster ve DUR. Seçim proje sahibinindir.
-- Seçilen logo SVG olarak ve yukarıdaki boyutlarda PNG olarak `docs/marka/` altına konur; mobil taraf oradan alacak. Eklenti simgesi değişirse mağaza incelemesi tetiklenir: bunu raporda söyle.
+### Aşama 1: Logo (seçildi; yalnızca uygula)
+Logo 25 Kasım 2026'da mobil tarafta seçildi: **"Konuşan bilet"**. Bilet aynı zamanda bir C harfi; sol kenarında bilet çentiği var, ağzından iki altyazı satırı çıkıyor. Yeni öneri üretme; bunu kullan.
+- Kaynak dosyalar (salt okunur): `~/cinevocab-mobile/dev/tasarim/logo/`
+  - `cinevocab-isaret.svg`: işaretin kendisi, zeminsiz (üst şerit, site başlığı).
+  - `cinevocab-simge.svg`: koyu kare + işaret (eklenti simgesi, favicon).
+  - `simge-16.png`, `-32`, `-48`, `-128`, `-512`: hazır PNG'ler.
+  - `secilen.png`: nasıl göründüğü (boyutlar, koyu ve açık zemin, yazıyla birlikte).
+- Renkler: koyu zeminde bilet `#FFD21E`, satırlar `#F3E9D2`. Açık zeminde bilet `#1B0F14`, satırlar `#8E1B2B`. İşaretin eğimi (-7 derece) çizimin içinde; ayrıca döndürme.
+- Eski "Cv" yazılı bilet her yerden kalkar: `extension/icons/`, popup başlığı, welcome, site başlığı, favicon, sosyal paylaşım görseli.
+- Dosyaları bu repoya **kopyala** (`docs/marka/` ve gereken yerlere); mobil repodaki dosyalara bağlantı verme.
+- Eklenti simgesi değiştiği için Chrome Web Store yeniden inceleme yapar: raporda söyle ve yüklemeden önce proje sahibine sor.
 
 ### Aşama 2: Plan (sonra dur)
 `extension/popup.html`, `extension/content.js` (kutunun gölge kök CSS'i), `extension/welcome.html`, `templates/` (özellikle `landing.html`, `index.html`, `learn.html`, `game.html`, `daily.html`, `profile.html`, `theme.css`) ve `static/app.css` dosyalarını oku. Sonra kısa bir plan çıkar: hangi yüzey, hangi sırayla, her biri için ne değişiyor, hangi dosyalar, risk. Göster ve DUR.

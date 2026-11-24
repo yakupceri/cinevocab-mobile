@@ -9,8 +9,7 @@
 html, body { margin: 0; width: 1024px; height: 500px; overflow: hidden; background: #170E12; color: #F3E9D2; font-family: "Instrument Sans", sans-serif; }
 .wrap { display: grid; grid-template-columns: 1fr 440px; gap: 40px; height: 100%; padding: 0 56px; align-items: center; }
 .brand { display: flex; align-items: center; gap: 14px; font: 800 34px/1 "Big Shoulders"; }
-.logo { position: relative; width: 66px; height: 46px; transform: rotate(-6deg); } .logo svg { width: 100%; height: 100%; fill: #FFD21E; }
-.logo b { position: absolute; inset: 0; display: grid; place-items: center; font: 800 25px/1 "Big Shoulders"; color: #170E12; }
+.logo { width: 78px; height: 57px; flex: none; } .logo svg { display: block; width: 100%; height: 100%; }
 h1 { margin: 26px 0 0; font: 800 64px/.96 "Big Shoulders"; letter-spacing: .005em; }
 p { margin: 18px 0 0; font-size: 21px; color: #AC9C92; }
 .frame { position: relative; aspect-ratio: 1.5 / 1; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 22px 30px;
@@ -21,7 +20,7 @@ p { margin: 18px 0 0; font-size: 21px; color: #AC9C92; }
 </style>
 <div class="wrap">
   <div>
-    <div class="brand"><span class="logo"><svg viewBox="0 0 40 28"><path d="M3 1h34a2 2 0 0 1 2 2v7a4 4 0 0 0 0 8v7a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-7a4 4 0 0 0 0-8V3a2 2 0 0 1 2-2z"/></svg><b>Cv</b></span>CineVocab</div>
+    <div class="brand"><span class="logo"><svg viewBox="40 80 480 352"><g transform="rotate(-7 256 256)"><path fill="#FFD21E" fill-rule="evenodd" d="M112 104H392a48 48 0 0 1 48 48v208a48 48 0 0 1-48 48H112a48 48 0 0 1-48-48V298a42 42 0 0 0 0-84V152a48 48 0 0 1 48-48zM300 176a80 80 0 0 0 0 160H440V176z"/><rect x="296" y="198" width="204" height="46" rx="12" fill="#F3E9D2"/><rect x="296" y="268" width="132" height="46" rx="12" fill="#F3E9D2"/></g></svg></span>CineVocab</div>
     <h1 id="h"></h1><p id="p"></p>
   </div>
   <div class="frame"><div class="sub" id="s"></div><div class="tr" id="t"></div></div>

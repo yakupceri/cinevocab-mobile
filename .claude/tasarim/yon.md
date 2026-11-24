@@ -40,3 +40,10 @@ Yarı saydam kenar rengi + yuvarlak köşe ve kutularda `opacity`, kaydırırken
 - Kaydırma yönü her yerde aynı: sağa bildim, sola tekrar. Her kaydırmanın düğme karşılığı var.
 - Ana ekranda yalnızca hafta şeridi ve "artık bildiğin kelime" sayısı; puan ve seviye Ben'de.
 - Mağazada hedef kitle 13+; çocuksu görsel yok. Ayrıntı: `dev/ARASTIRMA.md`.
+
+## Logo (25 Kasım 2026): "Konuşan bilet"
+Bilet aynı zamanda C harfi; sol kenarında çentik, ağzından iki altyazı satırı çıkar. Eski "Cv" yazılı bilet kalktı.
+- Kaynak: `dev/tasarim/logo/cinevocab-isaret.svg` (işaret) ve `cinevocab-simge.svg` (koyu kare + işaret). PNG üretimi: `dev/tasarim/logo/disari.html`.
+- Uygulamada: `www/index.html` içindeki `#i-logo`; renkler `.logo` üzerindeki `--lc` (bilet) ve `--ls` (satırlar). Koyuda sarı ve krem, açık temada koyu ve bordo.
+- Android simgesi koyu zeminli (`ic_launcher_background` `#170E12`); açılış ekranı koyu zeminde küçük işaret.
+- İşareti ayrıca döndürme, renklerini değiştirme, içine yazı koyma.

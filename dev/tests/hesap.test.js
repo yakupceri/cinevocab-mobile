@@ -612,3 +612,12 @@ test("misafir: tekrar oturumunda ve ana karede once kendi kelimeleri", () => {
   for (const gun of ["2026-11-24", "2026-11-25", "2026-11-26", "2026-11-27"]) assert.equal(h.heroScene(ham, gun, (x) => x.ep !== "demoPack").w, "reluctant");
   assert.equal(h.heroScene([ham[0]], "2026-11-24", (x) => x.ep !== "demoPack").w, "forgive", "kendi cumlesi yoksa deneme destesinden");
 });
+
+test("logo: ust seritte yeni isaret var, eski 'Cv' yazisi yok; acik temada renkleri degisir", () => {
+  const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "www");
+  const html = fs.readFileSync(path.join(kok, "index.html"), "utf8"), css = fs.readFileSync(path.join(kok, "app.css"), "utf8");
+  const ust = html.slice(html.indexOf('<header class="top">'), html.indexOf("</header>"));
+  assert.match(ust, /<use href="#i-logo"\/>/); assert.doesNotMatch(ust, />Cv</);
+  assert.match(html, /<symbol id="i-logo"[^>]*>[\s\S]*var\(--lc\)[\s\S]*var\(--ls\)/);
+  assert.match(css, /\.logo \{ --lc: var\(--sun\); --ls: var\(--ink\)/); assert.match(css, /\[data-theme="light"\] \.logo \{ --lc: var\(--ink\); --ls: var\(--hi\)/);
+});

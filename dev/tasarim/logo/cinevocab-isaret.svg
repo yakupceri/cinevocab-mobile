@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="CineVocab">
+  <!-- CineVocab isareti: "Konusan bilet". Bilet ayni zamanda C harfi; agzindan iki altyazi satiri cikar.
+       Renkler: bilet #FFD21E, satirlar #F3E9D2 (koyu zeminde). Acik zeminde: bilet #1B0F14, satirlar #8E1B2B. -->
+  <g transform="rotate(-7 256 256)">
+    <path fill="#FFD21E" fill-rule="evenodd" d="M112 104H392a48 48 0 0 1 48 48v208a48 48 0 0 1-48 48H112a48 48 0 0 1-48-48V298a42 42 0 0 0 0-84V152a48 48 0 0 1 48-48zM300 176a80 80 0 0 0 0 160H440V176z"/>
+    <rect x="296" y="198" width="204" height="46" rx="12" fill="#F3E9D2"/>
+    <rect x="296" y="268" width="132" height="46" rx="12" fill="#F3E9D2"/>
+  </g>
+</svg>

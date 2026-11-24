@@ -193,9 +193,11 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 
 /* karsilama sahnesi: sari kelime dokunulabilir, anlami altyazinin altinda cikar */
 .demo { flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 16px; }
-.dw { min-height: 44px; margin: -8px 0; padding: 8px 4px; background: none; border: 0; border-bottom: 2px dashed var(--sun); color: var(--sun); font: inherit; text-shadow: inherit; }
-.dw.on { border-bottom-style: solid; }
-.demo-tr { position: relative; z-index: 1; padding: 4px 10px; background: var(--sun); color: var(--on-sun); border-radius: 4px; font-size: 17px; font-weight: 700; animation: pop .3s ease; }
+/* alt cizgi yazinin kendisine bagli (text-decoration): dugmenin dokunma boslugu cizgiyi asagi itmesin */
+.dw { min-height: 44px; margin: -8px 0; padding: 8px 0; background: none; border: 0; color: var(--sun); font: inherit; text-shadow: inherit;
+  text-decoration: underline dashed var(--sun); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.dw.on { text-decoration-style: solid; }
+.demo-tr { position: relative; z-index: 1; align-self: center; padding: 4px 10px; background: var(--sun); color: var(--on-sun); border-radius: 4px; font-size: 17px; font-weight: 700; animation: pop .3s ease; }
 #demoHint { text-align: center; }
 #v-auth.ask .demo, #v-auth.ask #demoHint, #v-auth.ask .demo-only, #v-auth:not(.ask) .ask-only { display: none; }
 #v-auth:not(.ask) h1.display { margin-top: 2vh; font-size: 44px; }

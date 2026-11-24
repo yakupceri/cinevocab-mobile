@@ -393,43 +393,45 @@
 
     <!-- Ben (profil) -->
     <section id="v-me" hidden>
-      <div class="profile">
+      <div class="guest-only"><h1 data-i="meGuestH"></h1><p class="sub" data-i="meGuestS"></p></div>
+      <div class="profile acc">
         <div class="avatar" id="meAvatar"></div>
         <div class="who"><h1 id="meName"></h1><p class="rank" id="meLevel"></p></div>
       </div>
-      <div class="counts">
+      <div class="counts acc">
         <div><b id="meWords">0</b><span data-i="wordsN"></span></div>
         <div><b id="meStreak">0</b><span data-i="streak"></span></div>
         <div><b id="meWins">0</b><span data-i="wins"></span></div>
       </div>
 
-      <h2 class="sec" data-i="badgeH"></h2>
-      <p class="sub" id="badgeSub"></p>
-      <div class="badges" id="badges"></div>
+      <h2 class="sec acc" data-i="badgeH"></h2>
+      <p class="sub acc" id="badgeSub"></p>
+      <div class="badges acc" id="badges"></div>
 
-      <h2 class="sec" data-i="setH"></h2>
+      <h2 class="sec acc" data-i="setH"></h2>
       <div class="card">
-        <label for="goalSel" data-i="goalLbl"></label>
-        <select id="goalSel"><option value="30">30 XP</option><option value="50">50 XP</option><option value="100">100 XP</option></select>
-        <div class="field"><label for="uiLang" data-i="appLang"></label>
+        <div class="acc"><label for="goalSel" data-i="goalLbl"></label>
+        <select id="goalSel"><option value="30">30 XP</option><option value="50">50 XP</option><option value="100">100 XP</option></select></div>
+        <div class="field acc"><label for="uiLang" data-i="appLang"></label>
           <select id="uiLang"><option value="en">English</option><option value="tr">Türkçe</option></select></div>
-        <div class="field"><label for="themeSel" data-i="themeLbl"></label>
+        <div class="field th"><label for="themeSel" data-i="themeLbl"></label>
           <select id="themeSel"><option value="dark" data-i="themeDark"></option><option value="light" data-i="themeLight"></option></select></div>
-        <div class="field"><label class="check"><input type="checkbox" id="sndTgl"><span data-i="sndLbl"></span></label></div>
+        <div class="field acc"><label class="check"><input type="checkbox" id="sndTgl"><span data-i="sndLbl"></span></label></div>
         <div class="field"><label class="check"><input type="checkbox" id="vibTgl"><span data-i="vibLbl"></span></label></div>
-        <div class="field" id="remRow" hidden>
+        <div class="field acc" id="remRow" hidden>
           <label class="check"><input type="checkbox" id="remTgl"><span data-i="remLbl"></span></label></div>
       </div>
-      <div class="card">
+      <button class="btn guest-only" id="meLogin" type="button" data-i="login"></button>
+      <div class="card acc">
         <h2 data-i="invH"></h2>
         <p class="sub" id="invSub"></p>
         <button class="btn" id="invBtn" type="button"><svg class="ic"><use href="#i-share"/></svg><span data-i="invBtn"></span></button>
       </div>
-      <button class="btn ghost" id="logout" type="button" data-i="logout"></button>
-      <a class="link" id="lnkPrivacy" target="_blank" rel="noopener" data-i="privacy"></a>
-      <a class="link" id="lnkReport" hidden data-i="report"></a>
-      <button class="link danger" id="delOpen" type="button" data-i="delAcc"></button>
-      <div class="card" id="delBox" hidden>
+      <button class="btn ghost acc" id="logout" type="button" data-i="logout"></button>
+      <a class="link acc" id="lnkPrivacy" target="_blank" rel="noopener" data-i="privacy"></a>
+      <a class="link acc" id="lnkReport" hidden data-i="report"></a>
+      <button class="link danger acc" id="delOpen" type="button" data-i="delAcc"></button>
+      <div class="card acc" id="delBox" hidden>
         <h2 data-i="delAcc"></h2>
         <p class="sub" data-i="delText"></p>
         <div class="field"><label for="delPw" id="delLbl"></label>

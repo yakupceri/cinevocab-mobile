@@ -57,7 +57,7 @@
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
       badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "day streak", bWins: "duel wins", bMaster: "mastered",
       badgeNew: "New award: {0} {1}", badgeNeed: "Locked. Opens at {0} {1}.", badgeHave: "Yours: {0} {1}.",
-      setH: "Settings", sndLbl: "Sounds", vibLbl: "Vibration", comboN: "{0} right in a row", qAsk: "What does {0} mean here?", qAskCloze: "Which word fits the gap?", themeLbl: "Look", themeDark: "Dark (night screening)", themeLight: "Light (matinee)",
+      setH: "Settings", meGuestH: "Settings", meGuestS: "You are trying CineVocab without an account.", sndLbl: "Sounds", vibLbl: "Vibration", comboN: "{0} right in a row", qAsk: "What does {0} mean here?", qAskCloze: "Which word fits the gap?", themeLbl: "Look", themeDark: "Dark (night screening)", themeLight: "Light (matinee)",
       login: "Log in", register: "Sign up", username: "Username", email: "Email", password: "Password",
       loginGo: "Log in", regGo: "Create account", verify: "Verify", back: "Back",
       codeSub: "We sent a 6-digit code to {0}. Enter it to create your account.",
@@ -139,7 +139,7 @@
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
       badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün seri", bWins: "galibiyet", bMaster: "usta kelime",
       badgeNew: "Yeni ödül: {0} {1}", badgeNeed: "Kilitli. {0} {1} olunca açılır.", badgeHave: "Senin: {0} {1}.",
-      setH: "Ayarlar", sndLbl: "Sesler", vibLbl: "Titreşim", comboN: "{0} doğru üst üste", qAsk: "{0} burada ne demek?", qAskCloze: "Boşluğa hangi kelime gelir?", themeLbl: "Görünüm", themeDark: "Koyu (gece seansı)", themeLight: "Açık (matine)",
+      setH: "Ayarlar", meGuestH: "Ayarlar", meGuestS: "CineVocab'ı hesap açmadan deniyorsun.", sndLbl: "Sesler", vibLbl: "Titreşim", comboN: "{0} doğru üst üste", qAsk: "{0} burada ne demek?", qAskCloze: "Boşluğa hangi kelime gelir?", themeLbl: "Görünüm", themeDark: "Koyu (gece seansı)", themeLight: "Açık (matine)",
       login: "Giriş yap", register: "Kayıt ol", username: "Kullanıcı adı", email: "E-posta", password: "Parola",
       loginGo: "Giriş yap", regGo: "Hesap oluştur", verify: "Doğrula", back: "Geri",
       codeSub: "{0} adresine 6 haneli bir kod gönderdik. Hesabını açmak için kodu gir.",
@@ -387,7 +387,7 @@
   }
   function addMode(form) { $("addForm").hidden = !form; $("addPick").hidden = form; $("v-add").classList.toggle("form", form); main.scrollTop = 0; }
   function go(id, push) {
-    if (S.guest && (id === "v-add" || id === "v-me" || id === "v-duel" || id === "v-leagues")) return askAccount();
+    if (S.guest && (id === "v-add" || id === "v-duel" || id === "v-leagues")) return askAccount();
     showView(id, push);
     if (id === "v-home") loadHome();
     else if (id === "v-words") showWords();
@@ -1512,8 +1512,12 @@
   });
 
   // ---------------------------------------------------------------- ben (profil)
+  // Misafir: yalnizca Gorunum ve Titresim ayarlari ile "Giris yap" dugmesi gorunur (hesap isteyen her sey gizli).
   function showMe() {
-    const h = S.home;
+    const h = S.guest ? null : S.home;
+    $("v-me").classList.toggle("as-guest", !!S.guest);
+    $("vibTgl").checked = store.get("vib") !== "0"; $("themeSel").value = themeOf();
+    if (S.guest) return;
     if (h) {
       $("meAvatar").textContent = String(h.username || "?").charAt(0).toLocaleUpperCase();
       $("meName").textContent = h.username;
@@ -1530,12 +1534,13 @@
     }
     if (!h) refresh().then(() => { if (curView === "v-me") showMe(); }).catch(() => {});
     $("remRow").hidden = !isNative(); $("remTgl").checked = store.get("remind") === "1";
-    $("sndTgl").checked = store.get("snd") !== "0"; $("vibTgl").checked = store.get("vib") !== "0";
+    $("sndTgl").checked = store.get("snd") !== "0";
     $("delBox").hidden = true; $("delOpen").hidden = false; $("delPw").value = ""; say($("delMsg"), "");
     $("invSub").textContent = t("invSub0");
     api("/api/invite").then((d) => { if (d && d.count > 0) $("invSub").textContent = t("invSubN", d.count); }).catch(() => {});
   }
   $("invBtn").addEventListener("click", () => share(t("shInvite")));
+  $("meLogin").addEventListener("click", askAccount);
   $("vibTgl").addEventListener("change", () => { store.set("vib", $("vibTgl").checked ? "1" : "0"); vibe("ok"); });
   $("sndTgl").addEventListener("change", () => { store.set("snd", $("sndTgl").checked ? "1" : "0"); sfx("ok"); });
   $("remTgl").addEventListener("change", async function () {

@@ -237,3 +237,20 @@ test("titresim: dogru, yanlis ve kalici icin ayri desen; kapaliyken titremez", (
 test("titresim: telefon desteklemiyorsa hata vermez", () => {
   assert.equal(yukle(["VIBE", "vibe"], { navigator: {} }).vibe("ok"), false);
 });
+
+// Misafir Ben ekranini acabilir; hesap isteyen ekranlar hala kayit ekranina yollar.
+test("misafir: Ben acilir, ekle/duello/lig kayit ister", () => {
+  const acilan = [], istenen = [];
+  const c = yukle(["go"], { S: { guest: true }, askAccount: () => istenen.push(1), showView: (id) => acilan.push(id),
+    loadHome() {}, showWords() {}, addMode() {}, loadPacks() {}, loadPlay() {}, showMe: () => acilan.push("showMe"), loadLeagues() {}, say() {}, duelPart() {}, $: () => ({}) });
+  c.go("v-me"); assert.deepEqual(acilan, ["v-me", "showMe"]); assert.equal(istenen.length, 0);
+  for (const v of ["v-add", "v-duel", "v-leagues"]) c.go(v);
+  assert.equal(istenen.length, 3); assert.deepEqual(acilan, ["v-me", "showMe"]);
+});
+test("misafir Ben: yalnizca ayarlar kurulur, sunucuya istek gitmez", () => {
+  const sinif = {}, n = {}, dug = (id) => (n[id] = n[id] || { classList: { toggle: (k, v) => { sinif[k] = v; } } });
+  const c = yukle(["themeOf", "showMe"], { S: { guest: true, home: { username: "x" } }, $: dug,
+    api: () => { throw new Error("misafirde istek gitmemeli"); }, refresh: () => { throw new Error("yenileme olmamali"); } });
+  c.store.set("vib", "0"); c.store.set("theme", "light"); c.showMe();
+  assert.equal(sinif["as-guest"], true); assert.equal(n.vibTgl.checked, false); assert.equal(n.themeSel.value, "light");
+});

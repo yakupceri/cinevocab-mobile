@@ -278,6 +278,10 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 .bdg.on i { border: 0; background: var(--paper); color: var(--on-paper); }
 .bdg.on.red i { background: var(--red-fill); color: var(--on-red); } .bdg.on.green i { background: var(--green); color: var(--on-green); } .bdg.on.dark i { background: var(--sun); color: var(--on-sun); }
 
+/* misafir: Ben ekraninda yalnizca Gorunum, Titresim ve "Giris yap" */
+#v-me:not(.as-guest) .guest-only, #v-me.as-guest .acc { display: none !important; }
+#v-me.as-guest .field.th { margin-top: 0; }
+
 /* alt menu */
 #tabs { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: var(--nav); border-top: 1px solid var(--line); }
 #tabs button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 50px; padding: 4px 0; background: none; border: 0; color: var(--dim); font-size: 12px; font-weight: 500; }

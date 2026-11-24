@@ -335,3 +335,17 @@ test("oyun ekranlari: alt menu gizliyse kapat dugmesi ya da ana sayfa dugmesi va
   }
   assert.deepEqual(gizli.filter((x) => !cikis[x]).sort(), ["v-auth", "v-how", "v-start"]);
 });
+
+// Yakalanan hata (emulatorde gorulup dogrulandi): yari saydam kenar rengi + yuvarlak kose, Android WebView'de
+// kaydirirken eski icerigin seritler halinde ekranda kalmasina yol aciyordu. Kenar renkleri opak olmali;
+// kaydirilan alandaki kutularda saydamlik (opacity) kullanilmamali.
+test("stil: kenar cizgisi opak, kutularda saydamlik yok", () => {
+  const css = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "app.css"), "utf8");
+  const cizgiler = css.match(/--line:\s*[^;]+;/g);
+  assert.equal(cizgiler.length, 2, "koyu ve acik tema icin birer --line");
+  for (const c of cizgiler) assert.match(c, /--line:\s*#[0-9A-Fa-f]{6};/, "opak olmali: " + c);
+  for (const satir of css.split("\n")) {
+    if (/border[^;{]*:\s*[^;]*rgba\(/.test(satir)) assert.fail("yari saydam kenar: " + satir.slice(0, 80));
+    if (/^\.(tile|day|card|opt|post|wl|prog|chip)\b[^{]*\{[^}]*opacity:\s*\.\d/.test(satir)) assert.fail("kutuda saydamlik: " + satir.slice(0, 80));
+  }
+});

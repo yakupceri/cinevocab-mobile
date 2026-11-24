@@ -18,7 +18,7 @@
   --nav: #0F080B;       /* alt menu */
   --ink: #F3E9D2;       /* ana yazi */
   --dim: #AC9C92;       /* ikincil yazi */
-  --line: rgba(243, 233, 210, .16);
+  --line: #3D3035;      /* cizgi ve kenar. OPAK olmali: yari saydam kenar + yuvarlak kose Android WebView'de kaydirirken hayalet goruntu birakiyor */
   --sun: #FFD21E;       /* altyazi sarisi: ana dugme, vurgu dolgusu */
   --on-sun: #170E12;
   --hi: #FFD21E;        /* vurgu yazisi (acik temada bordo) */
@@ -47,7 +47,7 @@
 }
 :root[data-theme="light"] {
   --bg: #F1E8D6; --surf: #FBF6EA; --surf2: #E7DBC2; --nav: #FBF6EA;
-  --ink: #1B0F14; --dim: #66564C; --line: rgba(27, 15, 20, .18);
+  --ink: #1B0F14; --dim: #66564C; --line: #CBC1B3;
   --hi: #8E1B2B;
   --red: #A81C2B; --red-fill: #B3202E;
   --green: #1E6E41; --on-green: #FFFFFF; --amber: #9A5B00;
@@ -128,7 +128,7 @@ main > section > input[type=search] { margin-top: 12px; background: var(--surf);
 .day i { display: grid; place-items: center; height: 18px; }
 .day i .ic { width: 18px; height: 18px; stroke-width: 3; opacity: 0; }
 .day.on { background: var(--film-on); color: var(--film-on-dim); } .day.on i { color: var(--film-on-ink); } .day.on i .ic { opacity: 1; }
-.day.next { opacity: .5; }
+.day.next { background: var(--film); }
 .day.today:not(.on) { background: none; outline: 2px solid var(--sun); outline-offset: -2px; color: var(--sun); }
 .day.on.fresh { animation: punch .45s cubic-bezier(.2, 1.6, .4, 1); }
 .weeknote { margin: 8px 0 0; font-size: 13px; color: var(--dim); }
@@ -193,7 +193,7 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 /* oyna: oyun satirlari */
 .tile { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 68px; margin-top: 10px; padding: 12px 14px; background: var(--surf); border: 1px solid var(--line); border-radius: var(--r); text-align: left; }
 .tile:active { transform: scale(.99); }
-.tile:disabled, #v-how .tile:disabled { opacity: .5; }
+.tile:disabled, .tile:disabled b { color: var(--dim); } .tile:disabled > i { background: none; border: 1px solid var(--line); color: var(--dim); }   /* saydamlik yok: ayni hayalet hatasi */
 .tile > i { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: var(--r); background: var(--surf2); color: var(--ink); }
 .tile > i .ic { width: 24px; height: 24px; }
 .tile span { flex: 1; min-width: 0; } .tile b { display: block; font: 800 22px/1.05 var(--disp); letter-spacing: .01em; overflow-wrap: anywhere; } .tile em { display: block; margin-top: 3px; font-style: normal; font-size: 13px; color: var(--dim); }

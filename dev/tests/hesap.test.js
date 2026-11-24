@@ -128,3 +128,58 @@ test("tema: varsayilan koyu, secilince acik, bozuk degerde koyu", () => {
   c.store.set("theme", "pembe"); c.applyTheme();
   assert.equal(c.themeOf(), "dark"); assert.equal(attr["data-theme"], undefined);
 });
+
+// Aksam hatirlatmasi: gunde en cok bir, en cok 3 aksam, baski dili yok.
+function hatirlat(h, simdi) {
+  const c = yukle(["reminderPlan"], { t: (k, n) => k + (n === undefined ? "" : ":" + n) }, simdi);
+  return Array.from(c.reminderPlan(h, new Date(simdi).getTime())).map((r) => ({ id: r.id, gun: r.at.getDate(), saat: r.at.getHours() + ":" + r.at.getMinutes(), body: r.body }));
+}
+test("hatirlatma: bugun oynanmadiysa ilki bu aksam 19:30, bekleyen kelimeyi soyler", () => {
+  const r = hatirlat({ xp_today: 0, due: 8, streak: 12 }, "2026-11-24T10:00:00");
+  assert.equal(r.length, 3); assert.deepEqual(r.map((x) => x.gun), [24, 25, 26]);
+  assert.ok(r.every((x) => x.saat === "19:30")); assert.equal(r[0].body, "remDue:8");
+  assert.deepEqual(r.map((x) => x.id), [71, 72, 73]);
+});
+test("hatirlatma: bugun oynandiysa bugun gelmez", () => {
+  assert.deepEqual(hatirlat({ xp_today: 20, due: 0 }, "2026-11-24T10:00:00").map((x) => x.gun), [25, 26, 27]);
+});
+test("hatirlatma: saat 19:30'u gectiyse ilki yarin", () => {
+  assert.equal(hatirlat({ xp_today: 0, due: 3 }, "2026-11-24T21:00:00")[0].gun, 25);
+});
+test("hatirlatma: bekleyen yoksa ve sonraki aksamlarda sade metin; seri hic gecmez", () => {
+  const r = hatirlat({ xp_today: 0, due: 0, streak: 30 }, "2026-11-24T10:00:00");
+  assert.ok(r.every((x) => x.body === "remPlain"));
+  const r2 = hatirlat({ xp_today: 0, due: 5, streak: 30 }, "2026-11-24T10:00:00");
+  assert.deepEqual(r2.map((x) => x.body), ["remDue:5", "remPlain", "remPlain"]);
+});
+test("hatirlatma metinleri: seri, kayip ve emoji yok (EN ve TR)", () => {
+  const { kaynak } = require("./yukle.js");
+  const src = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "app.js"), "utf8");
+  const satirlar = src.split("\n").filter((l) => /remDue:|remAsk:/.test(l));
+  assert.equal(satirlar.length, 4, "EN ve TR'de remDue ve remAsk satirlari");
+  for (const l of satirlar) { const m = l.match(/rem(?:Due|Plain|Ask): "[^"]*"/g).join(" "); assert.doesNotMatch(m, /streak|seri|lose|kaybet|bitmesin|bozulmasın|\p{Extended_Pictographic}/iu); }
+});
+
+// v8 bonus karti: gunluk hedef dolunca gunde bir kez cikar.
+function anaVeri(xpToday) { return { streak: 2, level: 1, xp_today: xpToday, due: 0 }; }
+test("bonus karti: hedef dolunca gunde bir kez, ertesi gun yeniden", async () => {
+  let xp = 30; const cikan = [];
+  const dugum = { textContent: "", hidden: false, classList: { add() {}, remove() {} }, offsetWidth: 0 };
+  const c = yukle(["dayKey", "flags", "setFlag", "refresh"], {
+    S: { goal: 50, home: null }, t: (k) => k, $: () => dugum, Promise,
+    api: async (p) => (p.indexOf("/api/ext/home") === 0 ? anaVeri(xp) : null), pairQ: () => "",
+    planReminder: () => {}, confetti: () => {}, toast: () => {}, rankOf: () => 0, checkBadges: () => {},
+    bonusCard: (h) => cikan.push(h.xp_today) }, "2026-11-24T20:00:00");
+  await c.refresh(); assert.deepEqual(cikan, [], "hedefin altinda cikmaz");
+  xp = 50; await c.refresh(); assert.deepEqual(cikan, [50], "hedef dolunca cikar");
+  xp = 80; await c.refresh(); assert.deepEqual(cikan, [50], "ayni gun ikinci kez cikmaz");
+  c.__saat("2026-11-25T09:00:00"); xp = 60; await c.refresh(); assert.deepEqual(cikan, [50, 60], "ertesi gun yeniden");
+});
+test("bonus karti: gorunur, XP'yi yazar, dokununca kapanir", () => {
+  const sinif = new Set(), n = {}; const dug = (id) => (n[id] = n[id] || { id, textContent: "", hidden: true, onclick: null, classList: { add: (x) => sinif.add(x), remove: (x) => sinif.delete(x) } });
+  const c = yukle(["bonusTimer", "bonusCard"], { $: dug, t: (k, v) => k + (v === undefined ? "" : ":" + v), sfx: () => {}, navigator: {}, calm: () => true,
+    countUp: (node, to) => { node.textContent = String(to); }, setTimeout: (f, ms) => { if (ms === 0) f(); return 1; }, clearTimeout: () => {} });
+  c.bonusCard({ xp_today: 60, streak: 0 });
+  assert.equal(n.bonus.hidden, false); assert.equal(n.bonusN.textContent, "60"); assert.equal(n.bonusS.textContent, "bonusS:1");
+  n.bonus.onclick(); assert.equal(n.bonus.hidden, true);
+});

@@ -47,8 +47,8 @@
       authH: "Pick up words from what you watch.", authSub: "Log in to keep the words you collect.",
       startH: "What are you learning?", startSub: "Words and puzzles are picked for this language. You can change it later.",
       startSrc: "I am learning", startDst: "My own language", startGo: "Start",
-      homeH: "Today's screening", hello: "Hi {0}", progH: "Up next", stamp: "Done", playBtn: "Play", ctaAdd: "Add words", ctaDuel: "Start a duel",
-      wk0: "Punch today's hole. One game is enough.", wkOn: "{0} days in a row. Today is punched.", wkRisk: "{0}-day streak. Play today to keep it.",
+      homeH: "Today's screening", hello: "Hi {0}", ctaGo: "Start the screening", heroMore: "and {0} more words", streakTop: "{0} days in a row", knowTxt: "words stuck for good", progH: "Up next", stamp: "Done", playBtn: "Play", ctaAdd: "Add words", ctaDuel: "Start a duel",
+      wk0: "One short session fills today's frame.", wkOn: "{0} days in a row. Today's frame is filled.", wkRisk: "{0} days in a row so far. Today's frame is still empty.",
       hFirstS: "Paste a text you want to understand, or pick a starter pack.", hDoneT: "Today's programme is done", hDoneS: "A new puzzle arrives tomorrow. Until then, challenge a friend.",
       flowH: "Word flow", flowS: "Swipe through words. Zero setup.", flowHint: "Swipe up if you knew it, down to see it again.", flowXp: "+{0} XP", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "{0} XP earned. Nice flow!", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
       addH: "How do you want to add words?", addSub: "Pick a way. Packs are below.",
@@ -118,9 +118,9 @@
       shInvite: "I'm learning words from videos with CineVocab. Join me and let's duel!",
       lShareBtn: "Share the invite code",
       invH: "Invite friends", invSub0: "Duels and leagues are more fun together.", invSubN: "{0} friends joined with your link.", invBtn: "Share my invite link",
-      remAsk: "Keep your streak: want a reminder each evening?", remYes: "Yes, remind me", remNo: "No thanks",
+      remAsk: "Want one quiet reminder in the evening? It skips the days you already played.", remYes: "Yes, remind me", remNo: "No thanks",
       remLbl: "Evening reminder", remOn: "Reminder is on.", remFail: "Notifications are not allowed. Turn them on in your phone's settings.",
-      remStreak: "🔥 Don't lose your {0}-day streak. Two minutes is enough.", remPlain: "🧩 Today's puzzle is waiting for you.", remBack: "🧩 A new puzzle is ready. Can you beat yesterday's time?",
+      remDue: "{0} words are ready to review. A few minutes will do.", remPlain: "Tonight's screening is ready whenever you are.",
       report: "Report a problem or abuse", delAcc: "Delete my account",
       delText: "This permanently deletes your account, your words, your scores and your league memberships. It cannot be undone.",
       delPwLbl: "Type your password to confirm", delNameLbl: "Type your username to confirm", delGo: "Delete everything", cancel: "Cancel", delDone: "Your account was deleted.",
@@ -129,8 +129,8 @@
       authH: "İzlediğin şeyden kelime kap.", authSub: "Topladığın kelimeler kaybolmasın diye giriş yap.",
       startH: "Hangi dili öğreniyorsun?", startSub: "Kelimeler ve bulmacalar bu dile göre seçilir. Sonra değiştirebilirsin.",
       startSrc: "Öğrendiğim dil", startDst: "Kendi dilim", startGo: "Başla",
-      homeH: "Bugünün seansı", hello: "Selam {0}", progH: "Sırada ne var", stamp: "Tamam", playBtn: "Oyna", ctaAdd: "Kelime ekle", ctaDuel: "Düello aç",
-      wk0: "Bugünün deliğini aç. Bir oyun yeter.", wkOn: "{0} gün üst üste. Bugün delindi.", wkRisk: "{0} günlük serin var. Bozulmasın, bugün oyna.",
+      homeH: "Bugünün seansı", hello: "Selam {0}", ctaGo: "Seansı başlat", heroMore: "ve {0} kelime daha", streakTop: "{0} gün üst üste", knowTxt: "kelime kalıcı oldu", progH: "Sırada ne var", stamp: "Tamam", playBtn: "Oyna", ctaAdd: "Kelime ekle", ctaDuel: "Düello aç",
+      wk0: "Kısa bir seans bugünün karesini doldurur.", wkOn: "{0} gün üst üste. Bugünün karesi doldu.", wkRisk: "Şimdiye kadar {0} gün üst üste. Bugünün karesi henüz boş.",
       hFirstS: "Anlamak istediğin bir metni yapıştır ya da hazır bir paket seç.", hDoneT: "Bugünün programı tamam", hDoneS: "Yeni bulmaca yarın geliyor. O zamana kadar bir arkadaşına meydan oku.",
       flowH: "Kelime akışı", flowS: "Kelimeleri kaydır geç. Kurulum yok.", flowHint: "Bildiysen yukarı, tekrar görmek için aşağı kaydır.", flowXp: "+{0} XP", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} XP kazandın. Harika akış!", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
       addH: "Nasıl kelime eklemek istersin?", addSub: "Bir yol seç. Hazır paketler aşağıda.",
@@ -200,9 +200,9 @@
       shInvite: "CineVocab ile videolardan kelime öğreniyorum. Sen de gel, düello yapalım!",
       lShareBtn: "Davet kodunu paylaş",
       invH: "Arkadaşlarını davet et", invSub0: "Düello ve ligler arkadaşlarla daha eğlenceli.", invSubN: "Bağlantınla {0} arkadaşın katıldı.", invBtn: "Davet bağlantımı paylaş",
-      remAsk: "Serin bozulmasın: her akşam hatırlatalım mı?", remYes: "Evet, hatırlat", remNo: "Hayır",
+      remAsk: "Akşamları tek bir sakin hatırlatma ister misin? Oynadığın gün gelmez.", remYes: "Evet, hatırlat", remNo: "Hayır",
       remLbl: "Akşam hatırlatması", remOn: "Hatırlatma açık.", remFail: "Bildirim izni yok. Telefonun ayarlarından açabilirsin.",
-      remStreak: "🔥 {0} günlük serin bugün bitmesin. İki dakikan yeter.", remPlain: "🧩 Bugünün bulmacası seni bekliyor.", remBack: "🧩 Yeni bulmaca hazır. Dünkü süreni geçebilir misin?",
+      remDue: "{0} kelime tekrar için hazır. Birkaç dakika yeter.", remPlain: "Bu akşamın seansı hazır, ne zaman istersen.",
       report: "Sorun ya da kötüye kullanım bildir", delAcc: "Hesabımı sil",
       delText: "Hesabın, kelimelerin, puanların ve lig üyeliklerin kalıcı olarak silinir. Bu işlem geri alınamaz.",
       delPwLbl: "Onaylamak için parolanı yaz", delNameLbl: "Onaylamak için kullanıcı adını yaz", delGo: "Her şeyi sil", cancel: "Vazgeç", delDone: "Hesabın silindi.",
@@ -498,18 +498,26 @@
     try { await navigator.clipboard.writeText(full); toast(t("copied")); } catch (e) { toast(full); }
   }
   // Aksam hatirlatmasi: bildirim telefonda kurulur (sunucu yok). Bugun oynandiysa yarina, oynanmadiysa bu aksama.
-  const REM_IDS = [{ id: 71 }, { id: 72 }];
+  const REM_IDS = [{ id: 71 }, { id: 72 }, { id: 73 }];
+  // Aksam hatirlatmasi plani: gunde en cok bir bildirim, saat 19:30. Bugun oynandiysa ilki yarindir.
+  // Uygulama acilmadan en cok 3 aksam gelir, sonra kendiliginden susar (her acilista plan yenilenir).
+  // Metin yalnizca bekleyen kelimeyi soyler; seri, kayip ya da aciliyet dili yok.
+  function reminderPlan(h, now) {
+    const first = new Date(now); first.setHours(19, 30, 0, 0);
+    if (h.xp_today > 0 || first.getTime() - now < 60000) first.setDate(first.getDate() + 1);
+    const out = [];
+    for (let i = 0; i < 3; i++) {
+      const at = new Date(first); at.setDate(first.getDate() + i);
+      out.push({ id: 71 + i, at: at, body: i === 0 && h.due > 0 ? t("remDue", h.due) : t("remPlain") });
+    }
+    return out;
+  }
   async function planReminder() {
     if (!isNative() || store.get("remind") !== "1" || !S.home) return;
     try {
-      const at = new Date(); at.setHours(19, 30, 0, 0);
-      if (S.home.xp_today > 0 || at.getTime() - Date.now() < 60000) at.setDate(at.getDate() + 1);
-      const later = new Date(at.getTime() + 2 * 864e5);       // iki gun sonra: uzaklasan kullaniciya ikinci bir hatirlatma
       await native("LocalNotifications", "cancel", { notifications: REM_IDS }).catch(() => {});
-      await native("LocalNotifications", "schedule", { notifications: [
-        { id: 71, title: "CineVocab", body: S.home.streak > 0 ? t("remStreak", S.home.streak) : t("remPlain"), schedule: { at: at.toISOString(), allowWhileIdle: true } },
-        { id: 72, title: "CineVocab", body: t("remBack"), schedule: { at: later.toISOString(), allowWhileIdle: true } },
-      ] });
+      await native("LocalNotifications", "schedule", { notifications: reminderPlan(S.home, Date.now()).map(function (r) {
+        return { id: r.id, title: "CineVocab", body: r.body, schedule: { at: r.at.toISOString(), allowWhileIdle: true } }; }) });
     } catch (e) {}
   }
   async function setReminder(on) {
@@ -533,7 +541,7 @@
     S.home = res[0]; S.daily = res[1]; S.puzzle = res[2];
     planReminder();
     const h = S.home, prevStreak = Number(store.get("streak")) || 0, prevLvl = Number(store.get("lvl")) || 0;
-    $("streakN").textContent = h.streak; $("streak").hidden = false;
+    $("streakN").textContent = t("streakTop", h.streak); $("streak").hidden = !(h.streak > 0);
     if (h.streak > prevStreak && prevStreak) { $("streak").classList.remove("pop"); void $("streak").offsetWidth; $("streak").classList.add("pop"); }
     store.set("streak", h.streak);
     if (prevLvl && h.level > prevLvl) {
@@ -558,6 +566,7 @@
   async function loadHome() {
     if (S.home) renderHome();
     try { await refresh(); if (curView === "v-home") renderHome(); } catch (e) { if (S.key) toast(e.message); }
+    if (!S.vocab) loadVocab().then(function () { if (curView === "v-home" && S.home) renderHome(); }).catch(function () {});
     loadFeed();
   }
   // Oduller: kelime, seri, duello ve ustalik esikleri. Kazanilanlar telefonda da saklanir (seri bozulsa bile odul kalir).
@@ -625,14 +634,18 @@
     renderWeek(h);
     const items = todayItems(), hero = items.find((x) => !x.done), rest = items.filter((x) => x !== hero);
     // bilet: su an yapilacak en anlamli is (bulmaca kelime listesi istemez: yeni kullanici hemen oynar)
+    // film karesi: su an yapilacak en anlamli is. Kart tekrarinda altyazi listendeki kelimelerden ornek gosterir.
     $("hero").classList.toggle("done", !hero);
     $("heroT").textContent = hero ? hero.title : t("hDoneT");
-    $("heroS").textContent = hero ? hero.sub : t("hDoneS");
     $("heroNo").textContent = hero ? hero.no || "" : "";
+    const sub = $("heroS"), list = S.vocab || []; sub.textContent = "";
+    if (hero && hero.id === "cards" && list.length >= 4) {
+      list.slice(0, 3).forEach(function (x, i) { if (i) sub.appendChild(document.createTextNode(", ")); sub.appendChild(el("mark", "", x.w)); });
+      sub.appendChild(document.createTextNode(" " + t("heroMore", list.length - 3)));
+    } else sub.textContent = hero ? hero.sub : t("hDoneS");
     $("heroXp").textContent = hero ? hero.xp || "" : "";
-    $("cta").textContent = hero ? hero.btn || t("playBtn") : t("ctaDuel");
+    $("cta").textContent = hero ? hero.btn || t("ctaGo") : t("ctaDuel");
     $("cta").onclick = hero ? hero.run : () => go("v-duel");
-    notch($("hero"));
     const ul = $("quests"); ul.textContent = "";
     for (const q of rest) {
       const li = el("li", q.done ? "done" : ""), pi = el("span", "pi"), pt = el("span", "pt");
@@ -646,7 +659,7 @@
     // gunluk XP hedefi ve seviye
     const done = h.xp_today >= S.goal;
     document.querySelector(".meter").classList.toggle("done", done);
-    $("knowNum").textContent = t("knowNum", h.mastered || 0); $("knowSub").textContent = t("knowSub", h.pair_words != null ? h.pair_words : h.words);
+    $("knowBig").textContent = h.mastered || 0; $("knowNum").textContent = t("knowTxt"); $("knowSub").textContent = t("knowSub", h.pair_words != null ? h.pair_words : h.words);
     $("guestBar").hidden = !S.guest; $("guestBar").textContent = t("guestBar");
     $("goalNum").textContent = t("goalNum", h.xp_today, S.goal);
     $("goalSub").textContent = done ? t("goalDone") : t("goalLeft", S.goal - h.xp_today);

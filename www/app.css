@@ -131,16 +131,16 @@ main > section > input[type=search] { margin-top: 12px; background: var(--surf);
 .day.on.fresh { animation: punch .45s cubic-bezier(.2, 1.6, .4, 1); }
 .weeknote { margin: 8px 0 0; font-size: 13px; color: var(--dim); }
 
-/* siradaki is */
-.ticket { margin-top: 18px; }
-.ticket-in { padding: 18px; background: var(--surf); border: 1px solid var(--line); border-radius: var(--r); }
-.t-top { display: flex; align-items: flex-start; gap: 10px; } .t-top h2 { flex: 1; font-size: 30px; line-height: 1; }
-.t-no { flex: none; font: 800 19px/1.2 var(--disp); color: var(--dim); }
-.t-no:empty { display: none; }
-.t-sub { margin: 6px 0 0; font-size: 15px; color: var(--dim); }
-.perf { height: 0; margin: 16px 0; border-top: 1px dashed var(--line); }
-.t-bot { display: flex; align-items: center; gap: 12px; } .t-bot .btn { margin: 0; flex: 1; }
-.t-xp { flex: none; font-size: 14px; font-weight: 600; color: var(--green); } .t-xp:empty { display: none; }
+/* siradaki is: film karesi (2.39:1), ustunde isin adi, altinda altyazi */
+.screen.hero { min-height: 0; aspect-ratio: 2.39 / 1; margin-top: 12px; padding: 0 18px 16px; }
+.screen.hero .subtitle { font-size: 19px; line-height: 1.25; }
+.subtitle mark { background: none; color: var(--sun); }
+.tc { position: absolute; z-index: 1; top: 10px; left: 12px; max-width: 70%; font-size: 13px; font-weight: 600; color: var(--sub); opacity: .75; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tc.r { left: auto; right: 12px; } .tc:empty { display: none; }
+.mini { margin: 8px 0 0; text-align: center; font-size: 13px; font-weight: 600; color: var(--green); } .mini:empty { display: none; }
+.week { margin-top: 22px; }
+.stat { display: flex; align-items: baseline; gap: 10px; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); }
+.stat b { font: 800 48px/1 var(--disp); color: var(--hi); } .stat span { font-size: 16px; font-weight: 500; }
 
 /* bugunun programi */
 .prog { list-style: none; margin: 0; padding: 0; }
@@ -157,8 +157,6 @@ main > section > input[type=search] { margin-top: 12px; background: var(--surf);
 .meter .m-row b { flex: none; white-space: nowrap; font: 800 22px/1.2 var(--disp); letter-spacing: .01em; } .meter .m-row span { font-size: 13px; color: var(--dim); text-align: right; }
 .meter .m-row.lv { margin-top: 16px; } .meter .m-row.lv b { font-size: 19px; }
 .meter.done #goalFill { background: var(--green); }
-.meter .m-row.know { margin-top: 16px; align-items: flex-start; } .meter .m-row.know span { max-width: 62%; }
-.meter .m-row.know b { color: var(--hi); }
 
 /* videolar */
 .post { display: flex; align-items: stretch; width: 100%; margin-top: 10px; padding: 0; background: var(--surf); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; text-align: left; }

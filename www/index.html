@@ -44,7 +44,7 @@
   <header class="top">
     <span class="logo" aria-hidden="true"><svg viewBox="0 0 40 28"><use href="#i-logo"/></svg><b>Cv</b></span>
     <b class="brand">CineVocab</b>
-    <span class="pill" id="streak" hidden><svg class="ic"><use href="#i-flame"/></svg><span id="streakN">0</span></span>
+    <span class="pill" id="streak" hidden><span id="streakN"></span></span>
   </header>
 
   <main id="main">
@@ -114,15 +114,15 @@
     <section id="v-home" hidden>
       <p class="hello" id="hello"></p>
       <h1 data-i="homeH"></h1>
+      <div class="screen hero" id="hero"><span class="tc" id="heroT"></span><span class="tc r" id="heroNo"></span><p class="subtitle" id="heroS"></p></div>
+      <button class="btn" id="cta" type="button"></button>
+      <p class="mini" id="heroXp"></p>
+
       <div class="week" id="week"></div>
       <p class="weeknote" id="weekNote"></p>
 
-      <div class="ticket" id="hero"><div class="ticket-in">
-        <div class="t-top"><h2 id="heroT"></h2><span class="t-no" id="heroNo"></span></div>
-        <p class="t-sub" id="heroS"></p>
-        <div class="perf"></div>
-        <div class="t-bot"><button class="btn" id="cta" type="button"></button><span class="t-xp" id="heroXp"></span></div>
-      </div></div>
+      <div class="stat"><b id="knowBig"></b><span id="knowNum"></span></div>
+      <p class="weeknote" id="knowSub"></p>
 
       <h2 class="sec" id="progH" data-i="progH"></h2>
       <ul class="prog" id="quests"></ul>
@@ -132,7 +132,6 @@
         <div class="bar"><i id="goalFill"></i></div>
         <div class="m-row lv"><b id="lvlName"></b><span id="lvlLeft"></span></div>
         <div class="bar thin"><i id="lvlFill"></i></div>
-        <div class="m-row lv know"><b id="knowNum"></b><span id="knowSub"></span></div>
       </div>
       <button class="guest" id="guestBar" type="button" hidden></button>
 

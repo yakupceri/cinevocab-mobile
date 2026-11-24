@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- CineVocab logo, ikinci tur: mevcut secim + dort yeni yon. Her biri 200, 96, 48, 32, 16 px; koyu zemin, acik zemin ve telefon ana ekrani benzeri karisik zeminde. -->
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Big Shoulders"; src: url("../../../www/fonts/bigshoulders-latin.woff2") format("woff2"); font-weight: 600 800; }
+html, body { margin: 0; background: #2b2b2f; color: #f3e9d2; font: 15px/1.4 system-ui, sans-serif; }
+.wrap { width: 1560px; padding: 26px; }
+h1 { font: 800 32px/1 "Big Shoulders"; margin: 0 0 16px; }
+.row { display: grid; grid-template-columns: 240px 1fr 1fr 300px; gap: 12px; margin-bottom: 12px; }
+.info b { display: block; font: 800 27px/1 "Big Shoulders"; margin-bottom: 6px; } .info span { color: #b9b2a6; font-size: 13.5px; }
+.bg { display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 10px; }
+.dark { background: #0d0d10; } .light { background: #eef0f3; }
+.home { background: linear-gradient(135deg, #3b5ba9, #8a4fa0 55%, #d9786a); gap: 14px; justify-content: center; }
+.home i { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+.bg svg { display: block; flex: none; }
+text { font-family: "Big Shoulders", "Arial Narrow", sans-serif; font-weight: 800; }
+</style>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <g id="bilet"><g transform="rotate(-7 256 256)"><path fill="#FFD21E" fill-rule="evenodd" d="M112 104H392a48 48 0 0 1 48 48v208a48 48 0 0 1-48 48H112a48 48 0 0 1-48-48V298a42 42 0 0 0 0-84V152a48 48 0 0 1 48-48zM300 176a80 80 0 0 0 0 160H440V176z"/><rect x="296" y="198" width="204" height="46" rx="12" fill="#F3E9D2"/><rect x="296" y="268" width="132" height="46" rx="12" fill="#F3E9D2"/></g></g>
+
+  <!-- 1: mevcut secim -->
+  <symbol id="L1" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#170E12"/><use href="#bilet" transform="translate(-4 6) scale(.977)"/></symbol>
+
+  <!-- 2: ayni isaret, perde bordosu zeminde -->
+  <symbol id="L2" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#7A1424"/><use href="#bilet" transform="translate(-4 6) scale(.977)"/></symbol>
+
+  <!-- 3: Perde. Iki yana acilmis bordo perde, ortada altyazi: sari kelime + krem satir. -->
+  <symbol id="L3" viewBox="0 0 512 512">
+    <clipPath id="k3"><rect width="512" height="512" rx="112"/></clipPath>
+    <g clip-path="url(#k3)">
+      <rect width="512" height="512" fill="#170E12"/>
+      <path d="M0 0H214C226 150 190 300 96 512H0z" fill="#C2283A"/>
+      <path d="M512 0H298C286 150 322 300 416 512H512z" fill="#C2283A"/>
+      <path d="M0 0H120C128 170 96 330 30 512H0z" fill="#8E1B2B"/>
+      <path d="M512 0H392C384 170 416 330 482 512H512z" fill="#8E1B2B"/>
+      <rect x="166" y="286" width="180" height="50" rx="12" fill="#FFD21E"/>
+      <rect x="196" y="356" width="120" height="42" rx="12" fill="#F3E9D2"/>
+    </g>
+  </symbol>
+
+  <!-- 4: Alti cizili Cv. Uygulamanin imza hareketi: sari, alti kesik cizgili, dokunulabilir kelime. -->
+  <symbol id="L4" viewBox="0 0 512 512">
+    <rect width="512" height="512" rx="112" fill="#170E12"/>
+    <text x="256" y="350" text-anchor="middle" font-size="330" fill="#FFD21E" letter-spacing="-6">Cv</text>
+    <path d="M92 412H420" stroke="#FFD21E" stroke-width="30" stroke-dasharray="58 30" stroke-linecap="butt"/>
+  </symbol>
+
+  <!-- 5: Ekran C. Sag yani acik bir ekran cercevesi (C harfi), icinde altyazinin durdugu yerde sari satir. -->
+  <symbol id="L5" viewBox="0 0 512 512">
+    <rect width="512" height="512" rx="112" fill="#FFD21E"/>
+    <path d="M404 132H172a64 64 0 0 0-64 64v120a64 64 0 0 0 64 64H404" fill="none" stroke="#170E12" stroke-width="70" stroke-linecap="butt" stroke-linejoin="round"/>
+    <rect x="208" y="230" width="230" height="52" rx="12" fill="#170E12"/>
+  </symbol>
+</defs></svg>
+<div class="wrap">
+  <h1>CineVocab logo, ikinci tur</h1>
+  <script>
+    var ops = [["L1", "1 · Konuşan bilet (şimdiki)", "Bilet + C harfi + altyazı satırları. Şu an uygulamada duran."],
+               ["L2", "2 · Konuşan bilet, bordo", "Aynı işaret, perde bordosu zeminde. Ana ekranda siyah ve beyaz simgelerin arasında renkle öne çıkar."],
+               ["L3", "3 · Perde", "İki yana açılmış perde, ortada altyazı: sarı kelime ve altında bir satır. En sinemasal ve en renkli olan."],
+               ["L4", "4 · Altı çizili Cv", "Uygulamanın imza hareketi: sarı, altı kesik çizgili, dokunulabilir kelime. En sade; adı da taşıyor."],
+               ["L5", "5 · Ekran C", "Sağı açık bir ekran çerçevesi aynı zamanda C harfi; içinde altyazı satırı. Sarı zeminde, en uzaktan seçilen."]];
+    var sizes = [200, 96, 48, 32, 16], h = "";
+    ops.forEach(function (o) {
+      var set = sizes.map(function (s) { return '<svg width="' + s + '" height="' + s + '"><use href="#' + o[0] + '"/></svg>'; }).join("");
+      h += '<div class="row"><div class="info"><b>' + o[1] + '</b><span>' + o[2] + '</span></div><div class="bg dark">' + set + '</div><div class="bg light">' + set + '</div>' +
+        '<div class="bg home"><i style="background:#fff"></i><svg width="56" height="56"><use href="#' + o[0] + '"/></svg><i style="background:#111"></i><i style="background:#25d366"></i></div></div>';
+    });
+    document.querySelector(".wrap").insertAdjacentHTML("beforeend", h);
+  </script>
+</div>

@@ -27,6 +27,15 @@
     home: null, daily: null, puzzle: null, videos: null, vocab: null, vocabRaw: null, filterEp: null,
   };
 
+  // Gorunum: varsayilan koyu ("gece seansi"). Acik tema yalnizca kullanici Ayarlar'dan secerse acilir.
+  function themeOf() { return store.get("theme") === "light" ? "light" : "dark"; }
+  function applyTheme() {
+    const th = themeOf(), root = document.documentElement, meta = document.querySelector('meta[name="theme-color"]');
+    if (th === "light") root.setAttribute("data-theme", "light"); else root.removeAttribute("data-theme");
+    if (meta) meta.setAttribute("content", th === "light" ? "#F1E8D6" : "#170E12");
+  }
+  applyTheme();
+
   // Bugune ait yerel isaretler (pratik yapildi mi, kelime eklendi mi, hedef kutlandi mi). Gun degisince sifirlanir.
   function dayKey() { const d = new Date(), p = (n) => String(n).padStart(2, "0"); return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()); }
   function flags() { try { const o = JSON.parse(store.get("day") || "{}"); return o && o.d === dayKey() ? o : { d: dayKey() }; } catch (e) { return { d: dayKey() }; } }
@@ -48,7 +57,7 @@
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
       badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "day streak", bWins: "duel wins", bMaster: "mastered",
       badgeNew: "New award: {0} {1}", badgeNeed: "Locked. Opens at {0} {1}.", badgeHave: "Yours: {0} {1}.",
-      setH: "Settings", sndLbl: "Sounds",
+      setH: "Settings", sndLbl: "Sounds", themeLbl: "Look", themeDark: "Dark (night screening)", themeLight: "Light (matinee)",
       login: "Log in", register: "Sign up", username: "Username", email: "Email", password: "Password",
       loginGo: "Log in", regGo: "Create account", verify: "Verify", back: "Back",
       codeSub: "We sent a 6-digit code to {0}. Enter it to create your account.",
@@ -130,7 +139,7 @@
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
       badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün seri", bWins: "galibiyet", bMaster: "usta kelime",
       badgeNew: "Yeni ödül: {0} {1}", badgeNeed: "Kilitli. {0} {1} olunca açılır.", badgeHave: "Senin: {0} {1}.",
-      setH: "Ayarlar", sndLbl: "Sesler",
+      setH: "Ayarlar", sndLbl: "Sesler", themeLbl: "Görünüm", themeDark: "Koyu (gece seansı)", themeLight: "Açık (matine)",
       login: "Giriş yap", register: "Kayıt ol", username: "Kullanıcı adı", email: "E-posta", password: "Parola",
       loginGo: "Giriş yap", regGo: "Hesap oluştur", verify: "Doğrula", back: "Geri",
       codeSub: "{0} adresine 6 haneli bir kod gönderdik. Hesabını açmak için kodu gir.",
@@ -219,7 +228,7 @@
       for (const code of LANGS) sel.add(new Option(langName(code), code));
       sel.value = id === "src" ? S.src : S.dst;
     }
-    $("uiLang").value = S.ui; $("goalSel").value = String(S.goal);
+    $("uiLang").value = S.ui; $("goalSel").value = String(S.goal); $("themeSel").value = themeOf();
     $("lnkPrivacy").href = $("lnkPrivacy0").href = API + "/privacy?lang=" + S.ui;
     setAuthMode(authMode);
   }
@@ -289,7 +298,7 @@
   function confetti(n) {
     if (calm()) return;
     const c = $("fx"), x = c.getContext("2d"), W = c.width = innerWidth, H = c.height = innerHeight;
-    const cols = ["#111111", "#ffffff", "#E5322D", "#129A4D", "#ffffff"];
+    const cols = ["#FFD21E", "#F3E9D2", "#C2283A", "#7BD39A", "#FFD21E"];
     sfx("win");
     const ps = Array.from({ length: n || 90 }, () => ({ x: W / 2 + (Math.random() - .5) * W * .5, y: H * .38, vx: (Math.random() - .5) * 10,
       vy: -Math.random() * 12 - 4, s: 6 + Math.random() * 6, r: Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)] }));
@@ -1508,6 +1517,7 @@
     $("delGo").disabled = false; $("delPw").value = "";
   });
   $("goalSel").addEventListener("change", () => { S.goal = Number($("goalSel").value) || 50; store.set("goal", S.goal); });
+  $("themeSel").addEventListener("change", function () { store.set("theme", $("themeSel").value === "light" ? "light" : "dark"); applyTheme(); });
   $("uiLang").addEventListener("change", function () { S.ui = $("uiLang").value; store.set("ui", S.ui); applyTexts(); showMe(); });
   $("logout").addEventListener("click", async function () {
     try { await api("/api/ext/logout", { body: {} }); } catch (e) {}

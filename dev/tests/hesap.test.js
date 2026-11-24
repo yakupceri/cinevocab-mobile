@@ -114,3 +114,17 @@ test("delgi karti: yeni delik animasyonu gunde bir kez", () => {
 test("delgi karti: Pazar gunu haftanin son hucresi bugundur", () => {
   assert.equal(hafta({ streak: 0, xp_today: 0 }, "2026-11-29T10:00:00").today, 6);
 });
+
+// Gorunum: varsayilan koyu; acik tema yalnizca kayitli secim "light" ise.
+test("tema: varsayilan koyu, secilince acik, bozuk degerde koyu", () => {
+  const attr = {}, meta = { content: "" };
+  const c = yukle(["themeOf", "applyTheme"], { document: {
+    documentElement: { setAttribute: (k, v) => { attr[k] = v; }, removeAttribute: (k) => { delete attr[k]; } },
+    querySelector: () => ({ setAttribute: (k, v) => { meta[k] = v; } }) } });
+  assert.equal(c.themeOf(), "dark"); c.applyTheme();
+  assert.equal(attr["data-theme"], undefined); assert.equal(meta.content, "#170E12");
+  c.store.set("theme", "light"); c.applyTheme();
+  assert.equal(attr["data-theme"], "light"); assert.equal(meta.content, "#F1E8D6");
+  c.store.set("theme", "pembe"); c.applyTheme();
+  assert.equal(c.themeOf(), "dark"); assert.equal(attr["data-theme"], undefined);
+});

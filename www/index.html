@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFD21E">
+<meta name="theme-color" content="#170E12">
 <!-- Guvenlik: yalnizca uygulamanin kendi dosyalari calisir; baglanti yalnizca CineVocab sunucusuna acilir. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data: https:; connect-src 'self' https://cinevocab.up.railway.app wss://cinevocab.up.railway.app; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
 <title>CineVocab</title>
@@ -408,6 +408,8 @@
         <select id="goalSel"><option value="30">30 XP</option><option value="50">50 XP</option><option value="100">100 XP</option></select>
         <div class="field"><label for="uiLang" data-i="appLang"></label>
           <select id="uiLang"><option value="en">English</option><option value="tr">Türkçe</option></select></div>
+        <div class="field"><label for="themeSel" data-i="themeLbl"></label>
+          <select id="themeSel"><option value="dark" data-i="themeDark"></option><option value="light" data-i="themeLight"></option></select></div>
         <div class="field"><label class="check"><input type="checkbox" id="sndTgl"><span data-i="sndLbl"></span></label></div>
         <div class="field" id="remRow" hidden>
           <label class="check"><input type="checkbox" id="remTgl"><span data-i="remLbl"></span></label></div>

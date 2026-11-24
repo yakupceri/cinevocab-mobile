@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- Ekran goruntusu duzenegi: uygulamayi (www/) misafir modunda 390x844 cerceve icinde acar, verilen adimlari tiklar.
+     Yalnizca gelistirme icin; uygulamaya girmez. Kullanim: dev/ekran/cek.sh
+     Parametreler: t=dark|light  ui=tr|en  xp=<bugunku XP>  steps=<id ya da css secici>,...  (her adim arasi 700 ms) -->
+<meta charset="utf-8">
+<style>html,body{margin:0;background:#000}iframe{display:block;margin:0 auto;border:0;width:390px;height:844px}</style>
+<iframe id="f"></iframe>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search), d = new Date(), p = function (n) { return String(n).padStart(2, "0"); };
+  var today = d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()), xp = Number(q.get("xp")) || 0;
+  Object.keys(localStorage).forEach(function (k) { if (k.indexOf("cv-") === 0) localStorage.removeItem(k); });
+  var set = { guest: "1", how: "1", src: "en", dst: "tr", ui: q.get("ui") || "tr", theme: q.get("t") === "light" ? "light" : "dark", snd: "0", voice: "0" };
+  if (xp) set.demo = JSON.stringify({ xp: xp + 400, d: today, today: xp, ok: { "fısıldamak": 3, "söz": 3, "sır": 3 }, known: [] });
+  Object.keys(set).forEach(function (k) { localStorage.setItem("cv-" + k, set[k]); });
+  var f = document.getElementById("f"), steps = (q.get("steps") || "").split(",").filter(Boolean);
+  f.addEventListener("load", function () {
+    var doc = f.contentDocument, i = 0;
+    (function next() {
+      if (i >= steps.length) { document.title = "hazir"; return; }
+      var s = steps[i++], n = doc.getElementById(s) || doc.querySelector(s);
+      if (n) n.click(); else console.error("adim bulunamadi: " + s);
+      setTimeout(next, 700);
+    })();
+  });
+  f.src = "../../www/index.html";
+})();
+</script>

@@ -543,7 +543,9 @@
     try {
       await native("LocalNotifications", "cancel", { notifications: REM_IDS }).catch(() => {});
       await native("LocalNotifications", "schedule", { notifications: reminderPlan(S.home, Date.now()).map(function (r) {
-        return { id: r.id, title: "CineVocab", body: r.body, schedule: { at: r.at.toISOString(), allowWhileIdle: true } }; }) });
+        // isExactNotification: false -> dakikasi dakikasina gelmesi gerekmez. true (varsayilan) olsaydi Android 12+ kullaniciyi
+        // "Alarmlar ve hatirlaticilar" ayar ekranina yollardi; sakin bir hatirlatma icin bu istenmez.
+        return { id: r.id, title: "CineVocab", body: r.body, isExactNotification: false, schedule: { at: r.at.toISOString(), allowWhileIdle: true } }; }) });
     } catch (e) {}
   }
   async function setReminder(on) {

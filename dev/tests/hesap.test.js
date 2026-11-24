@@ -536,3 +536,10 @@ test("Ingilizce tekil: '1 days' yazilmaz; Turkcede dokunulmaz", () => {
   assert.equal(c.t("b", 1), "1 point"); assert.equal(c.t("c", 21), "21 words");
   S.ui = "tr"; assert.equal(c.t("a", 1), "1 gün üst üste");
 });
+
+// Yakalanan hata (emulatorde): tam zamanli alarm izni olmadan hatirlatma kurulunca eklenti kullaniciyi sistem ayar ekranina
+// yolluyor ve kurma cagrisi hic donmuyordu. Hatirlatma "tam zamanli degil" diye isaretlenmeli.
+test("hatirlatma: tam zamanli alarm istenmez (ayar ekranina yollamaz)", () => {
+  const { kaynak } = require("./yukle.js");
+  assert.match(kaynak("planReminder"), /isExactNotification: false/);
+});

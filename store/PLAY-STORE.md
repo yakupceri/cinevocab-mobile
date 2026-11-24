@@ -113,18 +113,19 @@ Veri toplanıyor mu: **Evet**. Aktarım sırasında şifreleniyor mu: **Evet** (
 
 **ML Kit notu.** Görselden altyazı okuma için `com.google.mlkit:text-recognition` kullanılıyor (model uygulamayla gelir). Google'ın sayfasına göre (https://developers.google.com/ml-kit/android-data-disclosure, 14 Mayıs 2025 sürümü okundu) kütüphane şunları yollar: cihaz bilgisi, uygulama bilgisi, kurulum başına kimlik, performans ölçümleri, API ayarları, girdi ve çıktı boyutu, özellik sürümü, olay türü, hata kodları; amaç "tanılama ve kullanım analitiği", HTTPS ile, üçüncü tarafa aktarılmıyor. Sayfa görselin ya da metnin gönderilip gönderilmediğini açıkça yazmıyor ve formu nasıl dolduracağını geliştiriciye bırakıyor. Yukarıdaki iki ML Kit satırı benim yorumum; doldururken sayfayla karşılaştır. Gizlilik metnine de bir cümle gerekir (sunucu reposunda): "Görselden altyazı okuma telefonun içinde yapılır; bunun için kullanılan Google ML Kit kütüphanesi Google'a tanılama ve kullanım ölçümleri gönderir."
 
-**İzinler** (birleşik debug manifest, 24 Kasım 2026). Bizim yazdıklarımız: `INTERNET`, `VIBRATE`. Eklentilerden gelenler:
+**İzinler** (birleşik **yayın** manifesti, 25 Kasım 2026; imzasız derleme adımından okundu). Bizim yazdıklarımız: `INTERNET`, `VIBRATE`. Eklentilerden gelenler:
 - `POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`: akşam hatırlatması (`@capacitor/local-notifications`). Bildirim izni yalnızca kullanıcı hatırlatmayı açınca istenir.
-- `SCHEDULE_EXACT_ALARM`: aynı eklentiden geliyordu; **çıkarıldı** (manifest'te `tools:node="remove"`). Sakin bir akşam hatırlatmasının dakikası dakikasına gelmesi gerekmiyor; bu izin Play'de ayrıca gerekçe ister.
-- `USE_CREDENTIALS`, `USE_BIOMETRIC`, `USE_FINGERPRINT`, `ACCESS_NETWORK_STATE`: Google ile giriş eklentisinin bağımlılıklarından geliyor gibi (kaynağı tek tek doğrulanmadı). Uygulama parmak izi ya da yüz tanıma kullanmıyor.
+- `SCHEDULE_EXACT_ALARM`: aynı eklentiden geliyordu; **çıkarıldı** (manifest'te `tools:node="remove"`) ve hatırlatma `isExactNotification: false` ile kuruluyor. Böyle olmasa eklenti kullanıcıyı sistemin "Alarmlar ve hatırlatıcılar" ayar ekranına yolluyordu. Emülatörde denendi: hatırlatma izinsiz kuruldu ve bir dakika içinde geldi.
+- `USE_CREDENTIALS`: Google ile giriş eklentisi (`@capgo/capacitor-social-login`). `USE_BIOMETRIC`, `USE_FINGERPRINT`: `androidx.biometric` kütüphanesinden (aynı eklentinin bağımlılığı); uygulama parmak izi ya da yüz tanıma kullanmıyor. `ACCESS_NETWORK_STATE`: Google'ın veri aktarım kütüphanesinden (`datatransport`, ML Kit'in tanılama verisini yollayan parça). Kaynaklar birleştirme raporundan okundu.
+- Kurulu uygulamada görünen `ACCESS_LOCAL_NETWORK` manifest'te **yok**; emülatörün Android sürümü kendisi ekliyor.
 - Kamera, depolama, fotoğraf, mikrofon, konum izni **yok**. Fotoğrafı telefonun kendi kamera uygulaması çeker (manifest'te yalnızca kamera uygulamasını görebilmek için bir `queries` girdisi var), ya da görsel sistemin fotoğraf seçicisinden ve paylaşımdan gelir.
-- Yayın derlemesinden sonra birleşik manifest bir kez daha kontrol edilmeli (şu anki kontrol debug derlemesinden).
+- İmzalı `.aab` üretildikten sonra Play Console'un gösterdiği izin listesiyle bir kez karşılaştır.
 
 **Paylaş → CineVocab** yeni izin istemez; manifest'e iki giriş eklendi (düz metin ve görsel paylaşımı alma).
 
 **Hedef kitle 13+ kalmalı.** 12 yaşı eklemek Families Policy'yi devreye sokar; ayrıntı ve kaynaklar `dev/ARASTIRMA.md` ikinci turda. Mağaza görselleri çocuksu olmamalı.
 
-**"Büyük yazı ayarına uyar" iddiası:** emülatörde sistem yazısı 1,3 kata çıkarılıp bakıldı; uygulama yazıyı büyüttü, karşılama ekranı bozulmadı. Öbür ekranlar ve gerçek telefon denenmedi.
+**"Büyük yazı ayarına uyar" iddiası:** emülatörde sistem yazısı 1,3 kata çıkarılıp karşılama, ana, oyna, soru, kelime kartı ve ayarlar ekranlarına bakıldı (açık temada); yazı büyüdü, yatay taşma yok. Gerçek telefon ve daha büyük ölçek denenmedi.
 
 Formu doldurmadan önce sunucu tarafını bir kez daha gözden geçir: sunucuda toplanan başka bir şey varsa (örneğin IP kaydı) onu da yaz.
 

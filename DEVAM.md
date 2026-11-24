@@ -16,7 +16,7 @@ Yeni bir sohbette: "~/cinevocab-mobile/DEVAM.md dosyasını oku, kaldığımız 
 - Capacitor 8 + düz JS. `www/` (uygulama), `android/` (yerel kısım), `dev/` (testler, ekran görüntüsü düzeneği, araştırma), `store/` (Play malzemesi), `.claude/` (ajanlar, ofis).
 - Paket `com.cinevocab.app`, yayın Google Play. Sunucu: https://cinevocab.up.railway.app (repo `cinevocab-app`).
 - Akış: `www/` değiştir → `npx cap sync android` → Android Studio'da Run (Gradle JDK 21).
-- Testler: `node --test dev/tests/` (64 test). Ekran görüntüsü: `sh dev/ekran/cek.sh`, mağaza: `sh dev/ekran/magaza.sh`.
+- Testler: `node --test dev/tests/` (65 test). Ekran görüntüsü: `sh dev/ekran/cek.sh`, mağaza: `sh dev/ekran/magaza.sh`.
 - Ofis: `python3 .claude/ofis/serve.py` → http://127.0.0.1:8766
 
 ## Ürün
@@ -28,13 +28,13 @@ Söz: **"İzlediğin dizinin kelimelerini öğren."** Duolingo'nun yerine değil
 - Misafir modu: hesapsız deneme destesi; Ben'de yalnızca Görünüm, Titreşim ve "Giriş yap".
 
 ## Emülatörde doğrulananlar (deneme kurulumu, misafir)
-İlk açılış (karşılama → dil → ilk kart), yatay kaydırma, ana ve oyna düzeni, kaydırırken hayalet görüntü olmaması, metin paylaşımı (kapalıyken ve açıkken), galeriden fotoğraf seçip okuma, kameranın izinsiz açılması, simge ve koyu açılış ekranı, 1,3 kat sistem yazısı.
+İlk açılış (karşılama → dil → ilk kart), yatay kaydırma, ana ve oyna düzeni, kaydırırken hayalet görüntü olmaması, metin paylaşımı (kapalıyken ve açıkken), galeriden fotoğraf seçip okuma, kameranın izinsiz açılması, simge ve koyu açılış ekranı, 1,3 kat sistem yazısı (altı ekran, açık temada), akşam hatırlatmasının tam zamanlı alarm izni olmadan kurulup gelmesi.
 
 ## Doğrulanmayanlar (gerçek telefon ya da gerçek hesap ister)
 - Gerçek bir televizyonun fotoğrafından okuma; başka uygulamadan görsel paylaşımı (Galeri → Paylaş → CineVocab).
 - Giriş yapmış kullanıcıda kendi metninden kelime ekleme uçtan uca; eklenen kelimenin cümlesinin ana ekranda görünmesi.
 - Ben ekranındaki puan ve seviye kartının gerçek veriyle görünümü.
-- Titreşim hissi, akşam bildiriminin gelmesi, Google ile giriş, düello ve ligler yeni tasarımda.
+- Titreşim hissi, Google ile giriş, düello ve ligler yeni tasarımda. Hatırlatmanın uygulamanın kendi düğmesinden (Ben → Akşam hatırlatması) açılması: yalnızca eklenti çağrısı denendi.
 
 ## Yayından önce
 1. Yukarıdaki doğrulanmayanları gerçek telefonda dene.

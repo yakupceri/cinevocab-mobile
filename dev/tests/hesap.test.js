@@ -27,7 +27,7 @@ test("combo: 2'den itibaren gorunur, yanlista sifirlanir, her 5'te ses", () => {
 
 function misafir(simdi) {
   const deste = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"].map((w) => ({ tr: w, eng: w + "-en" }));
-  return yukle(["dayKey", "demoState", "demoApi"], {
+  return yukle(["OWN_MAX", "ownKey", "ownLoad", "dayKey", "demoState", "demoApi"], {
     S: { src: "en", dst: "tr" }, t: (k) => k, CVDEMO: { words: () => deste.slice() }, shuffle: (a) => a,
     askAccount: () => {} }, simdi);
 }
@@ -239,13 +239,14 @@ test("titresim: telefon desteklemiyorsa hata vermez", () => {
 });
 
 // Misafir Ben ekranini acabilir; hesap isteyen ekranlar hala kayit ekranina yollar.
-test("misafir: Ben acilir, ekle/duello/lig kayit ister", () => {
+test("misafir: Ben ve Ekle acilir, duello/lig kayit ister", () => {
   const acilan = [], istenen = [];
   const c = yukle(["go"], { S: { guest: true }, askAccount: () => istenen.push(1), showView: (id) => acilan.push(id),
     loadHome() {}, showWords() {}, addMode() {}, loadPacks() {}, loadPlay() {}, showMe: () => acilan.push("showMe"), loadLeagues() {}, say() {}, duelPart() {}, $: () => ({}) });
   c.go("v-me"); assert.deepEqual(acilan, ["v-me", "showMe"]); assert.equal(istenen.length, 0);
-  for (const v of ["v-add", "v-duel", "v-leagues"]) c.go(v);
-  assert.equal(istenen.length, 3); assert.deepEqual(acilan, ["v-me", "showMe"]);
+  c.go("v-add"); assert.deepEqual(acilan, ["v-me", "showMe", "v-add"]); assert.equal(istenen.length, 0);
+  for (const v of ["v-duel", "v-leagues"]) c.go(v);
+  assert.equal(istenen.length, 2); assert.deepEqual(acilan, ["v-me", "showMe", "v-add"]);
 });
 test("misafir Ben: yalnizca ayarlar kurulur, sunucuya istek gitmez", () => {
   const sinif = {}, n = {}, dug = (id) => (n[id] = n[id] || { classList: { toggle: (k, v) => { sinif[k] = v; } } });
@@ -452,8 +453,8 @@ test("paylasim: yalnizca linkte form bos acilir ve neden bos oldugunu soyler", (
   c.shareOpen(c.shareParse("https://youtu.be/abc", "Video adi"));
   assert.equal(olay[3], "mesaj:shareLink"); assert.equal(n.text.value, ""); assert.equal(n.srcTitle.value, "Video adi");
 });
-test("paylasim: misafirde metin bellekte bekler, kayit istenir; giristen sonra form acilir", () => {
-  const S = { key: "", guest: true }, { c, olay, n } = yonlendir(S);
+test("paylasim: uygulamaya hic girilmemisse metin bellekte bekler; giris ya da misafir olunca form acilir", () => {
+  const S = { key: "", guest: false }, { c, olay, n } = yonlendir(S);
   assert.equal(c.shareOpen(c.shareParse("He was reluctant to leave the house.", "")), false);
   assert.deepEqual(olay, ["hesap", "mesaj:shareNeedAcc"]); assert.ok(c.pendingShare);
   c.sharePending(); assert.equal(olay.length, 2, "giris yokken acilmaz");
@@ -467,8 +468,8 @@ test("paylasim: Android tarafi yalnizca duz metin kabul eder, yeni izin yok", ()
   assert.deepEqual((m.match(/uses-permission android:name="([^"]+)"/g) || []).map((x) => x.split(".").pop().replace('"', "")).filter((x) => x !== "SCHEDULE_EXACT_ALARM").sort(), ["INTERNET", "VIBRATE"]);
   assert.match(m, /SCHEDULE_EXACT_ALARM" tools:node="remove"/, "tam zamanli alarm izni cikarilmis olmali");
 });
-test("paylasim: misafirde yalnizca link gelirse kayit istenmez, neden bos oldugu soylenir", () => {
-  const { c, olay } = yonlendir({ key: "", guest: true });
+test("paylasim: hic girilmemisken yalnizca link gelirse kayit istenmez, neden bos oldugu soylenir", () => {
+  const { c, olay } = yonlendir({ key: "", guest: false });
   assert.equal(c.shareOpen(c.shareParse("https://youtu.be/abc", "Video")), false);
   assert.deepEqual(olay, ["uyari:shareLink"]); assert.equal(c.pendingShare, null);
 });
@@ -542,4 +543,72 @@ test("Ingilizce tekil: '1 days' yazilmaz; Turkcede dokunulmaz", () => {
 test("hatirlatma: tam zamanli alarm istenmez (ayar ekranina yollamaz)", () => {
   const { kaynak } = require("./yukle.js");
   assert.match(kaynak("planReminder"), /isExactNotification: false/);
+});
+
+// Misafirin kendi metninden kelime cikarmasi: secim telefonda, ceviri adsiz, liste telefonda, giriste hesaba tasinir.
+function misafirKendi(ortam) {
+  return yukle(["OWN_MAX", "ownKey", "ownLoad", "ownSave", "guestPlan", "anonPost", "guestAdd", "ownTransfer", "CTX_MAX", "ctxLoad", "ctxSave", "wordRe", "contextsFor"],
+    Object.assign({ RegExp, Set, Object, S: { src: "en", dst: "tr", key: "", guest: true }, API: "https://sunucu.test" }, ortam || {}));
+}
+test("misafir plani: sunucudaki siralama (sik gecen, sonra uzun), listede olan atilir, ust sinir", () => {
+  const c = misafirKendi();
+  const sayim = [["the", 9], ["reluctant", 2], ["fierce", 2], ["a", 7], ["shadow", 1], ["trust", 1]];
+  const p = c.guestPlan(sayim, ["trust"], 3);
+  assert.deepEqual(Array.from(p.pick), ["the", "a", "reluctant"]); assert.equal(p.total, 6); assert.equal(p.saved, 1); assert.equal(p.fresh, 5); assert.equal(p.full, false);
+  assert.equal(c.guestPlan(sayim, [], 100).pick.length, 6, "istenen 100 olsa da en cok " + c.OWN_PICK);
+  const dolu = Array.from({ length: c.OWN_MAX }, (_, i) => "w" + i);
+  assert.equal(c.guestPlan(sayim, dolu, 10).full, true); assert.equal(c.guestPlan(sayim, dolu, 10).pick.length, 0);
+});
+test("misafir ekleme: oturum anahtari olmadan gider, kaynak basligi ve metin gitmez; cevrilenler telefonda saklanir", async () => {
+  const giden = [];
+  const c = misafirKendi({ AbortController, setTimeout, clearTimeout, JSON,
+    fetch: async (url, o) => { giden.push({ url, headers: o.headers, body: JSON.parse(o.body) }); return { ok: true, json: async () => ({ results: { reluctant: "isteksiz", fierce: " sert " }, pending: ["zzz"] }) }; } });
+  const n = await c.guestAdd(["reluctant", "fierce", "zzz"], ["He was reluctant to leave.", "A fierce look."], "Benim dizim");
+  assert.equal(n, 2, "cevirisi gelmeyen kelime eklenmez");
+  assert.equal(giden.length, 1); assert.equal(giden[0].url, "https://sunucu.test/translate-words");
+  assert.equal(giden[0].headers.Authorization, undefined, "oturum anahtari gitmez");
+  assert.equal(giden[0].body.episode, ""); assert.equal(giden[0].body.sentence, ""); assert.deepEqual(giden[0].body.words, ["reluctant", "fierce", "zzz"]);
+  assert.doesNotMatch(JSON.stringify(giden[0].body), /to leave|A fierce|Benim dizim/, "metnin kendisi ve basligi gitmez");
+  const l = c.ownLoad().map((x) => ({ ...x }));
+  assert.deepEqual(l, [{ w: "fierce", t: "sert", s: "A fierce look.", ep: "Benim dizim" }, { w: "reluctant", t: "isteksiz", s: "He was reluctant to leave.", ep: "Benim dizim" }]);
+  assert.equal(await c.guestAdd(["reluctant"], [], ""), 0, "ayni kelime ikinci kez eklenmez");
+});
+test("misafir ekleme: sunucuya ulasilamazsa hata vermez, 0 doner", async () => {
+  const c = misafirKendi({ AbortController, setTimeout, clearTimeout, JSON, fetch: async () => { throw new Error("ag yok"); } });
+  assert.equal(await c.guestAdd(["reluctant"], [], ""), 0); assert.equal(c.ownLoad().length, 0);
+});
+test("misafir destesi: kendi kelimeleri once gelir, deneme destesiyle cakisan tekrarlanmaz", () => {
+  const c = yukle(["OWN_MAX", "ownKey", "ownLoad", "dayKey", "demoState", "demoApi"], { S: { src: "en", dst: "tr" }, t: (k) => k, shuffle: (a) => a, askAccount() {},
+    CVDEMO: { words: () => [{ tr: "whisper", eng: "fısıldamak", sentence: "" }, { tr: "trust", eng: "güvenmek", sentence: "" }] } });
+  c.store.set("own-en-tr", JSON.stringify([{ w: "reluctant", t: "isteksiz", s: "He was reluctant.", ep: "Dizim" }, { w: "trust", t: "güven", s: "", ep: "Dizim" }]));
+  const v = Array.from(c.demoApi("/api/vocab", {}).words, (x) => x.tr + "=" + x.eng);
+  assert.deepEqual(v, ["reluctant=isteksiz", "trust=güven", "whisper=fısıldamak"]);
+  assert.equal(c.demoApi("/api/vocab", {}).words[0].sentence, "He was reluctant.");
+});
+test("hesaba tasima: giriste kendi kelimeleri kaynak basligiyla gider, cumleler telefonda kalir, liste silinir", async () => {
+  const giden = [], S = { src: "en", dst: "tr", key: "", guest: true };
+  const c = misafirKendi({ S, api: async (p, o) => { giden.push([p, o.body.episode, Array.from(o.body.words)]); return {}; } });
+  c.store.set("own-en-tr", JSON.stringify([{ w: "reluctant", t: "isteksiz", s: "He was reluctant.", ep: "Dizim" }, { w: "fierce", t: "sert", s: "", ep: "" }]));
+  assert.equal(await c.ownTransfer(), 0, "oturum yokken tasinmaz"); assert.equal(giden.length, 0);
+  S.key = "k";
+  assert.equal(await c.ownTransfer(), 2);
+  assert.deepEqual(giden, [["/translate-words", "Dizim", ["reluctant"]], ["/translate-words", "", ["fierce"]]]);
+  assert.equal(c.store.get("own-en-tr"), null); assert.equal(c.ctxLoad("en").reluctant, "He was reluctant.");
+  assert.equal(await c.ownTransfer(), 0, "ikinci kez tasinmaz");
+});
+test("hesaba tasima: sunucu hata verirse liste telefonda kalir", async () => {
+  const c = misafirKendi({ S: { src: "en", dst: "tr", key: "k" }, api: async () => { throw new Error("x"); } });
+  c.store.set("own-en-tr", JSON.stringify([{ w: "reluctant", t: "isteksiz", s: "", ep: "" }]));
+  assert.equal(await c.ownTransfer(), 0); assert.equal(c.ownLoad().length, 1);
+});
+test("misafir: tekrar oturumunda ve ana karede once kendi kelimeleri", () => {
+  const c = yukle(["OWN_MAX", "ownKey", "ownLoad", "dayKey", "demoState", "demoApi"], { S: { src: "en", dst: "tr" }, t: (k) => k, shuffle: (a) => a, askAccount() {}, Set,
+    CVDEMO: { words: () => Array.from({ length: 16 }, (_, i) => ({ tr: "demo" + i, eng: "d" + i, sentence: "" })) } });
+  c.store.set("own-en-tr", JSON.stringify([{ w: "reluctant", t: "isteksiz", s: "", ep: "Dizim" }, { w: "fierce", t: "sert", s: "", ep: "Dizim" }]));
+  const w = Array.from(c.demoApi("/api/srs/session", {}).words, (x) => x.tr);
+  assert.deepEqual(w.slice(0, 2), ["reluctant", "fierce"]); assert.equal(w.length, 10);
+  const h = yukle(["wordRe", "heroScene"], { RegExp });
+  const ham = [{ w: "forgive", s: "I will never forgive you.", ep: "demoPack" }, { w: "reluctant", s: "He was reluctant.", ep: "Dizim" }];
+  for (const gun of ["2026-11-24", "2026-11-25", "2026-11-26", "2026-11-27"]) assert.equal(h.heroScene(ham, gun, (x) => x.ep !== "demoPack").w, "reluctant");
+  assert.equal(h.heroScene([ham[0]], "2026-11-24", (x) => x.ep !== "demoPack").w, "forgive", "kendi cumlesi yoksa deneme destesinden");
 });

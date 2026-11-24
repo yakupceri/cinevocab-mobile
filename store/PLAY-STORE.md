@@ -92,7 +92,7 @@ CineVocab is an independent app and is not affiliated with YouTube or Google.
 - **Gizlilik politikası adresi:** https://cinevocab.up.railway.app/privacy
 - **Hesap silme adresi:** https://cinevocab.up.railway.app/delete-account (sunucu güncellemesi yayına girince açılır)
 - **Reklam içeriyor mu:** Hayır.
-- **Uygulama erişimi:** Bazı özellikler giriş ister (kelime ekleme, düello, ligler); "Hesap açmadan dene" ile kartlar ve oyunlar girişsiz açılır. İnceleme ekibi için yine de bir test hesabı aç (kullanıcı adı + parola) ve Console'a yaz.
+- **Uygulama erişimi:** Bazı özellikler giriş ister (düello, ligler, 40 kelimeden fazlası); "Hesap açmadan dene" ile kendi metninden kelime çıkarma, kartlar ve oyunlar girişsiz açılır. İnceleme ekibi için yine de bir test hesabı aç (kullanıcı adı + parola) ve Console'a yaz.
 - **Hedef kitle:** 13 yaş ve üzeri seç (çocuklara yönelik değil; öyle seçersen "Aileler" kuralları devreye girer).
 - **İçerik derecelendirme anketi:** şiddet, cinsellik, kumar, uyuşturucu yok. "Kullanıcılar etkileşime giriyor mu": evet (düello ve liglerde kullanıcı adları görünür, serbest mesajlaşma yok).
 
@@ -109,6 +109,7 @@ Veri toplanıyor mu: **Evet**. Aktarım sırasında şifreleniyor mu: **Evet** (
 | Uygulama bilgisi ve performansı, tanılama (Google ML Kit) | Evet | Analiz (tanılama) | Zorunlu |
 | Fotoğraflar | Hayır (görsel telefonda okunur, sunucumuza gitmez, saklanmaz) | | |
 | Yapıştırılan metnin kendisi | Hayır (telefonda kalır; yalnızca içinden çıkan kelime listesi ve başlık gider) | | |
+| Hesapsız (misafir) kullanım | Yalnızca seçilen kelimeler çeviri için gider (en çok 20, oturum ve kimlik olmadan; başlık ve cümle gitmez). Kelime listesi telefonda durur, hesap açılınca hesaba taşınır | Uygulama işlevi | |
 | Konum, rehber, ses, mali bilgi, sağlık, reklam kimliği | Hayır | | |
 
 **ML Kit notu.** Görselden altyazı okuma için `com.google.mlkit:text-recognition` kullanılıyor (model uygulamayla gelir). Google'ın sayfasına göre (https://developers.google.com/ml-kit/android-data-disclosure, 14 Mayıs 2025 sürümü okundu) kütüphane şunları yollar: cihaz bilgisi, uygulama bilgisi, kurulum başına kimlik, performans ölçümleri, API ayarları, girdi ve çıktı boyutu, özellik sürümü, olay türü, hata kodları; amaç "tanılama ve kullanım analitiği", HTTPS ile, üçüncü tarafa aktarılmıyor. Sayfa görselin ya da metnin gönderilip gönderilmediğini açıkça yazmıyor ve formu nasıl dolduracağını geliştiriciye bırakıyor. Yukarıdaki iki ML Kit satırı benim yorumum; doldururken sayfayla karşılaştır. Gizlilik metnine de bir cümle gerekir (sunucu reposunda): "Görselden altyazı okuma telefonun içinde yapılır; bunun için kullanılan Google ML Kit kütüphanesi Google'a tanılama ve kullanım ölçümleri gönderir."

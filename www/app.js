@@ -51,7 +51,7 @@
       wk0: "One short round fills today's frame.", wkOn: "{0} days in a row. Today's frame is filled.", wkRisk: "{0} days in a row so far. Today's frame is still empty.",
       hFirstS: "Paste a text you want to understand, or pick a starter pack.", hDoneT: "Today's programme is done", hDoneS: "A new puzzle arrives tomorrow. Until then, challenge a friend.",
       flowH: "Word flow", flowS: "Swipe through your words, one by one.", flowHint: "Swipe right if you knew it, left to see it again.", flowXp: "+{0} points", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "You earned {0} points.", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
-      photoH: "Read from a photo of the screen", photoS: "Photograph the subtitles on your TV or phone.", ocrBusy: "Reading the image…", ocrReady: "Read on your phone; the image was not sent to our server. Fix anything that came out wrong, then pull out the words.", ocrEmpty: "I could not find readable text in that image. Make sure the subtitles are sharp and large.", ocrLang: "Reading from images works for Latin-script languages for now.", ocrOnly: "This works in the phone app.", extH: "Watching on a computer? Send yourself the Chrome extension", extS: "The Chrome extension collects words while you watch. Same account, and you review them here.", extMsg: "CineVocab for Chrome: collect words from subtitles while you watch.", shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
+      photoH: "Read from a photo of the screen", photoS: "Photograph the subtitles on your TV or phone.", ocrBusy: "Reading the image…", ocrReady: "Read on your phone; the image was not sent to our server. Fix anything that came out wrong, then pull out the words.", ocrEmpty: "I could not find readable text in that image. Make sure the subtitles are sharp and large.", ocrLang: "Reading from images works for Latin-script languages for now.", ocrOnly: "This works in the phone app.", extH: "Watching on a computer? Send yourself the Chrome extension", extS: "The Chrome extension collects words while you watch. Same account, and you review them here.", extMsg: "CineVocab for Chrome: collect words from subtitles while you watch.", guestMax: "You can try up to {0} of your own words without an account. Create a free account for more.", guestNoTr: "Could not translate these words right now. Try again in a bit.", ownMoved: "{0} of your words moved into your account.", shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
       howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start with ready words", howQuickS: "Nothing at hand? Start with a ready set.", howPaste: "Paste subtitles or a text", howPasteS: "We pull out the words you do not know.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
       cardsH: "Flashcards", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
@@ -133,7 +133,7 @@
       wk0: "Kısa bir tur bugünün karesini doldurur.", wkOn: "{0} gün üst üste. Bugünün karesi doldu.", wkRisk: "Şimdiye kadar {0} gün üst üste. Bugünün karesi henüz boş.",
       hFirstS: "Anlamak istediğin bir metni yapıştır ya da hazır bir paket seç.", hDoneT: "Bugünün programı tamam", hDoneS: "Yeni bulmaca yarın geliyor. O zamana kadar bir arkadaşına meydan oku.",
       flowH: "Kelime akışı", flowS: "Kelimelerini tek tek kaydır geç.", flowHint: "Bildiysen sağa, tekrar görmek için sola kaydır.", flowXp: "+{0} puan", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} puan kazandın.", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
-      photoH: "Ekran fotoğrafından oku", photoS: "Televizyondaki ya da telefondaki altyazıyı çek.", ocrBusy: "Görüntü okunuyor…", ocrReady: "Yazı telefonunda okundu; görüntü sunucumuza gitmedi. Yanlış çıkan yeri düzelt, sonra kelimeleri çıkar.", ocrEmpty: "Bu görüntüde okunabilir yazı bulamadım. Altyazı net ve büyük görünsün.", ocrLang: "Görüntüden okuma şimdilik Latin harfli dillerde çalışıyor.", ocrOnly: "Bu özellik telefon uygulamasında çalışır.", extH: "Bilgisayarda mı izliyorsun? Chrome eklentisini kendine gönder", extS: "Chrome eklentisi izlerken kelimeleri toplar. Aynı hesapla burada tekrar edersin. Dokun, linki kendine gönder.", extMsg: "CineVocab Chrome eklentisi: izlerken altyazıdan kelime topla.", shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
+      photoH: "Ekran fotoğrafından oku", photoS: "Televizyondaki ya da telefondaki altyazıyı çek.", ocrBusy: "Görüntü okunuyor…", ocrReady: "Yazı telefonunda okundu; görüntü sunucumuza gitmedi. Yanlış çıkan yeri düzelt, sonra kelimeleri çıkar.", ocrEmpty: "Bu görüntüde okunabilir yazı bulamadım. Altyazı net ve büyük görünsün.", ocrLang: "Görüntüden okuma şimdilik Latin harfli dillerde çalışıyor.", ocrOnly: "Bu özellik telefon uygulamasında çalışır.", extH: "Bilgisayarda mı izliyorsun? Chrome eklentisini kendine gönder", extS: "Chrome eklentisi izlerken kelimeleri toplar. Aynı hesapla burada tekrar edersin. Dokun, linki kendine gönder.", extMsg: "CineVocab Chrome eklentisi: izlerken altyazıdan kelime topla.", guestMax: "Hesap açmadan en çok {0} kendi kelimeni deneyebilirsin. Daha fazlası için ücretsiz hesap aç.", guestNoTr: "Bu kelimeler şu an çevrilemedi. Biraz sonra yeniden dene.", ownMoved: "{0} kelimen hesabına taşındı.", shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
       howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hazır kelimelerle başla", howQuickS: "Elinde bir şey yoksa hazır setle başla.", howPaste: "Altyazı ya da metin yapıştır", howPasteS: "Bilmediğin kelimeleri biz çıkarırız.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
       cardsH: "Kartlar", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
@@ -318,9 +318,63 @@
   // Butun sunucu istekleri buradan gecer: oturum anahtarini ekler, hatayi okunur mesaja cevirir.
   // Hesapsiz deneme: sunucu yerine telefondaki kucuk deste cevap verir. Hesap isteyen her sey kayit ekranina yollar.
   function demoState() { try { const o = JSON.parse(store.get("demo") || "{}"); return { xp: Number(o.xp) || 0, d: o.d === dayKey() ? o.d : dayKey(), today: o.d === dayKey() ? Number(o.today) || 0 : 0, ok: o.ok || {}, known: Array.isArray(o.known) ? o.known : [] }; } catch (e) { return { xp: 0, d: dayKey(), today: 0, ok: {}, known: [] }; } }
+  // ---- Misafirin kendi kelimeleri. Hesap acmadan kendi metninden kelime cikarabilsin diye:
+  // kelimeler telefonda ayiklanir ve secilir; yalnizca secilen kelimeler ceviri icin sunucuya ADSIZ gider
+  // (eklentinin hesapsiz kullandigi ayni uc: /translate-words). Liste telefonda durur; hesap acilinca hesaba tasinir.
+  const OWN_MAX = 40, OWN_PICK = 20;
+  function ownKey() { return "own-" + S.src + "-" + S.dst; }
+  function ownLoad() { try { const a = JSON.parse(store.get(ownKey()) || "[]"); return Array.isArray(a) ? a.filter((x) => x && x.w && x.t) : []; } catch (e) { return []; } }
+  function ownSave(list) { store.set(ownKey(), JSON.stringify(list.slice(0, OWN_MAX))); }
+  // Sunucudaki siralamanin aynisi (importer.rank): metinde birkac kez gecen one, esitlikte uzun kelime one. Zaten listede olanlar atilir.
+  function guestPlan(counts, have, n) {
+    const seen = new Set(have), fresh = counts.filter((x) => !seen.has(x[0]));
+    const room = Math.max(0, Math.min(n, OWN_PICK, OWN_MAX - have.length));
+    const pick = fresh.slice().sort((a, b) => (Math.min(b[1], 4) - Math.min(a[1], 4)) || (b[0].length - a[0].length) || (a[0] < b[0] ? -1 : 1)).slice(0, room).map((x) => x[0]);
+    return { total: counts.length, known: 0, saved: counts.length - fresh.length, fresh: fresh.length, pick: pick, full: room === 0 };
+  }
+  // Oturum anahtari OLMADAN istek: misafir ceviri icin. Hata olursa bos doner (misafir akisi kirilmasin).
+  async function anonPost(path, body) {
+    const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 45000);
+    try {
+      const r = await fetch(API + path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: ctrl.signal });
+      return r.ok ? await r.json() : null;
+    } catch (e) { return null; } finally { clearTimeout(timer); }
+  }
+  // Secilen kelimeleri cevirtir ve telefondaki listeye ekler. Kac kelime eklendigini doner.
+  async function guestAdd(words, lines, title) {
+    const d = await anonPost("/translate-words", { words: words.slice(0, OWN_PICK), src: S.src, dst: S.dst, gen: 0, lookup_only: false, sentence: "", episode: "", thumb: "" });
+    const res = (d && d.results) || {}, ctx = lines ? contextsFor(words, lines) : {}, list = ownLoad(), have = new Set(list.map((x) => x.w));
+    let n = 0;
+    for (const w of words) {
+      const tr = typeof res[w] === "string" ? res[w].trim() : "";
+      if (!tr || have.has(w)) continue;
+      list.unshift({ w: w, t: tr.slice(0, 80), s: (ctx[w] || "").slice(0, 140), ep: String(title || "").slice(0, 80) }); have.add(w); n++;
+    }
+    if (n) ownSave(list);
+    return n;
+  }
+  // Hesap acilinca: telefondaki kendi kelimeleri hesaba tasinir (ayni uc, bu kez oturumla), cumleleri telefonda kalir.
+  async function ownTransfer() {
+    const list = ownLoad();
+    if (!S.key || !list.length) return 0;
+    const byEp = {};
+    for (const x of list) (byEp[x.ep || ""] = byEp[x.ep || ""] || []).push(x.w);
+    try {
+      for (const ep of Object.keys(byEp)) {
+        for (let i = 0; i < byEp[ep].length; i += 30) {
+          await api("/translate-words", { timeout: 45000, body: { words: byEp[ep].slice(i, i + 30), src: S.src, dst: S.dst, gen: 0, lookup_only: false, sentence: "", episode: ep, thumb: "" } });
+        }
+      }
+    } catch (e) { return 0; }                 // tasinamadiysa liste telefonda kalir, sonraki giriste yeniden denenir
+    const ctx = {}; for (const x of list) if (x.s) ctx[x.w] = x.s;
+    ctxSave(S.src, ctx); store.del(ownKey());
+    S.vocab = S.vocabRaw = S.videos = S.home = null;
+    return list.length;
+  }
   function demoApi(path, opt) {
     const p = path.split("?")[0], body = opt.body, st = demoState();
-    const deck = CVDEMO.words(S.src, S.dst, t("demoPack")).filter((x) => !st.known.includes(x.tr));
+    const own = ownLoad().map((x) => ({ tr: x.w, eng: x.t, episode: x.ep || "", sentence: x.s || "" })), mine = new Set(own.map((x) => x.tr));
+    const deck = own.concat(CVDEMO.words(S.src, S.dst, t("demoPack")).filter((x) => !mine.has(x.tr))).filter((x) => !st.known.includes(x.tr));      // once kendi kelimeleri
     const save = () => store.set("demo", JSON.stringify(st));
     if (p === "/api/ext/home") return { username: t("guestName"), level: 1 + Math.floor(st.xp / 200), xp: st.xp, xp_into: st.xp % 200, xp_level: 200, xp_today: st.today,
       streak: st.today > 0 ? 1 : 0, wins: 0, words: deck.length, pair_words: deck.length, due: st.today > 0 ? 0 : Math.min(10, deck.length), new: 0,
@@ -329,7 +383,10 @@
     if (p === "/api/videos") return deck.length ? [{ episode: t("demoPack"), count: deck.length, last: "", thumb: "" }] : [];
     if (p === "/api/packs") return { packs: [] };
     if (p === "/api/leagues" && !body) return [];
-    if (p === "/api/srs/session") return { due: deck.length, words: shuffle(deck.slice()).slice(0, 10).map((x) => ({ tr: x.tr, eng: x.eng })) };
+    if (p === "/api/srs/session") {            // once misafirin kendi kelimeleri, sonra deneme destesi
+      const first = shuffle(deck.filter((x) => mine.has(x.tr))), rest = shuffle(deck.filter((x) => !mine.has(x.tr)));
+      return { due: deck.length, words: first.concat(rest).slice(0, 10).map((x) => ({ tr: x.tr, eng: x.eng })) };
+    }
     if (p === "/api/srs/report") {
       let xp = 0;
       for (const it of (body && body.items) || []) { if (it && it.ok) { xp += 10; st.ok[it.w] = (st.ok[it.w] || 0) + 1; } }
@@ -405,7 +462,7 @@
   }
   function addMode(form) { say($("shareNote"), ""); $("addForm").hidden = !form; $("addPick").hidden = form; $("v-add").classList.toggle("form", form); main.scrollTop = 0; }
   function go(id, push) {
-    if (S.guest && (id === "v-add" || id === "v-duel" || id === "v-leagues")) return askAccount();
+    if (S.guest && (id === "v-duel" || id === "v-leagues")) return askAccount();
     showView(id, push);
     if (id === "v-home") loadHome();
     else if (id === "v-words") showWords();
@@ -445,6 +502,7 @@
     if (S.guest) { S.guest = false; store.del("guest"); store.del("demo"); S.home = S.daily = S.puzzle = S.videos = S.vocab = S.vocabRaw = null; }
     $("aPass").value = ""; $("aCode").value = "";
     showAuthStep("form"); enterApp();
+    ownTransfer().then(function (n) { if (n) { toast(t("ownMoved", n)); if (curView === "v-home") loadHome(); } });
   }
   function endSession() {
     if (sock) duelClose();
@@ -659,8 +717,10 @@
   }
   // Ana sayfadaki kare: kullanicinin kendi listesinden, kelimenin gectigi gercek bir cumle. Gun icinde ayni kalir.
   // Cumlesi olan kelime yoksa null doner (uydurma cumle gosterilmez).
-  function heroScene(raw, day) {
-    const list = (raw || []).filter((x) => x.s && wordRe(x.w).test(x.s));
+  // prefer verilirse (misafirde: deneme destesi disindakiler) once onlar arasindan secilir: kullanicinin kendi getirdigi one gecer.
+  function heroScene(raw, day, prefer) {
+    const all = (raw || []).filter((x) => x.s && wordRe(x.w).test(x.s)), mine = prefer ? all.filter(prefer) : [];
+    const list = mine.length ? mine : all;
     if (!list.length) return null;
     let n = 0; for (const ch of String(day)) n = (n * 31 + ch.charCodeAt(0)) % 100003;
     const x = list[n % list.length];
@@ -675,7 +735,7 @@
     // film karesi: su an yapilacak en anlamli is. Kart tekrarinda altyazi listendeki kelimelerden ornek gosterir.
     $("hero").classList.toggle("done", !hero);
     $("heroT").textContent = hero ? hero.title : t("hDoneT");
-    const sub = $("heroS"), list = S.vocab || [], scene = hero && hero.id === "cards" ? heroScene(S.vocabRaw, dayKey()) : null; sub.textContent = "";
+    const sub = $("heroS"), list = S.vocab || [], scene = hero && hero.id === "cards" ? heroScene(S.vocabRaw, dayKey(), S.guest ? (x) => x.ep !== t("demoPack") : null) : null; sub.textContent = "";
     $("heroNo").textContent = scene ? scene.ep : hero ? hero.no || "" : "";
     if (scene) subtitleInto(sub, scene.s, scene.w);
     else if (hero && hero.id === "cards" && list.length >= 4) {
@@ -830,15 +890,15 @@
   let pendingShare = null;       // hesabi olmayan kullanicida, giris yapilana kadar bekleyen paylasim
   function shareOpen(sh) {
     if (!sh || sh.empty) return false;
-    if (!S.key && sh.linkOnly) { toast(t("shareLink")); return false; }       // metin yok: bekletilecek bir sey de yok, yalnizca nedenini soyle
-    if (!S.key) { pendingShare = sh; askAccount(); say($("aMsg"), t("shareNeedAcc"), "ok"); return false; }
+    if (!S.key && !S.guest && sh.linkOnly) { toast(t("shareLink")); return false; }       // metin yok: bekletilecek bir sey de yok, yalnizca nedenini soyle
+    if (!S.key && !S.guest) { pendingShare = sh; askAccount(); say($("aMsg"), t("shareNeedAcc"), "ok"); return false; }      // uygulamaya hic girilmemis: once giris ya da "hesap acmadan dene"
     pendingShare = null;
     go("v-add"); addMode(true);
     $("text").value = sh.text; $("srcTitle").value = sh.title; $("plan").hidden = true;
     say($("msg"), ""); say($("shareNote"), t(sh.linkOnly ? "shareLink" : sh.photo ? "ocrReady" : "shareReady"), sh.linkOnly ? "" : "ok");      // not formun ustunde: kutunun neden bos ya da dolu oldugu hemen gorunsun
     return true;
   }
-  function sharePending() { if (pendingShare && S.key) shareOpen(pendingShare); }
+  function sharePending() { if (pendingShare && (S.key || S.guest)) shareOpen(pendingShare); }
   async function shareTake() {
     if (!isNative()) return;
     try {
@@ -893,7 +953,9 @@
       if (!words.length) say(msg, t("eNoWords"), "bad");
       else {
         say(msg, t("planning"));
-        const p = await api("/api/import/plan", { body: { src: S.src, dst: S.dst, words: words, n: Number($("count").value) } });  // 2) yeni kelimeleri sunucu secer
+        const p = S.guest ? guestPlan(words, ownLoad().map((x) => x.w), Number($("count").value))        // misafir: secim telefonda, sunucuya bir sey gitmez
+          : await api("/api/import/plan", { body: { src: S.src, dst: S.dst, words: words, n: Number($("count").value) } });  // 2) yeni kelimeleri sunucu secer
+        if (S.guest && p.full) { say(msg, t("guestMax", OWN_MAX), "bad"); $("go").disabled = false; return; }
         const day = new Date().toLocaleDateString(S.ui === "tr" ? "tr-TR" : "en-GB", { day: "numeric", month: "short" });
         say(msg, ""); showPlan({ title: ($("srcTitle").value.trim() || t("myText") + " · " + day).slice(0, 80), thumb: "", auto: false, lines: lines }, p);
       }
@@ -949,6 +1011,16 @@
     $("addBtn").disabled = true; $("addBar").hidden = false; $("addFill").style.width = "0";
     document.querySelectorAll("#planWords .chip").forEach((c) => { c.disabled = true; });
     try {
+      if (S.guest) {             // misafir: secilen kelimeler adsiz cevrilir, liste telefonda kalir
+        say($("addMsg"), t("adding", 0, total));
+        const n = await guestAdd(words, plan.lines, plan.title);
+        if (!n) throw new Error(t("guestNoTr"));
+        S.vocab = S.vocabRaw = S.videos = S.home = null; setFlag("added");
+        $("addFill").style.width = "100%";
+        say($("addMsg"), t("added", n), "ok"); confetti(60); buzz(true);
+        $("addBtn").textContent = t("seeWords"); $("addBtn").dataset.done = "1"; $("addBtn").disabled = false;
+        return;
+      }
       for (let i = 0; i < total; i += 30) {
         say($("addMsg"), t("adding", done, total));
         await api("/translate-words", { timeout: 45000, body: { words: words.slice(i, i + 30), src: S.src, dst: S.dst, gen: 0,
@@ -1759,7 +1831,7 @@
     if ($("oSrc").value === $("oDst").value) return say($("oMsg"), t("eSame"), "bad");
     setPair($("oSrc").value, $("oDst").value);
     if (S.guest) fitDemoPair(true);
-    if (pendingShare && S.key) { store.set("how", "1"); return sharePending(); }      // paylasimla gelen yeni kullanici: dogrudan metnine
+    if (pendingShare && (S.key || S.guest)) { store.set("how", "1"); return sharePending(); }      // paylasimla gelen yeni kullanici: dogrudan metnine
     if (store.get("how") === null) {          // ilk kez: soru sormadan dogrudan ilk kelime karti (soz, bir kelime bilince kanitlanir)
       store.set("how", "1"); try { history.replaceState({ v: "v-home" }, ""); } catch (e) {}
       return startFlow();

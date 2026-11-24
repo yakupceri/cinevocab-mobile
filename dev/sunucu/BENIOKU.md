@@ -26,8 +26,9 @@ PYTHONDONTWRITEBYTECODE=1 dev/.venv/bin/python -m pytest dev/tests/py -q -p no:c
 ```
 Yama 25 Kasım 2026'da `cinevocab-app` `1b7d187` üzerine `git apply --check` ile denendi (temiz uygulanıyor); gerçekten uygulanmadı. Push, siteyi canlıda yeniden yayınlar.
 
-## Karar verilmesi gereken
-**400 doğru sayı mı?** Bilmiyorum. Eklentiyi hesapsız kullanan biri bir film boyunca çok sayıda yeni kelime gönderebilir. Admin panelindeki günlük `anon_calls` ve kelime sayılarına bakıp sınırı ona göre seç; emin değilsen yüksek başla (ör. 2000) ve izle.
+## Karar (25 Kasım 2026, proje sahibi)
+Sınır **400** (yamadaki varsayılan; ayrıca ortam değişkeni gerekmez). Yamayı sunucu reposundaki oturum uygular; mobil repodan oraya yazılmaz.
+Bilinen risk: eklentiyi hesapsız kullanan biri bir film boyunca 400 yeni kelimeyi aşarsa o gün yeni kelimeleri çevrilmez (hazır kelimeler dönmeye devam eder). Yayından sonra admin panelindeki hesapsız kullanım sayılarına bak; şikayet gelirse `ANON_NEW_WORDS_DAY` ile yükselt.
 
 ## Öbür oturuma verilecek istek (kopyala-yapıştır)
-> `~/cinevocab-mobile/dev/sunucu/BENIOKU.md` dosyasını oku ve oradaki yamayı bu repoda uygula: `anonquota.py`'yi köke, testini `dev/tests/py/` altına kopyala, `8-hesapsiz-kota.patch`'i `git apply --check` ile deneyip uygula, testleri çalıştır. Admin panelindeki hesapsız kullanım sayılarına bakıp `ANON_NEW_WORDS_DAY` için bir değer öner. Push etmeden önce bana göster.
+> `~/cinevocab-mobile/dev/sunucu/BENIOKU.md` dosyasını oku ve oradaki yamayı bu repoda uygula: `anonquota.py`'yi köke, testini `dev/tests/py/` altına kopyala, `8-hesapsiz-kota.patch`'i `git apply --check` ile deneyip uygula, testleri çalıştır. Sınır 400 olarak kararlaştırıldı (yamadaki varsayılan); değiştirme. Push etmeden önce bana göster.

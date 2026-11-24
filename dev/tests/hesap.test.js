@@ -515,3 +515,15 @@ test("kelime akisi: kartlarla ayni yon (saga bildim, sola tekrar)", () => {
   const js = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "app.js"), "utf8");
   assert.match(js, /flowAnswer\(F\.dy > 0\)/); assert.match(js, /cardAnswer\(C\.dx > 0\)/);
 });
+
+// Puan ve seviye karti Ben ekraninda cizilir.
+test("ilerleme karti: puan hedefi, kalan ve seviye dogru yazilir; hedef dolunca 'tamam'", () => {
+  const n = {}, sinif = {}, dug = (id) => (n[id] = n[id] || { textContent: "", style: {} });
+  const c = yukle(["renderMeter"], { S: { goal: 50 }, $: dug, t: (k, a, b) => k + ":" + [a, b].filter((x) => x !== undefined).join(","),
+    document: { querySelector: () => ({ classList: { toggle: (k, v) => { sinif[k] = v; } } }) } });
+  c.renderMeter({ xp_today: 30, level: 2, xp_level: 200, xp_into: 80 });
+  assert.equal(n.goalNum.textContent, "goalNum:30,50"); assert.equal(n.goalSub.textContent, "goalLeft:20"); assert.equal(n.goalFill.style.width, "60%");
+  assert.equal(n.lvlName.textContent, "lvlName:2"); assert.equal(n.lvlLeft.textContent, "lvlLeft:120,3"); assert.equal(n.lvlFill.style.width, "40%"); assert.equal(sinif.done, false);
+  c.renderMeter({ xp_today: 90, level: 2, xp_level: 200, xp_into: 80 });
+  assert.equal(n.goalSub.textContent, "goalDone:"); assert.equal(n.goalFill.style.width, "100%"); assert.equal(sinif.done, true);
+});

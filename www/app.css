@@ -264,7 +264,7 @@ h2.sec.grp:first-of-type { margin-top: 14px; }
 .big-marks { display: flex; justify-content: center; margin-top: 12px; gap: 6px; } .big-marks i { width: 26px; height: 26px; border-radius: 4px; } .big-marks:empty { display: none; }
 .slots, .tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
 .slots { margin-top: 4vh; } .tiles { margin-top: 4vh; min-height: 58px; }
-.slot, .tilebtn { flex: none; width: min(46px, calc((100vw - 84px) / 8)); height: 54px; padding: 0; border-radius: var(--r); font: 800 28px/1 var(--disp); text-align: center; }
+.slot, .tilebtn { flex: none; width: 44px;   /* 44 px dokunma hedefi; uzun kelime iki satira iner */ height: 54px; padding: 0; border-radius: var(--r); font: 800 28px/1 var(--disp); text-align: center; }
 .slot { border: 1px dashed var(--dim); background: none; }
 .slot.full { border-style: solid; border-color: var(--ink); background: var(--surf); }
 .slot.lock { background: var(--sun); border-color: var(--sun); color: var(--on-sun); }

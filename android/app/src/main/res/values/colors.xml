@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Uygulama acilirken web gorunumu cizilene kadar gorunen zemin: "gece seansi" koyusu (www/app.css icindeki bg rengiyle ayni) -->
+    <color name="cv_bg">#170E12</color>
+</resources>

@@ -17,3 +17,6 @@ dev/out/
 .claude/settings.local.json
 .claude/ofis/durum.json*
 .claude/ofis/.durum.lock
+
+# ucuncu taraf skill'ler: yalnizca diskte (kurulum: .claude/THIRD_PARTY.md)
+.claude/skills/

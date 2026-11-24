@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CineVocab ofisi</title>
+<style>
+/* Yukarıdan bakışlı ofis. Açık ve koyu tema; sistem temasını izler, sağ üstteki düğme seçimi saklar. */
+:root{--bg:#DDD6C6;--floor:#ECE6D8;--tile:rgba(60,45,20,.07);--wallc:#3A342B;--panel:#FBF8F1;--line:#CFC6B2;--ink:#221F1A;--dim:#6A6253;
+  --desk:#C9995F;--deskEdge:#A67A45;--chair:#4A4F5C;--paper:#FFFDF6;
+  --work:#1F5FD0;--done:#1F7A46;--wait:#9A5B00;--idle:#7A7468;--unk:#8B8579;--sun:#E0B000;color-scheme:light}
+:root[data-theme="dark"]{--bg:#121014;--floor:#1E1B21;--tile:rgba(255,255,255,.04);--wallc:#0A090B;--panel:#1A181D;--line:#37323C;--ink:#EFEADD;--dim:#A8A196;
+  --desk:#6E5238;--deskEdge:#523C28;--chair:#2E313A;--paper:#2A262E;
+  --work:#8AB0FF;--done:#72CC93;--wait:#E7AE55;--idle:#9B958A;--unk:#8E887D;--sun:#FFD21E;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121014;--floor:#1E1B21;--tile:rgba(255,255,255,.04);--wallc:#0A090B;--panel:#1A181D;--line:#37323C;--ink:#EFEADD;--dim:#A8A196;
+  --desk:#6E5238;--deskEdge:#523C28;--chair:#2E313A;--paper:#2A262E;
+  --work:#8AB0FF;--done:#72CC93;--wait:#E7AE55;--idle:#9B958A;--unk:#8E887D;--sun:#FFD21E;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  padding:16px max(16px,env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.wrap{max-width:900px;margin:0 auto}
+header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+h1{flex:1;min-width:9ch;margin:0;font-size:22px;letter-spacing:-.02em}
+.sig{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
+.sig.bad{color:var(--wait);font-weight:600}
+button.tg{min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:99px;background:var(--panel);color:var(--ink);font:inherit;font-size:14px;cursor:pointer}
+button.tg:focus-visible{outline:2px solid var(--work);outline-offset:2px}
+
+/* oda: kalın duvar, karo zemin, altta kapı boşluğu */
+.room{position:relative;padding:18px;border:10px solid var(--wallc);border-radius:10px;
+  background:repeating-linear-gradient(90deg,transparent 0 47px,var(--tile) 47px 48px),repeating-linear-gradient(0deg,transparent 0 47px,var(--tile) 47px 48px),var(--floor)}
+.room::after{content:"";position:absolute;left:50%;bottom:-10px;width:86px;height:10px;margin-left:-43px;background:var(--floor)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cell{position:relative;min-width:0;padding:10px 10px 12px;border-radius:12px;text-align:center}
+.cell.ana{grid-column:2;grid-row:2}
+/* masa (üstten): tabla + üstünde simge kâğıdı, altında sandalye */
+.desk{position:relative;height:74px;margin:0 auto;max-width:170px;border-radius:9px;background:var(--desk);box-shadow:inset 0 -5px 0 var(--deskEdge);display:grid;place-items:center}
+.cell.ana .desk{height:92px;max-width:210px;border-radius:46px}
+.pad{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;background:var(--paper);color:var(--ink);transition:box-shadow .3s,background .3s}
+.pad svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chair{width:34px;height:20px;margin:5px auto 0;border-radius:6px 6px 14px 14px;background:var(--chair);opacity:.55;transition:opacity .3s,transform .3s}
+.nm{margin:8px 0 0;font-weight:700;font-size:15px;letter-spacing:-.01em;overflow-wrap:anywhere}
+.rl{margin:1px 0 0;font-size:12.5px;color:var(--dim)}
+.st{display:inline-flex;align-items:center;gap:6px;margin-top:7px;padding:3px 10px;border-radius:99px;background:var(--panel);border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--c)}
+.st i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.last{margin:6px 0 0;font-size:12.5px;line-height:1.35;color:var(--dim);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.last:empty{display:none}
+.cell[data-s="calisiyor"]{--c:var(--work)} .cell[data-s="bitirdi"]{--c:var(--done)} .cell[data-s="bekliyor"]{--c:var(--wait)} .cell[data-s="bosta"]{--c:var(--idle)} .cell[data-s="bilinmiyor"]{--c:var(--unk)}
+/* çalışan masa canlanır: sandalyede biri var, kâğıt parlar */
+.cell[data-s="calisiyor"] .chair{opacity:1;transform:translateY(-9px)}
+.cell[data-s="calisiyor"] .pad{background:var(--sun);color:#1a1500;animation:glow 1.8s ease-in-out infinite}
+.cell[data-s="bekliyor"] .chair{opacity:1;transform:translateY(-9px)}
+.cell[data-s="bekliyor"] .pad{outline:2px dashed var(--wait);outline-offset:2px}
+.cell[data-s="bitirdi"] .pad{box-shadow:0 0 0 2px var(--done)}
+.cell[data-s="bilinmiyor"] .desk{opacity:.6}
+@keyframes glow{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--sun) 30%,transparent)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+h2{margin:22px 0 8px;font-size:16px;letter-spacing:-.01em}
+.feed{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--panel);max-height:300px;overflow:auto}
+.feed li{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:8px 12px;font-size:13.5px;border-top:1px solid var(--line)}
+.feed li:first-child{border-top:0}
+.feed time{color:var(--dim);font-variant-numeric:tabular-nums}
+.feed b{font-weight:600}
+.empty{padding:14px;color:var(--dim);font-size:13.5px}
+.foot{margin-top:14px;font-size:12.5px;color:var(--dim);max-width:70ch}
+
+@media (max-width:620px){
+  .room{padding:10px;border-width:8px}
+  .grid{grid-template-columns:1fr 1fr;gap:8px}
+  .cell.ana{grid-column:1/-1;grid-row:1}
+  .cell{padding:8px 4px 10px}
+  .desk{height:62px;max-width:130px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>CineVocab ofisi</h1>
+    <span class="sig" id="sig">bağlanıyor</span>
+    <button class="tg" id="tg" type="button">Tema</button>
+  </header>
+  <div class="room"><div class="grid" id="grid"></div></div>
+  <h2>Canlı akış</h2>
+  <ul class="feed" id="feed"></ul>
+  <p class="foot">Durumlar Claude Code hook'larının yazdığı dosyadan okunur, tahmin edilmez. Çalışıyor görünen bir masadan 3 dakika sinyal gelmezse "bilinmiyor" olur. Sayfa yalnızca bu bilgisayarda açılır (127.0.0.1).</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  var POLL = 2500, STALE = 180;
+  var NS = "http://www.w3.org/2000/svg";
+  var ICONS = {
+    ticket: ["M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z", "M14 7v10"],
+    steps: ["M4 18h5v-5h5V8h6"], pen: ["M4 20l4-1 11-11-3-3L5 16z", "M14 7l3 3"],
+    eye: ["M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z", "M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"],
+    check: ["M5 4h14v16H5z", "M8 12l3 3 5-6"], calc: ["M6 3h12v18H6z", "M9 7h6", "M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"],
+    box: ["M3 8l9-5 9 5v8l-9 5-9-5z", "M3 8l9 5 9-5", "M12 13v8"], dots: ["M6 12h.01M12 12h.01M18 12h.01"]
+  };
+  var LABEL = { calisiyor: "çalışıyor", bitirdi: "bitti", bekliyor: "izin bekliyor", bosta: "boşta", bilinmiyor: "bilinmiyor" };
+  var EVENT = { SessionStart: "oturum başladı", UserPromptSubmit: "yeni istek geldi", PreToolUse: "araç kullanıyor", PostToolUse: "araç bitti",
+    PostToolUseFailure: "araç hata verdi", PermissionRequest: "izin istedi", SubagentStart: "işe başladı", SubagentStop: "işi bitirdi",
+    Notification: "bildirim", Stop: "yanıtını bitirdi", SessionEnd: "oturum kapandı" };
+  var $ = function (id) { return document.getElementById(id); };
+  var desks = [], cells = {}, names = {};
+
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function icon(name) {
+    var s = document.createElementNS(NS, "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("aria-hidden", "true");
+    (ICONS[name] || ICONS.dots).forEach(function (d) { var p = document.createElementNS(NS, "path"); p.setAttribute("d", d); s.appendChild(p); });
+    return s;
+  }
+  function clock(t) { var d = new Date(t * 1000), p = function (n) { return String(n).padStart(2, "0"); }; return p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds()); }
+  function ago(sec) { return sec < 60 ? Math.max(0, Math.round(sec)) + " sn önce" : sec < 3600 ? Math.round(sec / 60) + " dk önce" : Math.round(sec / 3600) + " sa önce"; }
+
+  function build(list) {
+    desks = list; var g = $("grid"); g.textContent = "";
+    list.forEach(function (d) {
+      names[d.id] = d.name;
+      var c = el("div", "cell" + (d.id === "ana" ? " ana" : "")); c.dataset.s = "bilinmiyor";
+      var desk = el("div", "desk"), pad = el("span", "pad"); pad.appendChild(icon(d.icon)); desk.appendChild(pad);
+      var st = el("span", "st"); st.appendChild(el("i")); var stText = el("span", "", LABEL.bilinmiyor); st.appendChild(stText);
+      var last = el("p", "last");
+      c.append(desk, el("div", "chair"), el("p", "nm", d.name), el("p", "rl", d.role), st, last);
+      g.appendChild(c); cells[d.id] = { root: c, st: stText, last: last };
+    });
+  }
+
+  // Durum dosyasındaki kayıt -> masa. Sinyal eskiyse "çalışıyor" yerine "bilinmiyor" gösterilir.
+  function view(rec, now) {
+    if (!rec || !rec.at) return { s: "bilinmiyor", last: "Henüz sinyal gelmedi" };
+    var s = LABEL[rec.status] ? rec.status : "bilinmiyor", quiet = now - (rec.seen || rec.at);
+    if ((s === "calisiyor" || s === "bekliyor") && quiet > STALE) return { s: "bilinmiyor", last: "Son sinyal " + ago(quiet) + ": " + (rec.last || "") };
+    return { s: s, last: (rec.last || "") + (rec.at ? " (" + ago(now - rec.at) + ")" : "") };
+  }
+  function paint(d) {
+    var now = Date.now() / 1000, known = {};
+    desks.forEach(function (x) { known[x.id] = 1; });
+    var byDesk = {};
+    Object.keys(d.agents || {}).forEach(function (k) {
+      var a = d.agents[k], id = known[a.type] && a.type !== "ana" && a.type !== "diger" ? a.type : "diger";
+      (byDesk[id] = byDesk[id] || []).push(a);
+    });
+    desks.forEach(function (x) {
+      var rec = null, extra = "";
+      if (x.id === "ana") rec = (d.desks || {}).ana;
+      else if (byDesk[x.id]) {
+        var arr = byDesk[x.id].slice().sort(function (a, b) { return (b.at || 0) - (a.at || 0); });
+        var live = arr.filter(function (a) { return a.status === "calisiyor" && now - (a.seen || a.at || 0) <= STALE; });
+        rec = live[0] || arr[0];
+        if (live.length > 1) extra = live.length + " ajan çalışıyor. ";
+        if (x.id === "diger" && rec.type) extra += rec.type + ": ";
+      }
+      var v = view(rec, now), c = cells[x.id];
+      c.root.dataset.s = v.s; c.st.textContent = LABEL[v.s]; c.last.textContent = extra + v.last;
+    });
+    var f = $("feed"); f.textContent = "";
+    var log = (d.log || []).slice(-30).reverse();
+    if (!log.length) f.appendChild(el("li", "empty", "Henüz olay yok. Claude Code bu projede çalışınca burada görünür."));
+    log.forEach(function (e) {
+      var li = el("li"), t = el("time", "", clock(e.t)), s = el("span");
+      s.appendChild(el("b", "", e.who === "ana" ? "Ana oturum" : (names[e.who] || e.who)));
+      s.appendChild(document.createTextNode(" " + (EVENT[e.e] || e.e) + (e.tool && /ToolUse|Permission/.test(e.e) ? ": " + e.tool : "")));
+      li.append(t, s); f.appendChild(li);
+    });
+    var q = now - (d.updated || 0);
+    $("sig").textContent = d.updated ? "son sinyal " + ago(q) : "henüz sinyal yok";
+    $("sig").className = "sig" + (!d.updated || q > STALE ? " bad" : "");
+  }
+  function tick() {
+    fetch("durum.json?" + Date.now(), { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(paint).catch(function () { paint({}); $("sig").textContent = "durum dosyası okunamadı"; $("sig").className = "sig bad"; });
+  }
+
+  var saved = null; try { saved = localStorage.getItem("cv-ofis-tema"); } catch (e) {}
+  if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+  $("tg").addEventListener("click", function () {
+    var cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    var next = cur === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("cv-ofis-tema", next); } catch (e) {}
+  });
+  var forced = new URLSearchParams(location.search).get("tema");            // ekran görüntüsü için: ?tema=dark
+  if (forced === "light" || forced === "dark") document.documentElement.dataset.theme = forced;
+
+  fetch("agents.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (j) { build(j.desks || []); tick(); setInterval(tick, POLL); })
+    .catch(function () { $("sig").textContent = "agents.json okunamadı"; $("sig").className = "sig bad"; });
+})();
+</script>
+</body>
+</html>

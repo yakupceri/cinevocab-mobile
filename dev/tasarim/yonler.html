@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CineVocab: iki tasarım yönü</title>
+<!-- Yalnızca taslak. Uygulamaya geçerken yazı tipleri www/fonts/ içine yerel konur (ikisi de OFL lisanslı). -->
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Instrument+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#8a8f98;font:16px/1.4 system-ui,sans-serif;padding:24px}
+body.one{padding:0;background:none}
+.sheet{display:grid;grid-template-columns:repeat(4,390px);gap:24px}
+.sheet h3{grid-column:1/-1;font:700 26px/1.2 system-ui;color:#fff;margin-top:8px}
+.sheet h3 small{font-weight:400;font-size:16px;opacity:.85;margin-left:10px}
+body.one .sheet{display:block} body.one .sheet h3, body.one .ph:not(.show){display:none}
+.ph{width:390px;height:844px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.ph main{flex:1;min-height:0;padding:0 20px;display:flex;flex-direction:column}
+button{font:inherit;color:inherit;border:0;background:none}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sprite{position:absolute;width:0;height:0}
+.grow{flex:1}
+
+/* ============ A: Gece Seansı ============ */
+.A{--bg:#170E12;--surf:#25161C;--surf2:#321E26;--cream:#F3E9D2;--dim:#AC9C92;--sun:#FFD21E;--red:#C2283A;--green:#7BD39A;--line:rgba(243,233,210,.16);
+  background:var(--bg);color:var(--cream);font-family:"Instrument Sans",system-ui,sans-serif}
+.A .top{display:flex;align-items:center;gap:10px;padding:52px 20px 10px}
+.cv{position:relative;display:grid;place-items:center;width:44px;height:30px;transform:rotate(-6deg);font-weight:800;font-size:16px;letter-spacing:-.02em}
+.cv::before{content:"";position:absolute;inset:0;border-radius:4px;
+  -webkit-mask:radial-gradient(circle 5px at 0 50%,transparent 4.5px,#000 5px) left/51% 100% no-repeat,radial-gradient(circle 5px at 100% 50%,transparent 4.5px,#000 5px) right/51% 100% no-repeat}
+.cv span{position:relative}
+.A .cv::before{background:var(--sun)} .A .cv{color:#170E12;font-family:"Big Shoulders Display"}
+.A .top b{font:800 24px/1 "Big Shoulders Display";letter-spacing:.01em}
+.A .seri{margin-left:auto;font-size:14px;color:var(--dim)} .A .seri b{font:inherit;color:var(--cream);font-weight:600}
+.A h1{font:800 46px/.95 "Big Shoulders Display";letter-spacing:.005em;margin:14px 0 14px}
+/* film karesi: 2.39:1, altta altyazi */
+.A .frame{position:relative;aspect-ratio:2.39/1;border-radius:6px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding:0 18px 16px;
+  background:radial-gradient(120% 90% at 78% 20%,#5b2330 0,#2a1219 45%,#0c0608 100%)}
+.A .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.6))}
+.A .frame.tall{aspect-ratio:1.6/1}
+.A .sub{position:relative;z-index:1;text-align:center;font-weight:700;font-size:19px;line-height:1.25;color:#fff;text-shadow:0 1px 0 #000,0 0 8px rgba(0,0,0,.9)}
+.A .sub mark{background:none;color:var(--sun)}
+.A .tc{position:absolute;z-index:1;top:10px;left:12px;font-size:12px;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
+.A .cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:14px;border-radius:6px;background:var(--sun);color:#170E12;font:800 24px/1 "Big Shoulders Display";letter-spacing:.02em}
+.A .mini{margin-top:8px;text-align:center;font-size:13px;color:var(--dim)}
+/* hafta: film seridi */
+.A .strip{margin-top:22px;padding:11px 6px;background:#0a0507;border-radius:4px;display:grid;grid-template-columns:repeat(7,1fr);gap:5px;position:relative}
+.A .strip::before,.A .strip::after{content:"";position:absolute;left:6px;right:6px;height:5px;background:repeating-linear-gradient(90deg,var(--surf2) 0 7px,transparent 7px 14px)}
+.A .strip::before{top:3px}.A .strip::after{bottom:3px}
+.A .strip div{height:52px;border-radius:2px;background:var(--surf);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--dim);gap:1px}
+.A .strip div b{font:800 20px/1 "Big Shoulders Display";color:var(--cream)}
+.A .strip .on{background:var(--cream);color:#6b5b52}.A .strip .on b{color:#170E12}
+.A .strip .now{background:none;outline:2px solid var(--sun);outline-offset:-2px;color:var(--sun)}
+.A .cap{margin-top:8px;font-size:13px;color:var(--dim)}
+.A .stat{display:flex;align-items:baseline;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.A .stat b{font:800 44px/1 "Big Shoulders Display";color:var(--sun)}
+.A .stat span{font-size:15px}.A .stat em{font-style:normal;color:var(--dim);font-size:13px;margin-left:auto}
+.A .list{list-style:none;padding:0;margin-top:12px}
+.A .list li{display:flex;align-items:center;gap:12px;min-height:50px;border-top:1px solid var(--line);font-size:16px;font-weight:500}
+.A .list time{width:54px;font:800 19px/1 "Big Shoulders Display";color:var(--dim)}
+.A .list em{margin-left:auto;font-style:normal;font-size:13px;color:var(--dim)}
+.A nav{display:grid;grid-template-columns:repeat(5,1fr);padding:6px 8px 26px;background:#0f080b;border-top:1px solid var(--line)}
+.A nav button{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:48px;justify-content:center;font-size:11px;color:var(--dim)}
+.A nav .cur{color:var(--sun)}
+.A nav .add{align-self:center;justify-self:center;width:48px;height:48px;min-height:48px;border-radius:6px;background:var(--cream);color:#170E12}
+/* oyna */
+.A .bar{display:flex;align-items:center;gap:12px;padding:52px 20px 14px;font-size:14px;color:var(--dim)}
+.A .x{display:grid;place-items:center;width:44px;height:44px;margin-left:-10px;color:var(--cream)}
+.A .ticks{flex:1;display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
+.A .ticks i{height:6px;border-radius:1px;background:var(--surf2)} .A .ticks .ok{background:var(--green)} .A .ticks .no{background:var(--red)} .A .ticks .cur{background:var(--sun)}
+.A .q{margin:22px 0 14px;font-size:17px;color:var(--dim)} .A .q b{color:var(--cream);font-weight:600}
+.A .opts{display:grid;gap:10px}
+.A .opt{min-height:58px;padding:0 18px;border-radius:6px;background:var(--surf);border:1px solid var(--line);text-align:left;font-size:18px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.A .opt.right{background:var(--green);border-color:var(--green);color:#0d2416;font-weight:700}
+.A .opt.dim{opacity:.45}
+.A .after{margin-top:14px;padding:12px 14px;border-left:3px solid var(--green);background:var(--surf);font-size:14px;line-height:1.45;color:var(--dim)} .A .after b{color:var(--cream)}
+.A .run{margin:auto 0 30px;text-align:center;font-size:14px;color:var(--dim)} .A .run b{color:var(--sun)}
+/* kelime karti */
+.A .card{position:relative;margin-top:6px;flex:1;max-height:520px;border-radius:10px;background:var(--cream);color:#170E12;padding:26px 24px;display:flex;flex-direction:column;transform:rotate(-1.2deg);box-shadow:14px 10px 0 -4px var(--surf2)}
+.A .card .box{display:flex;gap:4px;align-items:center;font-size:13px;color:#6b5b52}
+.A .card .box i{width:18px;height:6px;background:#d9cdb2;border-radius:1px}.A .card .box i.f{background:#170E12}
+.A .card .box span{margin-left:8px}
+.A .card .w{margin-top:46px;font:800 68px/.9 "Big Shoulders Display";letter-spacing:.005em}
+.A .card .ipa{margin-top:10px;display:flex;align-items:center;gap:10px;font-size:15px;color:#6b5b52}
+.A .say{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#170E12;color:var(--sun)}
+.A .card .tr{margin-top:26px;padding-top:20px;border-top:2px dashed #b9ab8d;font-size:30px;font-weight:700;line-height:1.1}
+.A .card .ex{margin-top:auto;padding:12px 14px;background:#170E12;border-radius:4px;color:#fff;font-size:15px;font-weight:600;text-align:center;line-height:1.35} .A .card .ex mark{background:none;color:var(--sun)}
+.A .card .src{margin-top:8px;font-size:12px;color:#6b5b52;text-align:center}
+.A .swipe{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 34px}
+.A .swipe button{min-height:56px;border-radius:6px;font-size:16px;font-weight:600;border:1px solid var(--line);background:var(--surf)}
+.A .swipe .y{background:var(--sun);color:#170E12;border-color:var(--sun)}
+.A .hint{text-align:center;font-size:13px;color:var(--dim);margin-top:18px}
+/* sonuc: jenerik */
+.A .credits{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:70px}
+.A .credits .big{font:800 120px/.85 "Big Shoulders Display";color:var(--sun)}
+.A .credits .of{font-size:16px;color:var(--dim);margin-top:10px}
+.A .roll{width:100%;margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;font-size:16px}
+.A .roll dt{text-align:right;color:var(--dim)} .A .roll dd{text-align:left;font-weight:600}
+.A .roll dd small{display:block;font-weight:400;font-size:13px;color:var(--dim)}
+.A .credits .fin{margin-top:auto;width:100%;padding-bottom:34px}
+.A .ghost{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:8px;font-size:16px;font-weight:600;color:var(--cream)}
+
+/* ============ B: Gişe ============ */
+.B{--bg:#E4EAEC;--ink:#16213F;--paper:#fff;--sun:#FFD21E;--salmon:#FF9C8A;--mint:#A6E3C8;--dim:#57617B;--green:#0E8A55;
+  background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.B .top{display:flex;align-items:center;gap:10px;padding:52px 20px 6px}
+.B .cv::before{background:var(--ink)} .B .cv{color:var(--sun)}
+.B .top b{font-weight:800;font-size:21px;letter-spacing:-.03em}
+.B .seri{margin-left:auto;font-size:14px;font-weight:600;padding:8px 12px;border-radius:99px;background:var(--paper)}
+.B h1{font-weight:800;font-size:34px;line-height:1.02;letter-spacing:-.04em;margin:16px 0 4px}
+.B .lead{font-size:15px;color:var(--dim)}
+/* bilet: govde + kocan, arada delikli cizgi ve centik */
+.B .tk{position:relative;display:grid;grid-template-columns:1fr 92px;margin-top:14px;border-radius:14px;background:var(--c,var(--paper));min-height:86px}
+.B .tk::before,.B .tk::after{content:"";position:absolute;right:83px;width:18px;height:18px;border-radius:50%;background:var(--bg)}
+.B .tk::before{top:-9px}.B .tk::after{bottom:-9px}
+.B .tk .body{padding:16px 16px 16px 18px;min-width:0}
+.B .tk .body b{display:block;font-weight:800;font-size:20px;line-height:1.1;letter-spacing:-.03em}
+.B .tk .body span{display:block;margin-top:4px;font-size:14px;color:rgba(22,33,63,.72)}
+.B .tk .stub{display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:2px dashed rgba(22,33,63,.35);font-size:12px;color:rgba(22,33,63,.72);text-align:center;line-height:1.2}
+.B .tk .stub b{font-weight:800;font-size:28px;line-height:1;color:var(--ink);letter-spacing:-.04em}
+.B .tk.hero{--c:var(--sun);min-height:168px;transform:rotate(-1.5deg);box-shadow:0 10px 0 -4px rgba(22,33,63,.16)}
+.B .tk.hero .body{display:flex;flex-direction:column}
+.B .tk.hero .body b{font-size:30px;line-height:1}
+.B .tk.hero .go{margin-top:auto;align-self:flex-start;min-height:48px;padding:0 20px;border-radius:99px;background:var(--ink);color:var(--sun);font-weight:800;font-size:16px}
+.B .tk.done{background:none;outline:2px dashed rgba(22,33,63,.28);outline-offset:-2px;grid-template-columns:1fr}
+.B .tk.done::before,.B .tk.done::after{display:none}
+.B .tk.done .body b{font-size:17px;color:var(--dim)} .B .tk.done .body span{color:var(--dim)}
+.B .keep{display:flex;gap:14px;align-items:center;margin-top:18px;padding:14px 16px;border-radius:14px;background:var(--paper)}
+.B .keep b{font-weight:800;font-size:40px;letter-spacing:-.05em;line-height:1}
+.B .keep span{font-size:14px;line-height:1.3;color:var(--dim)} .B .keep span strong{display:block;color:var(--ink);font-size:16px}
+.B nav{display:grid;grid-template-columns:repeat(5,1fr);padding:6px 8px 26px;background:var(--paper)}
+.B nav button{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:48px;justify-content:center;font-size:11px;font-weight:600;color:var(--dim)}
+.B nav .cur{color:var(--ink)}
+.B nav .add{align-self:center;justify-self:center;width:50px;height:50px;min-height:50px;border-radius:50%;background:var(--ink);color:var(--sun)}
+/* oyna */
+.B .bar{display:flex;align-items:center;gap:12px;padding:52px 20px 14px;font-size:14px;font-weight:600}
+.B .x{display:grid;place-items:center;width:44px;height:44px;margin-left:-10px;border-radius:50%}
+.B .prog{flex:1;height:10px;border-radius:99px;background:var(--paper);overflow:hidden}.B .prog i{display:block;height:100%;width:40%;background:var(--ink);border-radius:99px}
+.B .scene{margin-top:8px;padding:26px 22px 28px;border-radius:18px;background:var(--ink);color:#fff}
+.B .scene p{font-size:26px;font-weight:600;line-height:1.2;letter-spacing:-.02em} .B .scene mark{background:var(--sun);color:var(--ink);padding:0 6px;border-radius:6px}
+.B .scene small{display:block;margin-top:14px;font-size:13px;color:rgba(255,255,255,.65)}
+.B .q{margin:22px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.03em}
+.B .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.B .opt{min-height:76px;padding:12px;border-radius:14px;background:var(--paper);font-size:18px;font-weight:600;letter-spacing:-.01em}
+.B .opt.right{background:var(--mint);outline:3px solid var(--green);outline-offset:-3px}
+.B .opt.dim{opacity:.5}
+.B .after{margin-top:14px;font-size:14px;line-height:1.45;color:var(--dim)} .B .after b{color:var(--ink)}
+.B .run{margin:auto 0 30px;align-self:center;padding:8px 14px;border-radius:99px;background:var(--paper);font-size:14px;font-weight:600}
+/* kelime karti: dikey bilet */
+.B .vt{position:relative;flex:1;max-height:540px;margin-top:6px;border-radius:20px;background:var(--paper);display:flex;flex-direction:column;transform:rotate(1.3deg);box-shadow:-12px 12px 0 -4px var(--salmon)}
+.B .vt .up{padding:24px 24px 26px;flex:1;display:flex;flex-direction:column}
+.B .vt .lv{align-self:flex-start;font-size:13px;font-weight:600;padding:6px 10px;border-radius:99px;background:var(--bg)}
+.B .vt .w{margin-top:110px;font-weight:800;font-size:54px;line-height:.95;letter-spacing:-.05em}
+.B .vt .ipa{margin-top:12px;display:flex;align-items:center;gap:10px;font-size:15px;color:var(--dim)}
+.B .say{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--sun)}
+.B .vt .tear{position:relative;border-top:2px dashed rgba(22,33,63,.3)}
+.B .vt .tear::before,.B .vt .tear::after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--bg)}
+.B .vt .tear::before{left:-10px}.B .vt .tear::after{right:-10px}
+.B .vt .dn{padding:22px 24px 24px}
+.B .vt .tr{font-weight:800;font-size:30px;letter-spacing:-.03em;color:var(--green)}
+.B .vt .ex{margin-top:10px;font-size:15px;line-height:1.4;color:var(--dim)} .B .vt .ex b{color:var(--ink)}
+.B .swipe{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px 0 34px}
+.B .swipe button{min-height:56px;border-radius:99px;font-size:16px;font-weight:800;background:var(--paper)}
+.B .swipe .y{background:var(--ink);color:var(--sun)}
+.B .hint{text-align:center;font-size:13px;color:var(--dim);margin-top:22px}
+/* sonuc */
+.B .res{flex:1;display:flex;flex-direction:column;padding-top:56px}
+.B .rt{position:relative;border-radius:20px;background:var(--sun);transform:rotate(-2deg);box-shadow:0 12px 0 -4px rgba(22,33,63,.16)}
+.B .rt .up{padding:26px 24px 22px}
+.B .rt .up p{font-size:15px;font-weight:600}
+.B .rt .up p.big{font-weight:800;font-size:104px;line-height:.9;letter-spacing:-.07em;margin-top:6px}
+.B .rt .up p.big small{font-size:34px;letter-spacing:-.03em;opacity:.6}
+.B .rt .tear{position:relative;border-top:2px dashed rgba(22,33,63,.4)}
+.B .rt .tear::before,.B .rt .tear::after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--bg)}
+.B .rt .tear::before{left:-10px}.B .rt .tear::after{right:-10px}
+.B .rt .dn{padding:16px 24px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:13px;line-height:1.25}
+.B .rt .dn b{display:block;font-weight:800;font-size:24px;letter-spacing:-.04em}
+.B .stamp{position:absolute;right:16px;top:14px;width:92px;height:92px;border-radius:50%;border:3px solid var(--green);color:var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(14deg);font-size:12px;font-weight:800;line-height:1.1;text-align:center;background:rgba(255,255,255,.35)}
+.B .stamp b{font-size:32px;line-height:.9;letter-spacing:-.05em}
+.B .learn{margin-top:34px}
+.B .learn h2{font-weight:800;font-size:18px;letter-spacing:-.03em}
+.B .learn ul{list-style:none;padding:0;margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+.B .learn li{padding:8px 12px;border-radius:99px;background:var(--paper);font-size:15px;font-weight:600}
+.B .learn li.again{background:none;outline:2px dashed rgba(22,33,63,.3);outline-offset:-2px;color:var(--dim)}
+.B .fin{margin-top:auto;padding-bottom:34px}
+.B .cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;border-radius:99px;background:var(--ink);color:var(--sun);font-weight:800;font-size:17px}
+.B .ghost{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:6px;font-size:16px;font-weight:600}
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true">
+  <symbol id="home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></symbol>
+  <symbol id="list" viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h9"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+  <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="say" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM17 9a4 4 0 0 1 0 6"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+</svg>
+
+<div class="sheet">
+<h3>A · Gece Seansı <small>koyu salon, kelime altyazıda, sonuç jenerik gibi akar</small></h3>
+
+<!-- A1 ana ekran -->
+<div class="ph A" data-k="a1">
+  <header class="top"><span class="cv"><span>Cv</span></span><b>CineVocab</b><span class="seri"><b>12 gün</b> üst üste</span></header>
+  <main>
+    <h1>Bu akşamki seans</h1>
+    <div class="frame"><span class="tc">12 kelime</span><p class="sub">Bu akşam <mark>reluctant</mark>, <mark>shallow</mark>, <mark>to lean</mark> ve 9 kelime daha.</p></div>
+    <button class="cta">Seansı başlat</button>
+    <p class="mini">Yaklaşık 4 dakika sürer</p>
+    <div class="strip">
+      <div class="on">Pzt<b>6</b></div><div class="on">Sal<b>9</b></div><div class="on">Çar<b>4</b></div><div class="now">Per<b>&nbsp;</b></div><div>Cum</div><div>Cmt</div><div>Paz</div>
+    </div>
+    <p class="cap">Karelerdeki sayı o gün tekrar ettiğin kelime.</p>
+    <div class="stat"><b>148</b><span>kelime kalıcı oldu</span><em>bu hafta 9 yeni</em></div>
+    <ul class="list">
+      <li><time>#41</time>Günün bulmacası<em>5 kelime</em></li>
+      <li><time>1v1</time>Düello kur<em>link paylaş</em></li>
+    </ul>
+  </main>
+  <nav><button class="cur"><svg class="i"><use href="#home"/></svg>Ana</button><button><svg class="i"><use href="#list"/></svg>Kelimeler</button><button class="add" aria-label="Kelime ekle"><svg class="i"><use href="#plus"/></svg></button><button><svg class="i"><use href="#play"/></svg>Oyna</button><button><svg class="i"><use href="#user"/></svg>Ben</button></nav>
+</div>
+
+<!-- A2 oyna -->
+<div class="ph A" data-k="a2">
+  <div class="bar"><button class="x" aria-label="Kapat"><svg class="i"><use href="#x"/></svg></button>
+    <div class="ticks"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="cur"></i><i></i><i></i><i></i><i></i><i></i></div><span>5 / 10</span></div>
+  <main>
+    <div class="frame tall"><p class="sub" style="font-size:23px">She was <mark>reluctant</mark> to open the door.</p></div>
+    <p class="q"><b>reluctant</b> burada ne demek?</p>
+    <div class="opts">
+      <button class="opt dim">heyecanlı</button>
+      <button class="opt right">isteksiz <svg class="i"><use href="#ok"/></svg></button>
+      <button class="opt dim">yorgun</button>
+      <button class="opt dim">meraklı</button>
+    </div>
+    <p class="after"><b>Doğru.</b> 3. kutuya çıktı, bir hafta sonra tekrar soracağım.</p>
+    <p class="run"><b>3</b> doğru üst üste</p>
+  </main>
+</div>
+
+<!-- A3 kelime karti -->
+<div class="ph A" data-k="a3">
+  <div class="bar"><button class="x" aria-label="Kapat"><svg class="i"><use href="#x"/></svg></button><span class="grow"></span><span>7 / 12</span></div>
+  <main>
+    <div class="card">
+      <div class="box"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><span>3. kutu, kalıcı olmasına 2 tekrar</span></div>
+      <p class="w">reluctant</p>
+      <div class="ipa"><button class="say" aria-label="Dinle"><svg class="i"><use href="#say"/></svg></button>/rɪˈlʌk.tənt/</div>
+      <p class="tr">isteksiz, gönülsüz</p>
+      <p class="ex">She was <mark>reluctant</mark> to open the door.</p>
+      <p class="src">Senin eklediğin metinden</p>
+    </div>
+    <p class="hint">Kartı sağa ya da sola kaydırabilirsin</p>
+    <div class="swipe"><button>Tekrar göster</button><button class="y">Bildim</button></div>
+  </main>
+</div>
+
+<!-- A4 sonuc -->
+<div class="ph A" data-k="a4">
+  <main>
+    <div class="credits">
+      <p class="big">8</p>
+      <p class="of">10 kelimeden 8'ini bildin</p>
+      <dl class="roll">
+        <dt>Kalıcı oldu</dt><dd>shallow, to lean<small>artık sorulmayacak</small></dd>
+        <dt>Yarın tekrar</dt><dd>reluctant, grief<small>bugün takıldıkların</small></dd>
+        <dt>Seri</dt><dd>12 gün</dd>
+        <dt>Kazandığın</dt><dd>80 XP</dd>
+      </dl>
+      <div class="fin"><button class="cta">Bir seans daha</button><button class="ghost">Ana ekrana dön</button></div>
+    </div>
+  </main>
+</div>
+
+<h3>B · Gişe <small>açık zemin, her iş renkli bir bilet, biten iş koparılmış koçan</small></h3>
+
+<!-- B1 ana ekran -->
+<div class="ph B" data-k="b1">
+  <header class="top"><span class="cv"><span>Cv</span></span><b>CineVocab</b><span class="seri">12 gün üst üste</span></header>
+  <main>
+    <h1>Bugün 12 kelime var</h1>
+    <p class="lead">4 dakikalık bir tekrar. Sonrası sana kalmış.</p>
+    <div class="tk hero"><div class="body"><b>Tekrar seansı</b><span>reluctant, shallow, to lean ve 9 kelime</span><button class="go">Başla</button></div><div class="stub"><b>12</b>kelime</div></div>
+    <div class="tk" style="--c:var(--mint)"><div class="body"><b>Günün bulmacası</b><span>Herkese aynı 5 kelime</span></div><div class="stub"><b>#41</b></div></div>
+    <div class="tk" style="--c:var(--salmon)"><div class="body"><b>Düello</b><span>Linki at, arkadaşın katılsın</span></div><div class="stub"><b>1v1</b></div></div>
+    <div class="tk done"><div class="body"><b>Kelime akışı, bitti</b><span>Bu sabah 20 kelime kaydırdın</span></div></div>
+    <div class="keep"><b>148</b><span><strong>kelime kalıcı oldu</strong>Bu hafta 9 yeni kelime eklendi</span></div>
+  </main>
+  <nav><button class="cur"><svg class="i"><use href="#home"/></svg>Ana</button><button><svg class="i"><use href="#list"/></svg>Kelimeler</button><button class="add" aria-label="Kelime ekle"><svg class="i"><use href="#plus"/></svg></button><button><svg class="i"><use href="#play"/></svg>Oyna</button><button><svg class="i"><use href="#user"/></svg>Ben</button></nav>
+</div>
+
+<!-- B2 oyna -->
+<div class="ph B" data-k="b2">
+  <div class="bar"><button class="x" aria-label="Kapat"><svg class="i"><use href="#x"/></svg></button><div class="prog"><i></i></div><span>5 / 10</span></div>
+  <main>
+    <div class="scene"><p>She was <mark>reluctant</mark> to open the door.</p><small>Senin eklediğin metinden</small></div>
+    <p class="q">reluctant ne demek?</p>
+    <div class="opts">
+      <button class="opt dim">heyecanlı</button><button class="opt right">isteksiz</button>
+      <button class="opt dim">yorgun</button><button class="opt dim">meraklı</button>
+    </div>
+    <p class="after"><b>Doğru.</b> 3. kutuya çıktı, bir hafta sonra tekrar soracağım.</p>
+    <p class="run">3 doğru üst üste</p>
+  </main>
+</div>
+
+<!-- B3 kelime karti -->
+<div class="ph B" data-k="b3">
+  <div class="bar"><button class="x" aria-label="Kapat"><svg class="i"><use href="#x"/></svg></button><span class="grow"></span><span>7 / 12</span></div>
+  <main>
+    <div class="vt">
+      <div class="up"><span class="lv">3. kutu, kalıcı olmasına 2 tekrar</span>
+        <p class="w">reluctant</p>
+        <div class="ipa"><button class="say" aria-label="Dinle"><svg class="i"><use href="#say"/></svg></button>/rɪˈlʌk.tənt/</div></div>
+      <div class="tear"></div>
+      <div class="dn"><p class="tr">isteksiz, gönülsüz</p><p class="ex">She was <b>reluctant</b> to open the door.</p></div>
+    </div>
+    <p class="hint">Kartı sağa ya da sola kaydırabilirsin</p>
+    <div class="swipe"><button>Tekrar göster</button><button class="y">Bildim</button></div>
+  </main>
+</div>
+
+<!-- B4 sonuc -->
+<div class="ph B" data-k="b4">
+  <main>
+    <div class="res">
+      <div class="rt">
+        <div class="up"><p>Tekrar seansı bitti</p><p class="big">8<small> / 10</small></p></div>
+        <div class="stamp"><b>2</b>kelime<br>kalıcı</div>
+        <div class="tear"></div>
+        <div class="dn"><span><b>12</b>gün seri</span><span><b>80</b>XP</span><span><b>3:48</b>süre</span></div>
+      </div>
+      <div class="learn"><h2>Kalıcı oldu</h2><ul><li>shallow</li><li>to lean</li></ul></div>
+      <div class="learn" style="margin-top:20px"><h2>Yarın tekrar soracağım</h2><ul><li class="again">reluctant</li><li class="again">grief</li></ul></div>
+      <div class="fin"><button class="cta">Bir seans daha</button><button class="ghost">Ana ekrana dön</button></div>
+    </div>
+  </main>
+</div>
+</div>
+<script>
+  var k = new URLSearchParams(location.search).get("k");
+  if (k) { document.body.classList.add("one"); var n = document.querySelector('[data-k="' + k + '"]'); if (n) n.classList.add("show"); }
+</script>
+</body>
+</html>

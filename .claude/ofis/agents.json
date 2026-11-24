@@ -1,0 +1,12 @@
+{
+  "desks": [
+    { "id": "planlayici", "name": "Planlayıcı", "role": "Fikri küçük adımlara böler", "icon": "steps" },
+    { "id": "tasarimci", "name": "Tasarımcı", "role": "Ekranı çizer, koda döker", "icon": "pen" },
+    { "id": "elestirmen", "name": "Eleştirmen", "role": "Tasarımı okur, görüş verir", "icon": "eye" },
+    { "id": "denetci", "name": "Denetçi", "role": "44px, tema, güvenli DOM", "icon": "check" },
+    { "id": "ana", "name": "Ana oturum", "role": "Claude, seninle konuşan", "icon": "ticket" },
+    { "id": "hesap-denetcisi", "name": "Hesap denetçisi", "role": "XP, seri, combo testleri", "icon": "calc" },
+    { "id": "yayin-kontrol", "name": "Yayın kontrolü", "role": "Play öncesi son bakış", "icon": "box" },
+    { "id": "diger", "name": "Diğer ajanlar", "role": "Araştırma ve genel işler", "icon": "dots" }
+  ]
+}

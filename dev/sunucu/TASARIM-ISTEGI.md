@@ -29,7 +29,9 @@ Logo 25 Kasım 2026'da proje sahibi tarafından seçildi. İki parçası var; ye
 
 **Simge: "Delikli bilet".** Perde bordosu zeminde, hafif eğik sarı bir bilet. "Cv" harfleri biletten oyulmuş; altındaki kesik çizgi aynı zamanda biletin yırtma çizgisi. Kullanıldığı yer: eklenti simgesi (araç çubuğu, mağaza), favicon, sosyal paylaşım görseli, sitenin açılış sayfasındaki büyük logo.
 
-**İşaret: "Altı çizili Cv".** Krem C, sarı v, altında dört parçalı sarı kesik çizgi. Zeminsiz, sade. Kullanıldığı yer: dar alanlar (popup başlığı, site başlığı, video üstü kutunun etiketi). Mobil uygulamanın üst şeridinde de bu duruyor.
+**Başlıklarda da bilet.** Popup başlığında ve site başlığında bilet zeminsiz kullanılır: koyu zeminde sarı bilet, açık zeminde bordo (`#8E1B2B`) bilet; Cv ve yırtma çizgisi biletten oyuludur (arkadaki zemin görünür). Mobil uygulamanın üst şeridi böyle; örneği `~/cinevocab-mobile/www/index.html` içindeki `#i-logo` ve `#cvdelik`.
+
+**Yedek işaret: "Altı çizili Cv".** Krem C, sarı v, altında dört parçalı sarı kesik çizgi. Yalnızca biletin okunmayacağı kadar dar yerlerde (ör. video üstü kutunun küçük etiketi).
 
 - Kaynak dosyalar (salt okunur): `~/cinevocab-mobile/dev/tasarim/logo/`
   - `cinevocab-simge.svg`: simge (bordo kare + bilet). Harfler çizimdir, yazı tipi gerekmez.

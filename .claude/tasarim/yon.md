@@ -44,7 +44,8 @@ Yarı saydam kenar rengi + yuvarlak köşe ve kutularda `opacity`, kaydırırken
 ## Logo (25 Kasım 2026)
 Proje sahibi seçti. İki parça:
 - **Simge, "Delikli bilet":** perde bordosu zeminde hafif eğik sarı bilet; "Cv" biletten oyulmuş, kesik alt çizgi aynı zamanda yırtma çizgisi. Android simgesi, açılış ekranı, mağaza simgesi ve kapak görseli. Kaynak: `dev/tasarim/logo/cinevocab-simge.svg`.
-- **İşaret, "Altı çizili Cv":** krem C, sarı v, altında dört parçalı kesik çizgi. Uygulamanın üst şeridi gibi dar yerler. Kaynak: `dev/tasarim/logo/cinevocab-isaret.svg`; uygulamada `www/index.html` içindeki `#i-logo`, renkler `.logo` üzerindeki `--lc`, `--lv`, `--ls`.
+- Uygulamanın üst şeridinde de **bilet** durur (zeminsiz): `www/index.html` içindeki `#i-logo` ve `#cvdelik` maskesi; rengi `.logo` üzerindeki `--lc` (koyuda sarı, açık temada bordo). Proje sahibi üst şeritte de bileti istedi.
+- **İşaret, "Altı çizili Cv":** krem C, sarı v, altında dört parçalı kesik çizgi. Yalnızca biletin sığmayacağı çok dar yerler için yedek. Kaynak: `dev/tasarim/logo/cinevocab-isaret.svg`.
 - PNG üretimi: `dev/tasarim/logo/disari.html` (`?v=simge|kare|on|acilis|bordocv`). Android uyarlanır simgenin zemini düz `#7E1626`.
 - Mağaza denemesi için ikinci seçenek hazır: `store/deneme/icon-512-bordo-cv.png` (bordo zeminde sade Cv). Play Console'daki mağaza girişi denemesiyle karşılaştırılacak.
 - Satır içi SVG'de dıştaki kutu `0 0`'dan başlamalı; yoksa C kırpılır (bir kez oldu).

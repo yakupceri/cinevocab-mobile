@@ -415,3 +415,58 @@ test("cumle sunucuya gitmez: ekleme istegi bos cumle yollar", () => {
   const istek = js.slice(js.indexOf('api("/translate-words"'), js.indexOf('api("/translate-words"') + 260);
   assert.match(istek, /sentence: ""/); assert.doesNotMatch(istek, /lines|ctx/);
 });
+
+// "Paylas -> CineVocab": gelen metnin ayristirilmasi ve yonlendirme.
+function paylas(ortam) { return yukle(["shareParse", "pendingShare", "shareOpen", "sharePending"], Object.assign({ RegExp, CVTEXT: { MAX_CHARS: 400000 } }, ortam || {})); }
+test("paylasim: secilen metin oldugu gibi alinir, icindeki link atilir", () => {
+  const r = paylas().shareParse("He was reluctant to leave the house that night.\nhttps://example.com/a?b=1", "Bir makale");
+  assert.equal(r.text, "He was reluctant to leave the house that night."); assert.equal(r.title, "Bir makale"); assert.equal(r.linkOnly, false); assert.equal(r.empty, false);
+});
+test("paylasim: yalnizca link (YouTube, tarayici) metin sayilmaz, baslik korunur", () => {
+  const c = paylas();
+  let r = c.shareParse("https://youtu.be/abc123XYZ", "Bir video adi");
+  assert.equal(r.linkOnly, true); assert.equal(r.text, ""); assert.equal(r.title, "Bir video adi");
+  r = c.shareParse("Bir video adi https://youtu.be/abc123XYZ", "Bir video adi");
+  assert.equal(r.linkOnly, true, "basligi metne de koyan uygulamalar");
+  r = c.shareParse("Bak: https://example.com", ""); assert.equal(r.linkOnly, true);
+});
+test("paylasim: bos ya da yalnizca isaret gelirse acilmaz; cok uzun metin kirpilir", () => {
+  const c = paylas();
+  assert.equal(c.shareParse("  ...  ", "").empty, true); assert.equal(c.shareParse("", "").empty, true);
+  assert.equal(c.shareParse("kelime ".repeat(100000), "").text.length <= 400000, true);
+  assert.equal(c.shareParse("metin burada yeterince uzun bir cumle", "x".repeat(300)).title.length, 60);
+});
+function yonlendir(S) {
+  const olay = [], n = {}, dug = (id) => (n[id] = n[id] || { value: "", hidden: false });
+  const c = paylas({ S, $: dug, t: (k) => k, go: (v) => olay.push("go:" + v), addMode: (f) => olay.push("form:" + f), askAccount: () => olay.push("hesap"), toast: (m) => olay.push("uyari:" + m), say: (node, m) => olay.push("mesaj:" + m) });
+  return { c, olay, n };
+}
+test("paylasim: giris yapmis kullanicida form metinle acilir, hicbir sey gonderilmez", () => {
+  const { c, olay, n } = yonlendir({ key: "k" });
+  assert.equal(c.shareOpen(c.shareParse("He was reluctant to leave the house.", "Kaynak")), true);
+  assert.deepEqual(olay, ["go:v-add", "form:true", "mesaj:", "mesaj:shareReady"]); assert.equal(n.text.value, "He was reluctant to leave the house."); assert.equal(n.srcTitle.value, "Kaynak");
+});
+test("paylasim: yalnizca linkte form bos acilir ve neden bos oldugunu soyler", () => {
+  const { c, olay, n } = yonlendir({ key: "k" });
+  c.shareOpen(c.shareParse("https://youtu.be/abc", "Video adi"));
+  assert.equal(olay[3], "mesaj:shareLink"); assert.equal(n.text.value, ""); assert.equal(n.srcTitle.value, "Video adi");
+});
+test("paylasim: misafirde metin bellekte bekler, kayit istenir; giristen sonra form acilir", () => {
+  const S = { key: "", guest: true }, { c, olay, n } = yonlendir(S);
+  assert.equal(c.shareOpen(c.shareParse("He was reluctant to leave the house.", "")), false);
+  assert.deepEqual(olay, ["hesap", "mesaj:shareNeedAcc"]); assert.ok(c.pendingShare);
+  c.sharePending(); assert.equal(olay.length, 2, "giris yokken acilmaz");
+  S.key = "yeni"; c.sharePending();
+  assert.deepEqual(olay.slice(2), ["go:v-add", "form:true", "mesaj:", "mesaj:shareReady"]); assert.equal(n.text.value, "He was reluctant to leave the house."); assert.equal(c.pendingShare, null);
+});
+test("paylasim: Android tarafi yalnizca duz metin kabul eder, yeni izin yok", () => {
+  const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "android", "app", "src", "main");
+  const m = fs.readFileSync(path.join(kok, "AndroidManifest.xml"), "utf8");
+  assert.equal((m.match(/android\.intent\.action\.SEND/g) || []).length, 1); assert.match(m, /mimeType="text\/plain"/); assert.doesNotMatch(m, /SEND_MULTIPLE|image\/|\*\/\*/);
+  assert.deepEqual((m.match(/uses-permission android:name="([^"]+)"/g) || []).map((x) => x.split(".").pop().replace('"', "")).sort(), ["INTERNET", "VIBRATE"]);
+});
+test("paylasim: misafirde yalnizca link gelirse kayit istenmez, neden bos oldugu soylenir", () => {
+  const { c, olay } = yonlendir({ key: "", guest: true });
+  assert.equal(c.shareOpen(c.shareParse("https://youtu.be/abc", "Video")), false);
+  assert.deepEqual(olay, ["uyari:shareLink"]); assert.equal(c.pendingShare, null);
+});

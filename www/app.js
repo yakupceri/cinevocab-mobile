@@ -51,7 +51,7 @@
       wk0: "One short session fills today's frame.", wkOn: "{0} days in a row. Today's frame is filled.", wkRisk: "{0} days in a row so far. Today's frame is still empty.",
       hFirstS: "Paste a text you want to understand, or pick a starter pack.", hDoneT: "Today's programme is done", hDoneS: "A new puzzle arrives tomorrow. Until then, challenge a friend.",
       flowH: "Word flow", flowS: "Swipe through words. Zero setup.", flowHint: "Swipe up if you knew it, down to see it again.", flowXp: "+{0} XP", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "{0} XP earned. Nice flow!", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
-      addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
+      shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
       howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start with ready words", howQuickS: "Nothing at hand? Swipe through a starter set.", howSnap: "Snap a subtitle", howSnapS: "Coming soon: point your camera at the TV.", howPaste: "Bring subtitles or a text", howPasteS: "Paste it or pick the file. We pull out the words you do not know.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
       cardsH: "Flashcards", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
@@ -133,7 +133,7 @@
       wk0: "Kısa bir seans bugünün karesini doldurur.", wkOn: "{0} gün üst üste. Bugünün karesi doldu.", wkRisk: "Şimdiye kadar {0} gün üst üste. Bugünün karesi henüz boş.",
       hFirstS: "Anlamak istediğin bir metni yapıştır ya da hazır bir paket seç.", hDoneT: "Bugünün programı tamam", hDoneS: "Yeni bulmaca yarın geliyor. O zamana kadar bir arkadaşına meydan oku.",
       flowH: "Kelime akışı", flowS: "Kelimeleri kaydır geç. Kurulum yok.", flowHint: "Bildiysen yukarı, tekrar görmek için aşağı kaydır.", flowXp: "+{0} XP", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} XP kazandın. Harika akış!", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
-      addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
+      shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
       howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hazır kelimelerle başla", howQuickS: "Elinde bir şey yoksa hazır setten kaydır.", howSnap: "Altyazıyı fotoğrafla", howSnapS: "Yakında: kamerayı TV'ye tut.", howPaste: "Altyazı ya da metin getir", howPasteS: "Yapıştır ya da dosyayı seç. Bilmediğin kelimeleri çıkaralım.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
       cardsH: "Kartlar", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
@@ -402,7 +402,7 @@
     main.scrollTop = 0;
     if (push !== false) { try { history.pushState({ v: id }, ""); } catch (e) {} }
   }
-  function addMode(form) { $("addForm").hidden = !form; $("addPick").hidden = form; $("v-add").classList.toggle("form", form); main.scrollTop = 0; }
+  function addMode(form) { say($("shareNote"), ""); $("addForm").hidden = !form; $("addPick").hidden = form; $("v-add").classList.toggle("form", form); main.scrollTop = 0; }
   function go(id, push) {
     if (S.guest && (id === "v-add" || id === "v-duel" || id === "v-leagues")) return askAccount();
     showView(id, push);
@@ -811,6 +811,32 @@
     return Object.keys(all).length;
   }
   function ctxClear() { for (const l of LANGS) store.del("ctx-" + l); }
+  // ---- "Paylas -> CineVocab": baska uygulamadan gelen metin. Yalnizca bellekte durur; hicbir sey otomatik gonderilmez.
+  // Gelen metni ayirir: icinde ogrenilecek yazi var mi, yoksa yalnizca link mi (YouTube ve tarayici "sayfayi paylas" boyledir).
+  function shareParse(text, subject) {
+    const raw = String(text || "").slice(0, CVTEXT.MAX_CHARS), title = String(subject || "").replace(/\s+/g, " ").trim().slice(0, 60);
+    const body = raw.replace(/https?:\/\/\S+/g, " ").replace(/[ \t]+/g, " ").replace(/ *\n */g, "\n").trim();
+    const letters = (body.match(/\p{L}/gu) || []).length;
+    const sameAsTitle = !!title && body.replace(/\s+/g, " ").toLowerCase() === title.toLowerCase();        // bazi uygulamalar basligi metne de koyar
+    const linkOnly = /https?:\/\/\S+/.test(raw) && (letters < 20 || sameAsTitle);
+    return { text: linkOnly ? "" : body, title: title, linkOnly: linkOnly, empty: !linkOnly && letters === 0 };
+  }
+  let pendingShare = null;       // hesabi olmayan kullanicida, giris yapilana kadar bekleyen paylasim
+  function shareOpen(sh) {
+    if (!sh || sh.empty) return false;
+    if (!S.key && sh.linkOnly) { toast(t("shareLink")); return false; }       // metin yok: bekletilecek bir sey de yok, yalnizca nedenini soyle
+    if (!S.key) { pendingShare = sh; askAccount(); say($("aMsg"), t("shareNeedAcc"), "ok"); return false; }
+    pendingShare = null;
+    go("v-add"); addMode(true);
+    $("text").value = sh.text; $("srcTitle").value = sh.title; $("plan").hidden = true;
+    say($("msg"), ""); say($("shareNote"), t(sh.linkOnly ? "shareLink" : "shareReady"), sh.linkOnly ? "" : "ok");      // not formun ustunde: kutunun neden bos ya da dolu oldugu hemen gorunsun
+    return true;
+  }
+  function sharePending() { if (pendingShare && S.key) shareOpen(pendingShare); }
+  async function shareTake() {
+    if (!isNative()) return;
+    try { const d = await native("ShareInbox", "take"); if (d && d.text) shareOpen(shareParse(d.text, d.subject)); } catch (e) {}
+  }
   let plan = null;     // { title, thumb, words: [secilen kelimeler], lines: [metnin satirlari] }
   $("go").addEventListener("click", async function () {
     const msg = $("msg"), text = $("text").value;
@@ -1681,12 +1707,13 @@
       $("oSrc").value = S.src; $("oDst").value = S.dst; say($("oMsg"), "");
       return showView("v-start", false);
     }
-    go("v-home", false);
+    go("v-home", false); sharePending();
   }
   $("oGo").addEventListener("click", function () {
     if ($("oSrc").value === $("oDst").value) return say($("oMsg"), t("eSame"), "bad");
     setPair($("oSrc").value, $("oDst").value);
     if (S.guest) fitDemoPair(true);
+    if (pendingShare && S.key) { store.set("how", "1"); return sharePending(); }      // paylasimla gelen yeni kullanici: dogrudan metnine
     if (store.get("how") === null) return showView("v-how", false);      // ilk kez: nasil baslamak istersin?
     go("v-home", false);
   });
@@ -1718,6 +1745,9 @@
   applyTexts();
   paintTry();
   if (S.key) enterApp(); else if (S.guest) { if (store.get("src") !== null) fitDemoPair(false); enterApp(); } else { authLook(false); showView("v-auth", false); }
+  // Paylasimla acildiysa metni al; uygulama acikken gelen paylasimlari dinle.
+  shareTake();
+  try { const sp = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.ShareInbox; if (sp && sp.addListener) sp.addListener("shared", shareTake); } catch (e) {}
   // Sunucu ayarlari: e-posta dogrulamasi acik mi, Google istemci kimligi ne? (ikisi de gizli degil)
   fetch(API + "/api/ext/config").then((r) => r.json()).then(function (c) {
     mailOn = !!(c && c.mail); googleId = (c && typeof c.google === "string" && c.google) || "";

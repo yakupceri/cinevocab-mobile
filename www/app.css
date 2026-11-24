@@ -188,6 +188,7 @@ main > section > input[type=search] { margin-top: 12px; background: var(--surf);
 .chip[aria-pressed=false] { background: none; border: 1px dashed var(--line); color: var(--dim); text-decoration: line-through; }
 #v-add.form #packBox { display: none; }
 #pick { margin-top: 10px; }
+#shareNote { min-height: 0; margin: 12px 0 0; padding: 10px 12px; background: var(--surf2); border-radius: var(--r); color: var(--ink); } #shareNote:empty { display: none; }   /* id ile: say() sinifi sifirliyor */
 textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 
 /* karsilama sahnesi: sari kelime dokunulabilir, anlami altyazinin altinda cikar */

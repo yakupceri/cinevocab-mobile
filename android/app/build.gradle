@@ -17,6 +17,11 @@ android {
         }
     }
     buildTypes {
+        debug {
+            // Deneme kurulumu: ./gradlew installDebug -PdenemeEki=.deneme  -> gercek uygulamanin yanina ayri bir uygulama olarak kurulur
+            // (ayri veri, gercek hesaba dokunmaz). Parametre verilmezse hicbir sey degismez.
+            if (project.hasProperty("denemeEki")) { applicationIdSuffix project.property("denemeEki") }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

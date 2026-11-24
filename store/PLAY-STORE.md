@@ -8,6 +8,7 @@ Bu klasördeki her şey Play Console'a girilecek hazır malzeme. Metinleri kopya
 - Telefon ekran görüntüleri (1080x1920, 7 adet): `ekran-tr/`, `ekran-en/` (karşılama, ana, kelime kartı, soru, ekle, sonuç, oyna)
 - Hepsi `sh dev/ekran/magaza.sh` ile misafir modundan üretilir: örnek kelimeler, kişisel veri yok. Tasarım değişince yeniden çalıştır.
 - Görseller çocuksu değil; hedef kitle 13+ (aşağıda).
+- **Simge denemesi:** yayından sonra Play Console → Mağaza girişi denemeleri ile `icon-512.png` (delikli bilet) ile `deneme/icon-512-bordo-cv.png` (bordo zeminde sade Cv) karşılaştırılacak; hangisi daha çok indirme getirirse o kalır.
 
 ## Mağaza metni: Türkçe (tr-TR)
 **Uygulama adı (30 karakter sınırı):** CineVocab: Dizinden Kelime

@@ -25,16 +25,23 @@ Söz her yerde aynı: **"İzlediğin dizinin kelimelerini öğren."** (EN: "Lear
 ## İş, sırayla (her aşamanın sonunda göster ve DUR)
 
 ### Aşama 1: Logo (seçildi; yalnızca uygula)
-Logo 25 Kasım 2026'da proje sahibi tarafından seçildi: **"Altı çizili Cv"**. Krem bir C, sarı bir v ve altında dört parçalı sarı kesik çizgi. Uygulamadaki imza hareketinden gelir: altyazıda sarı, altı kesik çizgili, dokunulabilir kelime. Yeni öneri üretme; bunu kullan.
+Logo 25 Kasım 2026'da proje sahibi tarafından seçildi. İki parçası var; yeni öneri üretme, bunları kullan.
+
+**Simge: "Delikli bilet".** Perde bordosu zeminde, hafif eğik sarı bir bilet. "Cv" harfleri biletten oyulmuş; altındaki kesik çizgi aynı zamanda biletin yırtma çizgisi. Kullanıldığı yer: eklenti simgesi (araç çubuğu, mağaza), favicon, sosyal paylaşım görseli, sitenin açılış sayfasındaki büyük logo.
+
+**İşaret: "Altı çizili Cv".** Krem C, sarı v, altında dört parçalı sarı kesik çizgi. Zeminsiz, sade. Kullanıldığı yer: dar alanlar (popup başlığı, site başlığı, video üstü kutunun etiketi). Mobil uygulamanın üst şeridinde de bu duruyor.
+
 - Kaynak dosyalar (salt okunur): `~/cinevocab-mobile/dev/tasarim/logo/`
-  - `cinevocab-isaret.svg`: işaretin kendisi, zeminsiz (popup başlığı, site başlığı). Harfler çizime çevrilmiştir, yazı tipi gerekmez.
-  - `cinevocab-simge.svg`: koyu kare + işaret (eklenti simgesi, favicon).
-  - `simge-16.png`, `-32`, `-48`, `-128`, `-512`: hazır PNG'ler.
-  - `secilen.png`: nasıl göründüğü (simge, kapak görseli, uygulamanın üst şeridi koyu ve açık).
-- Renkler: koyu zeminde C `#F3E9D2`, v ve çizgi `#FFD21E`. Açık zeminde C `#1B0F14`, v ve çizgi `#8E1B2B`. Oranları, harf aralığını ve çizgi sayısını değiştirme; işareti döndürme.
-- Eski "Cv" yazılı bilet her yerden kalkar: `extension/icons/`, popup başlığı, welcome, site başlığı, favicon, sosyal paylaşım görseli.
+  - `cinevocab-simge.svg`: simge (bordo kare + bilet). Harfler çizimdir, yazı tipi gerekmez.
+  - `simge-16.png`, `-32`, `-48`, `-128`, `-512`: simgenin hazır PNG'leri. Eklenti için 16, 32, 48, 128 doğrudan kullanılabilir.
+  - `cinevocab-isaret.svg`: işaret (zeminsiz Cv).
+  - `secilen.png`: nasıl göründüğü (simge, kapak görseli, uygulama ekranı, açılış, küçük boyutlar).
+- Renkler. Simge: zemin `#A51E33` → `#5E0F1D` (düz renk gerekirse `#7E1626`), bilet `#FFD21E`. İşaret: koyu zeminde C `#F3E9D2`, v ve çizgi `#FFD21E`; açık zeminde C `#1B0F14`, v ve çizgi `#8E1B2B`.
+- Oranları, eğimi, harf aralığını ve çizgi sayısını değiştirme. Simgeye gölge, parlama ya da çerçeve ekleme.
+- 16 pikselde simgedeki harfler küçülür; orada "sarı bilet" olarak okunması yeterlidir. Okunmuyorsa ekran görüntüsüyle göster, kendi başına sadeleştirme.
+- Eski "Cv" yazılı siyah bilet her yerden kalkar: `extension/icons/`, popup başlığı, welcome, site başlığı, favicon, sosyal paylaşım görseli.
 - Dosyaları bu repoya **kopyala** (`docs/marka/` ve gereken yerlere); mobil repodaki dosyalara bağlantı verme.
-- SVG'yi satır içi kullanırken dıştaki `<svg>` kutusunu `0 0`'dan başlat ya da doğrudan dosyadaki `viewBox`'ı kullan; mobilde bir kez yanlış kutu yüzünden C harfi kırpılmıştı.
+- SVG'yi satır içi kullanırken dıştaki `<svg>` kutusunu `0 0`'dan başlat ya da doğrudan dosyadaki `viewBox`'ı kullan; mobilde bir kez yanlış kutu yüzünden C harfi kırpılmıştı. Simge SVG'sinde `mask` ve `radialGradient` kimlikleri var (`cvdelik`, `cvbordo`); aynı sayfaya iki kez gömersen kimlik çakışmasına dikkat et.
 - Eklenti simgesi değiştiği için Chrome Web Store yeniden inceleme yapar: raporda söyle ve yüklemeden önce proje sahibine sor.
 
 ### Aşama 2: Plan (sonra dur)

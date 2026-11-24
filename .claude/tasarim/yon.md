@@ -41,10 +41,11 @@ Yarı saydam kenar rengi + yuvarlak köşe ve kutularda `opacity`, kaydırırken
 - Ana ekranda yalnızca hafta şeridi ve "artık bildiğin kelime" sayısı; puan ve seviye Ben'de.
 - Mağazada hedef kitle 13+; çocuksu görsel yok. Ayrıntı: `dev/ARASTIRMA.md`.
 
-## Logo (25 Kasım 2026): "Altı çizili Cv"
-Krem C, sarı v, altında dört parçalı sarı kesik çizgi. Uygulamanın imza hareketinden gelir: altyazıdaki sarı, altı kesik çizgili, dokunulabilir kelime. Proje sahibi seçti (ikinci turdaki 4 numara, iki renkli ve tok çizgili hâliyle). Eski bilet logosu kalktı.
-- Kaynak: `dev/tasarim/logo/cinevocab-isaret.svg` (işaret) ve `cinevocab-simge.svg` (koyu kare + işaret). Harfler Big Shoulders 800'den çizime çevrildi. PNG üretimi: `dev/tasarim/logo/disari.html`.
-- Uygulamada: `www/index.html` içindeki `#i-logo`; renkler `.logo` üzerindeki `--lc` (C), `--lv` (v) ve `--ls` (çizgi). Koyuda krem ve sarı, açık temada koyu ve bordo.
-- Android simgesi koyu zeminli (`ic_launcher_background` `#170E12`); açılış ekranı koyu zeminde küçük işaret.
-- Satır içi kullanırken dıştaki `<svg>` kutusu `0 0`'dan başlamalı; yoksa C kırpılır (bir kez oldu).
-- Elenen öneriler kayıt olarak duruyor: `dev/tasarim/logo/oneriler.png`, `tur2.png`, `tur3.png`.
+## Logo (25 Kasım 2026)
+Proje sahibi seçti. İki parça:
+- **Simge, "Delikli bilet":** perde bordosu zeminde hafif eğik sarı bilet; "Cv" biletten oyulmuş, kesik alt çizgi aynı zamanda yırtma çizgisi. Android simgesi, açılış ekranı, mağaza simgesi ve kapak görseli. Kaynak: `dev/tasarim/logo/cinevocab-simge.svg`.
+- **İşaret, "Altı çizili Cv":** krem C, sarı v, altında dört parçalı kesik çizgi. Uygulamanın üst şeridi gibi dar yerler. Kaynak: `dev/tasarim/logo/cinevocab-isaret.svg`; uygulamada `www/index.html` içindeki `#i-logo`, renkler `.logo` üzerindeki `--lc`, `--lv`, `--ls`.
+- PNG üretimi: `dev/tasarim/logo/disari.html` (`?v=simge|kare|on|acilis|bordocv`). Android uyarlanır simgenin zemini düz `#7E1626`.
+- Mağaza denemesi için ikinci seçenek hazır: `store/deneme/icon-512-bordo-cv.png` (bordo zeminde sade Cv). Play Console'daki mağaza girişi denemesiyle karşılaştırılacak.
+- Satır içi SVG'de dıştaki kutu `0 0`'dan başlamalı; yoksa C kırpılır (bir kez oldu).
+- Elenen öneriler kayıt olarak duruyor: `dev/tasarim/logo/oneriler.png`, `tur2.png`, `tur3.png`, `tur4.png`.

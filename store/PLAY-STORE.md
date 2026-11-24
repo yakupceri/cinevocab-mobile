@@ -119,7 +119,9 @@ Gizlilik politikası metnine de bir cümle gerekir (sunucu reposunda): "Görseld
 
 Bu beyanı istemiyorsan özellik kaldırılabilir ya da modeli Google Play hizmetlerinden indiren sürüme geçilebilir (uygulama küçülür, beyan aynı kalır).
 
-**Paylaş → CineVocab** yeni izin istemez; manifest'e iki giriş eklendi (düz metin ve görsel paylaşımı alma). Kamera, depolama ve fotoğraf izni yok: görsel sistemin fotoğraf seçicisinden ya da paylaşımdan gelir.
+**Paylaş → CineVocab** yeni izin istemez; manifest'e iki giriş eklendi (düz metin ve görsel paylaşımı alma). Kamera, depolama ve fotoğraf izni yok: fotoğrafı telefonun kendi kamera uygulaması çeker (manifest'te yalnızca kamera uygulamasını görebilmek için bir `queries` girdisi var), ya da görsel sistemin fotoğraf seçicisinden ve paylaşımdan gelir.
+
+**Hedef kitle 13+ kalmalı** (yukarıda yazıyor). 12 yaşı eklemek Families Policy'yi devreye sokar; ayrıntı ve kaynaklar `dev/ARASTIRMA.md` ikinci turda. Mağaza görselleri çocuksu olmamalı.
 
 Formu doldurmadan önce sunucu tarafını bir kez daha gözden geçir: sunucuda toplanan başka bir şey varsa (örneğin IP kaydı) onu da yaz.
 

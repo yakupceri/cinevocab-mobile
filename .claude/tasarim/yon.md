@@ -31,3 +31,12 @@ Söz: **"İzlediğin dizinin kelimelerini öğren."** Duolingo'nun yerine değil
 
 ## Android WebView tuzağı
 Yarı saydam kenar rengi + yuvarlak köşe ve kutularda `opacity`, kaydırırken hayalet görüntü bırakıyor (emülatörde görülüp doğrulandı). Kenar renkleri opak token olmalı; testi `dev/tests/hesap.test.js` içinde.
+
+## Herkes anlasın (12'den 50'ye)
+- Görünen metinde oyun jargonu yok: "XP" yerine "puan", düğmede "seans" yerine yapılacak iş ("24 kelimeyi tekrar et"). Testi var.
+- İlk açılış: karşılama → dil → ilk kelime kartı. Araya soru ekranı konmaz.
+- Bir ekranda en çok üç ana seçenek; fazlası başlık altında gruplanır ya da bağlantı olur. Çalışmayan ya da hazır olmayan seçenek gösterilmez.
+- Açıklama metni en az 15 px, etiket en az 13 px. Dokunma hedefi 44 px ve üstü.
+- Kaydırma yönü her yerde aynı: sağa bildim, sola tekrar. Her kaydırmanın düğme karşılığı var.
+- Ana ekranda yalnızca hafta şeridi ve "artık bildiğin kelime" sayısı; puan ve seviye Ben'de.
+- Mağazada hedef kitle 13+; çocuksu görsel yok. Ayrıntı: `dev/ARASTIRMA.md`.

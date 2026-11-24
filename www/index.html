@@ -103,17 +103,6 @@
       </div>
     </section>
 
-    <!-- Ilk acilis, 2. adim: nasil baslamak istersin? -->
-    <section id="v-how" hidden>
-      <h1 class="display" data-i="howH"></h1>
-      <p class="sub" data-i="howSub"></p>
-      <button class="tile hot" id="hPaste" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="howPaste"></b><em data-i="howPasteS"></em></span></button>
-      <button class="tile" id="hExt" type="button"><i><svg class="ic"><use href="#i-share"/></svg></i><span><b data-i="extH"></b><em data-i="extS"></em></span></button>
-      <button class="tile" id="hQuick" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="howQuick"></b><em data-i="howQuickS"></em></span></button>
-      <button class="tile" id="hDuel" type="button"><i><svg class="ic"><use href="#i-swords"/></svg></i><span><b data-i="howDuel"></b><em data-i="howDuelS"></em></span></button>
-      <button class="link" id="hSkip" type="button" data-i="howSkip"></button>
-    </section>
-
     <!-- Ana sayfa: haftalik kart, siradaki is (bilet), bugunun programi, ilerleme, videolar -->
     <section id="v-home" hidden>
       <p class="hello" id="hello"></p>
@@ -131,12 +120,6 @@
       <h2 class="sec" id="progH" data-i="progH"></h2>
       <ul class="prog" id="quests"></ul>
 
-      <div class="card meter">
-        <div class="m-row"><b id="goalNum"></b><span id="goalSub"></span></div>
-        <div class="bar"><i id="goalFill"></i></div>
-        <div class="m-row lv"><b id="lvlName"></b><span id="lvlLeft"></span></div>
-        <div class="bar thin"><i id="lvlFill"></i></div>
-      </div>
       <button class="guest" id="guestBar" type="button" hidden></button>
 
       <h2 class="sec" data-i="feedH"></h2>
@@ -162,10 +145,11 @@
         <p class="sub" data-i="addSub"></p>
         <button class="tile hot" id="aPaste" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="howPaste"></b><em data-i="howPasteS"></em></span></button>
         <button class="tile" id="aPhoto" type="button"><i><svg class="ic"><use href="#i-camera"/></svg></i><span><b data-i="photoH"></b><em data-i="photoS"></em></span></button>
-        <input id="photo" type="file" accept="image/*" hidden>
-        <button class="tile" id="aExt" type="button"><i><svg class="ic"><use href="#i-share"/></svg></i><span><b data-i="extH"></b><em data-i="extS"></em></span></button>
+        <input id="photo" type="file" accept="image/*" capture="environment" hidden>
+        <input id="photoPick" type="file" accept="image/*" hidden>
+        <button class="link side" id="aPick" type="button" data-i="photoPick"></button>
         <button class="tile" id="aQuick" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="howQuick"></b><em data-i="howQuickS"></em></span></button>
-        <button class="tile" id="aDuel" type="button"><i><svg class="ic"><use href="#i-swords"/></svg></i><span><b data-i="howDuel"></b><em data-i="howDuelS"></em></span></button>
+        <button class="link side" id="aExt" type="button" data-i="extH"></button>
       </div>
       <div id="addForm" hidden>
       <button class="link back" id="addBack" type="button" data-i="back"></button>
@@ -217,12 +201,15 @@
     <section id="v-play" hidden>
       <h1 data-i="playH"></h1>
       <p class="sub" data-i="playSub"></p>
+      <h2 class="sec grp" data-i="grpMine"></h2>
       <button class="tile" id="tCards" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="cardsH"></b><em id="tCardsS"></em></span></button>
-      <button class="tile" id="tFlow" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="flowH"></b><em data-i="flowS"></em></span></button>
+      <button class="tile" id="tFlow" type="button"><i><svg class="ic"><use href="#i-chev"/></svg></i><span><b data-i="flowH"></b><em data-i="flowS"></em></span></button>
       <button class="tile" id="tCloze" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="clozeH"></b><em data-i="clozeS"></em></span></button>
+      <button class="tile" id="tPractice" type="button"><i><svg class="ic"><use href="#i-quiz"/></svg></i><span><b data-i="pracH"></b><em id="tPracticeS"></em></span></button>
+      <h2 class="sec grp" id="grpToday" data-i="grpToday"></h2>
       <button class="tile" id="tPuzzle" type="button"><i><svg class="ic"><use href="#i-puzzle"/></svg></i><span><b id="tPuzzleT"></b><em id="tPuzzleS"></em></span></button>
       <button class="tile" id="tDaily" type="button"><i><svg class="ic"><use href="#i-target"/></svg></i><span><b id="tDailyT"></b><em id="tDailyS"></em></span></button>
-      <button class="tile" id="tPractice" type="button"><i><svg class="ic"><use href="#i-quiz"/></svg></i><span><b data-i="pracH"></b><em id="tPracticeS"></em></span></button>
+      <h2 class="sec grp" data-i="grpFriends"></h2>
       <button class="tile" id="tDuel" type="button"><i><svg class="ic"><use href="#i-swords"/></svg></i><span><b data-i="dH"></b><em data-i="tDuelS"></em></span></button>
       <button class="tile" id="tLeague" type="button"><i><svg class="ic"><use href="#i-trophy"/></svg></i><span><b data-i="lH"></b><em data-i="tLeagueS"></em></span></button>
       <p class="note" id="playMsg"></p>
@@ -425,6 +412,12 @@
         <div><b id="meWins">0</b><span data-i="wins"></span></div>
       </div>
 
+      <div class="card meter acc">
+        <div class="m-row"><b id="goalNum"></b><span id="goalSub"></span></div>
+        <div class="bar"><i id="goalFill"></i></div>
+        <div class="m-row lv"><b id="lvlName"></b><span id="lvlLeft"></span></div>
+        <div class="bar thin"><i id="lvlFill"></i></div>
+      </div>
       <h2 class="sec acc" data-i="badgeH"></h2>
       <p class="sub acc" id="badgeSub"></p>
       <div class="badges acc" id="badges"></div>
@@ -432,7 +425,7 @@
       <h2 class="sec acc" data-i="setH"></h2>
       <div class="card">
         <div class="acc"><label for="goalSel" data-i="goalLbl"></label>
-        <select id="goalSel"><option value="30">30 XP</option><option value="50">50 XP</option><option value="100">100 XP</option></select></div>
+        <select id="goalSel"><option value="30">30</option><option value="50">50</option><option value="100">100</option></select></div>
         <div class="field acc"><label for="uiLang" data-i="appLang"></label>
           <select id="uiLang"><option value="en">English</option><option value="tr">Türkçe</option></select></div>
         <div class="field th"><label for="themeSel" data-i="themeLbl"></label>

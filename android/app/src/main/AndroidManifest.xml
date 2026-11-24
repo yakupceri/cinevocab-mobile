@@ -54,4 +54,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Altyazinin fotografini telefonun kendi kamera uygulamasiyla cekmek icin: yalnizca kamera uygulamasini gorebilmek.
+         Kamera IZNI istenmez; fotografi kamera uygulamasi ceker ve bize verir. -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
 </manifest>

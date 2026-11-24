@@ -131,7 +131,7 @@ main > section > input[type=search] { margin-top: 12px; background: var(--surf);
 .day.next { background: var(--film); }
 .day.today:not(.on) { background: none; outline: 2px solid var(--sun); outline-offset: -2px; color: var(--sun); }
 .day.on.fresh { animation: punch .45s cubic-bezier(.2, 1.6, .4, 1); }
-.weeknote { margin: 8px 0 0; font-size: 13px; color: var(--dim); }
+.weeknote { margin: 8px 0 0; font-size: 15px; color: var(--dim); }
 
 /* siradaki is: film karesi (2.39:1), ustunde isin adi, altinda altyazi */
 .screen.hero { min-height: 0; aspect-ratio: 2.39 / 1; margin-top: 12px; padding: 0 18px 16px; }
@@ -149,7 +149,7 @@ main > section > input[type=search] { margin-top: 12px; background: var(--surf);
 .prog:empty { display: none; }
 .prog li { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 0; border-top: 1px solid var(--line); }
 .prog .pi { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: var(--r); background: var(--surf2); color: var(--ink); }
-.prog .pt { flex: 1; min-width: 0; } .prog .pt b { display: block; font-size: 16px; font-weight: 600; line-height: 1.25; } .prog .pt em { display: block; font-style: normal; font-size: 13px; color: var(--dim); }
+.prog .pt { flex: 1; min-width: 0; } .prog .pt b { display: block; font-size: 16px; font-weight: 600; line-height: 1.25; } .prog .pt em { display: block; font-style: normal; font-size: 15px; color: var(--dim); }
 .prog .go { flex: none; color: var(--dim); }
 .prog li.done .pt b { color: var(--dim); }
 .stamp { flex: none; padding: 3px 8px; border: 1px solid var(--green); border-radius: 4px; color: var(--green); font-size: 12px; font-weight: 700; transform: rotate(-5deg); }
@@ -202,13 +202,18 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 #v-auth.ask .demo, #v-auth.ask #demoHint, #v-auth.ask .demo-only, #v-auth:not(.ask) .ask-only { display: none; }
 #v-auth:not(.ask) h1.display { margin-top: 2vh; font-size: 44px; }
 
+/* oyna: grup basliklari; ekle: yan baglantilar */
+h2.sec.grp { margin: 22px 0 2px; font-size: 20px; color: var(--dim); }
+h2.sec.grp:first-of-type { margin-top: 14px; }
+.link.side { margin-top: 2px; text-align: left; padding-left: 2px; color: var(--dim); }
+
 /* oyna: oyun satirlari */
 .tile { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 68px; margin-top: 10px; padding: 12px 14px; background: var(--surf); border: 1px solid var(--line); border-radius: var(--r); text-align: left; }
 .tile:active { transform: scale(.99); }
 .tile:disabled, .tile:disabled b { color: var(--dim); } .tile:disabled > i { background: none; border: 1px solid var(--line); color: var(--dim); }   /* saydamlik yok: ayni hayalet hatasi */
 .tile > i { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: var(--r); background: var(--surf2); color: var(--ink); }
 .tile > i .ic { width: 24px; height: 24px; }
-.tile span { flex: 1; min-width: 0; } .tile b { display: block; font: 800 22px/1.05 var(--disp); letter-spacing: .01em; overflow-wrap: anywhere; } .tile em { display: block; margin-top: 3px; font-style: normal; font-size: 13px; color: var(--dim); }
+.tile span { flex: 1; min-width: 0; } .tile b { display: block; font: 800 22px/1.05 var(--disp); letter-spacing: .01em; overflow-wrap: anywhere; } .tile em { display: block; margin-top: 3px; font-style: normal; font-size: 15px; line-height: 1.3; color: var(--dim); }
 .tile.hot { border-color: var(--hi); } .tile.hot > i { background: var(--sun); color: var(--on-sun); }
 
 /* soru: film karesi ve altyazi */
@@ -245,7 +250,7 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 .wc-tr { align-self: stretch; margin-top: 20px; padding-top: 18px; border-top: 2px dashed var(--paper-line); font-size: 28px; line-height: 1.12; font-weight: 700; overflow-wrap: anywhere; }
 .wc-ex { align-self: stretch; margin-top: auto; padding: 12px 14px; background: var(--film); border-radius: 4px; color: var(--sub); font-size: 15px; font-weight: 600; line-height: 1.35; text-align: center; overflow-wrap: anywhere; }
 .wc-ex mark { background: none; color: var(--sun); }
-.wc-src { align-self: stretch; margin-top: 8px; font-size: 12px; color: var(--paper-dim); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wc-src { align-self: stretch; margin-top: 8px; font-size: 13px; color: var(--paper-dim); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .deck { position: relative; height: 52vh; min-height: 300px; margin-top: 6px; }
 .fcard { position: absolute; inset: 0; width: 100%; touch-action: pan-y; }
 .fcard.under { background: var(--surf2); border-radius: 10px; transform: rotate(2.5deg) translate(6px, 6px); }
@@ -306,7 +311,7 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 
 /* alt menu */
 #tabs { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: var(--nav); border-top: 1px solid var(--line); }
-#tabs button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 50px; padding: 4px 0; background: none; border: 0; color: var(--dim); font-size: 12px; font-weight: 500; }
+#tabs button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 50px; padding: 4px 0; background: none; border: 0; color: var(--dim); font-size: 13px; font-weight: 500; }
 #tabs button[aria-current=page] { color: var(--hi); }
 #tabs .add { border: 1px solid var(--paper-edge); justify-self: center; width: 50px; min-height: 50px; height: 50px; border-radius: var(--r); background: var(--paper); color: var(--on-paper); }
 #tabs .add .ic { width: 24px; height: 24px; stroke-width: 2.6; }
@@ -321,11 +326,11 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 .fl-x[aria-pressed=false] { opacity: .45; }
 .fl-count { flex: 1; text-align: center; }
 #v-flow .qbar { margin-right: -10px; }
-.fl-stage { --run: 0; position: relative; height: 52vh; min-height: 300px; margin-top: 6px; touch-action: none; }
+.fl-stage { --run: 0; position: relative; height: 52vh; min-height: 300px; margin-top: 6px; touch-action: pan-y; }
 .fl-card { position: absolute; inset: 0; outline: calc(var(--run) * .6px) solid var(--hi); outline-offset: 3px; transition: outline-width .25s ease; }
 .fl-card.in { animation: flIn .28s ease-out; }
-.fl-card.up { transition: transform .24s ease-in, opacity .24s; transform: translateY(-115%) rotate(-3deg); opacity: 0; }
-.fl-card.down { transition: transform .24s ease-in, opacity .24s; transform: translateY(115%) rotate(3deg); opacity: 0; }
+.fl-card.up { transition: transform .24s ease-in, opacity .24s; transform: translateX(130%) rotate(16deg); opacity: 0; }      /* bildim: saga */
+.fl-card.down { transition: transform .24s ease-in, opacity .24s; transform: translateX(-130%) rotate(-16deg); opacity: 0; }   /* tekrar: sola */
 .fl-tr { min-height: 34px; opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; }
 .fl-tr.on { opacity: 1; transform: none; }
 .fl-hint { margin: 14px 0 0; text-align: center; font-size: 13px; color: var(--dim); }
@@ -342,7 +347,7 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 .bonus { border: 1px solid var(--paper-edge); position: fixed; left: 20px; right: 20px; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: 41; padding: 16px 18px; background: var(--paper); color: var(--on-paper); border-radius: var(--r); display: grid; gap: 2px; text-align: left; animation: bonusIn .45s cubic-bezier(.2, .8, .2, 1) both; }
 .bonus b { font-size: 13px; font-weight: 700; line-height: 1.2; color: var(--paper-green); }
 .bonus .bn { font: 800 44px/1 var(--disp); }
-.bonus .bn::after { content: " XP"; font-size: 20px; opacity: .7; }
+.bonus .bn::after { content: " " attr(data-u); font-size: 20px; opacity: .7; }
 .bonus em { font-style: normal; font-size: 13px; color: var(--paper-dim); }
 .bonus.out { animation: bonusOut .3s ease both; }
 

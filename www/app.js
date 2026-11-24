@@ -47,15 +47,15 @@
       authH: "Learn the words from what you watch.", authSub: "Log in to keep the words you collect.", demoHint: "Tap the yellow word.", demoGot: "That is all it takes. Words from your own shows and texts become yours like this.", demoSrc: "A line from a scene", haveAcc: "Already have an account?",
       startH: "What are you learning?", startSub: "Words and puzzles are picked for this language. You can change it later.",
       startSrc: "I am learning", startDst: "My own language", startGo: "Start",
-      homeH: "Today's screening", hello: "Hi {0}", ctaGo: "Start the screening", heroMore: "and {0} more words", streakTop: "{0} days in a row", knowTxt: "words stuck for good", progH: "Up next", stamp: "Done", playBtn: "Play", ctaAdd: "Add words", ctaDuel: "Start a duel",
-      wk0: "One short session fills today's frame.", wkOn: "{0} days in a row. Today's frame is filled.", wkRisk: "{0} days in a row so far. Today's frame is still empty.",
+      homeH: "Today's screening", hello: "Hi {0}", ctaGo: "Start", ctaCards: "Review with cards", ctaPuzzle: "Solve the puzzle", photoPick: "or pick a picture from your gallery", grpMine: "Your words", grpToday: "Today", grpFriends: "With friends", goalS: "{0} points (about {1} right answers)", xpUnit: "points", heroMore: "and {0} more words", streakTop: "{0} days in a row", knowTxt: "words you now know", progH: "Up next", stamp: "Done", playBtn: "Play", ctaAdd: "Add words", ctaDuel: "Start a duel",
+      wk0: "One short round fills today's frame.", wkOn: "{0} days in a row. Today's frame is filled.", wkRisk: "{0} days in a row so far. Today's frame is still empty.",
       hFirstS: "Paste a text you want to understand, or pick a starter pack.", hDoneT: "Today's programme is done", hDoneS: "A new puzzle arrives tomorrow. Until then, challenge a friend.",
-      flowH: "Word flow", flowS: "Swipe through words. Zero setup.", flowHint: "Swipe up if you knew it, down to see it again.", flowXp: "+{0} XP", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "{0} XP earned. Nice flow!", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
-      photoH: "Pick a photo of the subtitles", photoS: "A photo of your TV or laptop screen, or a screenshot. The text is read on your phone; we never send the image to our server.", ocrBusy: "Reading the image…", ocrReady: "This is what I could read from the image. Fix anything that came out wrong, then pull out the words.", ocrEmpty: "I could not find readable text in that image. Make sure the subtitles are sharp and large.", ocrLang: "Reading from images works for Latin-script languages for now.", ocrOnly: "This works in the phone app.", extH: "Watching on a computer?", extS: "The Chrome extension collects words while you watch. Same account, and you review them here.", extMsg: "CineVocab for Chrome: collect words from subtitles while you watch.", shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
-      howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start with ready words", howQuickS: "Nothing at hand? Swipe through a starter set.", howSnap: "Snap a subtitle", howSnapS: "Coming soon: point your camera at the TV.", howPaste: "Bring subtitles or a text", howPasteS: "Paste it or pick the file. We pull out the words you do not know.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
+      flowH: "Word flow", flowS: "Swipe through your words, one by one.", flowHint: "Swipe right if you knew it, left to see it again.", flowXp: "+{0} points", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "You earned {0} points.", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
+      photoH: "Read from a photo of the screen", photoS: "Photograph the subtitles on your TV or phone.", ocrBusy: "Reading the image…", ocrReady: "Read on your phone; the image was not sent to our server. Fix anything that came out wrong, then pull out the words.", ocrEmpty: "I could not find readable text in that image. Make sure the subtitles are sharp and large.", ocrLang: "Reading from images works for Latin-script languages for now.", ocrOnly: "This works in the phone app.", extH: "Watching on a computer? Send yourself the Chrome extension", extS: "The Chrome extension collects words while you watch. Same account, and you review them here.", extMsg: "CineVocab for Chrome: collect words from subtitles while you watch.", shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
+      howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start with ready words", howQuickS: "Nothing at hand? Start with a ready set.", howSnap: "Snap a subtitle", howSnapS: "Coming soon: point your camera at the TV.", howPaste: "Paste subtitles or a text", howPasteS: "We pull out the words you do not know.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
       cardsH: "Flashcards", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
-      badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "day streak", bWins: "duel wins", bMaster: "mastered",
+      badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "days in a row", bWins: "duel wins", bMaster: "mastered",
       badgeNew: "New award: {0} {1}", badgeNeed: "Locked. Opens at {0} {1}.", badgeHave: "Yours: {0} {1}.",
       setH: "Settings", meGuestH: "Settings", meGuestS: "You are trying CineVocab without an account.", sndLbl: "Sounds", vibLbl: "Vibration", comboN: "{0} right in a row", qAsk: "What does {0} mean here?", qAskCloze: "Which word fits the gap?", themeLbl: "Look", themeDark: "Dark (night screening)", themeLight: "Light (matinee)",
       login: "Log in", register: "Sign up", username: "Username", email: "Email", password: "Password",
@@ -64,17 +64,17 @@
       recText: "Your recovery code. Keep it somewhere safe: it is the only way back in if you forget your password.",
       recOk: "I saved it", eFill: "Fill in every field.",
       google: "Continue with Google", or2: "or", eGoogle: "Google sign-in did not work.",
-      tabHome: "Home", tabWords: "Words", tabAdd: "Add words from a video", tabPlay: "Play", tabMe: "Me",
+      tabHome: "Home", tabWords: "Words", tabAdd: "Add words", tabPlay: "Play", tabMe: "Me",
       sDaily: "Daily", sReview: "Review", sDuel: "Duel", sLeague: "League", sPacks: "Packs",
-      tryFirst: "Try it without an account", tryBack: "Back to the trial", needAcc: "Create a free account to keep your words and unlock this.", demoPack: "Trial pack", guestName: "Guest", guestBar: "You are trying CineVocab. Create a free account to keep your progress.", demoPair: "No trial pack for that pair yet, so we opened {0} → {1}.", knowNum: "{0} words stuck", knowSub: "of {0} on your list. Counted only after you get a word right again and again over days.",
-      goalNum: "{0} / {1} XP", goalLeft: "{0} XP to reach today's goal", goalDone: "Today's goal is done. See you tomorrow!",
+      tryFirst: "Try it without an account", tryBack: "Back to the trial", needAcc: "Create a free account to keep your words and unlock this.", demoPack: "Trial pack", guestName: "Guest", guestBar: "You are trying CineVocab. Create a free account to keep your progress.", demoPair: "No trial pack for that pair yet, so we opened {0} → {1}.", knowNum: "{0} words stuck", knowSub: "Words you got right several times on different days. Out of {0} on your list.",
+      goalNum: "{0} / {1} points", goalLeft: "{0} points to reach today's goal", goalDone: "Today's goal is done. See you tomorrow!",
       goalToast: "Daily goal reached!", bonusH: "Daily goal done", bonusS: "{0}-day streak. See you tomorrow.", levelUp: "Level {0}!",
       qDaily: "Play the daily challenge", qPractice: "Finish one round of cards", qAdd: "Add new words",
-      ctaFirst: "Add your first words", ctaReview: "Review {0} words", ctaDaily: "Play today's challenge", ctaPractice: "Practice new words",
-      lvlName: "Level {0}", lvlLeft: "{0} XP to level {1}",
-      feedH: "Your sources", feedEmpty: "Videos and texts you collect words from show up here.", noVideo: "Other words", wordsCount: "{0} words",
+      ctaFirst: "Add your first words", ctaReview: "Review {0} words", ctaDaily: "Play the daily challenge", ctaPractice: "Practice new words",
+      lvlName: "Level {0}", lvlLeft: "{0} points to level {1}",
+      feedH: "Your shows and texts", feedEmpty: "Videos and texts you collect words from show up here.", noVideo: "Other words", wordsCount: "{0} words",
       videoH: "Words from your own text", videoSub: "Paste any text or pick a subtitle file you have. We find the words you don't know yet.",
-      srcLbl: "Video language", dstLbl: "Translate to", swap: "Swap languages",
+      srcLbl: "Language of the text", dstLbl: "Translate into", swap: "Swap languages",
       titleLbl: "Name it (optional)", textLbl: "Your text", pickFile: "Pick a subtitle or text file", myText: "My text", textPriv: "Your text stays on your phone. Only the word list is sent; the line each word came from is kept on this phone only. Watching on a computer? The CineVocab Chrome extension collects words for you and they appear here.", eText: "Paste a text or pick a file first.", eNoWords: "No new words found in this text.", eFile: "This file could not be read.", eBig: "This file is too large (limit 2 MB).", countLbl: "How many new words?", extract: "Get the words",
       eSame: "The two languages must differ.",
       reading: "Reading your text…", planning: "Picking your new words…",
@@ -84,14 +84,14 @@
       added: "{0} words added to your list.", eAdd: "Saving stopped: {0}", seeWords: "See my words", autoSub: "auto-generated subtitles",
       packH: "Nothing at hand?", packSub: "Start with a ready-made set, add your own show later.", packAdded: "Added",
       wordsH: "My words", wordsSub: "{0} words · {1} → {2}", search: "Search words…", more: "Show more",
-      wEmpty: "No words yet. Tap + to add some from a video.", wNoMatch: "No words match.", know: "I know it", markedKnown: "Marked as known",
+      wEmpty: "No words yet. Tap + to add some.", wNoMatch: "No words match.", know: "I know it", markedKnown: "Marked as known",
       playH: "Play", playSub: "Short games that make your words stick.",
       dailyH: "Daily challenge", dailyNew: "{0} questions. Everyone gets the same ones today.", dailyResume: "Continue: {0} of {1} answered",
       dailyDone: "Done today: {0} points · rank {1} of {2}", dailyNo: "Not available for this language pair today.",
       dailyRes: "{0} of {1} correct", dailyRank: "Rank {0} of {1} today", pts: "pts",
-      clozeH: "Finish the line", clozeS: "A line from a scene, one word missing.", clozeNeed: "Not enough example lines yet. Try another mode.", pracH: "Quiz", tQuizS: "Four choices, pick the meaning.", pracInfo: "{0} to review · {1} new", tDuelS: "Race friends live, in 16 languages.", tLeagueS: "Weekly leaderboard with your friends.",
-      again: "One more screening", resOf: "You knew {0} of {1} words", rollAgain: "Coming back", rollAgainSub: "the ones you missed get asked again", rollMore: "+{0} more", rollKeep: "Stuck for good", rollKeepN: "{0} words", rollKeepSub: "counted after days of getting them right", rollStreak: "In a row", rollStreakN: "{0} days", rollXp: "Earned", rollXpN: "{0} XP", toHome: "Back to home", pNeed: "You need at least 4 words to practice. Tap + to add some.",
-      qCount: "{0} / {1}", xpGain: "+{0} XP", level: "Level {0}", you: "you",
+      clozeH: "Finish the line", clozeS: "A line from a scene, one word missing.", clozeNeed: "Not enough example lines yet. Try another game.", pracH: "Quiz", tQuizS: "Four choices, pick the meaning.", pracInfo: "{0} to review · {1} new", tDuelS: "Race friends live, in 16 languages.", tLeagueS: "Weekly leaderboard with your friends.",
+      again: "One more round", resOf: "You knew {0} of {1} words", rollAgain: "Coming back", rollAgainSub: "the ones you missed get asked again", rollMore: "+{0} more", rollKeep: "Now you know", rollKeepN: "{0} words", rollKeepSub: "right several times on different days", rollStreak: "In a row", rollStreakN: "{0} days", rollXp: "Earned", rollXpN: "{0} points", toHome: "Back to home", pNeed: "You need at least 4 words to practice. Tap + to add some.",
+      qCount: "{0} / {1}", xpGain: "+{0} points", level: "Level {0}", you: "you",
       dH: "Duel", dSub: "Everyone answers the same questions at the same time. Fastest correct answer scores most.",
       dQuick: "Create a room", dCodeLbl: "Have a code from a friend?", dJoin: "Join", dCodeHint: "Enter the 4-digit room code.",
       dRoomLbl: "Room code", dShare: "Share this code. Friends can join from the app or the website.", dHost: "host",
@@ -120,7 +120,7 @@
       invH: "Invite friends", invSub0: "Duels and leagues are more fun together.", invSubN: "{0} friends joined with your link.", invBtn: "Share my invite link",
       remAsk: "Want one quiet reminder in the evening? It skips the days you already played.", remYes: "Yes, remind me", remNo: "No thanks",
       remLbl: "Evening reminder", remOn: "Reminder is on.", remFail: "Notifications are not allowed. Turn them on in your phone's settings.",
-      remDue: "{0} words are ready to review. A few minutes will do.", remPlain: "Tonight's screening is ready whenever you are.",
+      remDue: "{0} words are ready to review. A few minutes will do.", remPlain: "Your words are ready whenever you are.",
       report: "Report a problem or abuse", delAcc: "Delete my account",
       delText: "This permanently deletes your account, your words, your scores and your league memberships. It cannot be undone.",
       delPwLbl: "Type your password to confirm", delNameLbl: "Type your username to confirm", delGo: "Delete everything", cancel: "Cancel", delDone: "Your account was deleted.",
@@ -129,15 +129,15 @@
       authH: "İzlediğin dizinin kelimelerini öğren.", authSub: "Topladığın kelimeler kaybolmasın diye giriş yap.", demoHint: "Sarı kelimeye dokun.", demoGot: "Bu kadar. Kendi dizindeki, kendi metnindeki kelimeler böyle senin olur.", demoSrc: "Bir sahneden", haveAcc: "Hesabın var mı?",
       startH: "Hangi dili öğreniyorsun?", startSub: "Kelimeler ve bulmacalar bu dile göre seçilir. Sonra değiştirebilirsin.",
       startSrc: "Öğrendiğim dil", startDst: "Kendi dilim", startGo: "Başla",
-      homeH: "Bugünün seansı", hello: "Selam {0}", ctaGo: "Seansı başlat", heroMore: "ve {0} kelime daha", streakTop: "{0} gün üst üste", knowTxt: "kelime kalıcı oldu", progH: "Sırada ne var", stamp: "Tamam", playBtn: "Oyna", ctaAdd: "Kelime ekle", ctaDuel: "Düello aç",
-      wk0: "Kısa bir seans bugünün karesini doldurur.", wkOn: "{0} gün üst üste. Bugünün karesi doldu.", wkRisk: "Şimdiye kadar {0} gün üst üste. Bugünün karesi henüz boş.",
+      homeH: "Bugünün seansı", hello: "Selam {0}", ctaGo: "Başla", ctaCards: "Kartlarla tekrar et", ctaPuzzle: "Bulmacayı çöz", photoPick: "ya da galeriden bir resim seç", grpMine: "Kendi kelimelerin", grpToday: "Bugün", grpFriends: "Arkadaşlarla", goalS: "{0} puan (yaklaşık {1} doğru cevap)", xpUnit: "puan", heroMore: "ve {0} kelime daha", streakTop: "{0} gün üst üste", knowTxt: "kelimeyi artık biliyorsun", progH: "Sırada ne var", stamp: "Tamam", playBtn: "Oyna", ctaAdd: "Kelime ekle", ctaDuel: "Düello aç",
+      wk0: "Kısa bir tur bugünün karesini doldurur.", wkOn: "{0} gün üst üste. Bugünün karesi doldu.", wkRisk: "Şimdiye kadar {0} gün üst üste. Bugünün karesi henüz boş.",
       hFirstS: "Anlamak istediğin bir metni yapıştır ya da hazır bir paket seç.", hDoneT: "Bugünün programı tamam", hDoneS: "Yeni bulmaca yarın geliyor. O zamana kadar bir arkadaşına meydan oku.",
-      flowH: "Kelime akışı", flowS: "Kelimeleri kaydır geç. Kurulum yok.", flowHint: "Bildiysen yukarı, tekrar görmek için aşağı kaydır.", flowXp: "+{0} XP", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} XP kazandın. Harika akış!", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
-      photoH: "Altyazının fotoğrafını seç", photoS: "Televizyon ya da laptop ekranının fotoğrafı, ya da ekran görüntüsü. Yazı telefonunda okunur; görüntüyü sunucumuza göndermeyiz.", ocrBusy: "Görüntü okunuyor…", ocrReady: "Görüntüden okuyabildiğim bu. Yanlış çıkan yeri düzelt, sonra kelimeleri çıkar.", ocrEmpty: "Bu görüntüde okunabilir yazı bulamadım. Altyazı net ve büyük görünsün.", ocrLang: "Görüntüden okuma şimdilik Latin harfli dillerde çalışıyor.", ocrOnly: "Bu özellik telefon uygulamasında çalışır.", extH: "Bilgisayarda mı izliyorsun?", extS: "Chrome eklentisi izlerken kelimeleri toplar. Aynı hesapla burada tekrar edersin. Dokun, linki kendine gönder.", extMsg: "CineVocab Chrome eklentisi: izlerken altyazıdan kelime topla.", shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
-      howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hazır kelimelerle başla", howQuickS: "Elinde bir şey yoksa hazır setten kaydır.", howSnap: "Altyazıyı fotoğrafla", howSnapS: "Yakında: kamerayı TV'ye tut.", howPaste: "Altyazı ya da metin getir", howPasteS: "Yapıştır ya da dosyayı seç. Bilmediğin kelimeleri çıkaralım.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
+      flowH: "Kelime akışı", flowS: "Kelimelerini tek tek kaydır geç.", flowHint: "Bildiysen sağa, tekrar görmek için sola kaydır.", flowXp: "+{0} puan", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} puan kazandın.", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
+      photoH: "Ekran fotoğrafından oku", photoS: "Televizyondaki ya da telefondaki altyazıyı çek.", ocrBusy: "Görüntü okunuyor…", ocrReady: "Yazı telefonunda okundu; görüntü sunucumuza gitmedi. Yanlış çıkan yeri düzelt, sonra kelimeleri çıkar.", ocrEmpty: "Bu görüntüde okunabilir yazı bulamadım. Altyazı net ve büyük görünsün.", ocrLang: "Görüntüden okuma şimdilik Latin harfli dillerde çalışıyor.", ocrOnly: "Bu özellik telefon uygulamasında çalışır.", extH: "Bilgisayarda mı izliyorsun? Chrome eklentisini kendine gönder", extS: "Chrome eklentisi izlerken kelimeleri toplar. Aynı hesapla burada tekrar edersin. Dokun, linki kendine gönder.", extMsg: "CineVocab Chrome eklentisi: izlerken altyazıdan kelime topla.", shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
+      howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hazır kelimelerle başla", howQuickS: "Elinde bir şey yoksa hazır setle başla.", howSnap: "Altyazıyı fotoğrafla", howSnapS: "Yakında: kamerayı TV'ye tut.", howPaste: "Altyazı ya da metin yapıştır", howPasteS: "Bilmediğin kelimeleri biz çıkarırız.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
       cardsH: "Kartlar", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
-      badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün seri", bWins: "galibiyet", bMaster: "usta kelime",
+      badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün üst üste", bWins: "galibiyet", bMaster: "usta kelime",
       badgeNew: "Yeni ödül: {0} {1}", badgeNeed: "Kilitli. {0} {1} olunca açılır.", badgeHave: "Senin: {0} {1}.",
       setH: "Ayarlar", meGuestH: "Ayarlar", meGuestS: "CineVocab'ı hesap açmadan deniyorsun.", sndLbl: "Sesler", vibLbl: "Titreşim", comboN: "{0} doğru üst üste", qAsk: "{0} burada ne demek?", qAskCloze: "Boşluğa hangi kelime gelir?", themeLbl: "Görünüm", themeDark: "Koyu (gece seansı)", themeLight: "Açık (matine)",
       login: "Giriş yap", register: "Kayıt ol", username: "Kullanıcı adı", email: "E-posta", password: "Parola",
@@ -146,17 +146,17 @@
       recText: "Kurtarma kodun. Güvenli bir yere kaydet: parolanı unutursan hesabına dönmenin tek yolu bu.",
       recOk: "Kaydettim", eFill: "Bütün alanları doldur.",
       google: "Google ile devam et", or2: "ya da", eGoogle: "Google ile giriş yapılamadı.",
-      tabHome: "Ana sayfa", tabWords: "Kelimeler", tabAdd: "Videodan kelime ekle", tabPlay: "Oyna", tabMe: "Ben",
+      tabHome: "Ana sayfa", tabWords: "Kelimeler", tabAdd: "Kelime ekle", tabPlay: "Oyna", tabMe: "Ben",
       sDaily: "Günlük", sReview: "Tekrar", sDuel: "Düello", sLeague: "Lig", sPacks: "Paketler",
-      tryFirst: "Hesap açmadan dene", tryBack: "Denemeye dön", needAcc: "Kelimelerini saklamak ve burayı açmak için ücretsiz hesap aç.", demoPack: "Deneme paketi", guestName: "Misafir", guestBar: "CineVocab'ı deniyorsun. İlerlemen kaybolmasın diye ücretsiz hesap aç.", demoPair: "Bu dil çifti için deneme paketi henüz yok, {0} → {1} açıldı.", knowNum: "{0} kelime kalıcı", knowSub: "listendeki {0} kelimeden. Bir kelime ancak günler içinde üst üste bilince sayılır.",
-      goalNum: "{0} / {1} XP", goalLeft: "Bugünkü hedefe {0} XP kaldı", goalDone: "Bugünkü hedef tamam. Yarın görüşürüz!",
+      tryFirst: "Hesap açmadan dene", tryBack: "Denemeye dön", needAcc: "Kelimelerini saklamak ve burayı açmak için ücretsiz hesap aç.", demoPack: "Deneme paketi", guestName: "Misafir", guestBar: "CineVocab'ı deniyorsun. İlerlemen kaybolmasın diye ücretsiz hesap aç.", demoPair: "Bu dil çifti için deneme paketi henüz yok, {0} → {1} açıldı.", knowNum: "{0} kelime kalıcı", knowSub: "Farklı günlerde birkaç kez doğru bildiklerin. Listende {0} kelime var.",
+      goalNum: "{0} / {1} puan", goalLeft: "Bugünkü hedefe {0} puan kaldı", goalDone: "Bugünkü hedef tamam. Yarın görüşürüz!",
       goalToast: "Günlük hedef tamam!", bonusH: "Günlük hedef tamam", bonusS: "{0} günlük seri. Yarın görüşürüz.", levelUp: "Seviye {0}!",
       qDaily: "Günlük meydan okumayı oyna", qPractice: "Bir tur kart bitir", qAdd: "Yeni kelime ekle",
-      ctaFirst: "İlk kelimelerini ekle", ctaReview: "{0} kelimeyi tekrar et", ctaDaily: "Bugünün meydan okumasını oyna", ctaPractice: "Yeni kelimelerle pratik yap",
-      lvlName: "Seviye {0}", lvlLeft: "Seviye {1} için {0} XP",
-      feedH: "Kaynakların", feedEmpty: "Kelime topladığın videolar ve metinler burada görünür.", noVideo: "Diğer kelimeler", wordsCount: "{0} kelime",
+      ctaFirst: "İlk kelimelerini ekle", ctaReview: "{0} kelimeyi tekrar et", ctaDaily: "Meydan okumayı oyna", ctaPractice: "Yeni kelimelerle pratik yap",
+      lvlName: "Seviye {0}", lvlLeft: "Seviye {1} için {0} puan",
+      feedH: "Dizilerin ve metinlerin", feedEmpty: "Kelime topladığın videolar ve metinler burada görünür.", noVideo: "Diğer kelimeler", wordsCount: "{0} kelime",
       videoH: "Kendi metninden kelime çıkar", videoSub: "Bir metin yapıştır ya da elindeki altyazı dosyasını seç. Bilmediğin kelimeleri bulalım.",
-      srcLbl: "Video şu dilde", dstLbl: "Çeviriler şu dilde", swap: "Dilleri değiştir",
+      srcLbl: "Metnin dili", dstLbl: "Çeviri dili", swap: "Dilleri değiştir",
       titleLbl: "Bir ad ver (isteğe bağlı)", textLbl: "Metnin", pickFile: "Altyazı ya da metin dosyası seç", myText: "Metnim", textPriv: "Metnin telefonundan çıkmaz. Sunucuya yalnızca kelime listesi gider; kelimenin geçtiği cümle yalnızca bu telefonda saklanır. Bilgisayarda mı izliyorsun? CineVocab Chrome eklentisi kelimeleri senin yerine toplar, burada görünür.", eText: "Önce bir metin yapıştır ya da dosya seç.", eNoWords: "Bu metinde yeni kelime bulunamadı.", eFile: "Bu dosya okunamadı.", eBig: "Dosya çok büyük (sınır 2 MB).", countLbl: "Kaç yeni kelime?", extract: "Kelimeleri çıkar",
       eSame: "İki dil farklı olmalı.",
       reading: "Metnin okunuyor…", planning: "Yeni kelimelerin seçiliyor…",
@@ -166,14 +166,14 @@
       added: "{0} kelime listene eklendi.", eAdd: "Kaydetme durdu: {0}", seeWords: "Kelimelerimi gör", autoSub: "otomatik altyazı",
       packH: "Elinde bir şey yoksa", packSub: "Hazır bir setle başla, kendi dizini sonra eklersin.", packAdded: "Eklendi",
       wordsH: "Kelimelerim", wordsSub: "{0} kelime · {1} → {2}", search: "Kelime ara…", more: "Daha fazla göster",
-      wEmpty: "Henüz kelime yok. + düğmesiyle bir videodan ekle.", wNoMatch: "Eşleşen kelime yok.", know: "Biliyorum", markedKnown: "Biliyorum olarak işaretlendi",
+      wEmpty: "Henüz kelime yok. + düğmesiyle ekle.", wNoMatch: "Eşleşen kelime yok.", know: "Biliyorum", markedKnown: "Biliyorum olarak işaretlendi",
       playH: "Oyna", playSub: "Kelimeleri aklında tutan kısa oyunlar.",
       dailyH: "Günlük meydan okuma", dailyNew: "{0} soru. Bugün herkes aynı soruları çözüyor.", dailyResume: "Devam et: {0} / {1} cevaplandı",
       dailyDone: "Bugün tamam: {0} puan · sıra {1} / {2}", dailyNo: "Bu dil çifti için bugün hazır değil.",
       dailyRes: "{0} / {1} doğru", dailyRank: "Bugün {1} kişi içinde {0}. sıradasın", pts: "puan",
-      clozeH: "Altyazıyı tamamla", clozeS: "Sahneden bir cümle, bir kelime eksik.", clozeNeed: "Henüz yeterli örnek cümle yok. Başka bir mod dene.", pracH: "Test", tQuizS: "Dört şıktan doğru anlamı seç.", pracInfo: "{0} tekrar · {1} yeni", tDuelS: "Arkadaşlarınla canlı yarış, 16 dilde.", tLeagueS: "Arkadaşlarınla haftalık sıralama.",
-      again: "Bir seans daha", resOf: "{1} kelimeden {0} tanesini bildin", rollAgain: "Tekrar gelecek", rollAgainSub: "bilemediklerin yeniden sorulacak", rollMore: "+{0} kelime", rollKeep: "Kalıcı oldu", rollKeepN: "{0} kelime", rollKeepSub: "günler içinde üst üste bildiklerin", rollStreak: "Üst üste", rollStreakN: "{0} gün", rollXp: "Kazandığın", rollXpN: "{0} XP", toHome: "Ana sayfaya dön", pNeed: "Pratik için en az 4 kelime lazım. + düğmesiyle ekle.",
-      qCount: "{0} / {1}", xpGain: "+{0} XP", level: "Seviye {0}", you: "sen",
+      clozeH: "Altyazıyı tamamla", clozeS: "Sahneden bir cümle, bir kelime eksik.", clozeNeed: "Henüz yeterli örnek cümle yok. Başka bir oyun dene.", pracH: "Test", tQuizS: "Dört şıktan doğru anlamı seç.", pracInfo: "{0} tekrar · {1} yeni", tDuelS: "Arkadaşlarınla canlı yarış, 16 dilde.", tLeagueS: "Arkadaşlarınla haftalık sıralama.",
+      again: "Bir tur daha", resOf: "{1} kelimeden {0} tanesini bildin", rollAgain: "Tekrar gelecek", rollAgainSub: "bilemediklerin yeniden sorulacak", rollMore: "+{0} kelime", rollKeep: "Artık biliyorsun", rollKeepN: "{0} kelime", rollKeepSub: "farklı günlerde birkaç kez bildin", rollStreak: "Üst üste", rollStreakN: "{0} gün", rollXp: "Kazandığın", rollXpN: "{0} puan", toHome: "Ana sayfaya dön", pNeed: "Pratik için en az 4 kelime lazım. + düğmesiyle ekle.",
+      qCount: "{0} / {1}", xpGain: "+{0} puan", level: "Seviye {0}", you: "sen",
       dH: "Düello", dSub: "Herkes aynı soruyu aynı anda cevaplar. En hızlı doğru cevap en çok puanı alır.",
       dQuick: "Oda kur", dCodeLbl: "Arkadaşından kod mu aldın?", dJoin: "Katıl", dCodeHint: "4 haneli oda kodunu gir.",
       dRoomLbl: "Oda kodu", dShare: "Bu kodu paylaş. Arkadaşların uygulamadan ya da siteden katılabilir.", dHost: "kurucu",
@@ -202,7 +202,7 @@
       invH: "Arkadaşlarını davet et", invSub0: "Düello ve ligler arkadaşlarla daha eğlenceli.", invSubN: "Bağlantınla {0} arkadaşın katıldı.", invBtn: "Davet bağlantımı paylaş",
       remAsk: "Akşamları tek bir sakin hatırlatma ister misin? Oynadığın gün gelmez.", remYes: "Evet, hatırlat", remNo: "Hayır",
       remLbl: "Akşam hatırlatması", remOn: "Hatırlatma açık.", remFail: "Bildirim izni yok. Telefonun ayarlarından açabilirsin.",
-      remDue: "{0} kelime tekrar için hazır. Birkaç dakika yeter.", remPlain: "Bu akşamın seansı hazır, ne zaman istersen.",
+      remDue: "{0} kelime tekrar için hazır. Birkaç dakika yeter.", remPlain: "Kelimelerin hazır, ne zaman istersen.",
       report: "Sorun ya da kötüye kullanım bildir", delAcc: "Hesabımı sil",
       delText: "Hesabın, kelimelerin, puanların ve lig üyeliklerin kalıcı olarak silinir. Bu işlem geri alınamaz.",
       delPwLbl: "Onaylamak için parolanı yaz", delNameLbl: "Onaylamak için kullanıcı adını yaz", delGo: "Her şeyi sil", cancel: "Vazgeç", delDone: "Hesabın silindi.",
@@ -229,6 +229,7 @@
       sel.value = id === "src" ? S.src : S.dst;
     }
     $("uiLang").value = S.ui; $("goalSel").value = String(S.goal); $("themeSel").value = themeOf();
+    for (const o of $("goalSel").options) o.textContent = t("goalS", o.value, Math.round(Number(o.value) / 10));
     $("lnkPrivacy").href = $("lnkPrivacy0").href = API + "/privacy?lang=" + S.ui;
     setAuthMode(authMode);
   }
@@ -583,6 +584,7 @@
   function bonusCard(h) {
     const b = $("bonus"); $("bonusH").textContent = t("bonusH"); $("bonusS").textContent = t("bonusS", h.streak || 1);
     b.classList.remove("out"); b.hidden = false; sfx("tap"); vibe("tap");
+    if ($("bonusN").dataset) $("bonusN").dataset.u = t("xpUnit");
     countUp($("bonusN"), h.xp_today);
     clearTimeout(bonusTimer);
     const close = function () { clearTimeout(bonusTimer); b.classList.add("out"); setTimeout(function () { b.hidden = true; }, calm() ? 0 : 300); };
@@ -638,11 +640,11 @@
   // Bugun yapilacaklar, onem sirasiyla. Ilk bitmemis is "bilet" olur, kalanlar altta listelenir.
   function todayItems() {
     const h = S.home, d = S.daily, pz = S.puzzle, f = flags(), out = [];
-    const puzzle = pz && pz.ready ? { id: "puzzle", icon: "puzzle", title: t("pzH"), no: pz.num ? "#" + pz.num : "", done: !!pz.done, run: startPuzzle, xp: pz.done ? "" : "+50 XP",
+    const puzzle = pz && pz.ready ? { id: "puzzle", icon: "puzzle", title: t("pzH"), btn: t("ctaPuzzle"), no: pz.num ? "#" + pz.num : "", done: !!pz.done, run: startPuzzle, xp: pz.done ? "" : "+50 " + t("xpUnit"),
       sub: pz.done && pz.result ? t("pzDone", clock(Number(pz.result.secs) || 0), pz.result.rank || "-", pz.result.players || "-") : t("pzNew", pz.total || 5) } : null;
-    const daily = d && d.ready ? { id: "daily", icon: "target", title: t("dailyH"), no: d.num ? "#" + d.num : "", done: !!d.done, run: startDaily,
+    const daily = d && d.ready ? { id: "daily", icon: "target", title: t("dailyH"), btn: t("ctaDaily"), no: d.num ? "#" + d.num : "", done: !!d.done, run: startDaily,
       sub: d.done && d.result ? t("dailyDone", d.result.score, d.result.rank || "-", d.result.players) : d.started ? t("dailyResume", d.answered, d.total) : t("dailyNew", d.total) } : null;
-    const cards = h.pair_words >= 4 ? { id: "cards", icon: "cards", title: h.due > 0 ? t("ctaReview", h.due) : t("cardsH"), done: !!f.practice, run: startCards,
+    const cards = h.pair_words >= 4 ? { id: "cards", icon: "cards", title: h.due > 0 ? t("ctaReview", h.due) : t("cardsH"), btn: h.due > 0 ? t("ctaReview", h.due) : t("ctaCards"), done: !!f.practice, run: startCards,
       sub: h.due > 0 || h.new > 0 ? t("pracInfo", h.due, h.new) : t("fcTip2") } : null;
     const add = { id: "add", icon: "plus", title: h.pair_words < 4 ? t("ctaFirst") : t("qAdd"), done: !!f.added, run: () => go("v-add"), sub: t("hFirstS"), btn: t("ctaAdd") };
     if (cards && h.due > 0) out.push(cards);        // once kendi kelimelerin: uygulamanin asil isi
@@ -691,15 +693,17 @@
       ul.appendChild(li);
     }
     $("progH").hidden = !rest.length;
-    // gunluk XP hedefi ve seviye
-    const done = h.xp_today >= S.goal;
-    document.querySelector(".meter").classList.toggle("done", done);
     $("knowBig").textContent = h.mastered || 0; $("knowNum").textContent = t("knowTxt"); $("knowSub").textContent = t("knowSub", h.pair_words != null ? h.pair_words : h.words);
     $("guestBar").hidden = !S.guest; $("guestBar").textContent = t("guestBar");
+  }
+  // Gunluk puan hedefi ve seviye: Ben ekraninda durur (ana sayfa sade kalsin diye).
+  function renderMeter(h) {
+    const done = h.xp_today >= S.goal;
+    document.querySelector(".meter").classList.toggle("done", done);
     $("goalNum").textContent = t("goalNum", h.xp_today, S.goal);
     $("goalSub").textContent = done ? t("goalDone") : t("goalLeft", S.goal - h.xp_today);
     $("goalFill").style.width = Math.round(Math.min(1, h.xp_today / S.goal) * 100) + "%";
-    $("lvlName").textContent = t("lvlName", h.level) + " · " + t("rk" + rankOf(h.level));
+    $("lvlName").textContent = t("lvlName", h.level);
     $("lvlLeft").textContent = t("lvlLeft", h.xp_level - h.xp_into, h.level + 1);
     $("lvlFill").style.width = Math.round(h.xp_into / h.xp_level * 100) + "%";
   }
@@ -1418,7 +1422,7 @@
     $("flWord").textContent = it.w; $("flTr").textContent = it.t; $("flTr").classList.remove("on");
     exampleInto($("flEx"), $("flSrc"), it.w, false);
     $("flStage").style.setProperty("--run", Math.min(F.run, 10));
-    $("flCount").textContent = F.run >= 2 ? t("flowRun", F.run) : (F.ok ? F.xp + " XP" : "");
+    $("flCount").textContent = F.run >= 2 ? t("flowRun", F.run) : (F.ok ? F.xp + " " + t("xpUnit") : "");
     F.rv = setTimeout(function () { if (curView === "v-flow") flowOpen(); }, 650);
     if (F.voice) setTimeout(function () { if (curView === "v-flow" && F.items[F.i] === it) say2(it.w, $("flSay")); }, 220);
   }
@@ -1451,16 +1455,16 @@
   }
   (function () {
     const st = $("flStage");
-    st.addEventListener("pointerdown", function (ev) { if (F.busy) return; F.drag = true; F.moved = false; F.y0 = ev.clientY; F.dy = 0; $("flCard").classList.remove("in"); try { st.setPointerCapture(ev.pointerId); } catch (e) {} });
+    st.addEventListener("pointerdown", function (ev) { if (F.busy) return; F.drag = true; F.moved = false; F.y0 = ev.clientX; F.dy = 0; $("flCard").classList.remove("in"); try { st.setPointerCapture(ev.pointerId); } catch (e) {} });
     st.addEventListener("pointermove", function (ev) {
       if (!F.drag || F.busy) return;
-      F.dy = ev.clientY - F.y0; if (Math.abs(F.dy) > 8) F.moved = true;
-      if (F.moved) { $("flCard").style.transform = "translateY(" + F.dy + "px) rotate(" + (F.dy / 60) + "deg)"; }
+      F.dy = ev.clientX - F.y0; if (Math.abs(F.dy) > 8) F.moved = true;         // yatay: kartlarla ayni yon
+      if (F.moved) { $("flCard").style.transform = "translateX(" + F.dy + "px) rotate(" + (F.dy / 18) + "deg)"; }
     });
     const up = function () {
       if (!F.drag) return; F.drag = false; if (F.busy) return;
       const card = $("flCard");
-      if (F.moved && Math.abs(F.dy) > 80) return flowAnswer(F.dy < 0);
+      if (F.moved && Math.abs(F.dy) > 80) return flowAnswer(F.dy > 0);          // saga: bildim, sola: tekrar goster
       card.style.transform = "";
       if (!F.moved) { flowOpen(); say2(F.items[F.i].w, $("flSay")); }     // dokun: anlami hemen goster + oku
     };
@@ -1497,6 +1501,7 @@
       : d.done && d.result ? t("dailyDone", d.result.score, d.result.rank || "-", d.result.players)
       : d.started ? t("dailyResume", d.answered, d.total) : t("dailyNew", d.total);
     $("tCardsS").textContent = h ? t("pracInfo", h.due, h.new) : "";
+    $("tDaily").hidden = !(d && d.ready); $("grpToday").hidden = false;
     const hot = hotTile(h, d, pz);
     for (const id of ["tCards", "tPuzzle", "tDaily", "tFlow"]) $(id).classList.toggle("hot", id === hot);
     $("tPracticeS").textContent = t("tQuizS");
@@ -1682,7 +1687,7 @@
     if (h) {
       $("meAvatar").textContent = String(h.username || "?").charAt(0).toLocaleUpperCase();
       $("meName").textContent = h.username;
-      $("meLevel").textContent = t("rk" + rankOf(h.level)) + " · " + t("level", h.level) + " · " + h.xp + " XP";
+      $("meLevel").textContent = t("rk" + rankOf(h.level)) + " · " + t("level", h.level) + " · " + h.xp + " " + t("xpUnit");
       const list = badgeList(h), box = $("badges"); box.textContent = "";
       $("badgeSub").textContent = t("badgeSub", list.filter((b) => b.on).length, list.length);
       for (const b of list) {
@@ -1692,6 +1697,7 @@
         box.appendChild(btn);
       }
       $("meWords").textContent = h.words; $("meStreak").textContent = h.streak; $("meWins").textContent = h.wins;
+      renderMeter(h);
     }
     if (!h) refresh().then(() => { if (curView === "v-me") showMe(); }).catch(() => {});
     $("remRow").hidden = !isNative(); $("remTgl").checked = store.get("remind") === "1";
@@ -1729,7 +1735,7 @@
     } catch (e) { say($("delMsg"), e.message, "bad"); }
     $("delGo").disabled = false; $("delPw").value = "";
   });
-  $("goalSel").addEventListener("change", () => { S.goal = Number($("goalSel").value) || 50; store.set("goal", S.goal); });
+  $("goalSel").addEventListener("change", () => { S.goal = Number($("goalSel").value) || 50; store.set("goal", S.goal); if (S.home) renderMeter(S.home); });
   $("themeSel").addEventListener("change", function () { store.set("theme", $("themeSel").value === "light" ? "light" : "dark"); applyTheme(); });
   $("uiLang").addEventListener("change", function () { S.ui = $("uiLang").value; store.set("ui", S.ui); applyTexts(); showMe(); });
   $("logout").addEventListener("click", async function () {
@@ -1752,22 +1758,20 @@
     setPair($("oSrc").value, $("oDst").value);
     if (S.guest) fitDemoPair(true);
     if (pendingShare && S.key) { store.set("how", "1"); return sharePending(); }      // paylasimla gelen yeni kullanici: dogrudan metnine
-    if (store.get("how") === null) return showView("v-how", false);      // ilk kez: nasil baslamak istersin?
+    if (store.get("how") === null) {          // ilk kez: soru sormadan dogrudan ilk kelime karti (soz, bir kelime bilince kanitlanir)
+      store.set("how", "1"); try { history.replaceState({ v: "v-home" }, ""); } catch (e) {}
+      return startFlow();
+    }
     go("v-home", false);
   });
   // Eklenti koprusu: bilgisayarda izleyen icin. Linki paylasim penceresiyle kendine gonderir (telefonda magaza acmak ise yaramaz).
-  for (const id of ["aExt", "hExt"]) $(id).addEventListener("click", () => share(t("extMsg"), CFG.extension || shareUrl()));
-  $("aPhoto").addEventListener("click", () => $("photo").click());
-  $("photo").addEventListener("change", function () { const f = $("photo").files && $("photo").files[0]; $("photo").value = ""; ocrFile(f); });
+  $("aExt").addEventListener("click", () => share(t("extMsg"), CFG.extension || shareUrl()));
+  $("aPhoto").addEventListener("click", () => $("photo").click());           // kamera
+  $("aPick").addEventListener("click", () => $("photoPick").click());        // galeri
+  for (const id of ["photo", "photoPick"]) $(id).addEventListener("change", function () { const f = $(id).files && $(id).files[0]; $(id).value = ""; ocrFile(f); });
   $("aQuick").addEventListener("click", startFlow);
   $("aPaste").addEventListener("click", () => addMode(true));
-  $("aDuel").addEventListener("click", () => go("v-duel"));
   $("addBack").addEventListener("click", () => addMode(false));
-  function howDone(next) { store.set("how", "1"); next(); }
-  $("hQuick").addEventListener("click", () => howDone(function () { history.replaceState({ v: "v-home" }, ""); startFlow(); }));
-  $("hPaste").addEventListener("click", () => howDone(function () { go("v-add", false); }));
-  $("hDuel").addEventListener("click", () => howDone(function () { go("v-duel", false); }));
-  $("hSkip").addEventListener("click", () => howDone(function () { go("v-home", false); }));
   // Misafir icin: secilen dil ciftinde deneme destesi yoksa en yakin cifte gecer.
   function fitDemoPair(tell) {
     const p = CVDEMO.pair(S.src, S.dst, S.ui);

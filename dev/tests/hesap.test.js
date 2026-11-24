@@ -387,11 +387,12 @@ test("karsilama sahnesi: deneme destesinden cumle ve anlam; Turkce arayuzde Ingi
 test("ekranlar: calismayan 'yakinda' kutusu yok, ilk secenek kendi metnini getirmek", () => {
   const html = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "index.html"), "utf8");
   assert.doesNotMatch(html, /Snap/);
-  for (const [bolum, ilk] of [["v-how", "hPaste"], ["addPick", "aPaste"]]) {
-    const parca = html.slice(html.indexOf('id="' + bolum + '"'));
-    assert.equal(parca.match(/<button class="tile[^"]*" id="(\w+)"/)[1], ilk);
-  }
-  assert.equal((html.match(/class="tile hot"/g) || []).length, 2, "sabit one cikan kutu yalnizca bu iki ekranda, birer tane");
+  const parca = html.slice(html.indexOf('id="addPick"'));
+  assert.equal(parca.match(/<button class="tile[^"]*" id="(\w+)"/)[1], "aPaste");
+  assert.equal((html.match(/class="tile hot"/g) || []).length, 1, "sabit one cikan kutu yalnizca ekle ekraninda, bir tane");
+  assert.doesNotMatch(html, /id="v-how"/, "ilk acilista 'nasil baslamak istersin' ekrani yok");
+  const kaynaklar = html.slice(html.indexOf('id="addPick"'), html.indexOf('id="addForm"')).match(/<button class="tile[^"]*" id="(\w+)"/g).length;
+  assert.equal(kaynaklar, 3, "ekle ekraninda uc kaynak: yapistir, fotograf, hazir set");
 });
 
 // Kelimenin gectigi cumle: kullanicinin metninden bulunur, yalnizca telefonda saklanir.
@@ -490,6 +491,27 @@ test("gorselden okuma: Android yalnizca metin ve gorsel alir, kamera izni yok, o
   const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "android", "app");
   const m = fs.readFileSync(path.join(kok, "src", "main", "AndroidManifest.xml"), "utf8"), g = fs.readFileSync(path.join(kok, "build.gradle"), "utf8");
   assert.deepEqual((m.match(/mimeType="([^"]+)"/g) || []).sort(), ['mimeType="image/*"', 'mimeType="text/plain"']);
-  assert.doesNotMatch(m, /CAMERA|READ_EXTERNAL|READ_MEDIA/);
+  assert.doesNotMatch(m, /READ_EXTERNAL|READ_MEDIA|RECORD_AUDIO|ACCESS_\w*LOCATION/, "depolama, mikrofon, konum izni yok");
+  assert.doesNotMatch(m, /permission\.CAMERA/, "kamera izni yok: fotografi telefonun kamera uygulamasi ceker");
+  assert.match(m, /<queries>[\s\S]*android\.media\.action\.IMAGE_CAPTURE[\s\S]*<\/queries>/, "kamera uygulamasi gorunur olmali, yoksa galeriye duser");
   assert.match(g, /com\.google\.mlkit:text-recognition:/, "model uygulamayla gelir"); assert.doesNotMatch(g, /play-services-mlkit/, "indirmeli surum degil");
+});
+
+// Herkes anlasin: gorunen metinde oyun jargonu yok, ilk acilis kisa.
+test("metin: kullaniciya gorunen yerde 'XP' ve 'seans' yok (TR), 'XP' yok (EN)", () => {
+  const L = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "app.js"), "utf8").split("\n");
+  const en = L.slice(45, 127).join("\n"), tr = L.slice(127, 209).join("\n");
+  assert.match(en, /authH:/); assert.match(tr, /authH: "İzlediğin/, "satir araligi sozluklere denk geliyor");
+  assert.doesNotMatch(en, /\bXP\b/); assert.doesNotMatch(tr, /\bXP\b/);
+  const seans = (tr.match(/[a-zA-Z]+: "[^"]*[Ss]eans[^"]*"/g) || []).filter((x) => !/^(homeH|themeDark):/.test(x));
+  assert.deepEqual(seans, [], "'seans' yalnizca baslikta ve tema adinda kalabilir");
+});
+test("ilk acilis: dil secildikten sonra soru sormadan ilk kelime karti acilir", () => {
+  const js = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "app.js"), "utf8");
+  const blok = js.slice(js.indexOf('$("oGo").addEventListener'), js.indexOf('$("oGo").addEventListener') + 900);
+  assert.match(blok, /store\.get\("how"\) === null[\s\S]*return startFlow\(\)/); assert.doesNotMatch(js, /showView\("v-how"/);
+});
+test("kelime akisi: kartlarla ayni yon (saga bildim, sola tekrar)", () => {
+  const js = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "app.js"), "utf8");
+  assert.match(js, /flowAnswer\(F\.dy > 0\)/); assert.match(js, /cardAnswer\(C\.dx > 0\)/);
 });

@@ -12,7 +12,7 @@ for T in dark light; do
   [ $T = dark ] && N=koyu || N=acik
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars --force-prefers-reduced-motion --force-device-scale-factor=2 --window-size=500,844 \
     --user-data-dir="$(mktemp -d)" --virtual-time-budget=${5:-9000} --screenshot="$OUT/tmp.png" \
-    "http://127.0.0.1:$PORT/dev/ekran/cek.html?t=$T&xp=${3:-0}&gap=${4:-700}&steps=$2" >/dev/null 2>&1
+    "http://127.0.0.1:$PORT/dev/ekran/cek.html?t=$T&xp=${3:-0}&gap=${4:-700}&giris=${GIRIS:-0}&steps=$2" >/dev/null 2>&1
   sips -c 1688 780 "$OUT/tmp.png" --out "$OUT/$1-$N.png" >/dev/null 2>&1
 done
 rm -f "$OUT/tmp.png"; ls "$OUT" | grep "^$1-"

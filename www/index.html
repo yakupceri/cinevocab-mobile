@@ -51,7 +51,12 @@
     <!-- Giris / kayit -->
     <section id="v-auth" hidden>
       <h1 class="display" data-i="authH"></h1>
-      <p class="sub" data-i="authSub"></p>
+      <p class="sub ask-only" data-i="authSub"></p>
+      <!-- Karsilama: sozu anlatmak yerine yasat. Sari kelimeye dokun, anlami altyazi gibi cikar. -->
+      <div class="screen tall demo" id="demo"><span class="tc" data-i="demoSrc"></span><div class="subtitle" id="demoLine"></div><div class="demo-tr" id="demoTr" hidden></div></div>
+      <p class="sub" id="demoHint"></p>
+      <button class="btn" id="tryBtn" type="button"></button>
+      <p class="or demo-only" data-i="haveAcc"></p>
       <div class="card">
         <div class="seg" id="authSeg">
           <button type="button" id="segLogin" aria-pressed="true" data-i="login"></button>
@@ -82,7 +87,6 @@
           <button class="btn" type="button" id="recOk" data-i="recOk"></button>
         </div>
         <p class="note" id="aMsg"></p>
-        <button class="btn ghost" id="tryBtn" type="button"></button>
         <p class="legal"><span data-i="legal"></span> <a id="lnkPrivacy0" target="_blank" rel="noopener" data-i="privacy"></a></p>
       </div>
     </section>
@@ -103,9 +107,8 @@
     <section id="v-how" hidden>
       <h1 class="display" data-i="howH"></h1>
       <p class="sub" data-i="howSub"></p>
-      <button class="tile hot" id="hQuick" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="howQuick"></b><em data-i="howQuickS"></em></span></button>
-      <button class="tile" id="hSnap" type="button" disabled><i><svg class="ic"><use href="#i-camera"/></svg></i><span><b data-i="howSnap"></b><em data-i="howSnapS"></em></span></button>
-      <button class="tile" id="hPaste" type="button"><i><svg class="ic"><use href="#i-list"/></svg></i><span><b data-i="howPaste"></b><em data-i="howPasteS"></em></span></button>
+      <button class="tile hot" id="hPaste" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="howPaste"></b><em data-i="howPasteS"></em></span></button>
+      <button class="tile" id="hQuick" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="howQuick"></b><em data-i="howQuickS"></em></span></button>
       <button class="tile" id="hDuel" type="button"><i><svg class="ic"><use href="#i-swords"/></svg></i><span><b data-i="howDuel"></b><em data-i="howDuelS"></em></span></button>
       <button class="link" id="hSkip" type="button" data-i="howSkip"></button>
     </section>
@@ -156,9 +159,8 @@
       <div id="addPick">
         <h1 data-i="addH"></h1>
         <p class="sub" data-i="addSub"></p>
-        <button class="tile hot" id="aQuick" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="howQuick"></b><em data-i="howQuickS"></em></span></button>
-        <button class="tile" id="aSnap" type="button" disabled><i><svg class="ic"><use href="#i-camera"/></svg></i><span><b data-i="howSnap"></b><em data-i="howSnapS"></em></span></button>
-        <button class="tile" id="aPaste" type="button"><i><svg class="ic"><use href="#i-list"/></svg></i><span><b data-i="howPaste"></b><em data-i="howPasteS"></em></span></button>
+        <button class="tile hot" id="aPaste" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="howPaste"></b><em data-i="howPasteS"></em></span></button>
+        <button class="tile" id="aQuick" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="howQuick"></b><em data-i="howQuickS"></em></span></button>
         <button class="tile" id="aDuel" type="button"><i><svg class="ic"><use href="#i-swords"/></svg></i><span><b data-i="howDuel"></b><em data-i="howDuelS"></em></span></button>
       </div>
       <div id="addForm" hidden>
@@ -210,11 +212,11 @@
     <section id="v-play" hidden>
       <h1 data-i="playH"></h1>
       <p class="sub" data-i="playSub"></p>
-      <button class="tile hot" id="tFlow" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="flowH"></b><em data-i="flowS"></em></span></button>
+      <button class="tile" id="tCards" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="cardsH"></b><em id="tCardsS"></em></span></button>
+      <button class="tile" id="tFlow" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="flowH"></b><em data-i="flowS"></em></span></button>
       <button class="tile" id="tCloze" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="clozeH"></b><em data-i="clozeS"></em></span></button>
       <button class="tile" id="tPuzzle" type="button"><i><svg class="ic"><use href="#i-puzzle"/></svg></i><span><b id="tPuzzleT"></b><em id="tPuzzleS"></em></span></button>
       <button class="tile" id="tDaily" type="button"><i><svg class="ic"><use href="#i-target"/></svg></i><span><b id="tDailyT"></b><em id="tDailyS"></em></span></button>
-      <button class="tile" id="tCards" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="cardsH"></b><em id="tCardsS"></em></span></button>
       <button class="tile" id="tPractice" type="button"><i><svg class="ic"><use href="#i-quiz"/></svg></i><span><b data-i="pracH"></b><em id="tPracticeS"></em></span></button>
       <button class="tile" id="tDuel" type="button"><i><svg class="ic"><use href="#i-swords"/></svg></i><span><b data-i="dH"></b><em data-i="tDuelS"></em></span></button>
       <button class="tile" id="tLeague" type="button"><i><svg class="ic"><use href="#i-trophy"/></svg></i><span><b data-i="lH"></b><em data-i="tLeagueS"></em></span></button>

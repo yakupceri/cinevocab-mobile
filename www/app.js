@@ -44,15 +44,15 @@
   // ---------------------------------------------------------------- metinler
   const T = {
     en: {
-      authH: "Pick up words from what you watch.", authSub: "Log in to keep the words you collect.",
+      authH: "Learn the words from what you watch.", authSub: "Log in to keep the words you collect.", demoHint: "Tap the yellow word.", demoGot: "That is all it takes. Words from your own shows and texts become yours like this.", demoSrc: "A line from a scene", haveAcc: "Already have an account?",
       startH: "What are you learning?", startSub: "Words and puzzles are picked for this language. You can change it later.",
       startSrc: "I am learning", startDst: "My own language", startGo: "Start",
       homeH: "Today's screening", hello: "Hi {0}", ctaGo: "Start the screening", heroMore: "and {0} more words", streakTop: "{0} days in a row", knowTxt: "words stuck for good", progH: "Up next", stamp: "Done", playBtn: "Play", ctaAdd: "Add words", ctaDuel: "Start a duel",
       wk0: "One short session fills today's frame.", wkOn: "{0} days in a row. Today's frame is filled.", wkRisk: "{0} days in a row so far. Today's frame is still empty.",
       hFirstS: "Paste a text you want to understand, or pick a starter pack.", hDoneT: "Today's programme is done", hDoneS: "A new puzzle arrives tomorrow. Until then, challenge a friend.",
       flowH: "Word flow", flowS: "Swipe through words. Zero setup.", flowHint: "Swipe up if you knew it, down to see it again.", flowXp: "+{0} XP", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "{0} XP earned. Nice flow!", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
-      addH: "How do you want to add words?", addSub: "Pick a way. Packs are below.",
-      howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start now", howQuickS: "Swipe through words. No typing.", howSnap: "Snap a subtitle", howSnapS: "Coming soon: point your camera at the TV.", howPaste: "Paste text or subtitles", howPasteS: "Learn from your own words.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
+      addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
+      howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start with ready words", howQuickS: "Nothing at hand? Swipe through a starter set.", howSnap: "Snap a subtitle", howSnapS: "Coming soon: point your camera at the TV.", howPaste: "Bring subtitles or a text", howPasteS: "Paste it or pick the file. We pull out the words you do not know.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
       cardsH: "Flashcards", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
       badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "day streak", bWins: "duel wins", bMaster: "mastered",
@@ -75,14 +75,14 @@
       feedH: "Your sources", feedEmpty: "Videos and texts you collect words from show up here.", noVideo: "Other words", wordsCount: "{0} words",
       videoH: "Words from your own text", videoSub: "Paste any text or pick a subtitle file you have. We find the words you don't know yet.",
       srcLbl: "Video language", dstLbl: "Translate to", swap: "Swap languages",
-      titleLbl: "Name it (optional)", textLbl: "Your text", pickFile: "Pick a subtitle or text file", myText: "My text", textPriv: "Your text stays on your phone. Only the word list is sent. Watching on a computer? The CineVocab Chrome extension collects words for you and they appear here.", eText: "Paste a text or pick a file first.", eNoWords: "No new words found in this text.", eFile: "This file could not be read.", eBig: "This file is too large (limit 2 MB).", countLbl: "How many new words?", extract: "Get the words",
+      titleLbl: "Name it (optional)", textLbl: "Your text", pickFile: "Pick a subtitle or text file", myText: "My text", textPriv: "Your text stays on your phone. Only the word list is sent; the line each word came from is kept on this phone only. Watching on a computer? The CineVocab Chrome extension collects words for you and they appear here.", eText: "Paste a text or pick a file first.", eNoWords: "No new words found in this text.", eFile: "This file could not be read.", eBig: "This file is too large (limit 2 MB).", countLbl: "How many new words?", extract: "Get the words",
       eSame: "The two languages must differ.",
       reading: "Reading your text…", planning: "Picking your new words…",
       planSum: "{0} different words in this text. You have already seen {1}. {2} are new.",
       planNone: "No new words for you in this text. You have already seen all {0}.",
       tapRemove: "Tap a word to leave it out.", addN: "Add {0} words to my list", adding: "Translating and saving… {0}/{1}",
       added: "{0} words added to your list.", eAdd: "Saving stopped: {0}", seeWords: "See my words", autoSub: "auto-generated subtitles",
-      packH: "Starter packs", packSub: "No video at hand? Start with a ready-made set.", packAdded: "Added",
+      packH: "Nothing at hand?", packSub: "Start with a ready-made set, add your own show later.", packAdded: "Added",
       wordsH: "My words", wordsSub: "{0} words · {1} → {2}", search: "Search words…", more: "Show more",
       wEmpty: "No words yet. Tap + to add some from a video.", wNoMatch: "No words match.", know: "I know it", markedKnown: "Marked as known",
       playH: "Play", playSub: "Short games that make your words stick.",
@@ -126,15 +126,15 @@
       delPwLbl: "Type your password to confirm", delNameLbl: "Type your username to confirm", delGo: "Delete everything", cancel: "Cancel", delDone: "Your account was deleted.",
     },
     tr: {
-      authH: "İzlediğin şeyden kelime kap.", authSub: "Topladığın kelimeler kaybolmasın diye giriş yap.",
+      authH: "İzlediğin dizinin kelimelerini öğren.", authSub: "Topladığın kelimeler kaybolmasın diye giriş yap.", demoHint: "Sarı kelimeye dokun.", demoGot: "Bu kadar. Kendi dizindeki, kendi metnindeki kelimeler böyle senin olur.", demoSrc: "Bir sahneden", haveAcc: "Hesabın var mı?",
       startH: "Hangi dili öğreniyorsun?", startSub: "Kelimeler ve bulmacalar bu dile göre seçilir. Sonra değiştirebilirsin.",
       startSrc: "Öğrendiğim dil", startDst: "Kendi dilim", startGo: "Başla",
       homeH: "Bugünün seansı", hello: "Selam {0}", ctaGo: "Seansı başlat", heroMore: "ve {0} kelime daha", streakTop: "{0} gün üst üste", knowTxt: "kelime kalıcı oldu", progH: "Sırada ne var", stamp: "Tamam", playBtn: "Oyna", ctaAdd: "Kelime ekle", ctaDuel: "Düello aç",
       wk0: "Kısa bir seans bugünün karesini doldurur.", wkOn: "{0} gün üst üste. Bugünün karesi doldu.", wkRisk: "Şimdiye kadar {0} gün üst üste. Bugünün karesi henüz boş.",
       hFirstS: "Anlamak istediğin bir metni yapıştır ya da hazır bir paket seç.", hDoneT: "Bugünün programı tamam", hDoneS: "Yeni bulmaca yarın geliyor. O zamana kadar bir arkadaşına meydan oku.",
       flowH: "Kelime akışı", flowS: "Kelimeleri kaydır geç. Kurulum yok.", flowHint: "Bildiysen yukarı, tekrar görmek için aşağı kaydır.", flowXp: "+{0} XP", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} XP kazandın. Harika akış!", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
-      addH: "Nasıl kelime eklemek istersin?", addSub: "Bir yol seç. Hazır paketler aşağıda.",
-      howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hemen başla", howQuickS: "Kelimeleri kaydır. Yazı yok.", howSnap: "Altyazıyı fotoğrafla", howSnapS: "Yakında: kamerayı TV'ye tut.", howPaste: "Metin ya da altyazı yapıştır", howPasteS: "Kendi kelimelerinle öğren.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
+      addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
+      howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hazır kelimelerle başla", howQuickS: "Elinde bir şey yoksa hazır setten kaydır.", howSnap: "Altyazıyı fotoğrafla", howSnapS: "Yakında: kamerayı TV'ye tut.", howPaste: "Altyazı ya da metin getir", howPasteS: "Yapıştır ya da dosyayı seç. Bilmediğin kelimeleri çıkaralım.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
       cardsH: "Kartlar", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
       badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün seri", bWins: "galibiyet", bMaster: "usta kelime",
@@ -157,14 +157,14 @@
       feedH: "Kaynakların", feedEmpty: "Kelime topladığın videolar ve metinler burada görünür.", noVideo: "Diğer kelimeler", wordsCount: "{0} kelime",
       videoH: "Kendi metninden kelime çıkar", videoSub: "Bir metin yapıştır ya da elindeki altyazı dosyasını seç. Bilmediğin kelimeleri bulalım.",
       srcLbl: "Video şu dilde", dstLbl: "Çeviriler şu dilde", swap: "Dilleri değiştir",
-      titleLbl: "Bir ad ver (isteğe bağlı)", textLbl: "Metnin", pickFile: "Altyazı ya da metin dosyası seç", myText: "Metnim", textPriv: "Metnin telefonundan çıkmaz. Sunucuya yalnızca kelime listesi gider. Bilgisayarda mı izliyorsun? CineVocab Chrome eklentisi kelimeleri senin yerine toplar, burada görünür.", eText: "Önce bir metin yapıştır ya da dosya seç.", eNoWords: "Bu metinde yeni kelime bulunamadı.", eFile: "Bu dosya okunamadı.", eBig: "Dosya çok büyük (sınır 2 MB).", countLbl: "Kaç yeni kelime?", extract: "Kelimeleri çıkar",
+      titleLbl: "Bir ad ver (isteğe bağlı)", textLbl: "Metnin", pickFile: "Altyazı ya da metin dosyası seç", myText: "Metnim", textPriv: "Metnin telefonundan çıkmaz. Sunucuya yalnızca kelime listesi gider; kelimenin geçtiği cümle yalnızca bu telefonda saklanır. Bilgisayarda mı izliyorsun? CineVocab Chrome eklentisi kelimeleri senin yerine toplar, burada görünür.", eText: "Önce bir metin yapıştır ya da dosya seç.", eNoWords: "Bu metinde yeni kelime bulunamadı.", eFile: "Bu dosya okunamadı.", eBig: "Dosya çok büyük (sınır 2 MB).", countLbl: "Kaç yeni kelime?", extract: "Kelimeleri çıkar",
       eSame: "İki dil farklı olmalı.",
       reading: "Metnin okunuyor…", planning: "Yeni kelimelerin seçiliyor…",
       planSum: "Bu metinde {0} farklı kelime var. {1} tanesini daha önce gördün. {2} tanesi yeni.",
       planNone: "Bu metinde senin için yeni kelime yok. {0} kelimenin hepsini daha önce gördün.",
       tapRemove: "Eklemek istemediğin kelimeye dokun.", addN: "{0} kelimeyi listeme ekle", adding: "Çevriliyor ve kaydediliyor… {0}/{1}",
       added: "{0} kelime listene eklendi.", eAdd: "Kaydetme durdu: {0}", seeWords: "Kelimelerimi gör", autoSub: "otomatik altyazı",
-      packH: "Hazır paketler", packSub: "Elinde video yok mu? Hazır bir setle başla.", packAdded: "Eklendi",
+      packH: "Elinde bir şey yoksa", packSub: "Hazır bir setle başla, kendi dizini sonra eklersin.", packAdded: "Eklendi",
       wordsH: "Kelimelerim", wordsSub: "{0} kelime · {1} → {2}", search: "Kelime ara…", more: "Daha fazla göster",
       wEmpty: "Henüz kelime yok. + düğmesiyle bir videodan ekle.", wNoMatch: "Eşleşen kelime yok.", know: "Biliyorum", markedKnown: "Biliyorum olarak işaretlendi",
       playH: "Oyna", playSub: "Kelimeleri aklında tutan kısa oyunlar.",
@@ -338,8 +338,30 @@
     if (p === "/api/daily" || p === "/api/puzzle") throw new Error("demo");       // gunluk oyunlar hesapla gelir; kendi kelimelerinle bulmaca acilir
     askAccount(); throw new Error(t("needAcc"));
   }
+  // Giris ekraninin iki hali: ilk karsilama (sahne denemesi one cikar, "hesap acmadan dene" ana dugme)
+  // ve hesap isteme (misafir bir seyi saklamak istediginde: form one cikar, sahne gizlenir).
+  function authLook(ask) {
+    $("v-auth").classList.toggle("ask", !!ask);
+    $("tryBtn").className = ask ? "btn ghost" : "btn"; $("aGo").className = ask ? "btn" : "btn ghost";
+    if (!ask) demoPaint();
+  }
+  // Sahne denemesi: deneme destesinden bir cumle; sari kelimeye dokununca anlami cikar. Sunucuya istek gitmez.
+  function demoPick() {
+    const p = CVDEMO.pair(S.src, S.dst, S.ui), w = CVDEMO.words(p[0], p[1], "").find((x) => x.sentence && wordRe(x.tr).test(x.sentence));
+    return w ? { s: w.sentence, w: w.tr, t: w.eng } : null;
+  }
+  function demoPaint() {
+    const d = demoPick(), line = $("demoLine"), tr = $("demoTr");
+    $("demo").hidden = !d; $("demoHint").hidden = !d;
+    if (!d) return;
+    const m = wordRe(d.w).exec(d.s), at = m.index + m[1].length, b = el("button", "dw", m[2]);
+    b.type = "button"; line.textContent = ""; tr.hidden = true; tr.textContent = d.w + " = " + d.t;
+    $("demoHint").textContent = t("demoHint");
+    b.addEventListener("click", function () { tr.hidden = false; b.classList.add("on"); $("demoHint").textContent = t("demoGot"); vibe("ok"); sfx("ok"); });
+    line.append(document.createTextNode(d.s.slice(0, at)), b, document.createTextNode(d.s.slice(at + m[2].length)));
+  }
   function askAccount() {
-    showView("v-auth"); showAuthStep("form"); say($("aMsg"), t("needAcc"), "ok");
+    showView("v-auth"); authLook(true); showAuthStep("form"); say($("aMsg"), t("needAcc"), "ok");
   }
   async function api(path, opt) {
     opt = opt || {};
@@ -393,7 +415,7 @@
     else if (id === "v-duel") { say($("dMsg"), ""); duelPart("home"); }
   }
   window.addEventListener("popstate", function (ev) {
-    if (!S.key && !S.guest) return showView("v-auth", false);
+    if (!S.key && !S.guest) { authLook(false); return showView("v-auth", false); }
     const v = ev.state && ev.state.v;
     go(v && v !== "v-auth" && v !== "v-start" && v !== "v-how" && v !== "v-flow" && v !== "v-quiz" && v !== "v-cards" && v !== "v-puzzle" && v !== "v-result" ? v : "v-home", false);
   });
@@ -426,8 +448,9 @@
   function endSession() {
     if (sock) duelClose();
     S.key = ""; S.home = S.daily = S.puzzle = S.videos = S.vocab = S.vocabRaw = null; store.del("key");
+    ctxClear();          // baska biri giris yaparsa onceki kisinin cumlelerini gormesin
     $("streak").hidden = true;
-    showView("v-auth", false);
+    authLook(false); showView("v-auth", false);
   }
   // Kayit bitince sunucu bir kurtarma kodu verir; kullaniciya bir kez gosterilir.
   function afterRegister(d) {
@@ -622,13 +645,22 @@
     const cards = h.pair_words >= 4 ? { id: "cards", icon: "cards", title: h.due > 0 ? t("ctaReview", h.due) : t("cardsH"), done: !!f.practice, run: startCards,
       sub: h.due > 0 || h.new > 0 ? t("pracInfo", h.due, h.new) : t("fcTip2") } : null;
     const add = { id: "add", icon: "plus", title: h.pair_words < 4 ? t("ctaFirst") : t("qAdd"), done: !!f.added, run: () => go("v-add"), sub: t("hFirstS"), btn: t("ctaAdd") };
-    if (puzzle) out.push(puzzle);
+    if (cards && h.due > 0) out.push(cards);        // once kendi kelimelerin: uygulamanin asil isi
     if (h.pair_words < 4) out.push(add);
-    if (cards && h.due > 0) out.push(cards);
+    if (puzzle) out.push(puzzle);
     if (daily) out.push(daily);
     if (cards && !out.includes(cards)) out.push(cards);
     if (!out.includes(add) && (out.length < 3 || h.pair_words < 20)) out.push(add);
     return out;
+  }
+  // Ana sayfadaki kare: kullanicinin kendi listesinden, kelimenin gectigi gercek bir cumle. Gun icinde ayni kalir.
+  // Cumlesi olan kelime yoksa null doner (uydurma cumle gosterilmez).
+  function heroScene(raw, day) {
+    const list = (raw || []).filter((x) => x.s && wordRe(x.w).test(x.s));
+    if (!list.length) return null;
+    let n = 0; for (const ch of String(day)) n = (n * 31 + ch.charCodeAt(0)) % 100003;
+    const x = list[n % list.length];
+    return { s: x.s, w: x.w, ep: x.ep || "" };
   }
   function renderHome() {
     const h = S.home;
@@ -639,9 +671,10 @@
     // film karesi: su an yapilacak en anlamli is. Kart tekrarinda altyazi listendeki kelimelerden ornek gosterir.
     $("hero").classList.toggle("done", !hero);
     $("heroT").textContent = hero ? hero.title : t("hDoneT");
-    $("heroNo").textContent = hero ? hero.no || "" : "";
-    const sub = $("heroS"), list = S.vocab || []; sub.textContent = "";
-    if (hero && hero.id === "cards" && list.length >= 4) {
+    const sub = $("heroS"), list = S.vocab || [], scene = hero && hero.id === "cards" ? heroScene(S.vocabRaw, dayKey()) : null; sub.textContent = "";
+    $("heroNo").textContent = scene ? scene.ep : hero ? hero.no || "" : "";
+    if (scene) subtitleInto(sub, scene.s, scene.w);
+    else if (hero && hero.id === "cards" && list.length >= 4) {
       list.slice(0, 3).forEach(function (x, i) { if (i) sub.appendChild(document.createTextNode(", ")); sub.appendChild(el("mark", "", x.w)); });
       sub.appendChild(document.createTextNode(" " + t("heroMore", list.length - 3)));
     } else sub.textContent = hero ? hero.sub : t("hDoneS");
@@ -698,7 +731,8 @@
     if (!S.vocab) {
       const d = await api("/api/vocab" + pairQ());
       const seen = new Set(), list = [];
-      S.vocabRaw = d.words.map((w) => ({ w: w.tr, t: w.eng, ep: w.episode || "", s: w.sentence || "" }));
+      const ctx = ctxLoad(S.src);
+      S.vocabRaw = d.words.map((w) => ({ w: w.tr, t: w.eng, ep: w.episode || "", s: w.sentence || ctx[w.tr] || "" }));
       for (const x of S.vocabRaw) { if (!seen.has(x.w)) { seen.add(x.w); list.push(x); } }
       S.vocab = list;
     }
@@ -754,7 +788,30 @@
   $("dst").addEventListener("change", () => setPair(S.src, $("dst").value));
   $("swap").addEventListener("click", () => setPair(S.dst, S.src));
 
-  let plan = null;     // { title, thumb, words: [secilen kelimeler] }
+  // Kelimenin gectigi cumle: kullanicinin getirdigi metinden bulunur ve YALNIZCA bu telefonda saklanir (sunucuya gitmez).
+  // Kartta, soruda ve ana sayfadaki karede "senin sahnen" olarak gorunur. Dil basina en cok CTX_MAX kayit tutulur.
+  const CTX_MAX = 1500;
+  function contextsFor(words, lines) {
+    const out = {};
+    for (const w of words) {
+      const re = wordRe(w);
+      for (const line of lines) {
+        if (line.length <= 140 && re.test(line)) { out[w] = line; break; }
+      }
+    }
+    return out;
+  }
+  function ctxLoad(src) { try { const o = JSON.parse(store.get("ctx-" + src) || "{}"); return o && typeof o === "object" ? o : {}; } catch (e) { return {}; } }
+  function ctxSave(src, add) {
+    const all = ctxLoad(src);
+    for (const k of Object.keys(add)) { delete all[k]; all[k] = String(add[k]).slice(0, 140); }       // yeniden eklenen sona gecer
+    const keys = Object.keys(all);
+    for (const k of keys.slice(0, Math.max(0, keys.length - CTX_MAX))) delete all[k];
+    store.set("ctx-" + src, JSON.stringify(all));
+    return Object.keys(all).length;
+  }
+  function ctxClear() { for (const l of LANGS) store.del("ctx-" + l); }
+  let plan = null;     // { title, thumb, words: [secilen kelimeler], lines: [metnin satirlari] }
   $("go").addEventListener("click", async function () {
     const msg = $("msg"), text = $("text").value;
     if (!text.trim()) return say(msg, t("eText"), "bad");
@@ -762,13 +819,13 @@
     $("go").disabled = true; $("plan").hidden = true;
     try {
       say(msg, t("reading"));
-      const words = CVTEXT.tokenize(CVTEXT.linesFrom(text), S.src);          // 1) kelimeler telefonda ayiklanir; metin sunucuya gitmez
+      const lines = CVTEXT.linesFrom(text), words = CVTEXT.tokenize(lines, S.src);          // 1) kelimeler telefonda ayiklanir; metin sunucuya gitmez
       if (!words.length) say(msg, t("eNoWords"), "bad");
       else {
         say(msg, t("planning"));
         const p = await api("/api/import/plan", { body: { src: S.src, dst: S.dst, words: words, n: Number($("count").value) } });  // 2) yeni kelimeleri sunucu secer
         const day = new Date().toLocaleDateString(S.ui === "tr" ? "tr-TR" : "en-GB", { day: "numeric", month: "short" });
-        say(msg, ""); showPlan({ title: ($("srcTitle").value.trim() || t("myText") + " · " + day).slice(0, 80), thumb: "", auto: false }, p);
+        say(msg, ""); showPlan({ title: ($("srcTitle").value.trim() || t("myText") + " · " + day).slice(0, 80), thumb: "", auto: false, lines: lines }, p);
       }
     } catch (e) { say(msg, e.message, "bad"); }
     $("go").disabled = false;
@@ -792,7 +849,7 @@
     r.readAsText(f);
   });
   function showPlan(tr, p) {
-    plan = { title: tr.title, thumb: tr.thumb, words: p.pick.slice() };
+    plan = { title: tr.title, thumb: tr.thumb, words: p.pick.slice(), lines: tr.lines || null };
     $("planTitle").textContent = tr.title + (tr.auto ? " (" + t("autoSub") + ")" : "");
     const box = $("planWords"), none = !p.pick.length; box.textContent = "";
     $("planSum").textContent = none ? t("planNone", p.total) : t("planSum", p.total, p.known + p.saved, p.fresh);
@@ -829,6 +886,7 @@
         done = Math.min(i + 30, total);
         $("addFill").style.width = Math.round(done / total * 100) + "%";
       }
+      if (plan.lines) ctxSave(S.src, contextsFor(words, plan.lines));        // cumleler telefonda kalir
       S.vocab = S.vocabRaw = S.videos = S.home = null; setFlag("added");
       say($("addMsg"), t("added", total), "ok"); confetti(60); buzz(true);
       $("addBtn").textContent = t("seeWords"); $("addBtn").dataset.done = "1";
@@ -1357,20 +1415,26 @@
   })();
 
   // Oyna sekmesi: buyuk dugmeler ve durumlari.
+  // Oyna ekraninda tek bir kutu one cikar: once tekrari gelen kelimeler, sonra bitmemis gunluk oyunlar, yoksa kelime akisi.
+  function hotTile(h, d, pz) {
+    if (h && h.due > 0) return "tCards";
+    if (pz && pz.ready && !pz.done) return "tPuzzle";
+    if (d && d.ready && !d.done) return "tDaily";
+    return "tFlow";
+  }
   function renderPlay() {
     const h = S.home, d = S.daily, pz = S.puzzle;
     const pzDaily = !!(pz && pz.ready);
     $("tPuzzleT").textContent = pzDaily ? t("pzH") + (pz.num ? " #" + pz.num : "") : t("pzOwn");
     $("tPuzzleS").textContent = !pzDaily ? t("pzOwnS")
       : pz.done && pz.result ? t("pzDone", clock(Number(pz.result.secs) || 0), pz.result.rank || "-", pz.result.players || "-") : t("pzNew", pz.total || 5);
-    $("tPuzzle").classList.toggle("hot", pzDaily && !pz.done);
     $("tDailyT").textContent = t("dailyH") + (d && d.num ? " #" + d.num : "");
     $("tDailyS").textContent = !d || !d.ready ? t("dailyNo")
       : d.done && d.result ? t("dailyDone", d.result.score, d.result.rank || "-", d.result.players)
       : d.started ? t("dailyResume", d.answered, d.total) : t("dailyNew", d.total);
-    $("tDaily").classList.toggle("hot", !!(d && d.ready && !d.done));
     $("tCardsS").textContent = h ? t("pracInfo", h.due, h.new) : "";
-    $("tCards").classList.toggle("hot", !!(h && h.due > 0));
+    const hot = hotTile(h, d, pz);
+    for (const id of ["tCards", "tPuzzle", "tDaily", "tFlow"]) $(id).classList.toggle("hot", id === hot);
     $("tPracticeS").textContent = t("tQuizS");
   }
   async function loadPlay() {
@@ -1595,7 +1659,8 @@
     try {
       await api("/api/delete-account", { soft: true, body: { password: typed } });
       await setReminder(false);
-      for (const k of ["streak", "lvl", "day", "remind", "goal", "badges", "src", "dst", "snd"]) store.del(k);      // telefondaki kisisel izleri de sil
+      for (const k of ["streak", "lvl", "day", "remind", "goal", "badges", "src", "dst", "snd"]) store.del(k);
+      ctxClear();      // telefondaki kisisel izleri de sil
       endSession(); toast(t("delDone"));
     } catch (e) { say($("delMsg"), e.message, "bad"); }
     $("delGo").disabled = false; $("delPw").value = "";
@@ -1652,7 +1717,7 @@
   $("guestBar").addEventListener("click", askAccount);
   applyTexts();
   paintTry();
-  if (S.key) enterApp(); else if (S.guest) { if (store.get("src") !== null) fitDemoPair(false); enterApp(); } else showView("v-auth", false);
+  if (S.key) enterApp(); else if (S.guest) { if (store.get("src") !== null) fitDemoPair(false); enterApp(); } else { authLook(false); showView("v-auth", false); }
   // Sunucu ayarlari: e-posta dogrulamasi acik mi, Google istemci kimligi ne? (ikisi de gizli degil)
   fetch(API + "/api/ext/config").then((r) => r.json()).then(function (c) {
     mailOn = !!(c && c.mail); googleId = (c && typeof c.google === "string" && c.google) || "";

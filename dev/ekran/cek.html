@@ -12,6 +12,7 @@
   Object.keys(localStorage).forEach(function (k) { if (k.indexOf("cv-") === 0) localStorage.removeItem(k); });
   var set = { guest: "1", how: "1", src: "en", dst: "tr", ui: q.get("ui") || "tr", theme: q.get("t") === "light" ? "light" : "dark", snd: "0", voice: "0" };
   if (xp) set.demo = JSON.stringify({ xp: xp + 400, d: today, today: xp, ok: { "fısıldamak": 3, "söz": 3, "sır": 3 }, known: [] });
+  if (q.get("giris") === "1") { delete set.guest; delete set.how; delete set.src; delete set.dst; delete set.demo; }      // hic girilmemis telefon: karsilama ekrani
   Object.keys(set).forEach(function (k) { localStorage.setItem("cv-" + k, set[k]); });
   var f = document.getElementById("f"), steps = (q.get("steps") || "").split(",").filter(Boolean);
   f.addEventListener("load", function () {

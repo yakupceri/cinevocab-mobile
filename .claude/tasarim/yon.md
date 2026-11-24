@@ -20,3 +20,14 @@ Koyu bir sinema salonu. Çevrilecek kelime her zaman film karesinde altyazı ola
 - Ödül ve ilerleme gerçek veriye bağlı: kalıcı olan kelime, tekrar gelecek kelime. Sunucudan gelmeyen veri gösterilmez, uydurulmaz (bekleyenler: `dev/SUNUCU-ISTEKLERI.md`).
 - Metinde seri kaybı, suçluluk, aciliyet yok. Emoji yok.
 - Ekran görüntüsü: `sh dev/ekran/cek.sh <ad> "<adımlar>"` (misafir modu, koyu ve açık).
+
+## Konumlandırma (24 Kasım 2026)
+Söz: **"İzlediğin dizinin kelimelerini öğren."** Duolingo'nun yerine değil, yanına: herkese aynı kurs değil, kullanıcının kendi izlediği ve okuduğu şeyin kelimeleri, geçtiği cümleyle.
+- Her ekranda önce kullanıcının kendi kelimeleri: ana sayfada tekrar bulmacadan önce gelir, karede kendi kaynağından cümle durur.
+- Ekle ve ilk açılışta ilk seçenek "Altyazı ya da metin getir". Çalışmayan "yakında" seçeneği gösterilmez.
+- Oyna ekranında tek kutu öne çıkar (`hotTile`).
+- Karşılama ekranı sözü anlatmaz, yaşatır: sarı kelimeye dokun, anlamı çıksın.
+- Kullanıcının metni ve cümleleri telefondan çıkmaz (`ctx-<dil>` yerel kayıt).
+
+## Android WebView tuzağı
+Yarı saydam kenar rengi + yuvarlak köşe ve kutularda `opacity`, kaydırırken hayalet görüntü bırakıyor (emülatörde görülüp doğrulandı). Kenar renkleri opak token olmalı; testi `dev/tests/hesap.test.js` içinde.

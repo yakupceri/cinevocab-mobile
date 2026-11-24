@@ -349,3 +349,69 @@ test("stil: kenar cizgisi opak, kutularda saydamlik yok", () => {
     if (/^\.(tile|day|card|opt|post|wl|prog|chip)\b[^{]*\{[^}]*opacity:\s*\.\d/.test(satir)) assert.fail("kutuda saydamlik: " + satir.slice(0, 80));
   }
 });
+
+// Konumlandirma: "izledigin dizinin kelimeleri". Once kullanicinin kendi kelimeleri, tek one cikan is.
+test("oyna: tek kutu one cikar; once tekrar, sonra gunluk oyunlar, yoksa akis", () => {
+  const c = yukle(["hotTile"]);
+  assert.equal(c.hotTile({ due: 5 }, { ready: true }, { ready: true }), "tCards");
+  assert.equal(c.hotTile({ due: 0 }, { ready: true }, { ready: true, done: false }), "tPuzzle");
+  assert.equal(c.hotTile({ due: 0 }, { ready: true }, { ready: true, done: true }), "tDaily");
+  assert.equal(c.hotTile({ due: 0 }, { ready: true, done: true }, null), "tFlow");
+  assert.equal(c.hotTile(null, null, null), "tFlow");
+});
+test("ana sayfa sahnesi: kullanicinin listesinden gercek cumle, gun icinde ayni, yoksa null", () => {
+  const ham = [{ w: "trust", s: "Trust me.", ep: "Dizi 1" }, { w: "sword", s: "He drew his sword.", ep: "Dizi 2" }, { w: "guard", s: "" }, { w: "x", s: "kelime gecmiyor" }];
+  const c = yukle(["wordRe", "heroScene"], { RegExp });
+  const a = c.heroScene(ham, "2026-11-24"), b = c.heroScene(ham, "2026-11-24");
+  assert.deepEqual({ ...a }, { ...b }); assert.ok(["trust", "sword"].includes(a.w)); assert.ok(a.s.toLowerCase().includes(a.w));
+  const gunler = new Set(Array.from({ length: 20 }, (_, i) => c.heroScene(ham, "2026-11-" + (10 + i)).w));
+  assert.equal(gunler.size, 2, "farkli gunlerde farkli sahneler gelir");
+  assert.equal(c.heroScene([{ w: "guard", s: "" }], "2026-11-24"), null); assert.equal(c.heroScene(null, "x"), null);
+});
+test("ana sayfa sirasi: tekrari gelen kelimeler bulmacadan once", () => {
+  const c = yukle(["dayKey", "flags", "todayItems"], { t: (k) => k, clock: () => "", go() {}, startPuzzle() {}, startDaily() {}, startCards() {},
+    S: { home: { pair_words: 30, due: 12, new: 0 }, daily: { ready: true, total: 10 }, puzzle: { ready: true, total: 5 } } });
+  assert.deepEqual(Array.from(c.todayItems(), (x) => x.id).slice(0, 3), ["cards", "puzzle", "daily"]);
+  c.S.home = { pair_words: 2, due: 0, new: 0 };
+  assert.equal(c.todayItems()[0].id, "add", "kelimesi olmayan kullanicida ilk is kelime getirmek");
+});
+test("karsilama sahnesi: deneme destesinden cumle ve anlam; Turkce arayuzde Ingilizce cumle", () => {
+  const vm = require("node:vm"), fs = require("node:fs"), path = require("node:path");
+  const kutu = {}; vm.runInNewContext(fs.readFileSync(path.join(__dirname, "..", "..", "www", "demo.js"), "utf8"), { globalThis: kutu, window: kutu });
+  const c = yukle(["wordRe", "demoPick"], { RegExp, CVDEMO: kutu.CVDEMO, S: { src: "en", dst: "tr", ui: "tr" } });
+  const d = c.demoPick();
+  assert.ok(d && d.s && d.w && d.t); assert.match(d.s.toLowerCase(), new RegExp(d.w));
+  c.S.src = "ja"; c.S.dst = "ko"; c.S.ui = "en";
+  assert.ok(c.demoPick(), "deneme destesi olmayan cift icin en yakin cift kullanilir");
+});
+test("ekranlar: calismayan 'yakinda' kutusu yok, ilk secenek kendi metnini getirmek", () => {
+  const html = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "index.html"), "utf8");
+  assert.doesNotMatch(html, /Snap/);
+  for (const [bolum, ilk] of [["v-how", "hPaste"], ["addPick", "aPaste"]]) {
+    const parca = html.slice(html.indexOf('id="' + bolum + '"'));
+    assert.equal(parca.match(/<button class="tile[^"]*" id="(\w+)"/)[1], ilk);
+  }
+  assert.equal((html.match(/class="tile hot"/g) || []).length, 2, "sabit one cikan kutu yalnizca bu iki ekranda, birer tane");
+});
+
+// Kelimenin gectigi cumle: kullanicinin metninden bulunur, yalnizca telefonda saklanir.
+function cumleler() { return yukle(["CTX_MAX", "wordRe", "contextsFor", "ctxLoad", "ctxSave", "ctxClear"], { RegExp, Object, LANGS: ["en", "tr"] }); }
+test("cumle: her kelime icin gectigi ilk satir; baska kelimenin parcasi ve cok uzun satir sayilmaz", () => {
+  const c = cumleler(), uzun = "trust " + "x".repeat(200);
+  const r = c.contextsFor(["trust", "guard", "yok"], [uzun, "They distrust him.", "Trust me, I never lie.", "The guard never saw us."]);
+  assert.deepEqual({ ...r }, { trust: "Trust me, I never lie.", guard: "The guard never saw us." });
+});
+test("cumle deposu: dil basina ayri, ust sinirda en eskiler duser, bozuk veri bos sayilir, temizlenir", () => {
+  const c = cumleler();
+  assert.equal(c.ctxSave("en", { trust: "Trust me." }), 1); assert.equal(c.ctxLoad("en").trust, "Trust me."); assert.deepEqual({ ...c.ctxLoad("tr") }, {});
+  const cok = {}; for (let i = 0; i < c.CTX_MAX + 10; i++) cok["w" + i] = "satir " + i;
+  assert.equal(c.ctxSave("en", cok), c.CTX_MAX);
+  const son = c.ctxLoad("en"); assert.equal(son.trust, undefined, "en eski kayit dustu"); assert.equal(son["w" + (c.CTX_MAX + 9)], "satir " + (c.CTX_MAX + 9));
+  c.store.set("ctx-tr", "{bozuk"); assert.deepEqual({ ...c.ctxLoad("tr") }, {});
+  c.ctxClear(); assert.equal(c.store.get("ctx-en"), null);
+});
+test("cumle sunucuya gitmez: ekleme istegi bos cumle yollar", () => {
+  const js = require("node:fs").readFileSync(require("node:path").join(__dirname, "..", "..", "www", "app.js"), "utf8");
+  const istek = js.slice(js.indexOf('api("/translate-words"'), js.indexOf('api("/translate-words"') + 260);
+  assert.match(istek, /sentence: ""/); assert.doesNotMatch(istek, /lines|ctx/);
+});

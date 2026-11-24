@@ -190,6 +190,15 @@ main > section > input[type=search] { margin-top: 12px; background: var(--surf);
 #pick { margin-top: 10px; }
 textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 
+/* karsilama sahnesi: sari kelime dokunulabilir, anlami altyazinin altinda cikar */
+.demo { flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+.dw { min-height: 44px; margin: -8px 0; padding: 8px 4px; background: none; border: 0; border-bottom: 2px dashed var(--sun); color: var(--sun); font: inherit; text-shadow: inherit; }
+.dw.on { border-bottom-style: solid; }
+.demo-tr { position: relative; z-index: 1; padding: 4px 10px; background: var(--sun); color: var(--on-sun); border-radius: 4px; font-size: 17px; font-weight: 700; animation: pop .3s ease; }
+#demoHint { text-align: center; }
+#v-auth.ask .demo, #v-auth.ask #demoHint, #v-auth.ask .demo-only, #v-auth:not(.ask) .ask-only { display: none; }
+#v-auth:not(.ask) h1.display { margin-top: 2vh; font-size: 44px; }
+
 /* oyna: oyun satirlari */
 .tile { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 68px; margin-top: 10px; padding: 12px 14px; background: var(--surf); border: 1px solid var(--line); border-radius: var(--r); text-align: left; }
 .tile:active { transform: scale(.99); }

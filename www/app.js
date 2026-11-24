@@ -245,11 +245,6 @@
     node.textContent = "";
     for (const ch of Array.from(String(grid || ""))) { const c = ch === "🟩" ? "g" : ch === "🟨" ? "y" : ch === "🟥" ? "r" : ""; if (c) node.appendChild(el("i", c)); }
   }
-  // Biletin iki yanindaki centigi delikli cizginin hizasina getirir.
-  function notch(ticket) {
-    const inn = ticket.querySelector(".ticket-in"), pf = inn && inn.querySelector(".perf");
-    if (pf) inn.style.setProperty("--ny", Math.round(pf.getBoundingClientRect().top - inn.getBoundingClientRect().top + 1) + "px");
-  }
   // Seviye arttikca degisen rol: Seyirci, Figuran, ... Efsane.
   const RANK_AT = [1, 3, 5, 8, 12, 17, 25, 40];
   function rankOf(level) { let i = 0; while (i + 1 < RANK_AT.length && level >= RANK_AT[i + 1]) i++; return i; }
@@ -1353,6 +1348,7 @@
     $("flClose").addEventListener("click", () => go("v-play"));
     $("qClose").addEventListener("click", () => go("v-play"));
     $("cClose").addEventListener("click", () => go("v-play"));
+    $("pzClose").addEventListener("click", () => go("v-play"));
     $("flSay").addEventListener("pointerdown", (ev) => ev.stopPropagation());
     $("flSay").addEventListener("click", () => { if (F.items[F.i]) say2(F.items[F.i].w, $("flSay")); });
     $("flVoice").addEventListener("click", function () { F.voice = !F.voice; store.set("voice", F.voice ? "1" : "0"); flowPaint(); if (!F.voice) stopSay(); else if (F.items[F.i]) say2(F.items[F.i].w, $("flSay")); });

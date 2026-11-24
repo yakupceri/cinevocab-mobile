@@ -18,8 +18,10 @@
     var doc = f.contentDocument, i = 0;
     (function next() {
       if (i >= steps.length) { document.title = "hazir"; return; }
-      var s = steps[i++], tap = s.indexOf("tap:") === 0, id = tap ? s.slice(4) : s, n = doc.getElementById(id) || doc.querySelector(id);
-      if (s.indexOf("show:") === 0) {          // hesap isteyen ekranlar: veri olmadan yalnizca yerlesimi gosterir
+      var s = steps[i++], tap = s.indexOf("tap:") === 0, id = tap ? s.slice(4) : s, n = null;
+      try { n = doc.getElementById(id) || doc.querySelector(id); } catch (e) {}      // "show:..." gecerli bir secici degil
+      if (s === "wait") { /* yalnizca bekle: uygulama acilisini bitirsin */ }
+      else if (s.indexOf("show:") === 0) {          // hesap isteyen ekranlar: veri olmadan yalnizca yerlesimi gosterir
         doc.querySelectorAll("main section").forEach(function (x) { x.hidden = x.id !== s.slice(5); }); doc.getElementById("main").scrollTop = 0;
       } else if (s.indexOf("unhide:") === 0) { var u = doc.getElementById(s.slice(7)); if (u) u.hidden = false; }
       else if (s.indexOf("hide:") === 0) { var h = doc.getElementById(s.slice(5)); if (h) h.hidden = true; }

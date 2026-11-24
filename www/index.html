@@ -288,8 +288,12 @@
 
     <!-- Bulmaca: karisik harfleri dogru siraya diz -->
     <section id="v-puzzle" hidden>
-      <div class="bar"><i id="pzFill"></i></div>
-      <div class="qtop"><span id="pzCount"></span><span class="marks" id="pzMarks"></span><span class="time"><svg class="ic"><use href="#i-clock"/></svg><span id="pzTime"></span></span></div>
+      <div class="qbar">
+        <button class="fl-x" id="pzClose" type="button" data-i-aria="back"><svg class="ic"><use href="#i-x"/></svg></button>
+        <div class="bar"><i id="pzFill"></i></div>
+        <span id="pzCount"></span>
+      </div>
+      <div class="qtop"><span class="marks" id="pzMarks"></span><span class="time"><svg class="ic"><use href="#i-clock"/></svg><span id="pzTime"></span></span></div>
       <div class="screen"><div class="subtitle" id="pzHint"></div></div>
       <div class="slots" id="pzSlots"></div>
       <div class="tiles" id="pzTiles"></div>

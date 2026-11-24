@@ -321,3 +321,17 @@ test("jenerik: 4'ten fazla bilinemeyen kelime kisaltilir; veri yoksa satir yok",
   assert.equal(jenerik({ words: w }, null, null)[0][1], "a, b, c, d rollMore:2");
   assert.deepEqual(jenerik({ xp: 0 }, null, null), []);
 });
+
+// Alt menu oyun ekranlarinda gizli; bu yuzden her oyun ekraninda bir kapat dugmesi olmali (yoksa kullanici sikisir).
+test("oyun ekranlari: alt menu gizliyse kapat dugmesi ya da ana sayfa dugmesi var", () => {
+  const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "www");
+  const html = fs.readFileSync(path.join(kok, "index.html"), "utf8"), js = fs.readFileSync(path.join(kok, "app.js"), "utf8");
+  const gizli = JSON.parse(js.match(/\$\("tabs"\)\.hidden = (\[[^\]]+\])\.includes\(id\)/)[1]);
+  const cikis = { "v-quiz": "qClose", "v-cards": "cClose", "v-puzzle": "pzClose", "v-flow": "flClose", "v-result": "rHome" };
+  for (const v of gizli.filter((x) => cikis[x])) {
+    const bolum = html.slice(html.indexOf('<section id="' + v + '"'), html.indexOf("</section>", html.indexOf('<section id="' + v + '"')));
+    assert.ok(bolum.includes('id="' + cikis[v] + '"'), v + " icinde " + cikis[v] + " yok");
+    assert.ok(js.includes('$("' + cikis[v] + '").addEventListener("click"'), cikis[v] + " dinleyicisi yok");
+  }
+  assert.deepEqual(gizli.filter((x) => !cikis[x]).sort(), ["v-auth", "v-how", "v-start"]);
+});

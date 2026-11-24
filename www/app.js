@@ -51,7 +51,7 @@
       wk0: "One short session fills today's frame.", wkOn: "{0} days in a row. Today's frame is filled.", wkRisk: "{0} days in a row so far. Today's frame is still empty.",
       hFirstS: "Paste a text you want to understand, or pick a starter pack.", hDoneT: "Today's programme is done", hDoneS: "A new puzzle arrives tomorrow. Until then, challenge a friend.",
       flowH: "Word flow", flowS: "Swipe through words. Zero setup.", flowHint: "Swipe up if you knew it, down to see it again.", flowXp: "+{0} XP", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "{0} XP earned. Nice flow!", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
-      extH: "Watching on a computer?", extS: "The Chrome extension collects words while you watch. Same account, and you review them here.", extMsg: "CineVocab for Chrome: collect words from subtitles while you watch.", shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
+      photoH: "Pick a photo of the subtitles", photoS: "A photo of your TV or laptop screen, or a screenshot. The text is read on your phone; we never send the image to our server.", ocrBusy: "Reading the image…", ocrReady: "This is what I could read from the image. Fix anything that came out wrong, then pull out the words.", ocrEmpty: "I could not find readable text in that image. Make sure the subtitles are sharp and large.", ocrLang: "Reading from images works for Latin-script languages for now.", ocrOnly: "This works in the phone app.", extH: "Watching on a computer?", extS: "The Chrome extension collects words while you watch. Same account, and you review them here.", extMsg: "CineVocab for Chrome: collect words from subtitles while you watch.", shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
       howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start with ready words", howQuickS: "Nothing at hand? Swipe through a starter set.", howSnap: "Snap a subtitle", howSnapS: "Coming soon: point your camera at the TV.", howPaste: "Bring subtitles or a text", howPasteS: "Paste it or pick the file. We pull out the words you do not know.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
       cardsH: "Flashcards", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
@@ -133,7 +133,7 @@
       wk0: "Kısa bir seans bugünün karesini doldurur.", wkOn: "{0} gün üst üste. Bugünün karesi doldu.", wkRisk: "Şimdiye kadar {0} gün üst üste. Bugünün karesi henüz boş.",
       hFirstS: "Anlamak istediğin bir metni yapıştır ya da hazır bir paket seç.", hDoneT: "Bugünün programı tamam", hDoneS: "Yeni bulmaca yarın geliyor. O zamana kadar bir arkadaşına meydan oku.",
       flowH: "Kelime akışı", flowS: "Kelimeleri kaydır geç. Kurulum yok.", flowHint: "Bildiysen yukarı, tekrar görmek için aşağı kaydır.", flowXp: "+{0} XP", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} XP kazandın. Harika akış!", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
-      extH: "Bilgisayarda mı izliyorsun?", extS: "Chrome eklentisi izlerken kelimeleri toplar. Aynı hesapla burada tekrar edersin. Dokun, linki kendine gönder.", extMsg: "CineVocab Chrome eklentisi: izlerken altyazıdan kelime topla.", shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
+      photoH: "Altyazının fotoğrafını seç", photoS: "Televizyon ya da laptop ekranının fotoğrafı, ya da ekran görüntüsü. Yazı telefonunda okunur; görüntüyü sunucumuza göndermeyiz.", ocrBusy: "Görüntü okunuyor…", ocrReady: "Görüntüden okuyabildiğim bu. Yanlış çıkan yeri düzelt, sonra kelimeleri çıkar.", ocrEmpty: "Bu görüntüde okunabilir yazı bulamadım. Altyazı net ve büyük görünsün.", ocrLang: "Görüntüden okuma şimdilik Latin harfli dillerde çalışıyor.", ocrOnly: "Bu özellik telefon uygulamasında çalışır.", extH: "Bilgisayarda mı izliyorsun?", extS: "Chrome eklentisi izlerken kelimeleri toplar. Aynı hesapla burada tekrar edersin. Dokun, linki kendine gönder.", extMsg: "CineVocab Chrome eklentisi: izlerken altyazıdan kelime topla.", shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
       howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hazır kelimelerle başla", howQuickS: "Elinde bir şey yoksa hazır setten kaydır.", howSnap: "Altyazıyı fotoğrafla", howSnapS: "Yakında: kamerayı TV'ye tut.", howPaste: "Altyazı ya da metin getir", howPasteS: "Yapıştır ya da dosyayı seç. Bilmediğin kelimeleri çıkaralım.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
       cardsH: "Kartlar", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
@@ -829,13 +829,51 @@
     pendingShare = null;
     go("v-add"); addMode(true);
     $("text").value = sh.text; $("srcTitle").value = sh.title; $("plan").hidden = true;
-    say($("msg"), ""); say($("shareNote"), t(sh.linkOnly ? "shareLink" : "shareReady"), sh.linkOnly ? "" : "ok");      // not formun ustunde: kutunun neden bos ya da dolu oldugu hemen gorunsun
+    say($("msg"), ""); say($("shareNote"), t(sh.linkOnly ? "shareLink" : sh.photo ? "ocrReady" : "shareReady"), sh.linkOnly ? "" : "ok");      // not formun ustunde: kutunun neden bos ya da dolu oldugu hemen gorunsun
     return true;
   }
   function sharePending() { if (pendingShare && S.key) shareOpen(pendingShare); }
   async function shareTake() {
     if (!isNative()) return;
-    try { const d = await native("ShareInbox", "take"); if (d && d.text) shareOpen(shareParse(d.text, d.subject)); } catch (e) {}
+    try {
+      const d = await native("ShareInbox", "take");
+      if (d && d.image) ocrOpen(d.text); else if (d && d.text) shareOpen(shareParse(d.text, d.subject));
+    } catch (e) { if (e && /image|ocr/.test(String(e.message))) toast(t("ocrEmpty")); }
+  }
+  // ---- Gorselden altyazi: fotograf ya da ekran goruntusundeki yazi telefonun icinde okunur (ML Kit, cihaz ici).
+  // Okunan satirlardan altyazi olamayacaklari ayiklar: harfsiz satirlar, saat ve sure (12:34), tek tuk harfler, ust uste ayni satir.
+  const OCR_SCRIPTS = ["en", "tr", "de", "fr", "es", "it", "pt", "ro", "id", "pl", "nl"];      // Latin harfli diller
+  function ocrClean(text) {
+    const out = [];
+    for (let line of String(text || "").split("\n")) {
+      line = line.replace(/\s+/g, " ").trim();
+      const letters = (line.match(/\p{L}/gu) || []).length;
+      if (letters < 3) continue;
+      if (/^[\d:.,\s/-]+$/.test(line)) continue;
+      if (letters < line.replace(/\s/g, "").length * .5) continue;          // cogu rakam ve isaret: sayac, sure, tarih
+      if (out[out.length - 1] === line) continue;
+      out.push(line);
+    }
+    return out.join("\n");
+  }
+  function ocrOpen(raw) {
+    const text = ocrClean(raw);
+    if (!text) { toast(t("ocrEmpty")); return false; }
+    if (!OCR_SCRIPTS.includes(S.src)) toast(t("ocrLang"));
+    return shareOpen({ text: text.slice(0, CVTEXT.MAX_CHARS), title: "", linkOnly: false, empty: false, photo: true });
+  }
+  // Secilen gorseli kucultup (uzun kenar en cok 1600 px) yerel okuyucuya verir.
+  async function ocrFile(file) {
+    if (!file) return;
+    if (!isNative()) return toast(t("ocrOnly"));
+    toast(t("ocrBusy"));
+    try {
+      const bmp = await createImageBitmap(file), k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+      const cv = document.createElement("canvas"); cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k);
+      cv.getContext("2d").drawImage(bmp, 0, 0, cv.width, cv.height);
+      const d = await native("ShareInbox", "ocr", { data: cv.toDataURL("image/jpeg", .9).split(",")[1] });
+      ocrOpen(d && d.text);
+    } catch (e) { toast(t("ocrEmpty")); }
   }
   let plan = null;     // { title, thumb, words: [secilen kelimeler], lines: [metnin satirlari] }
   $("go").addEventListener("click", async function () {
@@ -1719,6 +1757,8 @@
   });
   // Eklenti koprusu: bilgisayarda izleyen icin. Linki paylasim penceresiyle kendine gonderir (telefonda magaza acmak ise yaramaz).
   for (const id of ["aExt", "hExt"]) $(id).addEventListener("click", () => share(t("extMsg"), CFG.extension || shareUrl()));
+  $("aPhoto").addEventListener("click", () => $("photo").click());
+  $("photo").addEventListener("change", function () { const f = $("photo").files && $("photo").files[0]; $("photo").value = ""; ocrFile(f); });
   $("aQuick").addEventListener("click", startFlow);
   $("aPaste").addEventListener("click", () => addMode(true));
   $("aDuel").addEventListener("click", () => go("v-duel"));

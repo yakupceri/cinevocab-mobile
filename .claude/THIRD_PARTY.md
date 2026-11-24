@@ -31,5 +31,11 @@ Daha yeni bir commit alınacaksa önce içine bakılır (hook, betik, MCP kurulu
 - `ionic-*`, `capacitor-angular/react/vue`: uygulama düz JS.
 - Eklenti geliştirme ve iOS SPM skill'leri: kapsam dışı.
 
+## Uygulamaya giren kütüphaneler
+| Kütüphane | Ne işe yarar | Kaynak | Lisans / koşul |
+|---|---|---|---|
+| `com.google.mlkit:text-recognition:16.0.1` | Fotoğraf ve ekran görüntüsündeki altyazıyı telefonda okur (Latin harfleri) | Google Maven, `android/app/build.gradle` | Açık kaynak değil; Google ML Kit kullanım koşulları. Google'a tanılama verisi yollar: `store/PLAY-STORE.md` veri güvenliği bölümüne bak. Cihaz başına yaklaşık 10 MB ekler |
+| Big Shoulders Display, Instrument Sans | Yazı tipleri | Google Fonts, `www/fonts/` | SIL OFL 1.1 |
+
 ## Bu projeye ait olanlar
 `agents/`, `commands/`, `ofis/` bu proje için yazıldı (cinevocab-app'teki sürümlerden uyarlandı). `ofis/hook.py` yalnızca standart kütüphane kullanır, `ofis/durum.json` dosyasına yazar, ağa çıkmaz.

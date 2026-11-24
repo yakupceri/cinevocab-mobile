@@ -105,6 +105,22 @@ Veri toplanıyor mu: **Evet**. Aktarım sırasında şifreleniyor mu: **Evet** (
 | Konum, rehber, fotoğraf, ses, mali bilgi, sağlık | Hayır | | |
 | Reklam kimliği, analitik | Hayır | | |
 
+**Görselden altyazı okuma (24 Kasım 2026'da eklendi) formu değiştirir.** Uygulama artık Google ML Kit yazı tanıma kütüphanesini içeriyor (`com.google.mlkit:text-recognition`, model uygulamayla birlikte gelir). Bizim kodumuz görseli ve okunan metni hiçbir yere göndermez. Ama ML Kit kendi başına Google'a tanılama verisi yollar; Google'ın sayfasına göre (https://developers.google.com/ml-kit/android-data-disclosure, 14 Mayıs 2025 sürümü okundu) toplananlar: cihaz bilgisi (üretici, model, işletim sistemi), uygulama bilgisi (paket adı, sürüm), kurulum başına kimlik ("kullanıcıyı ya da cihazı tekil tanımlamak için değil"), performans ölçümleri, API ayarları (görsel biçimi ve çözünürlüğü), girdi ve çıktı boyutu, özellik sürümü, olay türü, hata kodları. Amaç: "tanılama ve kullanım analitiği". HTTPS ile şifreli, üçüncü tarafa aktarılmıyor. Sayfa, görselin ya da okunan metnin gönderilip gönderilmediğini açıkça yazmıyor; formu nasıl dolduracağını da sana bırakıyor.
+
+Buna göre yukarıdaki tabloda "Reklam kimliği, analitik: Hayır" satırı artık eksik kalır. Eklenmesi gerekenler (kendi yorumum, formu doldururken Google'ın sayfasıyla karşılaştır):
+
+| Veri türü | Toplanıyor | Amaç | Zorunlu mu |
+|---|---|---|---|
+| Cihaz ya da diğer kimlikler (kurulum kimliği, ML Kit) | Evet | Analiz (tanılama) | Zorunlu (kütüphane kendisi yollar) |
+| Uygulama bilgisi ve performansı: tanılama (ML Kit) | Evet | Analiz (tanılama) | Zorunlu |
+| Fotoğraflar | Hayır (görsel telefonda işlenir, sunucumuza gitmez; kalıcı saklanmaz) | | |
+
+Gizlilik politikası metnine de bir cümle gerekir (sunucu reposunda): "Görselden altyazı okuma telefonun içinde yapılır; bunun için kullanılan Google ML Kit kütüphanesi Google'a tanılama ve kullanım ölçümleri gönderir."
+
+Bu beyanı istemiyorsan özellik kaldırılabilir ya da modeli Google Play hizmetlerinden indiren sürüme geçilebilir (uygulama küçülür, beyan aynı kalır).
+
+**Paylaş → CineVocab** yeni izin istemez; manifest'e iki giriş eklendi (düz metin ve görsel paylaşımı alma). Kamera, depolama ve fotoğraf izni yok: görsel sistemin fotoğraf seçicisinden ya da paylaşımdan gelir.
+
 Formu doldurmadan önce sunucu tarafını bir kez daha gözden geçir: sunucuda toplanan başka bir şey varsa (örneğin IP kaydı) onu da yaz.
 
 ## Yayın sırası

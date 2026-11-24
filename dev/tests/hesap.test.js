@@ -462,11 +462,34 @@ test("paylasim: misafirde metin bellekte bekler, kayit istenir; giristen sonra f
 test("paylasim: Android tarafi yalnizca duz metin kabul eder, yeni izin yok", () => {
   const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "android", "app", "src", "main");
   const m = fs.readFileSync(path.join(kok, "AndroidManifest.xml"), "utf8");
-  assert.equal((m.match(/android\.intent\.action\.SEND/g) || []).length, 1); assert.match(m, /mimeType="text\/plain"/); assert.doesNotMatch(m, /SEND_MULTIPLE|image\/|\*\/\*/);
+  assert.equal((m.match(/android\.intent\.action\.SEND/g) || []).length, 2); assert.match(m, /mimeType="text\/plain"/); assert.doesNotMatch(m, /SEND_MULTIPLE|\*\/\*/);
   assert.deepEqual((m.match(/uses-permission android:name="([^"]+)"/g) || []).map((x) => x.split(".").pop().replace('"', "")).sort(), ["INTERNET", "VIBRATE"]);
 });
 test("paylasim: misafirde yalnizca link gelirse kayit istenmez, neden bos oldugu soylenir", () => {
   const { c, olay } = yonlendir({ key: "", guest: true });
   assert.equal(c.shareOpen(c.shareParse("https://youtu.be/abc", "Video")), false);
   assert.deepEqual(olay, ["uyari:shareLink"]); assert.equal(c.pendingShare, null);
+});
+
+// Gorselden altyazi: okunan ham satirlarin ayiklanmasi ve yonlendirme.
+test("gorselden okuma: saat, sayac ve harfsiz satirlar atilir, altyazi kalir", () => {
+  const c = yukle(["ocrClean"]);
+  const ham = ["12:34 / 1:02:11", "1,2 Mn goruntuleme", "He was reluctant to leave.", "He was reluctant to leave.", "HD", ">> ||", "", "  She gave him   a fierce look. ", "2026-11-24"].join("\n");
+  assert.equal(c.ocrClean(ham), "1,2 Mn goruntuleme\nHe was reluctant to leave.\nShe gave him a fierce look.");
+  assert.equal(c.ocrClean("12:34\n...\n42"), ""); assert.equal(c.ocrClean(null), "");
+});
+test("gorselden okuma: bos sonucta uyarir, form acmaz; dolu sonucta formu 'gorselden okundu' notuyla acar", () => {
+  const olay = [];
+  const c = yukle(["OCR_SCRIPTS", "ocrClean", "ocrOpen"], { S: { src: "en" }, CVTEXT: { MAX_CHARS: 400000 }, t: (k) => k, toast: (m) => olay.push("uyari:" + m), shareOpen: (sh) => { olay.push(sh); return true; } });
+  assert.equal(c.ocrOpen("12:34\n..."), false); assert.deepEqual(olay, ["uyari:ocrEmpty"]);
+  assert.equal(c.ocrOpen("He was reluctant to leave."), true);
+  assert.equal(olay[1].text, "He was reluctant to leave."); assert.equal(olay[1].photo, true); assert.equal(olay[1].linkOnly, false);
+  c.S.src = "ja"; c.ocrOpen("He was reluctant to leave."); assert.equal(olay[2], "uyari:ocrLang", "Latin disi dilde acikca soyler");
+});
+test("gorselden okuma: Android yalnizca metin ve gorsel alir, kamera izni yok, okuma cihaz ici", () => {
+  const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "android", "app");
+  const m = fs.readFileSync(path.join(kok, "src", "main", "AndroidManifest.xml"), "utf8"), g = fs.readFileSync(path.join(kok, "build.gradle"), "utf8");
+  assert.deepEqual((m.match(/mimeType="([^"]+)"/g) || []).sort(), ['mimeType="image/*"', 'mimeType="text/plain"']);
+  assert.doesNotMatch(m, /CAMERA|READ_EXTERNAL|READ_MEDIA/);
+  assert.match(g, /com\.google\.mlkit:text-recognition:/, "model uygulamayla gelir"); assert.doesNotMatch(g, /play-services-mlkit/, "indirmeli surum degil");
 });

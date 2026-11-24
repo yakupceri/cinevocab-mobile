@@ -1,0 +1,65 @@
+--- a/main.py	2026-11-25 00:27:41
++++ b/main.py	2026-11-25 00:27:41
+@@ -28,6 +28,7 @@
+ import daily
+ import extauth
+ import leagues
++import anonquota
+ import multilang
+ import puzzle
+ import srs
+@@ -1645,7 +1646,7 @@
+     if batch.thumb and batch.episode:
+         vocab.save_thumb(batch.episode, batch.thumb)
+     if (batch.src, batch.dst) != ("tr", "en"):
+-        return multilang.handle(batch, user_from_request(request))
++        return multilang.handle(batch, user_from_request(request), client_ip(request))
+     LAST_REQUEST_TIME = time.time()
+     # "Eski cümle" sayacı kullanıcıya göre tutulur; eskiden herkes için tek sayaçtı ve
+     # saati ileri olan bir kullanıcı yüzünden diğerlerinin cümleleri "eski" sayılıyordu.
+@@ -1713,6 +1714,9 @@
+     sent_fut = None if stale else _SENT_EXEC.submit(translate_sentence, batch.sentence)
+ 
+     if missing:
++        # Hesapsız kota: yeni kelimelerden bugünlük izin verilen kadarı çevrilir, kalanı "pending" olarak döner.
++        missing, _over = anonquota.split(ck, missing, bool(u))
++    if missing:
+         src = {}
+         translated = translate_missing(missing, src, sent_fut or "", batch.sentence)
+         save_translations(translated, src)
+--- a/multilang.py	2026-11-25 00:27:41
++++ b/multilang.py	2026-11-25 00:27:41
+@@ -12,6 +12,7 @@
+ import requests
+ 
+ import vocab
++import anonquota
+ from accounts import q
+ 
+ LANGS = vocab.LANGS
+@@ -158,7 +159,7 @@
+     return bool(trans) and bool(re.search(r"\w", trans))
+ 
+ 
+-def handle(batch, user):
++def handle(batch, user, ip=""):
+     src, dst = batch.src, batch.dst
+     if src not in LANGS or dst not in LANGS or src == dst:
+         return {"status": "error", "message": "Dil çifti geçersiz"}
+@@ -191,6 +192,8 @@
+         return reply(missing, [])
+ 
+     pending, failed = [], []
++    # Hesapsız kota: yeni kelimelerden bugünlük izin verilen kadarı çevrilir, kalanı "pending" olarak döner.
++    missing, over = anonquota.split(ip or "?", missing, bool(user))
+     if missing:
+         try:
+             got = translate_words(missing, src, dst)
+@@ -207,6 +210,7 @@
+             pending = left
+         else:
+             failed = left
++    pending = pending + over
+     sentence = translate_sentence(batch.sentence, src, dst) if batch.sentence.strip() else ""
+     self_save(user, src, dst, results, batch.episode)
+     return reply(pending, failed, sentence)

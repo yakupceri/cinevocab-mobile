@@ -57,7 +57,7 @@
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
       badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "day streak", bWins: "duel wins", bMaster: "mastered",
       badgeNew: "New award: {0} {1}", badgeNeed: "Locked. Opens at {0} {1}.", badgeHave: "Yours: {0} {1}.",
-      setH: "Settings", sndLbl: "Sounds", themeLbl: "Look", themeDark: "Dark (night screening)", themeLight: "Light (matinee)",
+      setH: "Settings", sndLbl: "Sounds", vibLbl: "Vibration", comboN: "{0} right in a row", qAsk: "What does {0} mean here?", qAskCloze: "Which word fits the gap?", themeLbl: "Look", themeDark: "Dark (night screening)", themeLight: "Light (matinee)",
       login: "Log in", register: "Sign up", username: "Username", email: "Email", password: "Password",
       loginGo: "Log in", regGo: "Create account", verify: "Verify", back: "Back",
       codeSub: "We sent a 6-digit code to {0}. Enter it to create your account.",
@@ -139,7 +139,7 @@
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
       badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün seri", bWins: "galibiyet", bMaster: "usta kelime",
       badgeNew: "Yeni ödül: {0} {1}", badgeNeed: "Kilitli. {0} {1} olunca açılır.", badgeHave: "Senin: {0} {1}.",
-      setH: "Ayarlar", sndLbl: "Sesler", themeLbl: "Görünüm", themeDark: "Koyu (gece seansı)", themeLight: "Açık (matine)",
+      setH: "Ayarlar", sndLbl: "Sesler", vibLbl: "Titreşim", comboN: "{0} doğru üst üste", qAsk: "{0} burada ne demek?", qAskCloze: "Boşluğa hangi kelime gelir?", themeLbl: "Görünüm", themeDark: "Koyu (gece seansı)", themeLight: "Açık (matine)",
       login: "Giriş yap", register: "Kayıt ol", username: "Kullanıcı adı", email: "E-posta", password: "Parola",
       loginGo: "Giriş yap", regGo: "Hesap oluştur", verify: "Doğrula", back: "Geri",
       codeSub: "{0} adresine 6 haneli bir kod gönderdik. Hesabını açmak için kodu gir.",
@@ -278,7 +278,7 @@
     run = ok ? run + 1 : 0;
     if (!node) return;
     node.hidden = run < 2;
-    if (run >= 2) { node.textContent = run + "x"; node.style.animation = "none"; void node.offsetWidth; node.style.animation = ""; if (run % 5 === 0) sfx("combo"); }
+    if (run >= 2) { node.textContent = t("comboN", run); node.style.animation = "none"; void node.offsetWidth; node.style.animation = ""; if (run % 5 === 0) sfx("combo"); }
   }
   function say(node, text, kind) { node.textContent = text || ""; node.className = "note" + (kind ? " " + kind : ""); }
   let toastTimer = 0;
@@ -286,7 +286,14 @@
   function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
   const calm = () => { try { return matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; } };
   // Dogru/yanlis cevapta kisa titresim (telefon destekliyorsa).
-  function buzz(ok) { sfx(ok ? "ok" : "bad"); try { if (navigator.vibrate) navigator.vibrate(ok ? 12 : [40, 50, 40]); } catch (e) {} }
+  // Titresim dili: dogru = tek kisa tik, yanlis = iki yumusak, kelime kalici oldu = uzun-kisa-uzun. Ayarlar'dan kapanir.
+  const VIBE = { ok: 12, bad: [28, 70, 28], keep: [60, 40, 20, 40, 90], tap: 14 };
+  function vibe(kind) {
+    if (store.get("vib") === "0" || !VIBE[kind]) return false;
+    try { if (navigator.vibrate) { navigator.vibrate(VIBE[kind]); return true; } } catch (e) {}
+    return false;
+  }
+  function buzz(ok) { sfx(ok ? "ok" : "bad"); vibe(ok ? "ok" : "bad"); }
   // Sayiyi sifirdan hedefe dogru saydirir.
   function countUp(node, to) {
     if (calm() || !(to > 0)) { node.textContent = to; return; }
@@ -372,7 +379,7 @@
     if (curView === "v-flow" && id !== "v-flow") flowStop();
     curView = id;
     document.querySelectorAll("main section").forEach((s) => { s.hidden = s.id !== id; });
-    $("tabs").hidden = id === "v-auth" || id === "v-start" || id === "v-how" || id === "v-flow";
+    $("tabs").hidden = ["v-auth", "v-start", "v-how", "v-flow", "v-quiz", "v-cards", "v-puzzle", "v-result"].includes(id);
     const tab = TAB_OF[id] || id;
     document.querySelectorAll("#tabs button").forEach((b) => { if (b.dataset.view === tab) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
     main.scrollTop = 0;
@@ -557,7 +564,7 @@
   let bonusTimer = 0;
   function bonusCard(h) {
     const b = $("bonus"); $("bonusH").textContent = t("bonusH"); $("bonusS").textContent = t("bonusS", h.streak || 1);
-    b.classList.remove("out"); b.hidden = false; sfx("tap"); try { if (navigator.vibrate) navigator.vibrate(14); } catch (e) {}
+    b.classList.remove("out"); b.hidden = false; sfx("tap"); vibe("tap");
     countUp($("bonusN"), h.xp_today);
     clearTimeout(bonusTimer);
     const close = function () { clearTimeout(bonusTimer); b.classList.add("out"); setTimeout(function () { b.hidden = true; }, calm() ? 0 : 300); };
@@ -866,8 +873,10 @@
   function stopQuiz() { clearTimeout(Q.timer); Q.locked = true; }
   // o: { count, score, word, options, seconds (sureli ise), progress (suresiz ise 0..1), onAnswer(secim, gecenMs) }
   function ask(o) {
-    $("qCount").textContent = o.count; $("qScore").textContent = o.score || ""; $("qWord").textContent = o.word; say($("qInfo"), "");
+    $("qCount").textContent = o.count; $("qScore").textContent = o.score || ""; say($("qInfo"), "");
+    subtitleInto($("qWord"), o.line || o.word, o.line ? o.word : ""); $("qAsk").textContent = o.ask || "";
     if (o.first) combo(false, $("qCombo"));
+    ticks(o);
     const box = $("qOpts"), bar = $("qFill"); box.textContent = "";
     clearTimeout(Q.timer); Q.locked = false; Q.t0 = performance.now();
     const fire = function (choice, b) {
@@ -885,7 +894,28 @@
       Q.timer = setTimeout(() => fire("", null), o.seconds * 1000);
     } else { bar.classList.remove("timed"); bar.style.transition = ""; bar.style.width = Math.round((o.progress || 0) * 100) + "%"; }
   }
+  // Altyazi: cumle icinde kelimeyi sari yazar. Kelime verilmezse ya da cumlede yoksa metin duz yazilir.
+  function wordRe(w) { return new RegExp("(^|[^\\p{L}])(" + String(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(?![\\p{L}])", "iu"); }
+  function subtitleInto(node, text, word) {
+    node.textContent = "";
+    const m = word ? wordRe(word).exec(text) : null;
+    if (!m) { node.textContent = text; return false; }
+    const at = m.index + m[1].length;
+    node.append(document.createTextNode(text.slice(0, at)), el("mark", "", m[2]), document.createTextNode(text.slice(at + m[2].length)));
+    return true;
+  }
+  // Ustteki kareler: her soru bir kare. Dogru yesil, yanlis kirmizi, siradaki sari. Sureli oyunda yerini sure cubugu alir.
+  function ticks(o) {
+    const box = $("qTicks"), timed = !!o.seconds, n = Number(o.n) || 0, at = Number(o.at) || 0;
+    $("qBar").hidden = !timed; box.hidden = timed || !n;
+    if (box.hidden) return;
+    if (o.first || box.childElementCount !== n) { box.textContent = ""; for (let i = 0; i < n; i++) box.appendChild(el("i", i < at ? "past" : "")); }
+    Array.from(box.children).forEach(function (x, i) { x.classList.toggle("cur", i === at); });
+    box.dataset.at = String(at);
+  }
   function reveal(correct, picked) {
+    const tk = $("qTicks").children[Number($("qTicks").dataset.at)];
+    if (tk && !$("qTicks").hidden) { tk.classList.remove("cur"); tk.classList.add(picked === correct ? "ok" : "no"); }
     $("qOpts").querySelectorAll("button").forEach((x) => {
       if (x.textContent === correct) x.classList.add("right"); else if (x.textContent === picked) x.classList.add("wrong");
     });
@@ -911,13 +941,15 @@
     let d, all;
     try { d = await api("/api/srs/session" + pairQ() + "&n=10"); all = await loadVocab(); } catch (e) { return toast(e.message); }
     if (d.words.length < 4) return toast(t("pNeed"));
-    const items = d.words.map((x) => ({ w: x.tr, t: x.eng })), results = [];
+    const sent = {};                       // kelimenin gectigi cumle (varsa): karede altyazi olarak gorunur
+    for (const x of S.vocabRaw || []) if (x.s && !sent[x.w] && wordRe(x.w).test(x.s)) sent[x.w] = x.s;
+    const items = d.words.map((x) => ({ w: x.tr, t: x.eng, s: sent[x.tr] || "" })), results = [];
     const pool = Array.from(new Set(all.map((x) => x.t).concat(items.map((x) => x.t))));
     let i = 0, right = 0;
     showView("v-quiz");
     const next = function () {
       const it = items[i];
-      ask({ first: i === 0, count: t("qCount", i + 1, items.length), word: it.w, progress: i / items.length,
+      ask({ first: i === 0, count: t("qCount", i + 1, items.length), word: it.w, line: it.s, ask: t("qAsk", it.w), at: i, n: items.length,
         options: shuffle(shuffle(pool.filter((x) => x !== it.t)).slice(0, 3).concat(it.t)),
         onAnswer: function (choice) {
           const ok = choice === it.t;
@@ -939,21 +971,20 @@
   // Altyaziyi tamamla: cumleden kelime cikarilir, 3 sikkli (cumlesi olan kelimeler kullanilir).
   async function startCloze() {
     let all; try { all = await loadVocab(); } catch (e) { return toast(e.message); }
-    const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const items = shuffle((S.vocabRaw || []).filter((x) => x.s && new RegExp("(^|[^\\p{L}])" + esc(x.w) + "(?![\\p{L}])", "iu").test(x.s))).slice(0, 10);
+    const items = shuffle((S.vocabRaw || []).filter((x) => x.s && wordRe(x.w).test(x.s))).slice(0, 10);
     if (items.length < 4) return toast(t("clozeNeed"));
     const words = Array.from(new Set(all.map((x) => x.w))), results = [];
     let i = 0, right = 0;
     showView("v-quiz");
     const next = function () {
       const it = items[i];
-      const line = it.s.replace(new RegExp("(^|[^\\p{L}])" + esc(it.w) + "(?![\\p{L}])", "iu"), function (m, p) { return p + "_____"; });
-      ask({ first: i === 0, count: t("qCount", i + 1, items.length), word: line, progress: i / items.length,
+      const line = it.s.replace(wordRe(it.w), function (m, p) { return p + "_____"; });
+      ask({ first: i === 0, count: t("qCount", i + 1, items.length), word: line, ask: t("qAskCloze"), at: i, n: items.length,
         options: shuffle(shuffle(words.filter((x) => x.toLowerCase() !== it.w.toLowerCase())).slice(0, 2).concat(it.w)),
         onAnswer: function (choice) {
           const ok = choice === it.w;
           if (ok) right++; else say($("qInfo"), t("dWrong", it.w), "bad");
-          $("qWord").textContent = it.s;
+          subtitleInto($("qWord"), it.s, it.w);
           results.push({ w: it.w, ok: ok }); reveal(it.w, choice); buzz(ok); combo(ok, $("qCombo"));
           Q.timer = setTimeout(function () { if (curView !== "v-quiz") return; i++; if (i < items.length) next(); else finish(); }, ok ? 900 : 1700);
         } });
@@ -985,7 +1016,7 @@
     let firstQ = true;
     const next = function () {
       const q = qs[i];
-      ask({ first: firstQ, count: t("qCount", i + 1, qs.length), score: score + " " + t("pts"), word: q.tr, options: q.options, seconds: d.seconds || 12,
+      ask({ first: firstQ, count: t("qCount", i + 1, qs.length), score: score + " " + t("pts"), word: q.tr, ask: t("qAsk", q.tr), options: q.options, seconds: d.seconds || 12,
         onAnswer: async function (choice, ms) {
           let r;
           try { r = await api("/api/daily/answer", { body: { src: S.src, dst: S.dst, idx: i, choice: choice, ms: ms } }); }
@@ -1284,6 +1315,7 @@
     $("flKnow").addEventListener("click", () => flowAnswer(true));
     $("flAgain").addEventListener("click", () => flowAnswer(false));
     $("flClose").addEventListener("click", () => go("v-play"));
+    $("qClose").addEventListener("click", () => go("v-play"));
     $("flSay").addEventListener("pointerdown", (ev) => ev.stopPropagation());
     $("flSay").addEventListener("click", () => { if (F.items[F.i]) say2(F.items[F.i].w, $("flSay")); });
     $("flVoice").addEventListener("click", function () { F.voice = !F.voice; store.set("voice", F.voice ? "1" : "0"); flowPaint(); if (!F.voice) stopSay(); else if (F.items[F.i]) say2(F.items[F.i].w, $("flSay")); });
@@ -1498,12 +1530,13 @@
     }
     if (!h) refresh().then(() => { if (curView === "v-me") showMe(); }).catch(() => {});
     $("remRow").hidden = !isNative(); $("remTgl").checked = store.get("remind") === "1";
-    $("sndTgl").checked = store.get("snd") !== "0";
+    $("sndTgl").checked = store.get("snd") !== "0"; $("vibTgl").checked = store.get("vib") !== "0";
     $("delBox").hidden = true; $("delOpen").hidden = false; $("delPw").value = ""; say($("delMsg"), "");
     $("invSub").textContent = t("invSub0");
     api("/api/invite").then((d) => { if (d && d.count > 0) $("invSub").textContent = t("invSubN", d.count); }).catch(() => {});
   }
   $("invBtn").addEventListener("click", () => share(t("shInvite")));
+  $("vibTgl").addEventListener("change", () => { store.set("vib", $("vibTgl").checked ? "1" : "0"); vibe("ok"); });
   $("sndTgl").addEventListener("change", () => { store.set("snd", $("sndTgl").checked ? "1" : "0"); sfx("ok"); });
   $("remTgl").addEventListener("change", async function () {
     const want = $("remTgl").checked;

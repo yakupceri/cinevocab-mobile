@@ -200,7 +200,15 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 /* soru: film karesi ve altyazi */
 .qtop { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 30px; margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--dim); }
 .qtop .time { display: inline-flex; align-items: center; gap: 5px; } .qtop .time .ic { width: 17px; height: 17px; }
-.combo { color: var(--hi); font: 800 22px/1 var(--disp); animation: pop .35s ease; }
+.combo { color: var(--hi); font-weight: 700; animation: pop .35s ease; }
+.qbar { display: flex; align-items: center; gap: 12px; margin-left: -10px; font-size: 14px; font-weight: 600; color: var(--dim); }
+.qbar .bar { flex: 1; margin-top: 0; }
+.ticks { flex: 1; display: flex; gap: 3px; } .ticks i { flex: 1; height: 6px; border-radius: 1px; background: var(--surf2); }
+.ticks .past { background: var(--dim); } .ticks .ok { background: var(--green); } .ticks .no { background: var(--red-fill); } .ticks .cur { background: var(--sun); }
+.screen.tall { min-height: 0; aspect-ratio: 1.6 / 1; margin-top: 8px; }
+.q { margin: 20px 0 0; font-size: 17px; color: var(--dim); } .q:empty { display: none; }
+.q + .opts { margin-top: 12px; }
+.run { margin: 18px 0 0; text-align: center; font-size: 14px; font-weight: 600; color: var(--hi); animation: pop .35s ease; }
 .screen { position: relative; display: flex; align-items: flex-end; justify-content: center; min-height: 24vh; margin-top: 12px; padding: 26px 18px 20px; border-radius: var(--r); overflow: hidden;
   background: radial-gradient(120% 90% at 78% 20%, var(--glow1) 0, var(--glow2) 45%, var(--glow3) 100%); }
 .screen::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, var(--shade)); }

@@ -223,11 +223,17 @@
 
     <!-- Soru ekrani (pratik ve gunluk meydan okuma ortak kullanir). Kelime, altyazi seridi gibi gorunur. -->
     <section id="v-quiz" hidden>
-      <div class="bar"><i id="qFill"></i></div>
-      <div class="qtop"><span id="qCount"></span><span class="combo" id="qCombo" hidden></span><span id="qScore"></span></div>
-      <div class="screen"><div class="subtitle" id="qWord"></div></div>
+      <div class="qbar">
+        <button class="fl-x" id="qClose" type="button" data-i-aria="back"><svg class="ic"><use href="#i-x"/></svg></button>
+        <div class="ticks" id="qTicks"></div>
+        <div class="bar" id="qBar" hidden><i id="qFill"></i></div>
+        <span id="qCount"></span>
+      </div>
+      <div class="screen tall"><span class="tc" id="qScore"></span><div class="subtitle" id="qWord"></div></div>
+      <p class="q" id="qAsk"></p>
       <div class="opts" id="qOpts"></div>
       <p class="note" id="qInfo"></p>
+      <p class="run" id="qCombo" hidden></p>
     </section>
 
     <!-- Kelime akisi: tek kelime, yukari kaydir, sonraki. Kelime + anlam + ses. -->
@@ -410,6 +416,7 @@
         <div class="field"><label for="themeSel" data-i="themeLbl"></label>
           <select id="themeSel"><option value="dark" data-i="themeDark"></option><option value="light" data-i="themeLight"></option></select></div>
         <div class="field"><label class="check"><input type="checkbox" id="sndTgl"><span data-i="sndLbl"></span></label></div>
+        <div class="field"><label class="check"><input type="checkbox" id="vibTgl"><span data-i="vibLbl"></span></label></div>
         <div class="field" id="remRow" hidden>
           <label class="check"><input type="checkbox" id="remTgl"><span data-i="remLbl"></span></label></div>
       </div>

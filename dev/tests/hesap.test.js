@@ -13,7 +13,7 @@ test("rol: seviye esikleri 1,3,5,8,12,17,25,40", () => {
 
 test("combo: 2'den itibaren gorunur, yanlista sifirlanir, her 5'te ses", () => {
   const sesler = [];
-  const c = yukle(["run", "combo"], { sfx: (k) => sesler.push(k) });
+  const c = yukle(["run", "combo"], { sfx: (k) => sesler.push(k), t: (k, n) => n + "x" });
   const node = { hidden: true, textContent: "", style: {}, offsetWidth: 0 };
   c.combo(true, node); assert.equal(node.hidden, true, "1 dogru: gizli");
   c.combo(true, node); assert.equal(node.hidden, false); assert.equal(node.textContent, "2x");
@@ -177,9 +177,63 @@ test("bonus karti: hedef dolunca gunde bir kez, ertesi gun yeniden", async () =>
 });
 test("bonus karti: gorunur, XP'yi yazar, dokununca kapanir", () => {
   const sinif = new Set(), n = {}; const dug = (id) => (n[id] = n[id] || { id, textContent: "", hidden: true, onclick: null, classList: { add: (x) => sinif.add(x), remove: (x) => sinif.delete(x) } });
-  const c = yukle(["bonusTimer", "bonusCard"], { $: dug, t: (k, v) => k + (v === undefined ? "" : ":" + v), sfx: () => {}, navigator: {}, calm: () => true,
+  const c = yukle(["bonusTimer", "bonusCard"], { $: dug, t: (k, v) => k + (v === undefined ? "" : ":" + v), sfx: () => {}, vibe: () => {}, calm: () => true,
     countUp: (node, to) => { node.textContent = String(to); }, setTimeout: (f, ms) => { if (ms === 0) f(); return 1; }, clearTimeout: () => {} });
   c.bonusCard({ xp_today: 60, streak: 0 });
   assert.equal(n.bonus.hidden, false); assert.equal(n.bonusN.textContent, "60"); assert.equal(n.bonusS.textContent, "bonusS:1");
   n.bonus.onclick(); assert.equal(n.bonus.hidden, true);
+});
+
+// Altyazi: cumlede kelime sari isaretlenir; baska kelimenin icindeki eslesme sayilmaz.
+function altyazi() {
+  const dugum = () => ({ parca: [], set textContent(v) { this.parca = v === "" ? [] : [String(v)]; }, append(...a) { this.parca.push(...a); } });
+  const c = yukle(["wordRe", "subtitleInto"], { RegExp, el: (tag, cls, text) => ({ mark: text }), document: { createTextNode: (x) => x } });
+  return { c, dugum };
+}
+test("altyazi: kelime cumlenin icinde isaretlenir, buyuk-kucuk harf fark etmez", () => {
+  const { c, dugum } = altyazi(), n = dugum();
+  assert.equal(c.subtitleInto(n, "Trust me, I never lie.", "trust"), true);
+  assert.deepEqual(JSON.parse(JSON.stringify(n.parca)), ["", { mark: "Trust" }, " me, I never lie."]);
+});
+test("altyazi: baska kelimenin parcasi eslesmez, ozel karakter kirmaz, Turkce harf calisir", () => {
+  const { c, dugum } = altyazi(); let n = dugum();
+  assert.equal(c.subtitleInto(n, "They distrust him.", "trust"), false); assert.deepEqual(n.parca, ["They distrust him."]);
+  n = dugum(); assert.equal(c.subtitleInto(n, "What (now)?", "(now)"), true);
+  n = dugum(); assert.equal(c.subtitleInto(n, "Bu bir sır, kimseye söyleme.", "sır"), true);
+  n = dugum(); assert.equal(c.subtitleInto(n, "sırdaş oldular", "sır"), false);
+  n = dugum(); assert.equal(c.subtitleInto(n, "yalnizca kelime", ""), false);
+});
+
+// v8 "Altyaziyi tamamla": cumlesi olan kelimelerden soru kurar, bosluk birakir, 3 sik verir.
+test("altyaziyi tamamla: bosluklu cumle, 3 sik, dogru cevap siklarda", async () => {
+  const sorular = [], ham = [
+    { w: "whisper", t: "fısıldamak", s: "Don't whisper in the dark." }, { w: "secret", t: "sır", s: "It is a secret." },
+    { w: "trust", t: "güvenmek", s: "Trust me." }, { w: "sword", t: "kılıç", s: "He drew his sword." },
+    { w: "guard", t: "muhafız", s: "" }, { w: "escape", t: "kaçmak", s: "This line has no such word." }];
+  const c = yukle(["wordRe", "startCloze"], { RegExp, Set, S: { vocabRaw: ham, src: "en", dst: "tr" }, loadVocab: async () => ham, shuffle: (a) => a,
+    toast: (m) => { throw new Error("beklenmeyen uyari: " + m); }, t: (k) => k, showView: () => {}, ask: (o) => sorular.push(o), $: () => ({}) });
+  await c.startCloze();
+  assert.equal(sorular.length, 1);
+  const o = sorular[0];
+  assert.equal(o.word, "Don't _____ in the dark."); assert.equal(o.n, 4, "cumlesi olmayan ve cumlesinde gecmeyen kelime alinmaz");
+  assert.equal(o.options.length, 3); assert.ok(Array.from(o.options).includes("whisper")); assert.equal(o.ask, "qAskCloze");
+});
+test("altyaziyi tamamla: 4'ten az cumle varsa oyun acilmaz, uyari verir", async () => {
+  const uyari = [], ham = [{ w: "trust", t: "güvenmek", s: "Trust me." }];
+  const c = yukle(["wordRe", "startCloze"], { RegExp, Set, S: { vocabRaw: ham }, loadVocab: async () => ham, shuffle: (a) => a,
+    toast: (m) => uyari.push(m), t: (k) => k, showView: () => { throw new Error("acilmamaliydi"); }, ask: () => {} });
+  await c.startCloze(); assert.deepEqual(uyari, ["clozeNeed"]);
+});
+
+// Titresim dili: uc ayri desen, Ayarlar'dan kapanir.
+test("titresim: dogru, yanlis ve kalici icin ayri desen; kapaliyken titremez", () => {
+  const gelen = [];
+  const c = yukle(["VIBE", "vibe"], { navigator: { vibrate: (p) => gelen.push(JSON.stringify(p)) } });
+  assert.equal(c.vibe("ok"), true); assert.equal(c.vibe("bad"), true); assert.equal(c.vibe("keep"), true);
+  assert.equal(new Set(gelen).size, 3, "uc desen birbirinden farkli");
+  assert.equal(c.vibe("yok"), false);
+  c.store.set("vib", "0"); assert.equal(c.vibe("ok"), false); assert.equal(gelen.length, 3);
+});
+test("titresim: telefon desteklemiyorsa hata vermez", () => {
+  assert.equal(yukle(["VIBE", "vibe"], { navigator: {} }).vibe("ok"), false);
 });

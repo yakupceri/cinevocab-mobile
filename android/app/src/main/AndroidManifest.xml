@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="false"
@@ -54,6 +55,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Bildirim eklentisinin getirdigi "tam zamaninda alarm" izni cikarilir: aksam hatirlatmasinin dakikasi dakikasina gelmesi gerekmez. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" tools:node="remove" />
     <!-- Altyazinin fotografini telefonun kendi kamera uygulamasiyla cekmek icin: yalnizca kamera uygulamasini gorebilmek.
          Kamera IZNI istenmez; fotografi kamera uygulamasi ceker ve bize verir. -->
     <queries>

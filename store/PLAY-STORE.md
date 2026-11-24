@@ -41,7 +41,7 @@ Arkadaşlarınla
 • Ligler: arkadaş grubunla haftalık sıralama.
 
 Gizlilik
-• Yapıştırdığın metin ve çektiğin fotoğraf sunucumuza gönderilmez; yalnızca seçtiğin kelimeler gider.
+• Yapıştırdığın metnin kendisi ve çektiğin fotoğraf sunucumuza gönderilmez. Sunucuya metinden çıkan kelime listesi ve verdiğin başlık gider.
 • Hesabını ve bütün verilerini uygulamanın içinden istediğin an silebilirsin.
 
 16 dilde kelime öğrenebilirsin: İngilizce, Türkçe, Almanca, Fransızca, İspanyolca, İtalyanca, Portekizce, Rusça, Arapça, Rumence, Japonca, Hintçe, Endonezce, Lehçe, Felemenkçe, Korece. Fotoğraftan okuma şimdilik Latin harfli dillerde çalışır.
@@ -80,7 +80,7 @@ With friends
 • Leagues: a weekly ranking with your group.
 
 Privacy
-• The text you paste and the photos you take are not sent to our server; only the words you pick are.
+• The text you paste and the photos you take are not sent to our server. What is sent is the list of words found in it and the title you give it.
 • Delete your account and all your data from inside the app at any time.
 
 Learn words in 16 languages: English, Turkish, German, French, Spanish, Italian, Portuguese, Russian, Arabic, Romanian, Japanese, Hindi, Indonesian, Polish, Dutch, Korean. Reading from photos works for Latin-script languages for now.
@@ -92,7 +92,7 @@ CineVocab is an independent app and is not affiliated with YouTube or Google.
 - **Gizlilik politikası adresi:** https://cinevocab.up.railway.app/privacy
 - **Hesap silme adresi:** https://cinevocab.up.railway.app/delete-account (sunucu güncellemesi yayına girince açılır)
 - **Reklam içeriyor mu:** Hayır.
-- **Uygulama erişimi:** Giriş gerekli. İnceleme ekibi için bir test hesabı aç (kullanıcı adı + parola) ve Console'a yaz.
+- **Uygulama erişimi:** Bazı özellikler giriş ister (kelime ekleme, düello, ligler); "Hesap açmadan dene" ile kartlar ve oyunlar girişsiz açılır. İnceleme ekibi için yine de bir test hesabı aç (kullanıcı adı + parola) ve Console'a yaz.
 - **Hedef kitle:** 13 yaş ve üzeri seç (çocuklara yönelik değil; öyle seçersen "Aileler" kuralları devreye girer).
 - **İçerik derecelendirme anketi:** şiddet, cinsellik, kumar, uyuşturucu yok. "Kullanıcılar etkileşime giriyor mu": evet (düello ve liglerde kullanıcı adları görünür, serbest mesajlaşma yok).
 
@@ -102,29 +102,29 @@ Veri toplanıyor mu: **Evet**. Aktarım sırasında şifreleniyor mu: **Evet** (
 
 | Veri türü | Toplanıyor | Amaç | Zorunlu mu |
 |---|---|---|---|
-| E-posta adresi | Evet | Hesap yönetimi | İsteğe bağlı (e-postasız kayıt varsa) |
-| Kullanıcı adı (Kişisel bilgiler > Ad sayılmaz; "Kullanıcı kimlikleri") | Evet | Hesap yönetimi, uygulama işlevi | Zorunlu |
-| Uygulama etkinliği (kelime listesi, oyun sonuçları) | Evet | Uygulama işlevi | Zorunlu |
-| Konum, rehber, fotoğraf, ses, mali bilgi, sağlık | Hayır | | |
-| Reklam kimliği, analitik | Hayır | | |
+| Kullanıcı adı ("Kullanıcı kimlikleri") | Evet | Hesap yönetimi, uygulama işlevi | Hesap açarsan zorunlu |
+| E-posta adresi | Evet | Hesap yönetimi | İsteğe bağlı; Google ile girişte Google hesabının e-postası ve kimliği gelir (sunucuda ne saklandığını `cinevocab-app` tarafında doğrula) |
+| Uygulama etkinliği (kelime listesi, kaynak başlığı, oyun sonuçları) | Evet | Uygulama işlevi | Hesap açarsan zorunlu |
+| Cihaz ya da diğer kimlikler (kurulum kimliği; Google ML Kit kendisi yollar) | Evet | Analiz (tanılama) | Zorunlu |
+| Uygulama bilgisi ve performansı, tanılama (Google ML Kit) | Evet | Analiz (tanılama) | Zorunlu |
+| Fotoğraflar | Hayır (görsel telefonda okunur, sunucumuza gitmez, saklanmaz) | | |
+| Yapıştırılan metnin kendisi | Hayır (telefonda kalır; yalnızca içinden çıkan kelime listesi ve başlık gider) | | |
+| Konum, rehber, ses, mali bilgi, sağlık, reklam kimliği | Hayır | | |
 
-**Görselden altyazı okuma (24 Kasım 2026'da eklendi) formu değiştirir.** Uygulama artık Google ML Kit yazı tanıma kütüphanesini içeriyor (`com.google.mlkit:text-recognition`, model uygulamayla birlikte gelir). Bizim kodumuz görseli ve okunan metni hiçbir yere göndermez. Ama ML Kit kendi başına Google'a tanılama verisi yollar; Google'ın sayfasına göre (https://developers.google.com/ml-kit/android-data-disclosure, 14 Mayıs 2025 sürümü okundu) toplananlar: cihaz bilgisi (üretici, model, işletim sistemi), uygulama bilgisi (paket adı, sürüm), kurulum başına kimlik ("kullanıcıyı ya da cihazı tekil tanımlamak için değil"), performans ölçümleri, API ayarları (görsel biçimi ve çözünürlüğü), girdi ve çıktı boyutu, özellik sürümü, olay türü, hata kodları. Amaç: "tanılama ve kullanım analitiği". HTTPS ile şifreli, üçüncü tarafa aktarılmıyor. Sayfa, görselin ya da okunan metnin gönderilip gönderilmediğini açıkça yazmıyor; formu nasıl dolduracağını da sana bırakıyor.
+**ML Kit notu.** Görselden altyazı okuma için `com.google.mlkit:text-recognition` kullanılıyor (model uygulamayla gelir). Google'ın sayfasına göre (https://developers.google.com/ml-kit/android-data-disclosure, 14 Mayıs 2025 sürümü okundu) kütüphane şunları yollar: cihaz bilgisi, uygulama bilgisi, kurulum başına kimlik, performans ölçümleri, API ayarları, girdi ve çıktı boyutu, özellik sürümü, olay türü, hata kodları; amaç "tanılama ve kullanım analitiği", HTTPS ile, üçüncü tarafa aktarılmıyor. Sayfa görselin ya da metnin gönderilip gönderilmediğini açıkça yazmıyor ve formu nasıl dolduracağını geliştiriciye bırakıyor. Yukarıdaki iki ML Kit satırı benim yorumum; doldururken sayfayla karşılaştır. Gizlilik metnine de bir cümle gerekir (sunucu reposunda): "Görselden altyazı okuma telefonun içinde yapılır; bunun için kullanılan Google ML Kit kütüphanesi Google'a tanılama ve kullanım ölçümleri gönderir."
 
-Buna göre yukarıdaki tabloda "Reklam kimliği, analitik: Hayır" satırı artık eksik kalır. Eklenmesi gerekenler (kendi yorumum, formu doldururken Google'ın sayfasıyla karşılaştır):
+**İzinler** (birleşik debug manifest, 24 Kasım 2026). Bizim yazdıklarımız: `INTERNET`, `VIBRATE`. Eklentilerden gelenler:
+- `POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`: akşam hatırlatması (`@capacitor/local-notifications`). Bildirim izni yalnızca kullanıcı hatırlatmayı açınca istenir.
+- `SCHEDULE_EXACT_ALARM`: aynı eklentiden geliyordu; **çıkarıldı** (manifest'te `tools:node="remove"`). Sakin bir akşam hatırlatmasının dakikası dakikasına gelmesi gerekmiyor; bu izin Play'de ayrıca gerekçe ister.
+- `USE_CREDENTIALS`, `USE_BIOMETRIC`, `USE_FINGERPRINT`, `ACCESS_NETWORK_STATE`: Google ile giriş eklentisinin bağımlılıklarından geliyor gibi (kaynağı tek tek doğrulanmadı). Uygulama parmak izi ya da yüz tanıma kullanmıyor.
+- Kamera, depolama, fotoğraf, mikrofon, konum izni **yok**. Fotoğrafı telefonun kendi kamera uygulaması çeker (manifest'te yalnızca kamera uygulamasını görebilmek için bir `queries` girdisi var), ya da görsel sistemin fotoğraf seçicisinden ve paylaşımdan gelir.
+- Yayın derlemesinden sonra birleşik manifest bir kez daha kontrol edilmeli (şu anki kontrol debug derlemesinden).
 
-| Veri türü | Toplanıyor | Amaç | Zorunlu mu |
-|---|---|---|---|
-| Cihaz ya da diğer kimlikler (kurulum kimliği, ML Kit) | Evet | Analiz (tanılama) | Zorunlu (kütüphane kendisi yollar) |
-| Uygulama bilgisi ve performansı: tanılama (ML Kit) | Evet | Analiz (tanılama) | Zorunlu |
-| Fotoğraflar | Hayır (görsel telefonda işlenir, sunucumuza gitmez; kalıcı saklanmaz) | | |
+**Paylaş → CineVocab** yeni izin istemez; manifest'e iki giriş eklendi (düz metin ve görsel paylaşımı alma).
 
-Gizlilik politikası metnine de bir cümle gerekir (sunucu reposunda): "Görselden altyazı okuma telefonun içinde yapılır; bunun için kullanılan Google ML Kit kütüphanesi Google'a tanılama ve kullanım ölçümleri gönderir."
+**Hedef kitle 13+ kalmalı.** 12 yaşı eklemek Families Policy'yi devreye sokar; ayrıntı ve kaynaklar `dev/ARASTIRMA.md` ikinci turda. Mağaza görselleri çocuksu olmamalı.
 
-Bu beyanı istemiyorsan özellik kaldırılabilir ya da modeli Google Play hizmetlerinden indiren sürüme geçilebilir (uygulama küçülür, beyan aynı kalır).
-
-**Paylaş → CineVocab** yeni izin istemez; manifest'e iki giriş eklendi (düz metin ve görsel paylaşımı alma). Kamera, depolama ve fotoğraf izni yok: fotoğrafı telefonun kendi kamera uygulaması çeker (manifest'te yalnızca kamera uygulamasını görebilmek için bir `queries` girdisi var), ya da görsel sistemin fotoğraf seçicisinden ve paylaşımdan gelir.
-
-**Hedef kitle 13+ kalmalı** (yukarıda yazıyor). 12 yaşı eklemek Families Policy'yi devreye sokar; ayrıntı ve kaynaklar `dev/ARASTIRMA.md` ikinci turda. Mağaza görselleri çocuksu olmamalı.
+**"Büyük yazı ayarına uyar" iddiası:** emülatörde sistem yazısı 1,3 kata çıkarılıp bakıldı; uygulama yazıyı büyüttü, karşılama ekranı bozulmadı. Öbür ekranlar ve gerçek telefon denenmedi.
 
 Formu doldurmadan önce sunucu tarafını bir kez daha gözden geçir: sunucuda toplanan başka bir şey varsa (örneğin IP kaydı) onu da yaz.
 

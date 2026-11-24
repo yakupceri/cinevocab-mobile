@@ -464,7 +464,8 @@ test("paylasim: Android tarafi yalnizca duz metin kabul eder, yeni izin yok", ()
   const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "android", "app", "src", "main");
   const m = fs.readFileSync(path.join(kok, "AndroidManifest.xml"), "utf8");
   assert.equal((m.match(/android\.intent\.action\.SEND/g) || []).length, 2); assert.match(m, /mimeType="text\/plain"/); assert.doesNotMatch(m, /SEND_MULTIPLE|\*\/\*/);
-  assert.deepEqual((m.match(/uses-permission android:name="([^"]+)"/g) || []).map((x) => x.split(".").pop().replace('"', "")).sort(), ["INTERNET", "VIBRATE"]);
+  assert.deepEqual((m.match(/uses-permission android:name="([^"]+)"/g) || []).map((x) => x.split(".").pop().replace('"', "")).filter((x) => x !== "SCHEDULE_EXACT_ALARM").sort(), ["INTERNET", "VIBRATE"]);
+  assert.match(m, /SCHEDULE_EXACT_ALARM" tools:node="remove"/, "tam zamanli alarm izni cikarilmis olmali");
 });
 test("paylasim: misafirde yalnizca link gelirse kayit istenmez, neden bos oldugu soylenir", () => {
   const { c, olay } = yonlendir({ key: "", guest: true });

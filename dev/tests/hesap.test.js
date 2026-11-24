@@ -254,3 +254,50 @@ test("misafir Ben: yalnizca ayarlar kurulur, sunucuya istek gitmez", () => {
   c.store.set("vib", "0"); c.store.set("theme", "light"); c.showMe();
   assert.equal(sinif["as-guest"], true); assert.equal(n.vibTgl.checked, false); assert.equal(n.themeSel.value, "light");
 });
+
+// v8 kelime akisi: dogru basina 10 XP, ust uste sayaci, yanlista sifir, 10 cevapta sunucuya gonderim.
+function akis() {
+  const giden = [], ses = [];
+  const dug = () => ({ classList: { add() {}, remove() {} }, style: { setProperty() {} }, textContent: "" });
+  const c = yukle(["F", "flowFlush", "flowAnswer"], { store: { get: () => null }, $: dug, S: { src: "en", dst: "tr", home: {} }, t: (k, n) => k + ":" + n,
+    api: async (p, o) => { giden.push(o.body.items.length); return { xp: 0 }; }, buzz: () => {}, flowPop: () => {}, flowOpen: () => {}, confetti: () => {}, sfx: (k) => ses.push(k),
+    calm: () => true, curView: "baska", setTimeout: () => 0, clearTimeout: () => {} });
+  c.F.items = Array.from({ length: 40 }, (_, i) => ({ w: "w" + i, t: "t" + i })); c.F.i = 0;
+  const cevap = (ok) => { c.F.busy = false; c.flowAnswer(ok); c.F.i++; };
+  return { c, cevap, giden, ses };
+}
+test("kelime akisi: dogru 10 XP, ust uste artar, yanlista sifirlanir", () => {
+  const { c, cevap } = akis();
+  cevap(true); cevap(true); cevap(true);
+  assert.equal(c.F.xp, 30); assert.equal(c.F.run, 3); assert.equal(c.F.ok, 3);
+  cevap(false);
+  assert.equal(c.F.xp, 30); assert.equal(c.F.run, 0); assert.equal(c.F.ok, 3); assert.equal(c.F.res.length, 4);
+});
+test("kelime akisi: her 10 cevapta bir sunucuya gider, ayni cevap iki kez gitmez", () => {
+  const { c, cevap, giden } = akis();
+  for (let i = 0; i < 9; i++) cevap(true);
+  assert.deepEqual(giden, []);
+  cevap(false); assert.deepEqual(giden, [10]);
+  for (let i = 0; i < 5; i++) cevap(true);
+  c.flowFlush(); assert.deepEqual(giden, [10, 5]);
+  c.flowFlush(); assert.deepEqual(giden, [10, 5], "gonderilecek yeni cevap yokken istek gitmez");
+});
+test("kelime akisi: mesgulken ikinci dokunus sayilmaz", () => {
+  const { c } = akis(); c.F.busy = false; c.flowAnswer(true); c.flowAnswer(true);
+  assert.equal(c.F.xp, 10);
+});
+
+// Kartin altindaki ornek cumle: yalnizca kullanicinin listesinde o kelimeyle gecen cumle gosterilir.
+test("ornek cumle: varsa cumle ve kaynak, yoksa bos (uydurulmaz)", () => {
+  const ham = [{ w: "trust", s: "Trust me.", ep: "Deneme paketi" }, { w: "guard", s: "", ep: "x" }, { w: "sword", s: "No match here.", ep: "x" }];
+  const c = yukle(["wordRe", "contextOf"], { RegExp, S: { vocabRaw: ham } });
+  assert.deepEqual({ ...c.contextOf("trust") }, { s: "Trust me.", ep: "Deneme paketi" });
+  for (const w of ["guard", "sword", "yok"]) assert.deepEqual({ ...c.contextOf(w) }, { s: "", ep: "" });
+});
+
+// Yakalanan hata: kart her yeni kelimede sinifini sifirliyordu ve krem kart bicimi kayboluyordu.
+test("kart bicimi: yeni kelimede 'wcard' sinifi korunur", () => {
+  const { kaynak } = require("./yukle.js");
+  assert.match(kaynak("cardShow"), /className = "fcard wcard"/);
+  assert.match(kaynak("flowShow"), /className = "fl-card wcard"/);
+});

@@ -53,7 +53,7 @@
       flowH: "Word flow", flowS: "Swipe through words. Zero setup.", flowHint: "Swipe up if you knew it, down to see it again.", flowXp: "+{0} XP", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "{0} XP earned. Nice flow!", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
       addH: "How do you want to add words?", addSub: "Pick a way. Packs are below.",
       howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start now", howQuickS: "Swipe through words. No typing.", howSnap: "Snap a subtitle", howSnapS: "Coming soon: point your camera at the TV.", howPaste: "Paste text or subtitles", howPasteS: "Learn from your own words.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
-      cardsH: "Flashcards", cNo: "Again", cYes: "Knew it", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
+      cardsH: "Flashcards", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
       badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "day streak", bWins: "duel wins", bMaster: "mastered",
       badgeNew: "New award: {0} {1}", badgeNeed: "Locked. Opens at {0} {1}.", badgeHave: "Yours: {0} {1}.",
@@ -135,7 +135,7 @@
       flowH: "Kelime akışı", flowS: "Kelimeleri kaydır geç. Kurulum yok.", flowHint: "Bildiysen yukarı, tekrar görmek için aşağı kaydır.", flowXp: "+{0} XP", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} XP kazandın. Harika akış!", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
       addH: "Nasıl kelime eklemek istersin?", addSub: "Bir yol seç. Hazır paketler aşağıda.",
       howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hemen başla", howQuickS: "Kelimeleri kaydır. Yazı yok.", howSnap: "Altyazıyı fotoğrafla", howSnapS: "Yakında: kamerayı TV'ye tut.", howPaste: "Metin ya da altyazı yapıştır", howPasteS: "Kendi kelimelerinle öğren.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
-      cardsH: "Kartlar", cNo: "Tekrar", cYes: "Bildim", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
+      cardsH: "Kartlar", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
       badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün seri", bWins: "galibiyet", bMaster: "usta kelime",
       badgeNew: "Yeni ödül: {0} {1}", badgeNeed: "Kilitli. {0} {1} olunca açılır.", badgeHave: "Senin: {0} {1}.",
@@ -936,14 +936,25 @@
   }
   $("rHome").addEventListener("click", () => go("v-home"));
 
+  // Kelimenin gectigi cumle ve kaynagi (kullanicinin kendi listesinden). Cumle yoksa ya da kelime cumlede gecmiyorsa bos doner.
+  function contextOf(w) {
+    for (const x of S.vocabRaw || []) if (x.w === w && x.s && wordRe(w).test(x.s)) return { s: x.s, ep: x.ep || "" };
+    return { s: "", ep: "" };
+  }
+  // Kartin altindaki ornek: cumle (kelime sari) ve kaynak satiri. Cumle yoksa ikisi de gizlenir.
+  function exampleInto(exNode, srcNode, w, show) {
+    const c = contextOf(w), has = !!c.s;
+    if (has) subtitleInto(exNode, c.s, w); else exNode.textContent = "";
+    srcNode.textContent = has && c.ep ? t("srcOf", c.ep) : "";
+    exNode.hidden = !(has && show); srcNode.hidden = !(has && show && c.ep);
+    return has;
+  }
   // Pratik: aralikli tekrar. Sunucu hangi kelimelerin zamani geldigini bilir; cevaplar sunucuya bildirilir.
   async function startPractice() {
     let d, all;
     try { d = await api("/api/srs/session" + pairQ() + "&n=10"); all = await loadVocab(); } catch (e) { return toast(e.message); }
     if (d.words.length < 4) return toast(t("pNeed"));
-    const sent = {};                       // kelimenin gectigi cumle (varsa): karede altyazi olarak gorunur
-    for (const x of S.vocabRaw || []) if (x.s && !sent[x.w] && wordRe(x.w).test(x.s)) sent[x.w] = x.s;
-    const items = d.words.map((x) => ({ w: x.tr, t: x.eng, s: sent[x.tr] || "" })), results = [];
+    const items = d.words.map((x) => ({ w: x.tr, t: x.eng, s: contextOf(x.tr).s })), results = [];   // cumle varsa karede altyazi olur
     const pool = Array.from(new Set(all.map((x) => x.t).concat(items.map((x) => x.t))));
     let i = 0, right = 0;
     showView("v-quiz");
@@ -1166,7 +1177,7 @@
   const C = { items: [], i: 0, results: [], right: 0, busy: true, open: false, x0: 0, dx: 0, drag: false, moved: false };
   async function startCards() {
     let d;
-    try { d = await api("/api/srs/session" + pairQ() + "&n=10"); } catch (e) { return toast(e.message); }
+    try { d = await api("/api/srs/session" + pairQ() + "&n=10"); await loadVocab(); } catch (e) { return toast(e.message); }
     if (!d.words || d.words.length < 4) return toast(t("pNeed"));
     C.items = d.words.map((x) => ({ w: x.tr, t: x.eng })); C.i = 0; C.results = []; C.right = 0;
     combo(false, $("cCombo"));
@@ -1175,16 +1186,18 @@
   function cardShow() {
     const it = C.items[C.i], card = $("fcard");
     C.busy = false; C.open = false;
-    card.className = "fcard"; card.style.transform = ""; card.style.opacity = "";
-    $("fcWord").textContent = it.w; $("fcTr").textContent = it.t; $("fcTr").hidden = true; $("fcTip").textContent = t("fcTip");
-    $("cCount").textContent = t("qCount", C.i + 1, C.items.length); $("cScore").textContent = "";
+    card.className = "fcard wcard"; card.style.transform = ""; card.style.opacity = "";
+    $("fcWord").textContent = it.w; $("fcTr").textContent = it.t; $("fcTr").hidden = true; $("fcTip").textContent = t("fcTip"); $("fcTip").hidden = false;
+    exampleInto($("fcEx"), $("fcSrc"), it.w, false);
+    $("cCount").textContent = t("qCount", C.i + 1, C.items.length);
     $("cFill").style.width = Math.round(C.i / C.items.length * 100) + "%";
   }
-  function cardFlip() { if (C.busy || C.open) return; C.open = true; $("fcTr").hidden = false; $("fcTip").textContent = t("fcTip2"); sfx("tap"); }
+  function cardFlip() { if (C.busy || C.open) return; C.open = true; cardOpen(); sfx("tap"); }
+  function cardOpen() { $("fcTr").hidden = false; $("fcTip").hidden = true; exampleInto($("fcEx"), $("fcSrc"), C.items[C.i].w, true); }
   function cardAnswer(ok) {
     if (C.busy) return;
     const it = C.items[C.i], card = $("fcard");
-    C.busy = true; $("fcTr").hidden = false;           // cevrilmeden cevaplandiysa anlami yine de goster
+    C.busy = true; cardOpen();           // cevrilmeden cevaplandiysa anlami yine de goster
     C.results.push({ w: it.w, ok: ok }); if (ok) C.right++;
     buzz(ok); combo(ok, $("cCombo"));
     card.classList.add("anim", ok ? "yes" : "no");
@@ -1263,13 +1276,15 @@
     if (F.i >= F.items.length) { F.items = shuffle(F.pool.slice()); F.i = 0; }      // bitmez akis: deste bitince yeniden karilir
     const it = F.items[F.i], card = $("flCard");
     F.busy = false; clearTimeout(F.rv);
-    card.className = "fl-card"; card.style.transform = ""; card.style.opacity = ""; void card.offsetWidth; card.classList.add("in");
+    card.className = "fl-card wcard"; card.style.transform = ""; card.style.opacity = ""; void card.offsetWidth; card.classList.add("in");
     $("flWord").textContent = it.w; $("flTr").textContent = it.t; $("flTr").classList.remove("on");
+    exampleInto($("flEx"), $("flSrc"), it.w, false);
     $("flStage").style.setProperty("--run", Math.min(F.run, 10));
     $("flCount").textContent = F.run >= 2 ? t("flowRun", F.run) : (F.ok ? F.xp + " XP" : "");
-    F.rv = setTimeout(function () { if (curView === "v-flow") $("flTr").classList.add("on"); }, 650);
+    F.rv = setTimeout(function () { if (curView === "v-flow") flowOpen(); }, 650);
     if (F.voice) setTimeout(function () { if (curView === "v-flow" && F.items[F.i] === it) say2(it.w, $("flSay")); }, 220);
   }
+  function flowOpen() { $("flTr").classList.add("on"); exampleInto($("flEx"), $("flSrc"), F.items[F.i].w, true); }
   function flowPop(text, big) {
     const p = $("flPop"); p.textContent = text; p.className = "fl-pop" + (big ? " big" : ""); void p.offsetWidth; p.className += " go";
   }
@@ -1280,7 +1295,7 @@
   function flowAnswer(ok) {
     if (F.busy) return;
     const it = F.items[F.i], card = $("flCard");
-    F.busy = true; clearTimeout(F.rv); $("flTr").classList.add("on");
+    F.busy = true; clearTimeout(F.rv); flowOpen();
     F.res.push({ w: it.w, ok: ok }); buzz(ok);
     if (ok) {
       F.ok++; F.xp += 10; F.run++; flowPop(t("flowXp", 10));
@@ -1309,13 +1324,14 @@
       const card = $("flCard");
       if (F.moved && Math.abs(F.dy) > 80) return flowAnswer(F.dy < 0);
       card.style.transform = "";
-      if (!F.moved) { $("flTr").classList.add("on"); say2(F.items[F.i].w, $("flSay")); }     // dokun: anlami hemen goster + oku
+      if (!F.moved) { flowOpen(); say2(F.items[F.i].w, $("flSay")); }     // dokun: anlami hemen goster + oku
     };
     st.addEventListener("pointerup", up); st.addEventListener("pointercancel", up);
     $("flKnow").addEventListener("click", () => flowAnswer(true));
     $("flAgain").addEventListener("click", () => flowAnswer(false));
     $("flClose").addEventListener("click", () => go("v-play"));
     $("qClose").addEventListener("click", () => go("v-play"));
+    $("cClose").addEventListener("click", () => go("v-play"));
     $("flSay").addEventListener("pointerdown", (ev) => ev.stopPropagation());
     $("flSay").addEventListener("click", () => { if (F.items[F.i]) say2(F.items[F.i].w, $("flSay")); });
     $("flVoice").addEventListener("click", function () { F.voice = !F.voice; store.set("voice", F.voice ? "1" : "0"); flowPaint(); if (!F.voice) stopSay(); else if (F.items[F.i]) say2(F.items[F.i].w, $("flSay")); });

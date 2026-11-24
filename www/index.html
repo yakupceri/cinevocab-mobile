@@ -238,42 +238,51 @@
 
     <!-- Kelime akisi: tek kelime, yukari kaydir, sonraki. Kelime + anlam + ses. -->
     <section id="v-flow" hidden>
-      <div class="fl-top">
+      <div class="qbar">
         <button class="fl-x" id="flClose" type="button" data-i-aria="back"><svg class="ic"><use href="#i-x"/></svg></button>
         <span class="fl-count" id="flCount"></span>
         <button class="fl-x" id="flVoice" type="button" aria-pressed="true" data-i-aria="voiceLbl"><svg class="ic"><use href="#i-speaker"/></svg></button>
       </div>
       <div class="fl-stage" id="flStage">
-        <div class="fl-card" id="flCard">
-          <span class="fl-word" id="flWord"></span>
-          <button class="fl-say" id="flSay" type="button" data-i-aria="voiceLbl"><svg class="ic"><use href="#i-speaker"/></svg></button>
-          <span class="fl-tr" id="flTr"></span>
+        <div class="fl-card wcard" id="flCard">
+          <span class="wc-word" id="flWord"></span>
+          <button class="wc-say" id="flSay" type="button" data-i-aria="voiceLbl"><svg class="ic"><use href="#i-speaker"/></svg></button>
+          <span class="wc-tr fl-tr" id="flTr"></span>
+          <span class="wc-ex" id="flEx" hidden></span>
+          <span class="wc-src" id="flSrc" hidden></span>
         </div>
         <div class="fl-pop" id="flPop" aria-hidden="true"></div>
       </div>
       <p class="fl-hint" data-i="flowHint"></p>
       <div class="row2">
-        <button class="btn no" id="flAgain" type="button"><svg class="ic"><use href="#i-x"/></svg><span data-i="cNo"></span></button>
-        <button class="btn yes" id="flKnow" type="button"><svg class="ic"><use href="#i-check"/></svg><span data-i="cYes"></span></button>
+        <button class="btn no" id="flAgain" type="button" data-i="cNo"></button>
+        <button class="btn yes" id="flKnow" type="button" data-i="cYes"></button>
       </div>
     </section>
 
-    <!-- Kartlar: karti cevir, bildiysen saga, bilemediysen sola kaydir -->
+    <!-- Kartlar: karta dokun, cevir; bildiysen saga, bilemediysen sola kaydir -->
     <section id="v-cards" hidden>
-      <div class="bar"><i id="cFill"></i></div>
-      <div class="qtop"><span id="cCount"></span><span class="combo" id="cCombo" hidden></span><span id="cScore"></span></div>
-      <div class="deck">
-        <button class="fc-say" id="fcSay" type="button" data-i-aria="voiceLbl"><svg class="ic"><use href="#i-speaker"/></svg></button>
-        <div class="fcard under" aria-hidden="true"></div>
-        <button class="fcard" id="fcard" type="button">
-          <span class="fc-word" id="fcWord"></span>
-          <span class="fc-tr" id="fcTr" hidden></span>
-          <span class="fc-tip" id="fcTip"></span>
-        </button>
+      <div class="qbar">
+        <button class="fl-x" id="cClose" type="button" data-i-aria="back"><svg class="ic"><use href="#i-x"/></svg></button>
+        <div class="bar"><i id="cFill"></i></div>
+        <span id="cCount"></span>
       </div>
+      <div class="deck">
+        <div class="fcard under" aria-hidden="true"></div>
+        <div class="fcard wcard" id="fcard" role="button" tabindex="0">
+          <span class="wc-word" id="fcWord"></span>
+          <span class="wc-tip" id="fcTip"></span>
+          <span class="wc-tr" id="fcTr" hidden></span>
+          <span class="wc-ex" id="fcEx" hidden></span>
+          <span class="wc-src" id="fcSrc" hidden></span>
+        </div>
+        <button class="wc-say fc-say" id="fcSay" type="button" data-i-aria="voiceLbl"><svg class="ic"><use href="#i-speaker"/></svg></button>
+      </div>
+      <p class="fl-hint" data-i="fcTip2"></p>
+      <p class="run" id="cCombo" hidden></p>
       <div class="row2">
-        <button class="btn no" id="cNo" type="button"><svg class="ic"><use href="#i-x"/></svg><span data-i="cNo"></span></button>
-        <button class="btn yes" id="cYes" type="button"><svg class="ic"><use href="#i-check"/></svg><span data-i="cYes"></span></button>
+        <button class="btn no" id="cNo" type="button" data-i="cNo"></button>
+        <button class="btn yes" id="cYes" type="button" data-i="cYes"></button>
       </div>
     </section>
 

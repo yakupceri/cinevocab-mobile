@@ -222,16 +222,22 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 .opt.right::after { content: "\2713"; font-weight: 700; } .opt.wrong::after { content: "\2715"; font-weight: 700; }
 .opt:disabled { opacity: 1; }
 
-/* kartlar */
-.deck { position: relative; height: 46vh; min-height: 260px; margin-top: 16px; }
-.fcard { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; width: 100%; padding: 22px; background: var(--paper); color: var(--on-paper); border: 2px solid transparent; border-radius: 10px; text-align: center; touch-action: pan-y; user-select: none; -webkit-user-select: none; overflow: hidden; }
-.fcard > span { max-width: 100%; max-height: 60%; overflow: hidden; }
-.fcard.under { background: var(--surf2); transform: rotate(3deg) translateY(4px); }
+/* kelime karti (kartlar ve akis ortak): krem bilet kagidi, sola yasli. Kelime, dinle, kesik cizgi, anlam; altta ornek altyazi. */
+.wcard { display: flex; flex-direction: column; align-items: flex-start; padding: 26px 24px 20px; background: var(--paper); color: var(--on-paper); border: 2px solid transparent; border-radius: 10px; text-align: left; user-select: none; -webkit-user-select: none; overflow: hidden; }
+.wc-word { margin-top: 5vh; max-width: 100%; font: 800 64px/.92 var(--disp); letter-spacing: .005em; overflow-wrap: anywhere; }
+.wc-say { display: grid; place-items: center; flex: none; width: 48px; height: 48px; margin-top: 14px; background: var(--on-paper); color: var(--sun); border: 0; border-radius: 50%; }
+.wc-say:active { transform: scale(.92); } .wc-say.talk { animation: beat .5s infinite; }
+.wc-tip { margin-top: 16px; font-size: 14px; color: var(--paper-dim); }
+.wc-tr { align-self: stretch; margin-top: 20px; padding-top: 18px; border-top: 2px dashed var(--paper-line); font-size: 28px; line-height: 1.12; font-weight: 700; overflow-wrap: anywhere; }
+.wc-ex { align-self: stretch; margin-top: auto; padding: 12px 14px; background: var(--film); border-radius: 4px; color: var(--sub); font-size: 15px; font-weight: 600; line-height: 1.35; text-align: center; overflow-wrap: anywhere; }
+.wc-ex mark { background: none; color: var(--sun); }
+.wc-src { align-self: stretch; margin-top: 8px; font-size: 12px; color: var(--paper-dim); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.deck { position: relative; height: 52vh; min-height: 300px; margin-top: 6px; }
+.fcard { position: absolute; inset: 0; width: 100%; touch-action: pan-y; }
+.fcard.under { background: var(--surf2); border-radius: 10px; transform: rotate(2.5deg) translate(6px, 6px); }
 .fcard.anim { transition: transform .22s ease, opacity .22s ease; }
 .fcard.yes { border-color: var(--green); } .fcard.no { border-color: var(--red-fill); }
-.fc-word { font: 800 52px/.95 var(--disp); letter-spacing: .005em; overflow-wrap: anywhere; }
-.fc-tr { padding-top: 14px; border-top: 2px dashed var(--paper-line); width: 80%; font-size: 26px; line-height: 1.15; font-weight: 700; color: var(--paper-green); overflow-wrap: anywhere; }
-.fc-tip { font-size: 13px; color: var(--paper-dim); }
+.fc-say { position: absolute; z-index: 3; right: 18px; top: 22px; margin: 0; }
 
 /* bulmaca */
 .marks { display: inline-flex; gap: 4px; min-height: 16px; } .marks i { width: 16px; height: 16px; border: 1px solid var(--line); border-radius: 3px; }
@@ -294,24 +300,18 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 .toast { position: fixed; left: 20px; right: 20px; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: 40; padding: 12px 14px; background: var(--paper); color: var(--on-paper); border-radius: var(--r); text-align: center; font-size: 14px; font-weight: 600; white-space: pre-line; overflow-wrap: anywhere; animation: rise .2s ease both; }
 
 /* kelime akisi */
-.fl-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.fl-x { display: grid; place-items: center; width: 46px; height: 46px; background: none; border: 0; border-radius: 50%; color: var(--ink); }
+.fl-x { display: grid; place-items: center; flex: none; width: 46px; height: 46px; background: none; border: 0; border-radius: 50%; color: var(--ink); }
 .fl-x:active { transform: scale(.92); }
 .fl-x[aria-pressed=false] { opacity: .45; }
-.fl-count { font-size: 14px; font-weight: 600; color: var(--dim); }
-.fl-stage { --run: 0; position: relative; height: 48vh; min-height: 280px; margin-top: 12px; touch-action: none; }
-.fl-card { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 22px; background: var(--paper); color: var(--on-paper); border-radius: 10px; text-align: center; user-select: none; -webkit-user-select: none;
-  outline: calc(var(--run) * .6px) solid var(--sun); outline-offset: 3px; transition: outline-width .25s ease; }
+.fl-count { flex: 1; text-align: center; }
+#v-flow .qbar { margin-right: -10px; }
+.fl-stage { --run: 0; position: relative; height: 52vh; min-height: 300px; margin-top: 6px; touch-action: none; }
+.fl-card { position: absolute; inset: 0; outline: calc(var(--run) * .6px) solid var(--sun); outline-offset: 3px; transition: outline-width .25s ease; }
 .fl-card.in { animation: flIn .28s ease-out; }
 .fl-card.up { transition: transform .24s ease-in, opacity .24s; transform: translateY(-115%) rotate(-3deg); opacity: 0; }
 .fl-card.down { transition: transform .24s ease-in, opacity .24s; transform: translateY(115%) rotate(3deg); opacity: 0; }
-.fl-word { font: 800 60px/.95 var(--disp); letter-spacing: .005em; overflow-wrap: anywhere; }
-.fl-tr { min-height: 34px; padding-top: 14px; border-top: 2px dashed var(--paper-line); width: 80%; font-size: 28px; line-height: 1.15; font-weight: 700; color: var(--paper-green); overflow-wrap: anywhere; opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; }
+.fl-tr { min-height: 34px; opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; }
 .fl-tr.on { opacity: 1; transform: none; }
-.fl-say, .fc-say { display: grid; place-items: center; width: 52px; height: 52px; background: var(--on-paper); color: var(--sun); border: 0; border-radius: 50%; }
-.fl-say:active, .fc-say:active { transform: scale(.92); }
-.fl-say.talk, .fc-say.talk { animation: beat .5s infinite; }
-.fc-say { position: absolute; top: 10px; right: 10px; z-index: 3; width: 44px; height: 44px; }
 .fl-hint { margin: 14px 0 0; text-align: center; font-size: 13px; color: var(--dim); }
 .fl-pop { position: absolute; left: 0; right: 0; top: 34%; text-align: center; font: 800 38px/1 var(--disp); color: var(--paper-green); pointer-events: none; opacity: 0; }
 .fl-pop.go { animation: flPop .9s ease-out; }

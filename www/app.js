@@ -90,7 +90,7 @@
       dailyDone: "Done today: {0} points · rank {1} of {2}", dailyNo: "Not available for this language pair today.",
       dailyRes: "{0} of {1} correct", dailyRank: "Rank {0} of {1} today", pts: "pts",
       clozeH: "Finish the line", clozeS: "A line from a scene, one word missing.", clozeNeed: "Not enough example lines yet. Try another mode.", pracH: "Quiz", tQuizS: "Four choices, pick the meaning.", pracInfo: "{0} to review · {1} new", tDuelS: "Race friends live, in 16 languages.", tLeagueS: "Weekly leaderboard with your friends.",
-      again: "Again", toHome: "Back to home", pNeed: "You need at least 4 words to practice. Tap + to add some.",
+      again: "One more screening", resOf: "You knew {0} of {1} words", rollAgain: "Coming back", rollAgainSub: "the ones you missed get asked again", rollMore: "+{0} more", rollKeep: "Stuck for good", rollKeepN: "{0} words", rollKeepSub: "counted after days of getting them right", rollStreak: "In a row", rollStreakN: "{0} days", rollXp: "Earned", rollXpN: "{0} XP", toHome: "Back to home", pNeed: "You need at least 4 words to practice. Tap + to add some.",
       qCount: "{0} / {1}", xpGain: "+{0} XP", level: "Level {0}", you: "you",
       dH: "Duel", dSub: "Everyone answers the same questions at the same time. Fastest correct answer scores most.",
       dQuick: "Create a room", dCodeLbl: "Have a code from a friend?", dJoin: "Join", dCodeHint: "Enter the 4-digit room code.",
@@ -172,7 +172,7 @@
       dailyDone: "Bugün tamam: {0} puan · sıra {1} / {2}", dailyNo: "Bu dil çifti için bugün hazır değil.",
       dailyRes: "{0} / {1} doğru", dailyRank: "Bugün {1} kişi içinde {0}. sıradasın", pts: "puan",
       clozeH: "Altyazıyı tamamla", clozeS: "Sahneden bir cümle, bir kelime eksik.", clozeNeed: "Henüz yeterli örnek cümle yok. Başka bir mod dene.", pracH: "Test", tQuizS: "Dört şıktan doğru anlamı seç.", pracInfo: "{0} tekrar · {1} yeni", tDuelS: "Arkadaşlarınla canlı yarış, 16 dilde.", tLeagueS: "Arkadaşlarınla haftalık sıralama.",
-      again: "Tekrar", toHome: "Ana sayfaya dön", pNeed: "Pratik için en az 4 kelime lazım. + düğmesiyle ekle.",
+      again: "Bir seans daha", resOf: "{1} kelimeden {0} tanesini bildin", rollAgain: "Tekrar gelecek", rollAgainSub: "bilemediklerin yeniden sorulacak", rollMore: "+{0} kelime", rollKeep: "Kalıcı oldu", rollKeepN: "{0} kelime", rollKeepSub: "günler içinde üst üste bildiklerin", rollStreak: "Üst üste", rollStreakN: "{0} gün", rollXp: "Kazandığın", rollXpN: "{0} XP", toHome: "Ana sayfaya dön", pNeed: "Pratik için en az 4 kelime lazım. + düğmesiyle ekle.",
       qCount: "{0} / {1}", xpGain: "+{0} XP", level: "Seviye {0}", you: "sen",
       dH: "Düello", dSub: "Herkes aynı soruyu aynı anda cevaplar. En hızlı doğru cevap en çok puanı alır.",
       dQuick: "Oda kur", dCodeLbl: "Arkadaşından kod mu aldın?", dJoin: "Katıl", dCodeHint: "4 haneli oda kodunu gir.",
@@ -538,8 +538,8 @@
     if (!ok) { store.set("remind", "0"); toast(t("remFail")); return false; }
     store.set("remind", "1"); await planReminder(); toast(t("remOn")); return true;
   }
-  $("remYes").addEventListener("click", () => { $("rRemind").hidden = true; notch($("v-result")); setReminder(true); });
-  $("remNo").addEventListener("click", () => { $("rRemind").hidden = true; notch($("v-result")); store.set("remind", "0"); });
+  $("remYes").addEventListener("click", () => { $("rRemind").hidden = true; setReminder(true); });
+  $("remNo").addEventListener("click", () => { $("rRemind").hidden = true; store.set("remind", "0"); });
 
   // ---------------------------------------------------------------- ana sayfa
   // Sunucudan ozet (seri, XP, tekrar sayisi) ve gunluk meydan okuma durumunu alir.
@@ -920,19 +920,40 @@
       if (x.textContent === correct) x.classList.add("right"); else if (x.textContent === picked) x.classList.add("wrong");
     });
   }
-  // o: { emoji, big, line1, line2, grid, again, onAgain, party, share (paylasilacak metin) }
+  // Jenerik satirlari: [etiket, deger, alt not]. Yalnizca elde gercek veri olan satir yazilir.
+  // words: bu seansin cevaplari ({w, ok}); before/after: seanstan onceki ve sonraki sunucu ozeti (kalici kelime farki icin).
+  function rollRows(o, before, after) {
+    const rows = [], seen = new Set(), missed = [];
+    for (const x of o.words || []) if (x && !x.ok && !seen.has(x.w)) { seen.add(x.w); missed.push(x.w); }
+    const kept = before && after ? (Number(after.mastered) || 0) - (Number(before.mastered) || 0) : 0;
+    if (kept > 0) rows.push([t("rollKeep"), t("rollKeepN", kept), t("rollKeepSub")]);
+    if (missed.length) rows.push([t("rollAgain"), missed.slice(0, 4).join(", ") + (missed.length > 4 ? " " + t("rollMore", missed.length - 4) : ""), t("rollAgainSub")]);
+    if (after && after.streak > 0) rows.push([t("rollStreak"), t("rollStreakN", after.streak), ""]);
+    if (o.xp > 0) rows.push([t("rollXp"), t("rollXpN", o.xp), ""]);
+    return rows;
+  }
+  function rollPaint(rows) {
+    const dl = $("rRoll"); dl.textContent = "";
+    for (const r of rows) { const dd = el("dd", "", r[1]); if (r[2]) dd.appendChild(el("small", "", r[2])); dl.append(el("dt", "", r[0]), dd); }
+  }
+  // o: { big, line1, line2, grid, again, onAgain, party, share (paylasilacak metin), words (cevaplar), xp }
   function showResult(o) {
-    $("rIcon").setAttribute("href", "#i-" + (o.icon || "star")); $("rLine1").textContent = o.line1 || ""; $("rLine2").textContent = o.line2 || "";
+    const before = S.home;
+    $("rLine1").textContent = o.line1 || ""; $("rLine2").textContent = o.line2 || "";
     marksInto($("rGrid"), Array.isArray(o.grid) ? o.grid.join("") : o.grid);
     $("rAgain").hidden = !o.again; $("rAgain").textContent = o.again || ""; $("rAgain").onclick = o.onAgain || null;
     $("rShare").hidden = !o.share; $("rShare").onclick = o.share ? () => share(o.share) : null;
     $("rAgain").className = o.share ? "btn ghost" : "btn";                 // paylas varsa ana dugme odur
     $("rRemind").hidden = !(isNative() && store.get("remind") === null);    // hatirlatma teklifi: yalnizca henuz sorulmadiysa
+    rollPaint(rollRows(o, null, before));
     showView("v-result");
     if (typeof o.big === "number") countUp($("rBig"), o.big); else $("rBig").textContent = o.big;
-    notch($("v-result"));
     if (o.party) confetti(110);
-    refresh().catch(() => {});
+    refresh().then(function (after) {          // sunucunun yeni ozeti gelince: kalici olan kelime sayisi ve guncel seri
+      if (curView !== "v-result") return;
+      const rows = rollRows(o, before, after); rollPaint(rows);
+      if (before && after && (after.mastered || 0) > (before.mastered || 0)) vibe("keep");
+    }).catch(() => {});
   }
   $("rHome").addEventListener("click", () => go("v-home"));
 
@@ -974,7 +995,7 @@
       let xp = 0;
       try { xp = (await api("/api/srs/report", { body: { src: S.src, dst: S.dst, items: results } })).xp || 0; } catch (e) {}
       const good = right >= items.length * .8;
-      showResult({ icon: good ? "star" : "quiz", big: right + " / " + items.length, line1: xp ? t("xpGain", xp) : "", again: t("again"), onAgain: startPractice, party: good });
+      showResult({ big: right, line1: t("resOf", right, items.length), words: results, xp: xp, again: t("again"), onAgain: startPractice, party: good });
     };
     next();
   }
@@ -1003,7 +1024,7 @@
     const finish = async function () {
       let xp = 0;
       try { xp = (await api("/api/srs/report", { body: { src: S.src, dst: S.dst, items: results } })).xp || 0; } catch (e) {}
-      showResult({ icon: right >= items.length * .8 ? "star" : "quiz", big: right + " / " + items.length, line1: xp ? t("xpGain", xp) : "", again: t("again"), onAgain: startCloze, party: right >= items.length * .8 });
+      showResult({ big: right, line1: t("resOf", right, items.length), words: results, xp: xp, again: t("again"), onAgain: startCloze, party: right >= items.length * .8 });
     };
     next();
   }
@@ -1212,7 +1233,7 @@
     let xp = 0;
     try { xp = (await api("/api/srs/report", { body: { src: S.src, dst: S.dst, items: C.results } })).xp || 0; } catch (e) {}
     const n = C.items.length, good = C.right >= n * .8;
-    showResult({ icon: "cards", big: C.right + " / " + n, line1: (xp ? t("xpGain", xp) + " · " : "") + t("cardsRes", C.right, n), again: t("again"), onAgain: startCards, party: good });
+    showResult({ big: C.right, line1: t("resOf", C.right, n), words: C.results, xp: xp, again: t("again"), onAgain: startCards, party: good });
   }
   (function () {      // parmakla surukleme
     const card = $("fcard");

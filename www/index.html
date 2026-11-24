@@ -300,26 +300,27 @@
       <p class="note center" id="pzInfo"></p>
     </section>
 
-    <!-- Sonuc ekrani: bilet kocani -->
+    <!-- Sonuc ekrani: jenerik. Buyuk sayi, alt satir, sonra etiket-deger satirlari. -->
     <section id="v-result" hidden>
-      <div class="ticket result"><div class="ticket-in center">
-        <div class="r-icon" id="rIconBox"><svg class="ic"><use id="rIcon" href="#i-star"/></svg></div>
+      <div class="credits">
         <div class="big" id="rBig"></div>
         <p class="r-line" id="rLine1"></p>
         <p class="r-line" id="rLine2"></p>
         <div class="marks big-marks" id="rGrid"></div>
-        <div class="perf"></div>
-        <button class="btn" id="rShare" type="button" hidden><svg class="ic"><use href="#i-share"/></svg><span data-i="share"></span></button>
-        <button class="btn" id="rAgain" type="button"></button>
-        <button class="btn ghost" id="rHome" type="button" data-i="toHome"></button>
-        <div class="remind" id="rRemind" hidden>
-          <p class="sub" data-i="remAsk"></p>
-          <div class="row2">
-            <button class="btn" id="remYes" type="button" data-i="remYes"></button>
-            <button class="btn ghost" id="remNo" type="button" data-i="remNo"></button>
+        <dl class="roll" id="rRoll"></dl>
+        <div class="fin">
+          <button class="btn" id="rShare" type="button" hidden><svg class="ic"><use href="#i-share"/></svg><span data-i="share"></span></button>
+          <button class="btn" id="rAgain" type="button"></button>
+          <button class="link" id="rHome" type="button" data-i="toHome"></button>
+          <div class="remind" id="rRemind" hidden>
+            <p class="sub" data-i="remAsk"></p>
+            <div class="row2">
+              <button class="btn" id="remYes" type="button" data-i="remYes"></button>
+              <button class="btn ghost" id="remNo" type="button" data-i="remNo"></button>
+            </div>
           </div>
         </div>
-      </div></div>
+      </div>
     </section>
 
     <!-- Duello (canli) -->

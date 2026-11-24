@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- Ekran goruntusu duzenegi: uygulamayi (www/) misafir modunda 390x844 cerceve icinde acar, verilen adimlari tiklar.
      Yalnizca gelistirme icin; uygulamaya girmez. Kullanim: dev/ekran/cek.sh
-     Parametreler: t=dark|light  ui=tr|en  xp=<bugunku XP>  steps=<id ya da css secici>,... (tap:<id> = dokunma olayi)  (her adim arasi 700 ms) -->
+     Parametreler: t=dark|light  ui=tr|en  xp=<bugunku XP>  steps=<id ya da css secici>,... (tap:<id> = dokunma olayi)  gap=<adimlar arasi ms, varsayilan 700> -->
 <meta charset="utf-8">
 <style>html,body{margin:0;background:#000}iframe{display:block;margin:0 auto;border:0;width:390px;height:844px}</style>
 <iframe id="f"></iframe>
@@ -19,10 +19,14 @@
     (function next() {
       if (i >= steps.length) { document.title = "hazir"; return; }
       var s = steps[i++], tap = s.indexOf("tap:") === 0, id = tap ? s.slice(4) : s, n = doc.getElementById(id) || doc.querySelector(id);
-      if (!n) console.error("adim bulunamadi: " + s);
+      if (s.indexOf("show:") === 0) {          // hesap isteyen ekranlar: veri olmadan yalnizca yerlesimi gosterir
+        doc.querySelectorAll("main section").forEach(function (x) { x.hidden = x.id !== s.slice(5); }); doc.getElementById("main").scrollTop = 0;
+      } else if (s.indexOf("unhide:") === 0) { var u = doc.getElementById(s.slice(7)); if (u) u.hidden = false; }
+      else if (s.indexOf("hide:") === 0) { var h = doc.getElementById(s.slice(5)); if (h) h.hidden = true; }
+      else if (!n) console.error("adim bulunamadi: " + s);
       else if (tap) { ["pointerdown", "pointerup"].forEach(function (e) { n.dispatchEvent(new f.contentWindow.PointerEvent(e, { bubbles: true, clientX: 100, clientY: 300, pointerId: 1 })); }); }   // surukleme dinleyen kartlar icin
       else n.click();
-      setTimeout(next, 700);
+      setTimeout(next, Number(q.get("gap")) || 700);
     })();
   });
   f.src = "../../www/index.html";

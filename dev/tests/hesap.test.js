@@ -301,3 +301,23 @@ test("kart bicimi: yeni kelimede 'wcard' sinifi korunur", () => {
   assert.match(kaynak("cardShow"), /className = "fcard wcard"/);
   assert.match(kaynak("flowShow"), /className = "fl-card wcard"/);
 });
+
+// Sonuc jenerigi: yalnizca gercek veri olan satirlar yazilir.
+function jenerik(o, once, sonra) {
+  const c = yukle(["rollRows"], { Set, t: (k, n) => k + (n === undefined ? "" : ":" + n) });
+  return Array.from(c.rollRows(o, once, sonra), (r) => Array.from(r));
+}
+test("jenerik: bilinemeyen kelimeler bir kez ve adiyla, XP ve seri satiri", () => {
+  const r = jenerik({ xp: 80, words: [{ w: "a", ok: true }, { w: "b", ok: false }, { w: "b", ok: false }, { w: "c", ok: false }] }, { mastered: 3 }, { mastered: 3, streak: 12 });
+  assert.deepEqual(r, [["rollAgain", "b, c", "rollAgainSub"], ["rollStreak", "rollStreakN:12", ""], ["rollXp", "rollXpN:80", ""]]);
+});
+test("jenerik: kalici kelime farki sunucunun onceki ve sonraki sayisindan gelir", () => {
+  assert.deepEqual(jenerik({ words: [] }, { mastered: 3 }, { mastered: 5, streak: 0 }), [["rollKeep", "rollKeepN:2", "rollKeepSub"]]);
+  assert.deepEqual(jenerik({ words: [] }, { mastered: 5 }, { mastered: 5 }), [], "fark yoksa satir yok");
+  assert.deepEqual(jenerik({ words: [] }, null, { mastered: 9 }), [], "onceki sayi bilinmiyorsa uydurulmaz");
+});
+test("jenerik: 4'ten fazla bilinemeyen kelime kisaltilir; veri yoksa satir yok", () => {
+  const w = ["a", "b", "c", "d", "e", "f"].map((x) => ({ w: x, ok: false }));
+  assert.equal(jenerik({ words: w }, null, null)[0][1], "a, b, c, d rollMore:2");
+  assert.deepEqual(jenerik({ xp: 0 }, null, null), []);
+});

@@ -256,15 +256,17 @@ textarea { min-height: 132px; resize: vertical; line-height: 1.4; }
 .tilebtn.used { visibility: hidden; }
 .slot:disabled, .tilebtn:disabled { opacity: 1; }
 
-/* sonuc */
-.result .ticket-in { padding-top: 24px; background: none; border: 0; }
-.r-icon { display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto 6px; border-radius: 50%; background: var(--surf2); color: var(--hi); }
-.r-icon .ic { width: 28px; height: 28px; }
-.big { font: 800 96px/.9 var(--disp); color: var(--hi); }
+/* sonuc: jenerik. Ortada buyuk sayi, altinda saga-sola yasli etiket ve deger sutunlari. */
+.credits { display: flex; flex-direction: column; align-items: center; min-height: calc(100dvh - 150px); padding-top: 5vh; text-align: center; }
+.big { font: 800 128px/.85 var(--disp); color: var(--hi); overflow-wrap: anywhere; }
 .countdown { font-size: 160px; }
-.r-line { margin: 8px 0 0; font-size: 15px; color: var(--dim); } .r-line:empty { display: none; }
-#rLine1 { color: var(--ink); font-weight: 600; }
-.remind { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); } .remind .row2 { margin-top: 10px; }
+.r-line { margin: 10px 0 0; font-size: 16px; color: var(--dim); } .r-line:empty { display: none; }
+.roll { width: 100%; margin: 30px 0 0; display: grid; grid-template-columns: 2fr 3fr; gap: 14px; font-size: 16px; }
+.roll:empty { display: none; }
+.roll dt { text-align: right; color: var(--dim); } .roll dd { margin: 0; text-align: left; font-weight: 600; overflow-wrap: anywhere; }
+.roll dd small { display: block; margin-top: 2px; font-weight: 400; font-size: 13px; color: var(--dim); }
+.fin { width: 100%; margin-top: auto; padding-top: 24px; }
+.remind { margin-top: 14px; padding-top: 16px; border-top: 1px dashed var(--line); } .remind .row2 { margin-top: 10px; }
 
 /* duello */
 .roomcode { margin: 6px 0; text-align: center; font: 800 88px/1 var(--disp); letter-spacing: .1em; color: var(--hi); }

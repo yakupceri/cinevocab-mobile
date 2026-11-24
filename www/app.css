@@ -68,9 +68,9 @@ button { cursor: pointer; }
 
 /* ust serit */
 .top { flex: none; display: flex; align-items: center; gap: 10px; padding: calc(10px + env(safe-area-inset-top)) 20px 8px; }
-.logo { --lc: var(--sun); --ls: var(--ink); width: 46px; height: 34px; flex: none; }      /* isaretin egimi cizimin icinde */
+.logo { --lc: var(--ink); --lv: var(--sun); --ls: var(--sun); width: 33px; height: 38px; flex: none; }
 .logo svg { display: block; width: 100%; height: 100%; }
-:root[data-theme="light"] .logo { --lc: var(--ink); --ls: var(--hi); }
+:root[data-theme="light"] .logo { --lv: var(--hi); --ls: var(--hi); }
 .brand { font: 800 24px/1 var(--disp); letter-spacing: .01em; }
 .pill { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-size: 14px; font-weight: 600; color: var(--ink); }
 .pill .ic { width: 17px; height: 17px; color: var(--hi); }

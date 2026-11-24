@@ -25,15 +25,16 @@ Söz her yerde aynı: **"İzlediğin dizinin kelimelerini öğren."** (EN: "Lear
 ## İş, sırayla (her aşamanın sonunda göster ve DUR)
 
 ### Aşama 1: Logo (seçildi; yalnızca uygula)
-Logo 25 Kasım 2026'da mobil tarafta seçildi: **"Konuşan bilet"**. Bilet aynı zamanda bir C harfi; sol kenarında bilet çentiği var, ağzından iki altyazı satırı çıkıyor. Yeni öneri üretme; bunu kullan.
+Logo 25 Kasım 2026'da proje sahibi tarafından seçildi: **"Altı çizili Cv"**. Krem bir C, sarı bir v ve altında dört parçalı sarı kesik çizgi. Uygulamadaki imza hareketinden gelir: altyazıda sarı, altı kesik çizgili, dokunulabilir kelime. Yeni öneri üretme; bunu kullan.
 - Kaynak dosyalar (salt okunur): `~/cinevocab-mobile/dev/tasarim/logo/`
-  - `cinevocab-isaret.svg`: işaretin kendisi, zeminsiz (üst şerit, site başlığı).
+  - `cinevocab-isaret.svg`: işaretin kendisi, zeminsiz (popup başlığı, site başlığı). Harfler çizime çevrilmiştir, yazı tipi gerekmez.
   - `cinevocab-simge.svg`: koyu kare + işaret (eklenti simgesi, favicon).
   - `simge-16.png`, `-32`, `-48`, `-128`, `-512`: hazır PNG'ler.
-  - `secilen.png`: nasıl göründüğü (boyutlar, koyu ve açık zemin, yazıyla birlikte).
-- Renkler: koyu zeminde bilet `#FFD21E`, satırlar `#F3E9D2`. Açık zeminde bilet `#1B0F14`, satırlar `#8E1B2B`. İşaretin eğimi (-7 derece) çizimin içinde; ayrıca döndürme.
+  - `secilen.png`: nasıl göründüğü (simge, kapak görseli, uygulamanın üst şeridi koyu ve açık).
+- Renkler: koyu zeminde C `#F3E9D2`, v ve çizgi `#FFD21E`. Açık zeminde C `#1B0F14`, v ve çizgi `#8E1B2B`. Oranları, harf aralığını ve çizgi sayısını değiştirme; işareti döndürme.
 - Eski "Cv" yazılı bilet her yerden kalkar: `extension/icons/`, popup başlığı, welcome, site başlığı, favicon, sosyal paylaşım görseli.
 - Dosyaları bu repoya **kopyala** (`docs/marka/` ve gereken yerlere); mobil repodaki dosyalara bağlantı verme.
+- SVG'yi satır içi kullanırken dıştaki `<svg>` kutusunu `0 0`'dan başlat ya da doğrudan dosyadaki `viewBox`'ı kullan; mobilde bir kez yanlış kutu yüzünden C harfi kırpılmıştı.
 - Eklenti simgesi değiştiği için Chrome Web Store yeniden inceleme yapar: raporda söyle ve yüklemeden önce proje sahibine sor.
 
 ### Aşama 2: Plan (sonra dur)

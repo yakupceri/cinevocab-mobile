@@ -613,11 +613,13 @@ test("misafir: tekrar oturumunda ve ana karede once kendi kelimeleri", () => {
   assert.equal(h.heroScene([ham[0]], "2026-11-24", (x) => x.ep !== "demoPack").w, "forgive", "kendi cumlesi yoksa deneme destesinden");
 });
 
-test("logo: ust seritte yeni isaret var, eski 'Cv' yazisi yok; acik temada renkleri degisir", () => {
+test("logo: ust seritte 'alti cizili Cv' isareti var, harfler cizim (yazi degil); acik temada renkleri degisir", () => {
   const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "www");
   const html = fs.readFileSync(path.join(kok, "index.html"), "utf8"), css = fs.readFileSync(path.join(kok, "app.css"), "utf8");
   const ust = html.slice(html.indexOf('<header class="top">'), html.indexOf("</header>"));
-  assert.match(ust, /<use href="#i-logo"\/>/); assert.doesNotMatch(ust, />Cv</);
-  assert.match(html, /<symbol id="i-logo"[^>]*>[\s\S]*var\(--lc\)[\s\S]*var\(--ls\)/);
-  assert.match(css, /\.logo \{ --lc: var\(--sun\); --ls: var\(--ink\)/); assert.match(css, /\[data-theme="light"\] \.logo \{ --lc: var\(--ink\); --ls: var\(--hi\)/);
+  assert.match(ust, /<use href="#i-logo"\/>/); assert.doesNotMatch(ust, />Cv</, "harfler yazi tipi gerektirmeyen cizim olmali");
+  const sembol = html.slice(html.indexOf('<symbol id="i-logo"'), html.indexOf("</symbol>", html.indexOf('<symbol id="i-logo"')));
+  for (const r of ["--lc", "--lv", "--ls"]) assert.ok(sembol.includes("var(" + r + ")"), r); assert.equal((sembol.match(/<rect /g) || []).length, 4, "dort parcali kesik alt cizgi");
+  assert.match(css, /\.logo \{ --lc: var\(--ink\); --lv: var\(--sun\); --ls: var\(--sun\)/); assert.match(css, /\[data-theme="light"\] \.logo \{ --lv: var\(--hi\); --ls: var\(--hi\)/);
 });
+

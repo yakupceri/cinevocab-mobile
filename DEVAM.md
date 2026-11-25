@@ -10,7 +10,7 @@ Yeni bir sohbette: "~/cinevocab-mobile/DEVAM.md dosyasını oku, kaldığımız 
 - Denemede gerçek hesap kullanılmaz: misafir modu ya da ayrı deneme kurulumu (`./gradlew installDebug -PdenemeEki=.deneme`). Gerçek hesaba kayıt eklenmez.
 - `~/cinevocab-app` (site ve eklenti) ve başka projelere yazılmaz. Sunucudan istenenler `dev/SUNUCU-ISTEKLERI.md` içinde birikir.
 - Site reposunda (`cinevocab-app`) da aynı push kuralı geçerli; orada push siteyi canlıda yeniden yayınlar. Kural o reponun `CLAUDE.md` dosyasında yazılı.
-- `versionCode` yayın adımında artırılır; öncesinde dokunulmaz.
+- `versionCode` yayın adımında artırılır; öncesinde dokunulmaz. (25 Kasım 2026: sürüm 2.0 için `versionCode 2` yapıldı; adımlar `store/PLAY-STORE.md` → Sürüm 2.0.)
 - Görülmeyen şeye "çalışıyor" denmez.
 
 ## Proje

@@ -14,6 +14,6 @@ Dosyaları değiştirince **hemen push etme**.
 - `.jks`, keystore, şifre, token, API anahtarı hiçbir dosyaya yazılmaz, okunmaz, istenmez.
 - Denemede gerçek hesap kullanılmaz: misafir modu ya da ayrı deneme kurulumu (`./gradlew installDebug -PdenemeEki=.deneme`). Gerçek hesaba kayıt eklenmez.
 - `~/cinevocab-app` (site ve eklenti) ve başka projelere yazılmaz. Oradan istenenler `dev/SUNUCU-ISTEKLERI.md` ve `dev/sunucu/` altında birikir.
-- `versionCode` yayın adımında artırılır; öncesinde dokunulmaz.
+- `versionCode` yalnızca yayın adımında, proje sahibi yayına hazırlanırken artırılır (şu an 2).
 - Görülmeyen şeye "çalışıyor" denmez.
 - Türkçe, kısa, samimi ("kanka").

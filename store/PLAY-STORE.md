@@ -131,7 +131,43 @@ Veri toplanıyor mu: **Evet**. Aktarım sırasında şifreleniyor mu: **Evet** (
 
 Formu doldurmadan önce sunucu tarafını bir kez daha gözden geçir: sunucuda toplanan başka bir şey varsa (örneğin IP kaydı) onu da yaz.
 
-## Yayın sırası
+## Sürüm 2.0 (versionCode 2): yayın adımları
+
+Durum (25 Kasım 2026): `versionCode 2`, `versionName "2.0"`. İmzasız yayın paketi derleniyor (21,9 MB; cihaza inen kısım daha küçük). Hedef SDK 36: Play'in 31 Ağustos 2026'dan beri istediği düzey. 64 bit yerel kütüphaneler 16 KB sayfa boyutuna uygun. Play'deki önceki yükleme `versionCode 1` idi (iç test); Play Console'da daha yüksek bir numara görürsen `android/app/build.gradle` içinde ondan büyüğünü yaz.
+
+### "Yenilikler" metni (en çok 500 karakter)
+**tr-TR**
+```
+Yepyeni CineVocab: izlediğin dizinin kelimelerini öğren.
+• Yeni tasarım: koyu ve açık görünüm, daha büyük yazılar.
+• Altyazıyı ya da metni yapıştır, başka uygulamadan paylaş ya da ekranın fotoğrafını çek; kelimeler çıksın.
+• Hesap açmadan kendi metninden kelime çıkarıp deneyebilirsin.
+• Kelimeler geçtikleri cümleyle birlikte gelir.
+• Akşam hatırlatması sakinleşti: günde en çok bir kez, oynadığın gün gelmez.
+```
+**en-US**
+```
+An all-new CineVocab: learn the words from what you watch.
+• New design with dark and light looks and larger text.
+• Paste subtitles or text, share from another app, or photograph the screen; we pull out the words.
+• Try it with your own text without creating an account.
+• Words come with the line they appeared in.
+• A calmer evening reminder: once a day at most, skipped on days you played.
+```
+
+### Sırayla
+1. **Gerçek telefonda dene** (`DEVAM.md` → Doğrulanmayanlar). En azından: kendi metninden kelime ekleme, fotoğraftan okuma, bir oyun, akşam hatırlatmasını açma.
+2. **Gizlilik metnini güncelle** (site reposu): görselden okuma ve Google ML Kit cümlesi (taslağı yukarıda). Play, veri güvenliği formuyla gizlilik metninin tutarlı olmasını ister; önce bu yayında olmalı.
+3. **İmzalı paketi üret** (Android Studio; anahtar dosyasına yalnızca sen dokunursun):
+   `cd ~/cinevocab-mobile && npx cap sync android && npx cap open android` → Build → Generate Signed App Bundle / APK → Android App Bundle → ilk yüklemede kullandığın aynı anahtar deposu ve takma ad → `release` → çıkan `.aab` dosyası `android/app/release/` altında olur. Farklı bir anahtarla imzalarsan Play yüklemeyi reddeder.
+4. **Önce iç teste yükle:** Play Console → Test → Dahili test → Yeni sürüm oluştur → `.aab` yükle → "Yenilikler" metnini yapıştır → kaydet ve yayınla. Kendi telefonuna Play'den kur, bir kez daha dene.
+5. **Mağaza girişini güncelle** (Büyüme → Mağaza varlığı → Ana mağaza girişi): uygulama adı, kısa ve tam açıklama (yukarıda), simge `icon-512.png`, öne çıkan görsel `feature-tr.png` / `feature-en.png`, ekran görüntüleri `ekran-tr/` ve `ekran-en/` (7'şer).
+6. **Uygulama içeriği** (Politika → Uygulama içeriği): veri güvenliği formunu yukarıdaki tabloya göre güncelle (ML Kit satırları yeni); hedef kitle 13+; uygulama erişimi beyanı.
+7. **Üretime ya da kapalı teste taşı.** Hesabın yeni kişisel hesapsa Play üretim öncesi kapalı test isteyebilir (12 test kullanıcısı, 14 gün); Console'da "Üretim" sekmesi ne istediğini gösterir.
+8. **Yayından sonra:** Mağaza girişi denemeleriyle iki simgeyi karşılaştır (`icon-512.png` ve `deneme/icon-512-bordo-cv.png`).
+
+## Eski yayın sırası (ilk sürüm için yazılmıştı)
+
 1. Uygulamayı emülatörde dene, hataları bildir.
 2. Sunucu güncellemesini yayına al (hesap silme sayfası ve bulmaca).
 3. Play Console hesabı, uygulamayı oluştur, bu klasördeki metin ve görselleri gir.

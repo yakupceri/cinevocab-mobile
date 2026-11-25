@@ -328,7 +328,7 @@ test("oyun ekranlari: alt menu gizliyse kapat dugmesi ya da ana sayfa dugmesi va
   const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "www");
   const html = fs.readFileSync(path.join(kok, "index.html"), "utf8"), js = fs.readFileSync(path.join(kok, "app.js"), "utf8");
   const gizli = JSON.parse(js.match(/\$\("tabs"\)\.hidden = (\[[^\]]+\])\.includes\(id\)/)[1]);
-  const cikis = { "v-quiz": "qClose", "v-cards": "cClose", "v-puzzle": "pzClose", "v-flow": "flClose", "v-result": "rHome" };
+  const cikis = { "v-quiz": "qClose", "v-cards": "cClose", "v-match": "mClose", "v-puzzle": "pzClose", "v-flow": "flClose", "v-result": "rHome" };
   for (const v of gizli.filter((x) => cikis[x])) {
     const bolum = html.slice(html.indexOf('<section id="' + v + '"'), html.indexOf("</section>", html.indexOf('<section id="' + v + '"')));
     assert.ok(bolum.includes('id="' + cikis[v] + '"'), v + " icinde " + cikis[v] + " yok");
@@ -624,3 +624,57 @@ test("logo: ust seritte delikli bilet var, harfler cizim (yazi degil); acik tema
 });
 
 
+
+// Dublaj: kelimeyi anlamiyla eslestirme oyunu. Dil ciftinden bagimsiz; mantik sahte DOM ile sinanir.
+function dublaj(ortam) {
+  return yukle(["MATCH_ROWS", "MT", "matchPool", "matchTiles", "matchSetup", "matchJudge", "matchRemove"], Object.assign({ Set, shuffle: (a) => a }, ortam || {}));
+}
+test("dublaj havuzu: once tekrari gelenler; ayni kelime ya da ayni anlam iki kez gelmez; ust sinir", () => {
+  const c = dublaj();
+  const ilk = [{ w: "trust", t: "güvenmek" }, { w: "Trust", t: "güven" }], kalan = [{ w: "rely", t: "Güvenmek" }, { w: "sword", t: "kılıç" }, { w: "x", t: "x" }, { w: "", t: "bos" }, null, { w: "guard", t: "muhafız" }];
+  assert.deepEqual(Array.from(c.matchPool(ilk, kalan, 12), (x) => x.w), ["trust", "sword", "guard"]);
+  assert.equal(c.matchPool(Array.from({ length: 30 }, (_, i) => ({ w: "w" + i, t: "t" + i })), [], 12).length, 12);
+});
+test("dublaj her dil ciftinde calisir: kelime ve anlam oldugu gibi kullanilir (Fransizca, Japonca, Arapca)", () => {
+  const c = dublaj();
+  const p = c.matchPool([{ w: "chuchoter", t: "to whisper" }, { w: "秘密", t: "secret" }, { w: "سيف", t: "kılıç" }, { w: "Schatten", t: "ombre" }], [], 12);
+  assert.equal(p.length, 4);
+  const kutular = Array.from(c.matchTiles(p[1]), (x) => ({ ...x }));
+  assert.deepEqual(kutular, [{ w: "秘密", kind: "s", text: "秘密" }, { w: "秘密", kind: "t", text: "secret" }]);
+});
+test("dublaj tahtasi: ilk 5 cift iki sutuna dagilir, kalani sirada bekler; her kelimenin iki kutusu vardir", () => {
+  const c = dublaj(), ciftler = Array.from({ length: 8 }, (_, i) => ({ w: "w" + i, t: "t" + i })), b = c.matchSetup(ciftler);
+  assert.equal(b.cols[0].length, 5); assert.equal(b.cols[1].length, 5); assert.equal(b.queue.length, 3);
+  const hepsi = b.cols[0].concat(b.cols[1]);
+  for (let i = 0; i < 5; i++) assert.deepEqual(Array.from(hepsi).filter((x) => x.w === "w" + i).map((x) => x.kind).sort(), ["s", "t"]);
+  const az = c.matchSetup(ciftler.slice(0, 4)); assert.equal(az.cols[0].length + az.cols[1].length, 8); assert.equal(az.queue.length, 0);
+});
+test("dublaj dokunus: ayni kutu, ayni turden kutu, eslesme ve yanlis ayirt edilir", () => {
+  const c = dublaj(), s1 = { w: "a", kind: "s" }, t1 = { w: "a", kind: "t" }, s2 = { w: "b", kind: "s" }, t2 = { w: "b", kind: "t" };
+  assert.equal(c.matchJudge(s1, s1), "same"); assert.equal(c.matchJudge(s1, s2), "switch"); assert.equal(c.matchJudge(t1, t2), "switch");
+  assert.equal(c.matchJudge(s1, t1), "match"); assert.equal(c.matchJudge(t1, s1), "match", "once anlamina dokunmak da olur");
+  assert.equal(c.matchJudge(s1, t2), "wrong");
+});
+test("dublaj dusme: eslesen kutular cikar, ustundekiler asagi iner, yeni cift bosalan sutunlarin tepesine gelir", () => {
+  const c = dublaj(), b = c.matchSetup(Array.from({ length: 7 }, (_, i) => ({ w: "w" + i, t: "t" + i })));
+  const a = b.cols[0].find((x) => x.kind === "s"), es = b.cols[0].concat(b.cols[1]).find((x) => x.w === a.w && x.kind === "t");
+  const altindaki = b.cols[0][b.cols[0].indexOf(a) + 1], yeni = c.matchRemove(b.cols, a, es, b.queue);
+  assert.equal(yeni.length, 2); assert.equal(b.queue.length, 1);
+  assert.equal(b.cols[0].length + b.cols[1].length, 10, "tahta dolu kalir");
+  assert.ok(!b.cols[0].includes(a) && !b.cols[1].includes(es));
+  for (const y of yeni) assert.ok(b.cols[0][0] === y || b.cols[1][0] === y || b.cols[0][1] === y || b.cols[1][1] === y, "yeni kutular tepede");
+  if (altindaki && altindaki !== es) assert.ok(b.cols[0].includes(altindaki), "eslesmeyen kutu tahtada kalir");
+  // sira bitince tahta kuculur ve sonunda bosalir
+  let adim = 0;
+  while (b.cols[0].length + b.cols[1].length && adim++ < 20) {
+    const hepsi = b.cols[0].concat(b.cols[1]), s = hepsi.find((x) => x.kind === "s"), t = hepsi.find((x) => x.w === s.w && x.kind === "t");
+    c.matchRemove(b.cols, s, t, b.queue);
+  }
+  assert.equal(b.cols[0].length + b.cols[1].length, 0); assert.equal(b.queue.length, 0); assert.equal(adim, 6, "kalan 6 cift tek tek eslesti");
+});
+test("dublaj ekrani: Oyna'da kutusu var, kapat dugmesi var, metinler EN ve TR'de var", () => {
+  const fs = require("node:fs"), path = require("node:path"), kok = path.join(__dirname, "..", "..", "www");
+  const html = fs.readFileSync(path.join(kok, "index.html"), "utf8"), L = fs.readFileSync(path.join(kok, "app.js"), "utf8").split("\n");
+  assert.match(html, /id="tMatch"[\s\S]*data-i="matchH"/); assert.match(html, /<section id="v-match"[\s\S]*id="mClose"[\s\S]*id="mGrid"/);
+  for (const k of ["matchH", "matchS", "matchHint", "matchRes"]) { assert.ok(L.slice(45, 127).join("").includes(k + ': "'), "EN " + k); assert.ok(L.slice(127, 209).join("").includes(k + ': "'), "TR " + k); }
+});

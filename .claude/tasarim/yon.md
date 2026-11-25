@@ -50,3 +50,10 @@ Proje sahibi seçti. İki parça:
 - Mağaza denemesi için ikinci seçenek hazır: `store/deneme/icon-512-bordo-cv.png` (bordo zeminde sade Cv). Play Console'daki mağaza girişi denemesiyle karşılaştırılacak.
 - Satır içi SVG'de dıştaki kutu `0 0`'dan başlamalı; yoksa C kırpılır (bir kez oldu).
 - Elenen öneriler kayıt olarak duruyor: `dev/tasarim/logo/oneriler.png`, `tur2.png`, `tur3.png`, `tur4.png`.
+
+## Dublaj (25 Kasım 2026)
+Eşleştirme oyunu: koyu kutu kelime, krem kutu anlamı; doğru çift patlar, üstündekiler düşer, yukarıdan yeni çift gelir. Türün hissi var, başka bir oyunun adı, görseli ya da karakteri yok.
+- Can, enerji, süre baskısı yok. Her eşleşme aralıklı tekrara işlenir: dopamin öğrenmeye bağlı.
+- Kelimeler kullanıcının kendi listesinden gelir; dil çiftinden bağımsızdır. Aynı anlam bir turda iki kez gelmez.
+- Oyna ekranında bir seçenektir; uygulamanın tamamı oyuna çevrilmez (yetişkinlerin "çocuk oyunu" şikayeti: `dev/ARASTIRMA.md`).
+- Dizi ya da platform adıyla hazır paket yok: altyazı telifli. Türe göre paketler (polisiye, hastane...) sunucudan gelebilir.

@@ -17,14 +17,14 @@ Yeni bir sohbette: "~/cinevocab-mobile/DEVAM.md dosyasını oku, kaldığımız 
 - Capacitor 8 + düz JS. `www/` (uygulama), `android/` (yerel kısım), `dev/` (testler, ekran görüntüsü düzeneği, araştırma), `store/` (Play malzemesi), `.claude/` (ajanlar, ofis).
 - Paket `com.cinevocab.app`, yayın Google Play. Sunucu: https://cinevocab.up.railway.app (repo `cinevocab-app`).
 - Akış: `www/` değiştir → `npx cap sync android` → Android Studio'da Run (Gradle JDK 21).
-- Testler: `node --test dev/tests/` (72 test). Ekran görüntüsü: `sh dev/ekran/cek.sh`, mağaza: `sh dev/ekran/magaza.sh`.
+- Testler: `node --test dev/tests/` (79 test). Ekran görüntüsü: `sh dev/ekran/cek.sh`, mağaza: `sh dev/ekran/magaza.sh`.
 - Ofis: `python3 .claude/ofis/serve.py` → http://127.0.0.1:8766
 
 ## Ürün
 Söz: **"İzlediğin dizinin kelimelerini öğren."** Duolingo'nun yerine değil, yanına. Ayrıntı ve tasarım kuralları: `.claude/tasarim/yon.md`. Rakip ve yaş araştırması: `dev/ARASTIRMA.md`.
 - Tasarım: "Gece Seansı" (koyu varsayılan, açık tema Ayarlar'dan). Mağazada hedef kitle 13+.
 - Kelimeler nereden gelir: yapıştır / dosya, Paylaş → CineVocab (metin ve görsel), fotoğraftan okuma (ML Kit, cihaz içi), Chrome eklentisi (aynı hesap), hazır setler.
-- Oyunlar: kartlar, kelime akışı, altyazıyı tamamla, test, bulmaca, günlük meydan okuma, düello, ligler.
+- Oyunlar: kartlar, **Dublaj** (kelimeyi anlamıyla eşleştir; eşleşenler patlar, yenileri düşer; her dil çiftinde çalışır), kelime akışı, altyazıyı tamamla, test, bulmaca, günlük meydan okuma, düello, ligler.
 - Kelimenin geçtiği cümle yalnızca telefonda saklanır (`ctx-<dil>`), sunucuya gitmez.
 - Misafir modu: hesapsız deneme destesi **ve kendi metninden kelime çıkarma** (en çok 40 kelime, telefonda durur, hesap açılınca hesaba taşınır; çeviri `/translate-words` ucuna adsız gider). Ben'de yalnızca Görünüm, Titreşim ve "Giriş yap".
 
@@ -35,7 +35,7 @@ Söz: **"İzlediğin dizinin kelimelerini öğren."** Duolingo'nun yerine değil
 - Gerçek bir televizyonun fotoğrafından okuma; başka uygulamadan görsel paylaşımı (Galeri → Paylaş → CineVocab).
 - Misafirin kendi kelimelerinin hesap açınca hesaba taşınması (yalnızca testte). Giriş yapmış kullanıcıda kendi metninden kelime ekleme uçtan uca; eklenen kelimenin cümlesinin ana ekranda görünmesi.
 - Ben ekranındaki puan ve seviye kartının gerçek veriyle görünümü.
-- Titreşim hissi, Google ile giriş, düello ve ligler yeni tasarımda. Hatırlatmanın uygulamanın kendi düğmesinden (Ben → Akşam hatırlatması) açılması: yalnızca eklenti çağrısı denendi.
+- Dublaj oyunu cihazda (emülatör kapalıydı; yalnızca bilgisayardaki düzenekte baştan sona oynatıldı). Titreşim hissi, Google ile giriş, düello ve ligler yeni tasarımda. Hatırlatmanın uygulamanın kendi düğmesinden (Ben → Akşam hatırlatması) açılması: yalnızca eklenti çağrısı denendi.
 
 ## Yayından önce
 1. Yukarıdaki doğrulanmayanları gerçek telefonda dene.

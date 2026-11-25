@@ -205,6 +205,7 @@
       <p class="sub" data-i="playSub"></p>
       <h2 class="sec grp" data-i="grpMine"></h2>
       <button class="tile" id="tCards" type="button"><i><svg class="ic"><use href="#i-cards"/></svg></i><span><b data-i="cardsH"></b><em id="tCardsS"></em></span></button>
+      <button class="tile" id="tMatch" type="button"><i><svg class="ic"><use href="#i-swap"/></svg></i><span><b data-i="matchH"></b><em data-i="matchS"></em></span></button>
       <button class="tile" id="tFlow" type="button"><i><svg class="ic"><use href="#i-chev"/></svg></i><span><b data-i="flowH"></b><em data-i="flowS"></em></span></button>
       <button class="tile" id="tCloze" type="button"><i><svg class="ic"><use href="#i-film"/></svg></i><span><b data-i="clozeH"></b><em data-i="clozeS"></em></span></button>
       <button class="tile" id="tPractice" type="button"><i><svg class="ic"><use href="#i-quiz"/></svg></i><span><b data-i="pracH"></b><em id="tPracticeS"></em></span></button>
@@ -280,6 +281,18 @@
         <button class="btn no" id="cNo" type="button" data-i="cNo"></button>
         <button class="btn yes" id="cYes" type="button" data-i="cYes"></button>
       </div>
+    </section>
+
+    <!-- Dublaj: kelimeyi anlamiyla eslestir. Eslesenler patlar, ustundekiler duser, yukaridan yenileri gelir. -->
+    <section id="v-match" hidden>
+      <div class="qbar">
+        <button class="fl-x" id="mClose" type="button" data-i-aria="back"><svg class="ic"><use href="#i-x"/></svg></button>
+        <div class="bar"><i id="mFill"></i></div>
+        <span id="mCount"></span>
+      </div>
+      <p class="fl-hint mhint" data-i="matchHint"></p>
+      <div class="mgrid" id="mGrid"></div>
+      <p class="run" id="mCombo" hidden></p>
     </section>
 
     <!-- Bulmaca: karisik harfleri dogru siraya diz -->

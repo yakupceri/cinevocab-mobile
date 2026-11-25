@@ -53,7 +53,7 @@
       flowH: "Word flow", flowS: "Swipe through your words, one by one.", flowHint: "Swipe right if you knew it, left to see it again.", flowXp: "+{0} points", flowRun: "{0} in a row", flowEmpty: "Add a few words first, or try the trial pack.", flowBye: "You earned {0} points.", voiceLbl: "Voice", noVoice: "Your phone has no voice for this language.",
       photoH: "Read from a photo of the screen", photoS: "Photograph the subtitles on your TV or phone.", ocrBusy: "Reading the image…", ocrReady: "Read on your phone; the image was not sent to our server. Fix anything that came out wrong, then pull out the words.", ocrEmpty: "I could not find readable text in that image. Make sure the subtitles are sharp and large.", ocrLang: "Reading from images works for Latin-script languages for now.", ocrOnly: "This works in the phone app.", extH: "Watching on a computer? Send yourself the Chrome extension", extS: "The Chrome extension collects words while you watch. Same account, and you review them here.", extMsg: "CineVocab for Chrome: collect words from subtitles while you watch.", guestMax: "You can try up to {0} of your own words without an account. Create a free account for more.", guestNoTr: "Could not translate these words right now. Try again in a bit.", ownMoved: "{0} of your words moved into your account.", shareReady: "Shared text is in. Tap the button to pull out the words.", shareLink: "That app only shares a link, not the subtitles. Paste the subtitles here or pick the file.", shareNeedAcc: "Your shared text is ready. Create a free account to keep the words.", addH: "Where should your words come from?", addSub: "Best of all: something you are actually watching or reading.",
       howH: "How do you want to start?", howSub: "Pick one. You can use the others any time.", howQuick: "Start with ready words", howQuickS: "Nothing at hand? Start with a ready set.", howPaste: "Paste subtitles or a text", howPasteS: "We pull out the words you do not know.", howDuel: "Duel your friends", howDuelS: "Live, in 16 languages.", howSkip: "Skip",
-      cardsH: "Flashcards", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
+      cardsH: "Flashcards", matchH: "Dub match", matchS: "Tap a word, then its meaning. Pairs pop, new ones drop in.", matchHint: "Tap a word, then its meaning.", matchRes: "You matched {0} of {1} without a slip", cNo: "Show again", cYes: "Knew it", srcOf: "From: {0}", fcTip: "Tap to see the meaning", fcTip2: "Swipe right if you knew it, left if not.", cardsRes: "{0} of {1} known",
       rk0: "Viewer", rk1: "Extra", rk2: "Stunt double", rk3: "Supporting role", rk4: "Lead role", rk5: "Star", rk6: "Director", rk7: "Legend", rankUp: "New role: {0}",
       badgeH: "Awards shelf", badgeSub: "{0} of {1} collected", bWords: "words", bStreak: "days in a row", bWins: "duel wins", bMaster: "mastered",
       badgeNew: "New award: {0} {1}", badgeNeed: "Locked. Opens at {0} {1}.", badgeHave: "Yours: {0} {1}.",
@@ -135,7 +135,7 @@
       flowH: "Kelime akışı", flowS: "Kelimelerini tek tek kaydır geç.", flowHint: "Bildiysen sağa, tekrar görmek için sola kaydır.", flowXp: "+{0} puan", flowRun: "Üst üste {0}", flowEmpty: "Önce birkaç kelime ekle ya da deneme paketini aç.", flowBye: "{0} puan kazandın.", voiceLbl: "Ses", noVoice: "Telefonunda bu dil için ses yok.",
       photoH: "Ekran fotoğrafından oku", photoS: "Televizyondaki ya da telefondaki altyazıyı çek.", ocrBusy: "Görüntü okunuyor…", ocrReady: "Yazı telefonunda okundu; görüntü sunucumuza gitmedi. Yanlış çıkan yeri düzelt, sonra kelimeleri çıkar.", ocrEmpty: "Bu görüntüde okunabilir yazı bulamadım. Altyazı net ve büyük görünsün.", ocrLang: "Görüntüden okuma şimdilik Latin harfli dillerde çalışıyor.", ocrOnly: "Bu özellik telefon uygulamasında çalışır.", extH: "Bilgisayarda mı izliyorsun? Chrome eklentisini kendine gönder", extS: "Chrome eklentisi izlerken kelimeleri toplar. Aynı hesapla burada tekrar edersin. Dokun, linki kendine gönder.", extMsg: "CineVocab Chrome eklentisi: izlerken altyazıdan kelime topla.", guestMax: "Hesap açmadan en çok {0} kendi kelimeni deneyebilirsin. Daha fazlası için ücretsiz hesap aç.", guestNoTr: "Bu kelimeler şu an çevrilemedi. Biraz sonra yeniden dene.", ownMoved: "{0} kelimen hesabına taşındı.", shareReady: "Paylaştığın metin geldi. Kelimeleri çıkarmak için düğmeye bas.", shareLink: "Bu uygulama yalnızca link paylaşıyor, altyazıyı değil. Altyazıyı buraya yapıştır ya da dosyasını seç.", shareNeedAcc: "Paylaştığın metin hazır. Kelimeleri saklamak için ücretsiz hesap aç.", addH: "Kelimeler nereden gelsin?", addSub: "En iyisi gerçekten izlediğin ya da okuduğun bir şey.",
       howH: "Nasıl başlamak istersin?", howSub: "Birini seç. Diğerlerini istediğin zaman kullanırsın.", howQuick: "Hazır kelimelerle başla", howQuickS: "Elinde bir şey yoksa hazır setle başla.", howPaste: "Altyazı ya da metin yapıştır", howPasteS: "Bilmediğin kelimeleri biz çıkarırız.", howDuel: "Arkadaşlarınla düello", howDuelS: "Canlı, 16 dilde.", howSkip: "Geç",
-      cardsH: "Kartlar", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
+      cardsH: "Kartlar", matchH: "Dublaj", matchS: "Kelimeye, sonra anlamına dokun. Eşleşenler patlar, yenileri düşer.", matchHint: "Bir kelimeye, sonra anlamına dokun.", matchRes: "{1} kelimeden {0} tanesini hatasız eşleştirdin", cNo: "Tekrar göster", cYes: "Bildim", srcOf: "Kaynak: {0}", fcTip: "Anlamı görmek için dokun", fcTip2: "Bildiysen sağa, bilemediysen sola kaydır.", cardsRes: "{1} kartın {0} tanesini bildin",
       rk0: "Seyirci", rk1: "Figüran", rk2: "Dublör", rk3: "Yardımcı oyuncu", rk4: "Başrol", rk5: "Yıldız", rk6: "Yönetmen", rk7: "Efsane", rankUp: "Yeni rolün: {0}",
       badgeH: "Ödül rafı", badgeSub: "{1} ödülün {0} tanesi sende", bWords: "kelime", bStreak: "gün üst üste", bWins: "galibiyet", bMaster: "usta kelime",
       badgeNew: "Yeni ödül: {0} {1}", badgeNeed: "Kilitli. {0} {1} olunca açılır.", badgeHave: "Senin: {0} {1}.",
@@ -444,7 +444,7 @@
 
   // ---------------------------------------------------------------- gezinme
   // Alt sayfalar (soru, sonuc, duello, ligler) "Oyna" sekmesine baglidir. Telefonun geri tusu bir onceki ekrana doner.
-  const TAB_OF = { "v-flow": "v-play", "v-quiz": "v-play", "v-cards": "v-play", "v-puzzle": "v-play", "v-result": "v-play", "v-duel": "v-play", "v-leagues": "v-play" };
+  const TAB_OF = { "v-flow": "v-play", "v-quiz": "v-play", "v-cards": "v-play", "v-match": "v-play", "v-puzzle": "v-play", "v-result": "v-play", "v-duel": "v-play", "v-leagues": "v-play" };
   let curView = "";
   function showView(id, push) {
     if (curView === "v-duel" && id !== "v-duel" && sock) duelClose();
@@ -454,7 +454,7 @@
     if (curView === "v-flow" && id !== "v-flow") flowStop();
     curView = id;
     document.querySelectorAll("main section").forEach((s) => { s.hidden = s.id !== id; });
-    $("tabs").hidden = ["v-auth", "v-start", "v-how", "v-flow", "v-quiz", "v-cards", "v-puzzle", "v-result"].includes(id);
+    $("tabs").hidden = ["v-auth", "v-start", "v-how", "v-flow", "v-quiz", "v-cards", "v-match", "v-puzzle", "v-result"].includes(id);
     const tab = TAB_OF[id] || id;
     document.querySelectorAll("#tabs button").forEach((b) => { if (b.dataset.view === tab) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
     main.scrollTop = 0;
@@ -475,7 +475,7 @@
   window.addEventListener("popstate", function (ev) {
     if (!S.key && !S.guest) { authLook(false); return showView("v-auth", false); }
     const v = ev.state && ev.state.v;
-    go(v && v !== "v-auth" && v !== "v-start" && v !== "v-how" && v !== "v-flow" && v !== "v-quiz" && v !== "v-cards" && v !== "v-puzzle" && v !== "v-result" ? v : "v-home", false);
+    go(v && v !== "v-auth" && v !== "v-start" && v !== "v-how" && v !== "v-flow" && v !== "v-quiz" && v !== "v-cards" && v !== "v-match" && v !== "v-puzzle" && v !== "v-result" ? v : "v-home", false);
   });
   document.querySelectorAll("#tabs button").forEach((b) => b.addEventListener("click", () => { if (b.dataset.view !== "v-words") S.filterEp = null; go(b.dataset.view); }));
 
@@ -1260,6 +1260,105 @@
     next();
   }
 
+  // ---------------------------------------------------------------- Dublaj: kelimeyi anlamiyla eslestir
+  // Iki sutunlu bir tahta: koyu kutular ogrenilen dildeki kelimeler, krem kutular anlamlari (karisik durur).
+  // Bir kelimeye, sonra anlamina dokunulur. Dogruysa ikisi patlar, ustundekiler asagi duser, yukaridan yeni bir cift gelir.
+  // Dil ciftinden bagimsiz: kelimeler kullanicinin kendi listesinden (w: kelime, t: anlami) gelir. Can ve sure yok.
+  // Her kelimenin sonucu aralikli tekrara islenir: hic yanlis eslestirilmediyse dogru sayilir.
+  const MATCH_ROWS = 5, MATCH_N = 12, MATCH_STEP = 70;
+  const MT = { cols: [[], []], queue: [], sel: null, done: 0, total: 0, res: {}, pairs: [], busy: true };
+  // Tur icin ciftler: once tekrari gelenler, sonra listenin kalani. Ayni kelime ya da ayni anlam iki kez gelmez (hangi kutunun hangisiyle eslestigi tartismasiz olsun).
+  function matchPool(first, rest, n) {
+    const out = [], ws = new Set(), ts = new Set();
+    for (const x of (first || []).concat(rest || [])) {
+      if (!x || !x.w || !x.t) continue;
+      const kw = String(x.w).trim().toLowerCase(), kt = String(x.t).trim().toLowerCase();
+      if (!kw || !kt || kw === kt || ws.has(kw) || ts.has(kt)) continue;
+      ws.add(kw); ts.add(kt); out.push({ w: x.w, t: x.t });
+      if (out.length >= n) break;
+    }
+    return out;
+  }
+  function matchTiles(p) { return [{ w: p.w, kind: "s", text: p.w }, { w: p.w, kind: "t", text: p.t }]; }
+  // Tahtayi kurar: ilk ciftlerin kutulari karistirilip iki sutuna dagitilir, kalan ciftler sirada bekler.
+  function matchSetup(pairs) {
+    const first = pairs.slice(0, MATCH_ROWS), tiles = shuffle([].concat.apply([], first.map(matchTiles))), half = Math.ceil(tiles.length / 2);
+    return { cols: [tiles.slice(0, half), tiles.slice(half)], queue: pairs.slice(MATCH_ROWS) };
+  }
+  // Iki dokunusun anlami: ayni kutu (birak), ayni turden kutu (secimi degistir), eslesme ya da yanlis.
+  function matchJudge(a, b) {
+    if (a === b) return "same";
+    if (a.kind === b.kind) return "switch";
+    return a.w === b.w ? "match" : "wrong";
+  }
+  // Eslesen iki kutuyu tahtadan cikarir; sirada cift varsa iki yeni kutuyu bosalan sutunlarin TEPESINE koyar. Yeni kutulari doner.
+  function matchRemove(cols, a, b, queue) {
+    const from = [];
+    for (const t of [a, b]) { const c = cols[0].includes(t) ? 0 : 1; cols[c].splice(cols[c].indexOf(t), 1); from.push(c); }
+    if (!queue.length) return [];
+    const fresh = shuffle(matchTiles(queue.shift()));
+    fresh.forEach(function (t, i) { cols[from[i]].unshift(t); });
+    return fresh;
+  }
+  function matchLayout() {
+    MT.cols.forEach(function (col, c) {
+      col.forEach(function (t, r) { t.el.style.top = r * MATCH_STEP + "px"; t.el.className = "mt " + t.kind + (c ? " r" : "") + (MT.sel === t ? " sel" : ""); });
+    });
+  }
+  function matchEl(t, above) {
+    const b = el("button", "mt " + t.kind, t.text); b.type = "button"; b.dataset.w = t.w; b.dataset.k = t.kind;
+    b.style.top = (above ? -MATCH_STEP : 0) + "px";
+    b.addEventListener("click", () => matchTap(t));
+    t.el = b; $("mGrid").appendChild(b); return b;
+  }
+  function matchPaintTop() {
+    $("mCount").textContent = t("qCount", MT.done, MT.total);
+    $("mFill").style.width = Math.round(MT.done / MT.total * 100) + "%";
+  }
+  async function startMatch() {
+    let d = { words: [] }, all;
+    try { all = await loadVocab(); d = await api("/api/srs/session" + pairQ() + "&n=10"); } catch (e) { if (!all) return toast(e.message); }
+    const pairs = matchPool((d.words || []).map((x) => ({ w: x.tr, t: x.eng })), shuffle((all || []).slice()), MATCH_N);
+    if (pairs.length < 4) return toast(t("pNeed"));
+    const board = matchSetup(pairs);
+    MT.cols = board.cols; MT.queue = board.queue; MT.pairs = pairs; MT.sel = null; MT.done = 0; MT.total = pairs.length; MT.res = {}; MT.busy = false;
+    const g = $("mGrid"); g.textContent = ""; g.style.height = Math.max(MT.cols[0].length, MT.cols[1].length) * MATCH_STEP - 8 + "px";
+    for (const col of MT.cols) for (const tile of col) matchEl(tile, false);
+    combo(false, $("mCombo")); showView("v-match"); matchLayout(); matchPaintTop();
+  }
+  function matchTap(tile) {
+    if (MT.busy || curView !== "v-match") return;
+    if (!MT.sel) { MT.sel = tile; sfx("tap"); return matchLayout(); }
+    const a = MT.sel, kind = matchJudge(a, tile);
+    if (kind === "same") { MT.sel = null; return matchLayout(); }
+    if (kind === "switch") { MT.sel = tile; sfx("tap"); return matchLayout(); }
+    MT.sel = null;
+    if (kind === "wrong") {                       // ikisi de yanlis sayilir: bu kelimeler yeniden sorulacak
+      MT.res[a.w] = false; MT.res[tile.w] = false;
+      buzz(false); combo(false, $("mCombo")); matchLayout();
+      for (const x of [a, tile]) { x.el.classList.add("no"); }
+      setTimeout(function () { for (const x of [a, tile]) x.el.classList.remove("no"); }, 320);
+      return;
+    }
+    if (MT.res[a.w] === undefined) MT.res[a.w] = true;
+    MT.done++; buzz(true); combo(true, $("mCombo")); matchPaintTop();
+    for (const x of [a, tile]) { x.el.disabled = true; x.el.classList.add("pop"); }
+    const fresh = matchRemove(MT.cols, a, tile, MT.queue);
+    for (const x of fresh) matchEl(x, true);
+    void $("mGrid").offsetWidth;                  // yeni kutular yukaridan dusme hareketine baslasin
+    matchLayout();
+    setTimeout(function () { for (const x of [a, tile]) x.el.remove(); }, calm() ? 0 : 240);
+    if (!MT.cols[0].length && !MT.cols[1].length) { MT.busy = true; setTimeout(matchFinish, calm() ? 0 : 450); }
+  }
+  async function matchFinish() {
+    if (curView !== "v-match") return;
+    setFlag("practice");
+    const items = MT.pairs.map((p) => ({ w: p.w, ok: MT.res[p.w] !== false })), clean = items.filter((x) => x.ok).length;
+    let xp = 0;
+    try { xp = (await api("/api/srs/report", { body: { src: S.src, dst: S.dst, items: items } })).xp || 0; } catch (e) {}
+    showResult({ big: clean, line1: t("matchRes", clean, items.length), words: items, xp: xp, again: t("again"), onAgain: startMatch, party: clean >= items.length * .8 });
+  }
+
   // ---------------------------------------------------------------- bulmaca: karisik harfleri diz
   // Gunun bulmacasi herkese ayni 5 kelimedir (sunucu secer); bittikten sonra kisi kendi kelimeleriyle sinirsiz oynar.
   // Her kelimenin sonucu: 🟩 ipucusuz ve hatasiz, 🟨 ipucu ya da yanlis dizilimle, 🟥 gecildi.
@@ -1587,6 +1686,8 @@
   $("tPuzzle").addEventListener("click", startPuzzle);
   $("tDaily").addEventListener("click", startDaily);
   $("tCards").addEventListener("click", startCards);
+  $("tMatch").addEventListener("click", startMatch);
+  $("mClose").addEventListener("click", () => go("v-play"));
   $("tPractice").addEventListener("click", startPractice);
   $("tCloze").addEventListener("click", startCloze);
   $("tDuel").addEventListener("click", () => go("v-duel"));

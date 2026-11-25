@@ -5,7 +5,7 @@ Bu klasördeki her şey Play Console'a girilecek hazır malzeme. Metinleri kopya
 ## Görseller
 - Uygulama simgesi (512x512): `icon-512.png`
 - Öne çıkan görsel (1024x500): `feature-tr.png`, `feature-en.png`
-- Telefon ekran görüntüleri (1080x1920, 7 adet): `ekran-tr/`, `ekran-en/` (karşılama, ana, kelime kartı, soru, ekle, sonuç, oyna)
+- Telefon ekran görüntüleri (1080x1920, 8 adet; Play en çok 8 kabul eder): `ekran-tr/`, `ekran-en/` (karşılama, ana, kelime kartı, soru, ekle, sonuç, oyna, Dublaj)
 - Hepsi `sh dev/ekran/magaza.sh` ile misafir modundan üretilir: örnek kelimeler, kişisel veri yok. Tasarım değişince yeniden çalıştır.
 - Görseller çocuksu değil; hedef kitle 13+ (aşağıda).
 - **Simge denemesi:** yayından sonra Play Console → Mağaza girişi denemeleri ile `icon-512.png` (delikli bilet) ile `deneme/icon-512-bordo-cv.png` (bordo zeminde sade Cv) karşılaştırılacak; hangisi daha çok indirme getirirse o kalır.
@@ -26,6 +26,7 @@ Kelimeler nereden gelir?
 • Elinde bir şey yoksa hazır setlerle başla.
 
 Günde birkaç dakika
+• Dublaj: kelimeye, sonra anlamına dokun. Eşleşenler patlar, yenileri düşer.
 • Kartlar ve kelime akışı: kelimeyi gör, bildiysen sağa kaydır.
 • Altyazıyı tamamla: sahneden bir cümle, bir kelime eksik.
 • Test: dört şıktan doğru anlamı seç.
@@ -65,6 +66,7 @@ Where do the words come from?
 • Nothing at hand? Start with a ready-made set.
 
 A few minutes a day
+• Dub match: tap a word, then its meaning. Pairs pop and new ones drop in.
 • Flashcards and word flow: see the word, swipe right if you knew it.
 • Finish the line: a line from a scene with one word missing.
 • Quiz: pick the meaning from four choices.
@@ -140,6 +142,7 @@ Durum (25 Kasım 2026): `versionCode 2`, `versionName "2.0"`. İmzasız yayın p
 ```
 Yepyeni CineVocab: izlediğin dizinin kelimelerini öğren.
 • Yeni tasarım: koyu ve açık görünüm, daha büyük yazılar.
+• Yeni oyun Dublaj: kelimeyi anlamıyla eşleştir, eşleşenler patlasın.
 • Altyazıyı ya da metni yapıştır, başka uygulamadan paylaş ya da ekranın fotoğrafını çek; kelimeler çıksın.
 • Hesap açmadan kendi metninden kelime çıkarıp deneyebilirsin.
 • Kelimeler geçtikleri cümleyle birlikte gelir.
@@ -149,6 +152,7 @@ Yepyeni CineVocab: izlediğin dizinin kelimelerini öğren.
 ```
 An all-new CineVocab: learn the words from what you watch.
 • New design with dark and light looks and larger text.
+• New game, Dub match: pair each word with its meaning and watch them pop.
 • Paste subtitles or text, share from another app, or photograph the screen; we pull out the words.
 • Try it with your own text without creating an account.
 • Words come with the line they appeared in.
@@ -161,7 +165,7 @@ An all-new CineVocab: learn the words from what you watch.
 3. **İmzalı paketi üret** (Android Studio; anahtar dosyasına yalnızca sen dokunursun):
    `cd ~/cinevocab-mobile && npx cap sync android && npx cap open android` → Build → Generate Signed App Bundle / APK → Android App Bundle → ilk yüklemede kullandığın aynı anahtar deposu ve takma ad → `release` → çıkan `.aab` dosyası `android/app/release/` altında olur. Farklı bir anahtarla imzalarsan Play yüklemeyi reddeder.
 4. **Önce iç teste yükle:** Play Console → Test → Dahili test → Yeni sürüm oluştur → `.aab` yükle → "Yenilikler" metnini yapıştır → kaydet ve yayınla. Kendi telefonuna Play'den kur, bir kez daha dene.
-5. **Mağaza girişini güncelle** (Büyüme → Mağaza varlığı → Ana mağaza girişi): uygulama adı, kısa ve tam açıklama (yukarıda), simge `icon-512.png`, öne çıkan görsel `feature-tr.png` / `feature-en.png`, ekran görüntüleri `ekran-tr/` ve `ekran-en/` (7'şer).
+5. **Mağaza girişini güncelle** (Büyüme → Mağaza varlığı → Ana mağaza girişi): uygulama adı, kısa ve tam açıklama (yukarıda), simge `icon-512.png`, öne çıkan görsel `feature-tr.png` / `feature-en.png`, ekran görüntüleri `ekran-tr/` ve `ekran-en/` (8'er).
 6. **Uygulama içeriği** (Politika → Uygulama içeriği): veri güvenliği formunu yukarıdaki tabloya göre güncelle (ML Kit satırları yeni); hedef kitle 13+; uygulama erişimi beyanı.
 7. **Üretime ya da kapalı teste taşı.** Hesabın yeni kişisel hesapsa Play üretim öncesi kapalı test isteyebilir (12 test kullanıcısı, 14 gün); Console'da "Üretim" sekmesi ne istediğini gösterir.
 8. **Yayından sonra:** Mağaza girişi denemeleriyle iki simgeyi karşılaştır (`icon-512.png` ve `deneme/icon-512-bordo-cv.png`).

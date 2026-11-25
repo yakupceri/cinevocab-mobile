@@ -21,6 +21,7 @@ for L in tr en; do
   shot $L 5-ekle "wait,show:v-add" 30 0
   shot $L 6-sonuc "$P,tCards,cYes,cYes,cNo,cYes,cYes,cYes,cNo,cYes,cYes,cYes" 0 0 1000 20000
   shot $L 7-oyna "$P" 30 0
+  shot $L 8-dublaj "$P,tMatch,eslestir,eslestir,eslestir,%23mGrid%20.mt.s" 0 0 900 14000
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars --window-size=1024,500 --virtual-time-budget=4000 --screenshot="store/feature-$L.png" "http://127.0.0.1:$PORT/dev/ekran/kapak.html?l=$L" >/dev/null 2>&1
 done
 ls store/ekran-tr store/ekran-en

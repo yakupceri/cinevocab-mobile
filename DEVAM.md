@@ -4,12 +4,12 @@ Yeni bir sohbette: "~/cinevocab-mobile/DEVAM.md dosyasını oku, kaldığımız 
 
 ## Çalışma kuralları
 - Türkçe, kısa, samimi ("kanka").
-- Her anlamlı adımdan sonra commit ve push yapılır (Türkçe kısa mesaj). Push'tan önce `sh dev/sir-tara.sh`; bir şey bulursa push edilmez, sahibine söylenir.
+- **Push kuralı (25 Kasım 2026'dan beri, `CLAUDE.md`):** değişiklikten sonra hemen push yok. Yerelde test, yerelde commit, değişiklikler birikir; push yalnızca proje sahibi "push et" deyince ve toplu. Push'tan önce gidecek commit'ler ve `sh dev/sir-tara.sh` sonucu gösterilir.
 - `.jks`, keystore, şifre, token, API anahtarı hiçbir dosyaya yazılmaz, okunmaz, istenmez.
 - Depo **herkese açık**. Gerçek hesap adı, e-posta ya da kişisel veri görünen ekran görüntüsü commit'lenmez. Emülatör görüntüleri depoya girmez.
 - Denemede gerçek hesap kullanılmaz: misafir modu ya da ayrı deneme kurulumu (`./gradlew installDebug -PdenemeEki=.deneme`). Gerçek hesaba kayıt eklenmez.
 - `~/cinevocab-app` (site ve eklenti) ve başka projelere yazılmaz. Sunucudan istenenler `dev/SUNUCU-ISTEKLERI.md` içinde birikir.
-- Site reposunda (`cinevocab-app`) site dosyaları değişince hemen push edilmez: önce yerelde test, değişiklikler birikir, push yalnızca proje sahibi "push et" deyince ve toplu yapılır. Kuralın kendisi o reponun `CLAUDE.md` dosyasında yazılı. Bu mobil repoda her adımdan sonra push kuralı sürer.
+- Site reposunda (`cinevocab-app`) da aynı push kuralı geçerli; orada push siteyi canlıda yeniden yayınlar. Kural o reponun `CLAUDE.md` dosyasında yazılı.
 - `versionCode` yayın adımında artırılır; öncesinde dokunulmaz.
 - Görülmeyen şeye "çalışıyor" denmez.
 

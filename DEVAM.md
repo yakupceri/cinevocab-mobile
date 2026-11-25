@@ -9,6 +9,7 @@ Yeni bir sohbette: "~/cinevocab-mobile/DEVAM.md dosyasını oku, kaldığımız 
 - Depo **herkese açık**. Gerçek hesap adı, e-posta ya da kişisel veri görünen ekran görüntüsü commit'lenmez. Emülatör görüntüleri depoya girmez.
 - Denemede gerçek hesap kullanılmaz: misafir modu ya da ayrı deneme kurulumu (`./gradlew installDebug -PdenemeEki=.deneme`). Gerçek hesaba kayıt eklenmez.
 - `~/cinevocab-app` (site ve eklenti) ve başka projelere yazılmaz. Sunucudan istenenler `dev/SUNUCU-ISTEKLERI.md` içinde birikir.
+- Site reposunda (`cinevocab-app`) site dosyaları değişince hemen push edilmez: önce yerelde test, değişiklikler birikir, push yalnızca proje sahibi "push et" deyince ve toplu yapılır. Kuralın kendisi o reponun `CLAUDE.md` dosyasında yazılı. Bu mobil repoda her adımdan sonra push kuralı sürer.
 - `versionCode` yayın adımında artırılır; öncesinde dokunulmaz.
 - Görülmeyen şeye "çalışıyor" denmez.
 

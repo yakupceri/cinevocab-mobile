@@ -54,6 +54,7 @@ Proje sahibi seçti. İki parça:
 ## Dublaj (25 Kasım 2026)
 Eşleştirme oyunu: koyu kutu kelime, krem kutu anlamı; doğru çift patlar, üstündekiler düşer, yukarıdan yeni çift gelir. Türün hissi var, başka bir oyunun adı, görseli ya da karakteri yok.
 - Can, enerji, süre baskısı yok. Her eşleşme aralıklı tekrara işlenir: dopamin öğrenmeye bağlı.
+- Gösteri: eşleşince iki kutu arasında çakan sarı bağ, iki noktadan kıvılcım (`sparkAt`), yükselen "+10 puan". Seri 3, 5, 8, 10 ve 12'de patlama büyür, tahta hafifçe sarsılır, seri yazısı ortadan yükselir. Renkler sinema paleti (sarı, krem, yeşil, bordo); azaltılmış harekette hiçbiri çalışmaz.
 - Kelimeler kullanıcının kendi listesinden gelir; dil çiftinden bağımsızdır. Aynı anlam bir turda iki kez gelmez.
 - Oyna ekranında bir seçenektir; uygulamanın tamamı oyuna çevrilmez (yetişkinlerin "çocuk oyunu" şikayeti: `dev/ARASTIRMA.md`).
 - Dizi ya da platform adıyla hazır paket yok: altyazı telifli. Türe göre paketler (polisiye, hastane...) sunucudan gelebilir.

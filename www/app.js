@@ -297,6 +297,51 @@
     const t0 = performance.now();
     (function step(now) { const k = Math.min(1, (now - t0) / 700); node.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); })(t0);
   }
+  // Kivilcim: verilen noktadan dort yana sacilan kucuk parcalar ve iki nokta arasinda cakan bag. Dublaj'da eslesme aninda kullanilir.
+  // Azaltilmis hareket aciksa hic cizilmez. Tek bir cizim dongusu vardir; parcalar bitince durur ve tuvali temizler.
+  const SPARK = { ps: [], lines: [], on: false };
+  function sparkAt(x, y, n, big) {
+    if (calm()) return 0;
+    const cols = ["#FFD21E", "#FFD21E", "#F3E9D2", "#7BD39A", "#C2283A"];
+    for (let i = 0; i < n; i++) {
+      const a = Math.random() * Math.PI * 2, v = (big ? 5 : 3) + Math.random() * (big ? 9 : 6);
+      SPARK.ps.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 2, s: 3 + Math.random() * (big ? 7 : 5), r: Math.random() * 6,
+        life: 0, max: 26 + Math.random() * 18, c: cols[i % cols.length], round: i % 3 === 0 });
+    }
+    sparkRun(); return n;
+  }
+  function sparkLink(x1, y1, x2, y2) { if (calm()) return; SPARK.lines.push({ x1: x1, y1: y1, x2: x2, y2: y2, life: 0, max: 11 }); sparkRun(); }
+  function sparkRun() {
+    if (SPARK.on) return;
+    SPARK.on = true;
+    const c = $("fx"), g = c.getContext("2d");
+    if (c.width !== innerWidth || c.height !== innerHeight) { c.width = innerWidth; c.height = innerHeight; }
+    (function step() {
+      g.clearRect(0, 0, c.width, c.height);
+      SPARK.lines = SPARK.lines.filter((l) => ++l.life <= l.max);
+      for (const l of SPARK.lines) {
+        const k = 1 - l.life / l.max;
+        g.globalAlpha = k; g.strokeStyle = "#FFD21E"; g.lineWidth = 7 * k + 1; g.lineCap = "round";
+        g.beginPath(); g.moveTo(l.x1, l.y1); g.lineTo(l.x2, l.y2); g.stroke();
+      }
+      SPARK.ps = SPARK.ps.filter((p) => ++p.life <= p.max);
+      for (const p of SPARK.ps) {
+        p.vy += .35; p.vx *= .97; p.x += p.vx; p.y += p.vy; p.r += .25;
+        g.globalAlpha = 1 - Math.pow(p.life / p.max, 2); g.fillStyle = p.c;
+        if (p.round) { g.beginPath(); g.arc(p.x, p.y, p.s / 2, 0, 7); g.fill(); }
+        else { g.save(); g.translate(p.x, p.y); g.rotate(p.r); g.fillRect(-p.s / 2, -p.s / 3, p.s, p.s * .66); g.restore(); }
+      }
+      g.globalAlpha = 1;
+      if (SPARK.ps.length || SPARK.lines.length) requestAnimationFrame(step); else { SPARK.on = false; g.clearRect(0, 0, c.width, c.height); }
+    })();
+  }
+  // Ekranda bir noktadan yukselip kaybolan kisa yazi ("+10 puan", "5 dogru ust uste"). Azaltilmis harekette gosterilmez.
+  function floatText(x, y, text, big) {
+    if (calm()) return;
+    const n = el("div", "mfloat" + (big ? " big" : ""), text);
+    n.style.left = Math.round(x) + "px"; n.style.top = Math.round(y) + "px";
+    document.body.appendChild(n); setTimeout(() => n.remove(), 900);
+  }
   // Kutlama: ekranin ustunden konfeti.
   function confetti(n) {
     if (calm()) return;
@@ -1342,6 +1387,7 @@
     }
     if (MT.res[a.w] === undefined) MT.res[a.w] = true;
     MT.done++; buzz(true); combo(true, $("mCombo")); matchPaintTop();
+    matchBoom(a.el, tile.el, run);
     for (const x of [a, tile]) { x.el.disabled = true; x.el.classList.add("pop"); }
     const fresh = matchRemove(MT.cols, a, tile, MT.queue);
     for (const x of fresh) matchEl(x, true);
@@ -1349,6 +1395,21 @@
     matchLayout();
     setTimeout(function () { for (const x of [a, tile]) x.el.remove(); }, calm() ? 0 : 240);
     if (!MT.cols[0].length && !MT.cols[1].length) { MT.busy = true; setTimeout(matchFinish, calm() ? 0 : 450); }
+  }
+  // Eslesme aninin gosterisi: iki kutu arasinda cakan bag, iki noktadan kivilcim, yukselen puan.
+  // Seri 3, 5, 8, 10 ve 12'ye ulasinca patlama buyur, tahta hafifce sarsilir ve seri yazisi ekranin ortasindan yukselir.
+  function matchBig(n) { return n === 3 || n === 5 || n === 8 || n === 10 || n === 12; }
+  function matchBoom(ea, eb, streak) {
+    const ra = ea.getBoundingClientRect(), rb = eb.getBoundingClientRect(), big = matchBig(streak);
+    const ax = ra.left + ra.width / 2, ay = ra.top + ra.height / 2, bx = rb.left + rb.width / 2, by = rb.top + rb.height / 2;
+    sparkLink(ax, ay, bx, by);
+    sparkAt(ax, ay, big ? 30 : 14, big); sparkAt(bx, by, big ? 30 : 14, big);
+    floatText((ax + bx) / 2, (ay + by) / 2, t("flowXp", 10), false);
+    if (big) {
+      vibe("keep"); sfx("combo");
+      floatText(innerWidth / 2, Math.min(ay, by) - 40, t("comboN", streak), true);
+      const g = $("mGrid"); g.classList.remove("boom"); void g.offsetWidth; g.classList.add("boom");
+    }
   }
   async function matchFinish() {
     if (curView !== "v-match") return;

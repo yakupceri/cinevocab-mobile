@@ -17,7 +17,7 @@ Yeni bir sohbette: "~/cinevocab-mobile/DEVAM.md dosyasını oku, kaldığımız 
 - Capacitor 8 + düz JS. `www/` (uygulama), `android/` (yerel kısım), `dev/` (testler, ekran görüntüsü düzeneği, araştırma), `store/` (Play malzemesi), `.claude/` (ajanlar, ofis).
 - Paket `com.cinevocab.app`, yayın Google Play. Sunucu: https://cinevocab.up.railway.app (repo `cinevocab-app`).
 - Akış: `www/` değiştir → `npx cap sync android` → Android Studio'da Run (Gradle JDK 21).
-- Testler: `node --test dev/tests/` (79 test). Ekran görüntüsü: `sh dev/ekran/cek.sh`, mağaza: `sh dev/ekran/magaza.sh`.
+- Testler: `node --test dev/tests/` (81 test). Ekran görüntüsü: `sh dev/ekran/cek.sh`, mağaza: `sh dev/ekran/magaza.sh`.
 - Ofis: `python3 .claude/ofis/serve.py` → http://127.0.0.1:8766
 
 ## Ürün
@@ -35,7 +35,7 @@ Söz: **"İzlediğin dizinin kelimelerini öğren."** Duolingo'nun yerine değil
 - Gerçek bir televizyonun fotoğrafından okuma; başka uygulamadan görsel paylaşımı (Galeri → Paylaş → CineVocab).
 - Misafirin kendi kelimelerinin hesap açınca hesaba taşınması (yalnızca testte). Giriş yapmış kullanıcıda kendi metninden kelime ekleme uçtan uca; eklenen kelimenin cümlesinin ana ekranda görünmesi.
 - Ben ekranındaki puan ve seviye kartının gerçek veriyle görünümü.
-- Dublaj oyunu cihazda (emülatör kapalıydı; yalnızca bilgisayardaki düzenekte baştan sona oynatıldı). Titreşim hissi, Google ile giriş, düello ve ligler yeni tasarımda. Hatırlatmanın uygulamanın kendi düğmesinden (Ben → Akşam hatırlatması) açılması: yalnızca eklenti çağrısı denendi.
+- Dublaj'ın tam bir turu cihazda (emülatörde üç eşleşme ve patlama efektleri görüldü; turun sonu yalnızca bilgisayardaki düzenekte oynatıldı). Titreşim hissi, Google ile giriş, düello ve ligler yeni tasarımda. Hatırlatmanın uygulamanın kendi düğmesinden (Ben → Akşam hatırlatması) açılması: yalnızca eklenti çağrısı denendi.
 
 ## Yayından önce
 1. Yukarıdaki doğrulanmayanları gerçek telefonda dene.

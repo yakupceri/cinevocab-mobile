@@ -678,3 +678,19 @@ test("dublaj ekrani: Oyna'da kutusu var, kapat dugmesi var, metinler EN ve TR'de
   assert.match(html, /id="tMatch"[\s\S]*data-i="matchH"/); assert.match(html, /<section id="v-match"[\s\S]*id="mClose"[\s\S]*id="mGrid"/);
   for (const k of ["matchH", "matchS", "matchHint", "matchRes"]) { assert.ok(L.slice(45, 127).join("").includes(k + ': "'), "EN " + k); assert.ok(L.slice(127, 209).join("").includes(k + ': "'), "TR " + k); }
 });
+
+// Dublaj'in gosterisi: kivilcim ve yukselen yazi. Azaltilmis harekette hic calismaz; seri esiklerinde buyur.
+test("kivilcim: hareket azaltilmissa cizilmez; normalde parca uretir ve tek cizim dongusu baslar", () => {
+  let dongu = 0;
+  const c = yukle(["SPARK", "sparkAt", "sparkLink"], { calm: () => true, sparkRun: () => { dongu++; }, Math });
+  assert.equal(c.sparkAt(100, 100, 14, false), 0); c.sparkLink(0, 0, 10, 10);
+  assert.equal(c.SPARK.ps.length, 0); assert.equal(c.SPARK.lines.length, 0); assert.equal(dongu, 0);
+  const d = yukle(["SPARK", "sparkAt", "sparkLink"], { calm: () => false, sparkRun: () => { dongu++; }, Math });
+  assert.equal(d.sparkAt(100, 100, 14, false), 14); d.sparkLink(0, 0, 10, 10);
+  assert.equal(d.SPARK.ps.length, 14); assert.equal(d.SPARK.lines.length, 1); assert.equal(dongu, 2);
+  assert.ok(Array.from(d.SPARK.ps).every((p) => p.x === 100 && p.y === 100 && p.max >= 26), "parcalar verilen noktadan cikar");
+});
+test("dublaj serisi: 3, 5, 8, 10 ve 12'de buyuk patlama, digerlerinde kucuk", () => {
+  const c = yukle(["matchBig"]);
+  assert.deepEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].filter((n) => c.matchBig(n)), [3, 5, 8, 10, 12]);
+});
